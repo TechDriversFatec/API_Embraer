@@ -1,12 +1,14 @@
 {
     "compilerOptions": {
-        "outDir": "dist/build",
+        "outDir": "./compile/build",
         "target": "ES6",
         "noEmitOnError": true,
         "noImplicitAny": true,
         "removeComments": true,
         "strictNullChecks": true,
-        "experimentalDecorators": true
+        "experimentalDecorators": true,
+        "forceConsistentCasingInFileNames": true,
+        "strict": true
     },
-    "include": ["app/**/*"]
+    "include": ["src/**/*"]
 }
