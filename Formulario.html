@@ -1,0 +1,120 @@
+<head>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css" integrity="sha384-MCw98/SFnGE8fJT3GXwEOngsV7Zt27NXFoaoApmYm81iuXoPkFOJwJ8ERdknLPMO" crossorigin="anonymous">
+</head>
+
+<style>
+    body{
+        color: white;
+    }
+</style>
+<body style="background-color: #282f55 ;">
+    <div style="text-align:center; padding: 10px;">
+        <h2 ><i>Para o cálculo de distância de pouso, favor inserir os dados solicitados abaixo:</i></h2>
+    </div>
+    <form id="form_criar">
+        <div class="container-fluid">
+            <div class="row" style="margin: 5%;">
+                <div class="form-group col-lg-3 col-md-6 col-sm-12">
+                    <label>Modelo da aeronave:</label>
+                    <input id="modelo-aeronave" class="form-control" name="modelo-aeronave" type="tel" placeholder="Valor para o modelo:" />
+                </div>
+                <div class="form-group col-lg-1 "></div>
+                <div class="form-group col-lg-3 col-md-6 col-sm-12">
+                    <label>Flap:</label>
+                    <input id="flap" class="form-control" type="tel" name="flap" placeholder="Valor para o flap:" />
+                </div>
+                <div class="form-group col-lg-1 "></div>
+                <div class="form-group col-lg-3 col-md-6 col-sm-12">
+                    <label>Fabricante:</label>
+                    <input id="fabricante" class="form-control" type="tel" name="fabricante" placeholder="Valor para o fabricante:" />
+                </div>
+            </div> 
+            <div class="row" style="margin: 5%;">
+                <div class="form-group col-lg-3 col-md-6 col-sm-12">
+                    <label>Sobrepeso da aeronave:</label>
+                    <input id="sobrepeso-aeronave" class="form-control" name="sobrepeso-aeronave" type="tel" placeholder="Valor para o sobrepeso:" />
+                </div>
+                <div class="form-group col-lg-1 "></div>
+                <div class="form-group col-lg-3 col-md-6 col-sm-12">
+                    <label>Peso da aeronave:</label>
+                    <input id="peso-aeronave" class="form-control" type="tel" name="peso-aeronave" placeholder="Insira o peso da aeronave:" />
+                </div>
+                <div class="form-group col-lg-1 "></div>
+                <div class="form-group col-lg-3 col-md-6 col-sm-12">
+                    <label>Reversor(es) presente:</label>
+                    <input id="reversor" class="form-control" type="tel" name="reversor" placeholder="Sim ou Não" />
+                </div>
+            </div> 
+            <div class="row" style="margin: 5%;">
+                <div class="form-group col-lg-3 col-md-6 col-sm-12">
+                    <label>Frenagem utilizada:</label>
+                    <input id="frenagem" class="form-control" name="frenagem" type="tel" placeholder="Insira a frenagem:" />
+                </div>
+                <div class="form-group col-lg-1 "></div>
+                <div class="form-group col-lg-3 col-md-6 col-sm-12">
+                    <label>Motor:</label>
+                    <input id="motor" class="form-control" type="tel" name="motor" placeholder="Insira o motor:" />
+                </div>
+                <div class="form-group col-lg-1 "></div>
+                <div class="form-group col-lg-3 col-md-6 col-sm-12">
+                    <label>Altitude da aeronave:</label>
+                    <input id="altitude-aeronave" class="form-control" type="tel" name="altitude-aeronave" placeholder="Insira a altitude:" />
+                </div>
+            </div> 
+            <div class="row" style="margin: 5%;">
+                <div class="form-group col-lg-3 col-md-6 col-sm-12">
+                    <label>Temperatura:</label>
+                    <input id="temperatura" class="form-control" name="temperatura" type="tel" placeholder="Insira a temperatura:" />
+                </div>
+                <div class="form-group col-lg-1 "></div>
+                <div class="form-group col-lg-3 col-md-6 col-sm-12">
+                    <label>Condição de vento:</label>
+                    <input id="condicao-vento" class="form-control" type="tel" name="condicao-vento" placeholder="Insira a condição do vento:" />
+                </div>
+                <div class="form-group col-lg-1 "></div>
+                <div class="form-group col-lg-3 col-md-6 col-sm-12">
+                    <label>Velocidade do vento:</label>
+                    <input id="velocidade-vento" class="form-control" type="tel" name="velocidade-vento" placeholder="Insira a velocidade do vento:" />
+                </div>
+            </div> 
+            <div class="row" style="margin: 5%;">
+                <div class="form-group col-lg-3 col-md-6 col-sm-12">
+                    <label>Slope:</label>
+                    <input id="slope" class="form-control" name="slope" type="tel" placeholder="Insira o slope:" />
+                </div>
+                <div class="form-group col-lg-1 "></div>
+                <div class="form-group col-lg-3 col-md-6 col-sm-12">
+                    <label>Velocidade da aeronave:</label>
+                    <input id="velocidade-aeronave" class="form-control" type="tel" name="velocidade-aeronave" placeholder="Insira a velocidade:" />
+                </div>
+            </div> 
+            <div class="row" style="margin: 5%;">
+                <div class="form-group col-lg-3 col-md-6 col-sm-12">
+                    <label>Slope:</label>
+                    <input id="slope" class="form-control" name="slope" type="tel" placeholder="Insira o slope:" />
+                </div>
+                <div class="form-group col-lg-1 "></div>
+                <div class="form-group col-lg-3 col-md-6 col-sm-12">
+                    <label>Velocidade da aeronave:</label>
+                    <input id="velocidade-aeronave" class="form-control" type="tel" name="velocidade-aeronave" placeholder="Insira a velocidade:" />
+                </div>
+            </div> 
+        </div>                    
+    </form>
+    <div style="text-align:center;">
+        <button class="rounded"  type="submit" id="btn_calcular" name="submitButton" style="font-size:20px;background-color:#31d3d2; text-transform: uppercase"><b>Calcular</b></button>
+    </div>
+</body>
+    
+
+    <script src="~/js/Formulario/FormularioAPI.js"></script>
+    <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.3/umd/popper.min.js" integrity="sha384-ZMP7rVo3mIykV+2+9J3UJ46jBk0WLaUAdn689aCwoqbBJiSnjAK/l8WvCWPIPm49" crossorigin="anonymous"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/js/bootstrap.min.js" integrity="sha384-ChfqqxuZUCnJSK3+MXmPNIyE6ZbWh2IMqE241rYiqJxyMiZ6OW/JmZQ5stwEULTy" crossorigin="anonymous"></script>
+    <script>
+        $(document).ready(function () {
+            $.noConflict();
+            FormularioAPI.initproposta();
+        });
+    </script>
