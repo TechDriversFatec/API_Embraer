@@ -15,6 +15,20 @@
     <form id="form_criar">
         <div class="container-fluid">
             <div class="row" style="margin: 5%;">
+
+                    <div class="form-group col-lg-3 col-md-6 col-sm-12">
+                        <label>Unidade de medida:</label>
+                        <input id="unidade-medida" class="form-control" name="unidade-medida" type="tel" placeholder="Insira a unidade de medida:" />
+                    </div>
+                    <div class="form-group col-lg-5 "></div>
+                    <div class="form-group col-lg-3 col-md-6 col-sm-12">
+                        <label>Aeroporto de destino:</label>
+                        <input id="aeroporto-destino" class="form-control" type="tel" name="aeroporto-destino" placeholder="Insira o aeroporto der destino:" />
+                    </div>
+                </div> 
+            </div>
+            <div class="row" style="margin: 5%;">
+                
                 <div class="form-group col-lg-3 col-md-6 col-sm-12">
                     <label>Modelo da aeronave:</label>
                     <input id="modelo-aeronave" class="form-control" name="modelo-aeronave" type="tel" placeholder="Valor para o modelo:" />
@@ -83,23 +97,12 @@
                     <label>Slope:</label>
                     <input id="slope" class="form-control" name="slope" type="tel" placeholder="Insira o slope:" />
                 </div>
-                <div class="form-group col-lg-1 "></div>
+                <div class="form-group col-lg-5 "></div>
                 <div class="form-group col-lg-3 col-md-6 col-sm-12">
                     <label>Velocidade da aeronave:</label>
                     <input id="velocidade-aeronave" class="form-control" type="tel" name="velocidade-aeronave" placeholder="Insira a velocidade:" />
                 </div>
-            </div> 
-            <div class="row" style="margin: 5%;">
-                <div class="form-group col-lg-3 col-md-6 col-sm-12">
-                    <label>Slope:</label>
-                    <input id="slope" class="form-control" name="slope" type="tel" placeholder="Insira o slope:" />
-                </div>
-                <div class="form-group col-lg-1 "></div>
-                <div class="form-group col-lg-3 col-md-6 col-sm-12">
-                    <label>Velocidade da aeronave:</label>
-                    <input id="velocidade-aeronave" class="form-control" type="tel" name="velocidade-aeronave" placeholder="Insira a velocidade:" />
-                </div>
-            </div> 
+            </div>  
         </div>                    
     </form>
     <div style="text-align:center;">
@@ -113,8 +116,16 @@
     <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.3/umd/popper.min.js" integrity="sha384-ZMP7rVo3mIykV+2+9J3UJ46jBk0WLaUAdn689aCwoqbBJiSnjAK/l8WvCWPIPm49" crossorigin="anonymous"></script>
     <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/js/bootstrap.min.js" integrity="sha384-ChfqqxuZUCnJSK3+MXmPNIyE6ZbWh2IMqE241rYiqJxyMiZ6OW/JmZQ5stwEULTy" crossorigin="anonymous"></script>
     <script>
+        var mascara = function(){
+        $("#slope").inputmask("999.999.999-99");
+        $("#telefone_prospect").inputmask("99 9{4,5}-9999");
+        $("#cep_prospect").inputmask("99999-999");
+        $("#telefone_fixo_prospect").inputmask("99 9999-9999");
+    }
+
         $(document).ready(function () {
             $.noConflict();
+            mascara();
             FormularioAPI.initproposta();
         });
     </script>
