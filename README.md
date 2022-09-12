@@ -44,10 +44,8 @@
   ![backlog_sprint1](https://user-images.githubusercontent.com/89143350/189668869-01e29149-1e1a-4915-ae7c-849fae44e36a.png)
 
   * 2ª Sprint
-  
-  ![backlog_sprint2](https://user-images.githubusercontent.com/89143350/189669114-d6a6aa3c-5b19-432d-b2b9-76b5dddcff4e.png)
 
-[Em validação]
+    [Em validação]
 
  → [Voltar ao topo](#topo)
  
@@ -98,11 +96,11 @@ Para melhor visualização do protótipo, acesse o [link](https://www.figma.com/
 | :----------: | :------------------------------ | :----------------------------------------------:| :--------------------------------------------------------------:|
 | Product Owner| Yasmin Aparecida Vieira         |  [GitHub](https://github.com/YasminVieira)      | [LinkedIn](https://www.linkedin.com/in/yasmin-vieira-b68641213/)|
 | Scrum Master | Larissa Aparecida Diniz Silva   |  [GitHub](https://github.com/laaridiniz)        | [LinkedIn](https://www.linkedin.com/in/larissa-diniz-dev/)      |
-|   Dev Team   | Icaro Dell Osso Vaz de Carvalho |  [GitHub](https://github.com/Mikkenz)           | [LinkedIn](https://www.linkedin.com/in/icaro-dell-osso/)        |
 |   Dev Team   | Guilherme Konflanz Mezzomo      |  [GitHub](https://github.com/GuilhermeKMezzomo) | [LinkedIn](https://www.linkedin.com/in/guilherme-konflanz-mezzomo-0a9065216/) |
 |   Dev Team   | Gustavo Konflanz Mezzomo        |  [GitHub](https://github.com/gustavomezzomo)    | [LinkedIn](https://www.linkedin.com/in/gustavo-konflanz-mezzomo-08135320b/) |
+|   Dev Team   | Icaro Dell Osso Vaz de Carvalho |  [GitHub](https://github.com/Mikkenz)           | [LinkedIn](https://www.linkedin.com/in/icaro-dell-osso/)        |
 |   Dev Team   | Juliana Gomes da Silva          |  [GitHub](https://github.com/JulianaGO)         | [LinkedIn](https://www.linkedin.com/in/juliana-gomes-silva/)    |
 |   Dev Team   | Lucas Nunes Duarte do Nascimento|  [GitHub](https://github.com/Lkduarte)          | [LinkedIn](https://www.linkedin.com/in/lucas-nunes-nascimento/) |
-|   Dev Team   | Renan Vitor Fernandes Mendonça  |  [GitHub](https://github.com/YasminVieira)      | [LinkedIn](https://www.linkedin.com/in/renan-vitor/)            |
+|   Dev Team   | Renan Vitor Fernandes Mendonça  |  [GitHub](https://github.com/RenanVitor)        | [LinkedIn](https://www.linkedin.com/in/renan-vitor/)            |
 
  → [Voltar ao topo](#topo)
