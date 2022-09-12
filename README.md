@@ -69,19 +69,40 @@ Para melhor visualização do protótipo, acesse o [link](https://www.figma.com/
  
  <span id="tecnologias">
   
-## 💻 Tecnologias Usadas
+## 💻 Tecnologias
   
-  <p>Foram utilizadas as seguintes tecnologias para a criação do nosso projeto: </p><br>
+  <p>Para a troca de informações, validação, prototipagem e criação do projeto foram utilizadas as seguintes ferramentas:</p><br>
 
   <div align="center">
-  <img width="50 rem" src="https://cdn.icon-icons.com/icons2/936/PNG/512/github-logo_icon-icons.com_73546.png"/> Github 
-  <img width="50 rem" src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/typescript/typescript-original.svg"/> TypeScript
+  <img width="50 rem" src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/slack/slack-original.svg"/> Slack    
+  <img width="50 rem" src="https://cdn.icon-icons.com/icons2/936/PNG/512/github-logo_icon-icons.com_73546.png"/> GitHub
+  <img width="50 rem" src="https://cdn.icon-icons.com/icons2/2389/PNG/512/azure_devops_logo_icon_145466.png"/> DevOps
+  <img width="50 rem" src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/figma/figma-original.svg"/> Figma
+  <img width="50 rem" src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/vscode/vscode-original.svg"/> Visual Studio Code
+  <br>
+  <br>
+  <img width="50 rem" src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/typescript/typescript-original.svg"/> TypeScript 
   <img width="50 rem" src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/html5/html5-original.svg"/> HTML 5
   <img width="50 rem" src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/javascript/javascript-original.svg"/> JavaScript
+  <img width="50 rem" src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/bootstrap/bootstrap-original.svg"/> Bootstrap
   <img width="50 rem" src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/mysql/mysql-original.svg"/> MySQL
-  <img width="50 rem" src="https://cdn.icon-icons.com/icons2/2389/PNG/512/azure_devops_logo_icon_145466.png"/> DevOps
   </div>
   
   → [Voltar ao topo](#topo)
   
+<span id="equipe">
   
+## 👩‍💻 Equipe
+  
+|    Função    | Nome                            |                     GitHub                      |                          LinkedIn                               |
+| :----------: | :------------------------------ | :----------------------------------------------:| :--------------------------------------------------------------:|
+| Product Owner| Yasmin Aparecida Vieira         |  [GitHub](https://github.com/YasminVieira)      | [LinkedIn](https://www.linkedin.com/in/yasmin-vieira-b68641213/)|
+| Scrum Master | Larissa Aparecida Diniz Silva   |  [GitHub](https://github.com/laaridiniz)        | [LinkedIn](https://www.linkedin.com/in/larissa-diniz-dev/)      |
+|   Dev Team   | Icaro Dell Osso Vaz de Carvalho |  [GitHub](https://github.com/Mikkenz)           | [LinkedIn](https://www.linkedin.com/in/icaro-dell-osso/)        |
+|   Dev Team   | Guilherme Konflanz Mezzomo      |  [GitHub](https://github.com/GuilhermeKMezzomo) | [LinkedIn](https://www.linkedin.com/in/guilherme-konflanz-mezzomo-0a9065216/) |
+|   Dev Team   | Gustavo Konflanz Mezzomo        |  [GitHub](https://github.com/gustavomezzomo)    | [LinkedIn](https://www.linkedin.com/in/gustavo-konflanz-mezzomo-08135320b/) |
+|   Dev Team   | Juliana Gomes da Silva          |  [GitHub](https://github.com/JulianaGO)         | [LinkedIn](https://www.linkedin.com/in/juliana-gomes-silva/)    |
+|   Dev Team   | Lucas Nunes Duarte do Nascimento|  [GitHub](https://github.com/Lkduarte)          | [LinkedIn](https://www.linkedin.com/in/lucas-nunes-nascimento/) |
+|   Dev Team   | Renan Vitor Fernandes Mendonça  |  [GitHub](https://github.com/YasminVieira)      | [LinkedIn](https://www.linkedin.com/in/renan-vitor/)            |
+
+ → [Voltar ao topo](#topo)
