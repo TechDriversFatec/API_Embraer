@@ -1,4 +1,4 @@
-export default enum Coluna{
+export enum Coluna{
     BRK,
     REF,
     WEIGHT,
