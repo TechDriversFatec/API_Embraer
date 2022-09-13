@@ -6,7 +6,10 @@ var __decorate = (this && this.__decorate) || function (decorators, target, key,
 };
 import { domInjector } from "../decorator/dom-injector";
 export default class Calculos {
-    distanciaPouso(aeronave, distanciaReferencia = 1026, chao = 0, padraoIsa = 0, pesoAtual = parseInt(this.pesoAtual.value), alturaAtual = parseInt(this.alturaAtual.value), temperaturaAtual = parseInt(this.temperaturaAtual.value), ventoCabeca = parseInt(this.ventoCabeca.value), ventoCauda = parseInt(this.ventoCauda.value)) {
+    distanciaPouso(aeronave, pesoAtual = parseInt(this.pesoAtual.value), alturaAtual = parseInt(this.alturaAtual.value), temperaturaAtual = parseInt(this.temperaturaAtual.value), ventoCabeca = parseInt(this.ventoCabeca.value), ventoCauda = parseInt(this.ventoCauda.value)) {
+        let distanciaReferencia = 1026;
+        let chao = 0;
+        let padraoIsa = 0;
         if (pesoAtual > aeronave.getPeso) {
             while (pesoAtual > aeronave.getPeso) {
                 distanciaReferencia += 16;

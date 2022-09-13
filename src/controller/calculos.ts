@@ -22,16 +22,18 @@ export default class Calculos {
 
     distanciaPouso(
         aeronave: Aeronave,
-        distanciaReferencia: number = 1026,
-        chao: number = 0,
-        padraoIsa: number = 0,
+        
         pesoAtual: number = parseInt(this.pesoAtual.value),
         alturaAtual: number = parseInt(this.alturaAtual.value),
         temperaturaAtual: number = parseInt(this.temperaturaAtual.value),
         ventoCabeca: number = parseInt(this.ventoCabeca.value),
         ventoCauda: number = parseInt(this.ventoCauda.value),
-    ) {
+        ) {
 
+        let distanciaReferencia: number = 1026;
+        let chao: number = 0;
+        let padraoIsa: number = 0;
+            
         //calculo do peso
         if (pesoAtual > aeronave.getPeso) {
             while (pesoAtual > aeronave.getPeso) {
