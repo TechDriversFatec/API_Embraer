@@ -3,16 +3,17 @@ export default class Calculos {
         let distanciaReferencia = 1026;
         let chao = 0;
         let padraoIsa = 0;
-        if (pesoAtual > aeronave.getPeso) {
-            while (pesoAtual > aeronave.getPeso) {
+        let pesoA = parseInt(pesoAtual.value);
+        if (pesoA > aeronave.getPeso) {
+            while (pesoA > aeronave.getPeso) {
                 distanciaReferencia += 16;
-                pesoAtual -= 1000;
+                pesoA -= 1000;
             }
         }
-        if (pesoAtual < aeronave.getPeso) {
-            while (pesoAtual < aeronave.getPeso) {
+        else {
+            while (pesoA < aeronave.getPeso) {
                 distanciaReferencia -= 17;
-                pesoAtual += 1000;
+                pesoA += 1000;
             }
         }
         if (alturaAtual > chao) {
@@ -27,7 +28,7 @@ export default class Calculos {
                 temperaturaAtual -= 5;
             }
         }
-        if (temperaturaAtual < padraoIsa) {
+        else {
             while (temperaturaAtual < padraoIsa) {
                 distanciaReferencia -= 10;
                 temperaturaAtual += 5;
