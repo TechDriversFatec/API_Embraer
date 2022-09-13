@@ -39,13 +39,11 @@
   
   ### Backlog das Sprints
   
-  * 1ª Sprint
-  
-  ![backlog_sprint1](https://user-images.githubusercontent.com/89143350/189668869-01e29149-1e1a-4915-ae7c-849fae44e36a.png)
-
-  * 2ª Sprint
-
-    [Em validação]
+  <p align="center">
+  <img src="Planejamento/Imagens/Sprint_1.jpg" alt="Backlog da 1a e 2a Sprint" width="80%" height="80%">
+  <br><br>
+  <img src="Planejamento/Imagens/Sprint_2.jpg" alt="Backlog da 1a e 2a Sprint" width="80%" height="80%">
+  </p>
 
  → [Voltar ao topo](#topo)
  
