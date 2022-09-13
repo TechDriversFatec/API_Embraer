@@ -1,30 +1,47 @@
+import { domInjector } from "../decorator/dom-injector";
 import Aeronave from "./aeronave";
 
+
 export default class Calculos {
+    
+    @domInjector("#peso-aeronave")
+    pesoAtual!: HTMLInputElement
+
+    @domInjector("#altitude-aeronave")
+    alturaAtual!: HTMLInputElement
+
+    @domInjector("#temperatura")
+    temperaturaAtual!: HTMLInputElement
+
+    @domInjector("#vento-proa")
+    ventoCabeca!: HTMLInputElement
+
+    @domInjector("#vento-cauda")
+    ventoCauda!: HTMLInputElement
+
 
     distanciaPouso(
         aeronave: Aeronave,
-        pesoAtual: HTMLInputElement,
-        alturaAtual: number,
-        temperaturaAtual: number,
-        ventoCabeca: number,
-        ventoCauda: number
+        distanciaReferencia: number = 1026,
+        chao: number = 0,
+        padraoIsa: number = 0,
+        pesoAtual: number = parseInt(this.pesoAtual.value),
+        alturaAtual: number = parseInt(this.alturaAtual.value),
+        temperaturaAtual: number = parseInt(this.temperaturaAtual.value),
+        ventoCabeca: number = parseInt(this.ventoCabeca.value),
+        ventoCauda: number = parseInt(this.ventoCauda.value),
     ) {
-        let distanciaReferencia: number = 1026;
-        let chao: number = 0;
-        let padraoIsa: number = 0;
-        let pesoA: number = parseInt(pesoAtual.value);
 
         //calculo do peso
-        if (pesoA > aeronave.getPeso) {
-            while (pesoA > aeronave.getPeso) {
+        if (pesoAtual > aeronave.getPeso) {
+            while (pesoAtual > aeronave.getPeso) {
                 distanciaReferencia += 16;
-                pesoA -= 1000;
+                pesoAtual -= 1000;
             }
         } else {
-            while (pesoA < aeronave.getPeso) {
+            while (pesoAtual < aeronave.getPeso) {
                 distanciaReferencia -= 17;
-                pesoA += 1000;
+                pesoAtual += 1000;
             }
         }
 
