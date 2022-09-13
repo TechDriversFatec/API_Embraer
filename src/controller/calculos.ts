@@ -19,15 +19,18 @@ export default class Calculos {
     @domInjector("#vento-cauda")
     ventoCauda!: HTMLInputElement
 
+    @domInjector("#slope")
+    slope!: HTMLInputElement
+
 
     distanciaPouso(
         aeronave: Aeronave,
-        
         pesoAtual: number = parseInt(this.pesoAtual.value),
         alturaAtual: number = parseInt(this.alturaAtual.value),
         temperaturaAtual: number = parseInt(this.temperaturaAtual.value),
         ventoCabeca: number = parseInt(this.ventoCabeca.value),
         ventoCauda: number = parseInt(this.ventoCauda.value),
+        slope: number = parseInt(this.slope.value),
         ) {
 
         let distanciaReferencia: number = 1026;
@@ -81,5 +84,15 @@ export default class Calculos {
                 ventoCauda -= 5;
             }
         }
+
+        //calculo do slope
+        if (slope > 0){
+            slope = (slope / 100) * 100
+            while (slope > 0){
+                distanciaReferencia += 139
+                slope--
+            }
+        }
+        
     }
 }

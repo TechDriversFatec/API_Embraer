@@ -6,7 +6,7 @@ var __decorate = (this && this.__decorate) || function (decorators, target, key,
 };
 import { domInjector } from "../decorator/dom-injector";
 export default class Calculos {
-    distanciaPouso(aeronave, pesoAtual = parseInt(this.pesoAtual.value), alturaAtual = parseInt(this.alturaAtual.value), temperaturaAtual = parseInt(this.temperaturaAtual.value), ventoCabeca = parseInt(this.ventoCabeca.value), ventoCauda = parseInt(this.ventoCauda.value)) {
+    distanciaPouso(aeronave, pesoAtual = parseInt(this.pesoAtual.value), alturaAtual = parseInt(this.alturaAtual.value), temperaturaAtual = parseInt(this.temperaturaAtual.value), ventoCabeca = parseInt(this.ventoCabeca.value), ventoCauda = parseInt(this.ventoCauda.value), slope = parseInt(this.slope.value)) {
         let distanciaReferencia = 1026;
         let chao = 0;
         let padraoIsa = 0;
@@ -52,6 +52,13 @@ export default class Calculos {
                 ventoCauda -= 5;
             }
         }
+        if (slope > 0) {
+            slope = (slope / 100) * 100;
+            while (slope > 0) {
+                distanciaReferencia += 139;
+                slope--;
+            }
+        }
     }
 }
 __decorate([
@@ -69,3 +76,6 @@ __decorate([
 __decorate([
     domInjector("#vento-cauda")
 ], Calculos.prototype, "ventoCauda", void 0);
+__decorate([
+    domInjector("#slope")
+], Calculos.prototype, "slope", void 0);
