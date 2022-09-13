@@ -40,9 +40,9 @@
   ### Backlog das Sprints
   
   <p align="center">
-  <img src="Planejamento/Imagens/Sprint_1.jpg" alt="Backlog da 1a e 2a Sprint" width="80%" height="80%">
+  <img src="Planejamento/Imagens/Sprint_1.jpg" alt="Backlog da 1a e 2a Sprint" width="100%" height="100%">
   <br><br>
-  <img src="Planejamento/Imagens/Sprint_2.jpg" alt="Backlog da 1a e 2a Sprint" width="80%" height="80%">
+  <img src="Planejamento/Imagens/Sprint_2.jpg" alt="Backlog da 1a e 2a Sprint" width="100%" height="100%">
   </p>
 
  → [Voltar ao topo](#topo)
