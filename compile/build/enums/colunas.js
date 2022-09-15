@@ -10,3 +10,10 @@ export var Coluna;
     Coluna[Coluna["VAP"] = 7] = "VAP";
     Coluna[Coluna["REV"] = 8] = "REV";
 })(Coluna || (Coluna = {}));
+export var Frenagem;
+(function (Frenagem) {
+    Frenagem[Frenagem["MAXMAN"] = 0] = "MAXMAN";
+    Frenagem[Frenagem["HI"] = 1] = "HI";
+    Frenagem[Frenagem["MED"] = 2] = "MED";
+    Frenagem[Frenagem["LOW"] = 3] = "LOW";
+})(Frenagem || (Frenagem = {}));

@@ -1,50 +1,64 @@
-import { domInjector } from "../decorator/dom-injector";
-import Aeronave from "./aeronave";
+// import { domInjector } from "../decorator/dom-injector";
+
+import Aeronave from "../controller/aeronave"
 
 
 export default class Calculos {
     
-    @domInjector("#peso-aeronave")
+    // @domInjector("#peso-aeronave")
     pesoAtual!: HTMLInputElement
 
-    @domInjector("#altitude-aeronave")
+    // @domInjector("#altitude-aeronave")
     alturaAtual!: HTMLInputElement
 
-    @domInjector("#temperatura")
+    // @domInjector("#temperatura")
     temperaturaAtual!: HTMLInputElement
 
-    @domInjector("#vento-proa")
+    // @domInjector("#vento-proa")
     ventoCabeca!: HTMLInputElement
 
-    @domInjector("#vento-cauda")
+    // @domInjector("#vento-cauda")
     ventoCauda!: HTMLInputElement
 
-    @domInjector("#slope")
+    // @domInjector("#slope")
     slope!: HTMLInputElement
 
+    vref!: HTMLInputElement
 
-    distanciaPouso(
-        aeronave: Aeronave,
+    flap!: HTMLInputElement
+
+    frenagem!: HTMLInputElement
+
+    revInoperantes!: HTMLInputElement
+
+
+    calcularPouso(
+        // aeronave: Aeronave,
         pesoAtual: number = parseInt(this.pesoAtual.value),
         alturaAtual: number = parseInt(this.alturaAtual.value),
         temperaturaAtual: number = parseInt(this.temperaturaAtual.value),
         ventoCabeca: number = parseInt(this.ventoCabeca.value),
         ventoCauda: number = parseInt(this.ventoCauda.value),
         slope: number = parseInt(this.slope.value),
+        vref: number = parseInt(this.vref.value),
+        flap: number = parseInt(this.flap.value),
+        frenagem: number = parseInt(this.frenagem.value),
+        revInoperantes: number = parseInt(this.revInoperantes.value),
         ) {
-
+debugger
         let distanciaReferencia: number = 1026;
         let chao: number = 0;
         let padraoIsa: number = 0;
+        let ref: number = 43000;
             
         //calculo do peso
-        if (pesoAtual > aeronave.getPeso) {
-            while (pesoAtual > aeronave.getPeso) {
+        if (pesoAtual > ref) {
+            while (pesoAtual > ref) {
                 distanciaReferencia += 16;
                 pesoAtual -= 1000;
             }
         } else {
-            while (pesoAtual < aeronave.getPeso) {
+            while (pesoAtual < ref) {
                 distanciaReferencia -= 17;
                 pesoAtual += 1000;
             }
@@ -72,14 +86,14 @@ export default class Calculos {
         }
 
         //calculo do vento
-        if (ventoCabeca > 5) {
-            while (ventoCabeca > 5) {
+        if (ventoCabeca >= 5) {
+            while (ventoCabeca >= 5) {
                 distanciaReferencia -= 22;
                 ventoCabeca -= 5;
             }
         }
-        if (ventoCauda > 5) {
-            while (ventoCauda > 5) {
+        if (ventoCauda >= 5) {
+            while (ventoCauda >= 5) {
                 distanciaReferencia += 101;
                 ventoCauda -= 5;
             }
@@ -93,6 +107,20 @@ export default class Calculos {
                 slope--
             }
         }
+
+        //calculo VAP
+        //Verificar
+
+        //calculo Rev
+        if(revInoperantes > 0){
+            while (revInoperantes > 0){
+                distanciaReferencia += 24
+                revInoperantes--
+            }
+
+        }
+
+        return distanciaReferencia;
         
     }
 }
