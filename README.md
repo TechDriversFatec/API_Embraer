@@ -5,6 +5,7 @@
 ### Índice
 * <a href="#sobre">Sobre</a><br>
 * <a href="#backlogs">Backlogs</a><br>
+* <a href="#user">User Stories</a><br>
 * <a href="#tecnologias">Tecnologias</a><br>
 * <a href="#equipe">Equipe</a><br>
 
@@ -32,17 +33,29 @@
 
   ### Backlog do Produto
   
-  ![backlog_produto](https://user-images.githubusercontent.com/89143350/189668639-e5b845d7-8e86-432c-a985-f330e12304e1.png)
-
+  <br>
+  <p align="center">
+  <img src="Planejamento/Imagens/Backlog-Produto.jpg" alt="Backlog com as atividades principais" width="60%" height="60%">
+  </p>
   
   ### Backlog das Sprints
   
+  <br>
   <p align="center">
   <img src="Planejamento/Imagens/Sprint_1.jpg" alt="Backlog da 1a e 2a Sprint" width="100%" height="100%">
   <br><br>
   <img src="Planejamento/Imagens/Sprint_2.jpg" alt="Backlog da 1a e 2a Sprint" width="100%" height="100%">
   </p>
 
+ → [Voltar ao topo](#topo)
+ 
+ <span id="user">
+ 
+ ## 📑User Stories
+ 
+ [Em breve]
+ 
+ 
  → [Voltar ao topo](#topo)
  
  <span id="prototipo">
