@@ -8,7 +8,9 @@
         "strictNullChecks": true,
         "experimentalDecorators": true,
         "forceConsistentCasingInFileNames": true,
-        "strict": true
+        "strict": true,
+        "moduleResolution": "node",
+        
     },
     "include": ["src/**/*"]
 }

@@ -1,36 +1,44 @@
-import Calculos from "./controller/calculos.js";
+// import swal from "sweetalert/typings/core.js";
+// import Calculos from "./controller/calculos.js";
+//  import swal from "sweetalert";
 
-const btn = document.querySelector("#btn_calcular");
+// const btn = document.querySelector("#btn_calcular");
 
-if (btn) {
-  btn.addEventListener("click", function () {
+// function teste (){
+// swal('teste')
+// }
 
-    var calculo = new Calculos()
+// if (btn) {
+//   btn.addEventListener("click", function () {
 
-    var peso = parseInt((<HTMLInputElement>document.getElementById('peso-aeronave')).value);
-    var altitude = parseInt((<HTMLInputElement>document.getElementById('altitude-aeronave')).value);
-    var temperatura = parseInt((<HTMLInputElement>document.getElementById('temperatura')).value);
-    var ventoProa = parseInt((<HTMLInputElement>document.getElementById('vento-proa')).value);
-    var ventoCauda = parseInt((<HTMLInputElement>document.getElementById('vento-cauda')).value);
-    var slope = parseInt((<HTMLInputElement>document.getElementById('slope')).value);
-    var velocidade = parseInt((<HTMLInputElement>document.getElementById('velocidade-aeronave')).value);
-    var flap = parseInt((<HTMLInputElement>document.getElementById('flap')).value);
-    var frenagem = parseInt((<HTMLInputElement>document.getElementById('frenagem')).value);
-    var revInoperantes = parseInt((<HTMLInputElement>document.getElementById('rev-inoperantes')).value);
+//     var calculo = new Calculos()
 
-    var result = calculo.calcularPouso(
-      peso,
-      altitude,
-      temperatura,
-      ventoProa,
-      ventoCauda,
-      slope,
-      velocidade,
-      flap,
-      frenagem,
-      revInoperantes)
+//     var peso = parseInt((<HTMLInputElement>document.getElementById('peso-aeronave')).value);
+//     var altitude = parseInt((<HTMLInputElement>document.getElementById('altitude-aeronave')).value);
+//     var temperatura = parseInt((<HTMLInputElement>document.getElementById('temperatura')).value);
+//     var ventoProa = parseInt((<HTMLInputElement>document.getElementById('vento-proa')).value);
+//     var ventoCauda = parseInt((<HTMLInputElement>document.getElementById('vento-cauda')).value);
+//     var slope = parseInt((<HTMLInputElement>document.getElementById('slope')).value);
+//     var velocidade = parseInt((<HTMLInputElement>document.getElementById('velocidade-aeronave')).value);
+//     var flap = parseInt((<HTMLInputElement>document.getElementById('flap')).value);
+//     var frenagem = parseInt((<HTMLInputElement>document.getElementById('frenagem')).value);
+//     var revInoperantes = parseInt((<HTMLInputElement>document.getElementById('rev-inoperantes')).value);
 
-    return alert(`Necessário ${result} Metros de pista para efetuar o pouso.`)
-  });
-}
+//     var result = calculo.calcularPouso(
+//       peso,
+//       altitude,
+//       temperatura,
+//       ventoProa,
+//       ventoCauda,
+//       slope,
+//       velocidade,
+//       flap,
+//       frenagem,
+//       revInoperantes)
+
+//     // return alert(`Necessário ${result} Metros de pista para efetuar o pouso.`)
+
+//     swal("Here's the title!", "...and here's the text!");
+//   });
+// }
 

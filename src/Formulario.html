@@ -1,98 +1,67 @@
 <head>
+    <script src="../compile/build/app.js"></script>
     <meta name="viewport" content="width=device-width, initial-scale=1">
-    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css" integrity="sha384-MCw98/SFnGE8fJT3GXwEOngsV7Zt27NXFoaoApmYm81iuXoPkFOJwJ8ERdknLPMO" crossorigin="anonymous">
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css"
+        integrity="sha384-MCw98/SFnGE8fJT3GXwEOngsV7Zt27NXFoaoApmYm81iuXoPkFOJwJ8ERdknLPMO" crossorigin="anonymous">
 </head>
 
 <style>
-    body{
+    body {
         color: white;
     }
+    .row{
+        margin: 5%;
+    }
 </style>
+
 <body style="background-color: #282f55 ;">
     <div style="text-align:center; padding: 10px;">
-        <h2 ><i>Para o cálculo de distância de pouso, favor inserir os dados solicitados abaixo:</i></h2>
+        <h2><i>Para o cálculo de distância de pouso, favor inserir os dados solicitados abaixo:</i></h2>
     </div>
     <form id="form_criar">
         <div class="container-fluid">
-            <!-- <div class="row" style="margin: 5%;">
-                <div class="form-group col-lg-3 col-md-6 col-sm-12">
-                    <label>Unidade de medida:</label>
-                    <input id="unidade-medida" class="form-control" name="unidade-medida" type="tel" placeholder="Insira a unidade de medida:" />
-                </div>
-                <div class="form-group col-lg-5 "></div>
-                <div class="form-group col-lg-3 col-md-6 col-sm-12">
-                    <label>Aeroporto de destino:</label>
-                    <input id="aeroporto-destino" class="form-control" type="tel" name="aeroporto-destino" placeholder="Insira o aeroporto der destino:" />
-                </div>
-            </div> -->
-            <div class="row" style="margin: 5%;">
-                <!-- <div class="form-group col-lg-3 col-md-6 col-sm-12">
-                    <label>Modelo da aeronave:</label>
-                    <input id="modelo-aeronave" class="form-control" name="modelo-aeronave" type="tel" placeholder="Valor para o modelo:" />
-                </div> -->
-                <!-- <div class="form-group col-lg-1 "></div> -->
+            <div class="row">
                 <div class="form-group col-lg-4 col-md-6 col-sm-12">
                     <label>Peso da aeronave:</label>
-                    <input id="peso-aeronave" class="form-control" type="tel" name="peso-aeronave" placeholder="Insira o peso da aeronave:" />
+                    <input id="peso-aeronave" class="form-control" type="tel" name="peso-aeronave"
+                        placeholder="Insira o peso da aeronave:" />
                 </div>
                 <div class="form-group col-lg-4 col-md-6 col-sm-12">
                     <label>Altitude da aeronave:</label>
-                    <input id="altitude-aeronave" class="form-control" type="tel" name="altitude-aeronave" placeholder="Insira a altitude:" />
+                    <input id="altitude-aeronave" class="form-control" type="tel" name="altitude-aeronave"
+                        placeholder="Insira a altitude:" />
                 </div>
                 <div class="form-group col-lg-4 col-md-6 col-sm-12">
                     <label>Temperatura:</label>
-                    <input id="temperatura" class="form-control" name="temperatura" type="tel" placeholder="Insira a temperatura:" />
+                    <input id="temperatura" class="form-control" name="temperatura" type="tel"
+                        placeholder="Insira a temperatura:" />
                 </div>
-                
-                <!-- <div class="form-group col-lg-1 "></div> -->
-                <!-- <div class="form-group col-lg-3 col-md-6 col-sm-12">
-                    <label>Fabricante:</label>
-                    <input id="fabricante" class="form-control" type="tel" name="fabricante" placeholder="Valor para o fabricante:" />
-                </div> -->
-            </div> 
-            <!-- <div class="row" style="margin: 5%;">
-                <div class="form-group col-lg-3 col-md-6 col-sm-12">
-                    <label>Sobrepeso da aeronave:</label>
-                    <input id="sobrepeso-aeronave" class="form-control" name="sobrepeso-aeronave" type="tel" placeholder="Valor para o sobrepeso:" />
-                </div>
-                <div class="form-group col-lg-1 "></div>
-
-                <div class="form-group col-lg-1 "></div>
-                <div class="form-group col-lg-3 col-md-6 col-sm-12">
-                    <label>Reversor(es) presente:</label>
-                    <input id="reversor" class="form-control" type="tel" name="reversor" placeholder="Sim ou Não" />
-                </div>
-            </div>  -->
-            <!-- <div class="row" style="margin: 5%;">
-
-                <div class="form-group col-lg-1 "></div>
-                <div class="form-group col-lg-3 col-md-6 col-sm-12">
-                    <label>Motor:</label>
-                    <input id="motor" class="form-control" type="tel" name="motor" placeholder="Insira o motor:" />
-                </div>
-                <div class="form-group col-lg-1 "></div>
-
-            </div>  -->
-            <div class="row" style="margin: 5%;">
+            </div>
+            <div class="row">
 
                 <div class="form-group col-lg-4 col-md-6 col-sm-12">
-                    <label>Vento de proa:</label>
-                    <input id="vento-proa" class="form-control" type="tel" name="vento-proa" placeholder="Insira o vento de proa:" />
+                    <label>Vento:</label>
+                    <input id="valorVento" class="form-control" type="tel" name="valorVento"
+                        placeholder="Insira o vento de Cauda/Proa:" />
                 </div>
                 <div class="form-group col-lg-4 col-md-6 col-sm-12">
-                    <label>Vento de cauda:</label>
-                    <input id="vento-cauda" class="form-control" type="tel" name="vento-cauda" placeholder="Insira o vento de cauda:" />
+                    <label>Velocidade de Referência:</label>
+                    <input id="vref" class="form-control" type="tel" name="vref"
+                        placeholder="Insira a velocidade de referência:" />
                 </div>
+                <div class="form-group col-lg-4 col-md-6 col-sm-12">
+                    <label>Velocidade da aeronave:</label>
+                    <input id="velocidade-aeronave" class="form-control" type="tel" name="velocidade-aeronave"
+                        placeholder="Insira a velocidade:" />
+                </div>
+
+            </div>
+            <div class="row">
+
+
                 <div class="form-group col-lg-4 col-md-6 col-sm-12">
                     <label>Slope:</label>
                     <input id="slope" class="form-control" name="slope" type="tel" placeholder="Insira o slope:" />
-                </div>
-            </div> 
-            <div class="row" style="margin: 5%;">
-
-                <div class="form-group col-lg-4 col-md-6 col-sm-12">
-                    <label>Velocidade da aeronave:</label>
-                    <input id="velocidade-aeronave" class="form-control" type="tel" name="velocidade-aeronave" placeholder="Insira a velocidade:" />
                 </div>
                 <div class="form-group col-lg-4 col-md-6 col-sm-12">
                     <label>Flap:</label>
@@ -101,31 +70,178 @@
 
                 <div class="form-group col-lg-4 col-md-6 col-sm-12">
                     <label>Frenagem utilizada:</label>
-                    <input id="frenagem" class="form-control" name="frenagem" type="tel" placeholder="Insira a frenagem:" />
+                    <select title="frenagem" class="form-control" name="frenagem" id="frenagem">
+                    <option value="placeholder" disabled selected>Selecione o modo de frenagem:</option>
+                    <option value="3">LOW</option>
+                    <option value="2">MEDIUM</option>                    
+                    <option value="1">HIGH</option>
+                    <option value="0">MAX MAN</option>                    
+                </select>
                 </div>
 
-            </div>  
-            <div class="row" style="margin: 5%;">
+            </div>
+            <div class="row">
 
                 <div class="form-group col-lg-4 col-md-6 col-sm-12"></div>
                 <div class="form-group col-lg-4 col-md-6 col-sm-12">
                     <label>Quantidade de Reversores inoperantes:</label>
-                    <input id="rev-inoperantes" class="form-control" type="tel" name="rev-inoperantes" placeholder="Insira a quantidade de reversores inoperantes:" />
+                    <input id="rev-inoperantes" class="form-control" type="tel" name="rev-inoperantes"
+                        placeholder="Insira a quantidade de reversores inoperantes:" />
                 </div>
                 <div class="form-group col-lg-4 col-md-6 col-sm-12"></div>
 
-            </div>  
-        </div>                    
+            </div>
+        </div>
     </form>
     <div style="text-align:center; margin-bottom: 5%;">
-        <button class="rounded"  type="submit" id="btn_calcular" name="submitButton" style="font-size:20px;background-color:#31d3d2; text-transform: uppercase"><b>Calcular</b></button>
+        <button class="rounded" type="submit" id="btn_calcular" name="submitButton" onclick="calcularPouso()"
+            style="font-size:20px;background-color:#31d3d2; text-transform: uppercase"><b>Calcular</b></button>
+        <input hidden placeholder="result" type="text" id="resultadoConta" />
     </div>
 </body>
-    
 
-    <script type="module" src="../compile/build/app.js"></script>
-    <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.3/umd/popper.min.js" integrity="sha384-ZMP7rVo3mIykV+2+9J3UJ46jBk0WLaUAdn689aCwoqbBJiSnjAK/l8WvCWPIPm49" crossorigin="anonymous"></script>
-    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/js/bootstrap.min.js" integrity="sha384-ChfqqxuZUCnJSK3+MXmPNIyE6ZbWh2IMqE241rYiqJxyMiZ6OW/JmZQ5stwEULTy" crossorigin="anonymous"></script> 
-    <script>
-    </script>
+
+
+<script src="https://code.jquery.com/jquery-3.3.1.slim.min.js"
+    integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous">
+</script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.3/umd/popper.min.js"
+    integrity="sha384-ZMP7rVo3mIykV+2+9J3UJ46jBk0WLaUAdn689aCwoqbBJiSnjAK/l8WvCWPIPm49" crossorigin="anonymous">
+</script>
+<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/js/bootstrap.min.js"
+    integrity="sha384-ChfqqxuZUCnJSK3+MXmPNIyE6ZbWh2IMqE241rYiqJxyMiZ6OW/JmZQ5stwEULTy" crossorigin="anonymous">
+</script>
+<script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery.mask/1.14.10/jquery.mask.js"></script>
+<script>
+    var calcularPouso = function (
+        pesoAtual,
+        alturaAtual,
+        temperaturaAtual,
+        vento,
+        vref,
+        velocidade,
+        slope,
+        flap,
+        frenagem,
+        revInoperantes
+    ) {
+        let distanciaReferencia = 1026;
+        let chao = 0;
+        let padraoIsa = 0;
+        let ref = 43000;
+
+        var mapeado = []
+
+        mapeado.pesoAtual = parseInt($("#peso-aeronave").val());
+        mapeado.alturaAtual = parseInt($('#altitude-aeronave').val());
+        mapeado.temperaturaAtual = parseInt($('#temperatura').val());
+        mapeado.vento = parseInt($('#valorVento').val());
+        mapeado.vref = parseInt($('#vref').val());
+        mapeado.velocidade = parseInt($('#velocidade-aeronave').val());
+        mapeado.slope = parseInt($('#slope').val());
+        mapeado.flap = parseInt($('#flap').val());
+        mapeado.frenagem = parseInt($('#frenagem').val());
+        mapeado.revInoperantes = parseInt($('#rev-inoperantes').val());
+
+        console.log(mapeado);
+
+        //calculo do peso
+        if (mapeado.pesoAtual > ref) {
+            while (mapeado.pesoAtual > ref) {
+                distanciaReferencia += 16;
+                mapeado.pesoAtual -= 1000;
+            }
+        } else {
+            while (mapeado.pesoAtual < ref) {
+                distanciaReferencia -= 17;
+                mapeado.pesoAtual += 1000;
+            }
+        }
+
+        //calculo da altura
+        if (mapeado.alturaAtual > chao) {
+            while (mapeado.alturaAtual > chao) {
+                distanciaReferencia += 26;
+                mapeado.alturaAtual -= 1000;
+            }
+        }
+
+        //calculo da temperatura
+        if (mapeado.temperaturaAtual > padraoIsa) {
+            while (mapeado.temperaturaAtual > padraoIsa) {
+                distanciaReferencia += 18;
+                mapeado.temperaturaAtual -= 5;
+            }
+        } else {
+            while (mapeado.temperaturaAtual < padraoIsa) {
+                distanciaReferencia -= 10;
+                mapeado.temperaturaAtual += 5;
+            }
+        }
+
+        //calculo do vento
+        if (mapeado.vento > 0) {
+            if (mapeado.vento >= 5) {
+                while (mapeado.vento >= 5) {
+                    distanciaReferencia += 101;
+                    mapeado.vento -= 5;
+                }
+            }
+        } else {
+            while (mapeado.vento <= 5) {
+                distanciaReferencia -= 22;
+                mapeado.vento += 5
+            }
+        }
+
+        //calculo do slope
+        if (mapeado.slope > 0) {
+            mapeado.slope = (mapeado.slope / 100) * 100
+            while (mapeado.slope > 0) {
+                distanciaReferencia += 139
+                mapeado.slope--
+            }
+        }
+
+        //calculo Vap
+        if (mapeado.velocidade > mapeado.vref) {
+            while (mapeado.velocidade > mapeado.ref) {
+                distanciaReferencia += 110;
+                mapeado.velocidade -= 5;
+            }
+        }
+
+        //calculo Rev
+        if (mapeado.revInoperantes > 0) {
+            while (mapeado.revInoperantes > 0) {
+                distanciaReferencia += 24
+                mapeado.revInoperantes--
+            }
+
+        }
+        $('#resultadoConta').val(distanciaReferencia);
+        var resultadoConta = parseInt($('#resultadoConta').val()).toLocaleString()
+
+        Swal.fire({
+            title: 'Cálculo realizado com sucesso!',
+            text: 'Serão necessários ' + resultadoConta + ' metros de pista para efetuar o pouso.',
+            icon: 'success',
+            confirmButtonText: 'Continuar'
+        }).then((result) => {
+            if (result.isConfirmed) {
+                $("#peso-aeronave").val("");
+                $('#altitude-aeronave').val("");
+                $('#temperatura').val("");
+                $('#valorVento').val("");
+                $('#vref').val("");
+                $('#velocidade-aeronave').val("");
+                $('#slope').val("");
+                $('#flap').val("");
+                $('#frenagem').val("placeholder").trigger('change')
+                $('#rev-inoperantes').val("");
+            }
+        })
+
+    }
+</script>
