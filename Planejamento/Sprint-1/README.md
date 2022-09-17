@@ -15,7 +15,7 @@
 
 # 📌 Objetivo da Sprint 
   
-<p align="justify">Nessa primeira sprint nos dividimos a fim de organizar e definir as prioridades do nosso cliente, chegando, assim, à ideia do MVP (<i>Minimum Viable Product</i>). O projeto como um todo é orientado pela metodologia ágil (<i>Scrum</i>), cujo conteito principal é a ideia de finalizar um projeto mais rápido, com melhor qualidade, otimizando os recursos humanos e materiais.</p>
+<p align="justify">Nessa primeira sprint a equipe foi divida a fim de organizar e definir as prioridades do cliente, chegando, assim, à ideia do MVP (<i>Minimum Viable Product</i>). O projeto como um todo é orientado pela metodologia ágil (<i>Scrum</i>), cujo conteito principal é a ideia de finalizar um projeto mais rápido, com melhor qualidade, otimizando os recursos humanos e materiais.</p>
 
 <div align="justify">
 Para a primeira sprint, os objetivos da equipe foram divididos da seguinte forma:
@@ -37,7 +37,7 @@ Para a primeira sprint, os objetivos da equipe foram divididos da seguinte forma
 # 📝Levantamento de Requisitos 
   
 <p align="justify">
-Para começarmos o projeto, primeiro tivemos que definir quais os objetivos e necessidades da empresa. Após a realização do kick-off, os objetivos e necessidades identificados pelo grupo informados para a empresa via slack a fim de confirmação das informações. Foram trocadas informações via Slack para  refinar a proposta do projeto e a partir daí, a equipe foi capaz de montar uma rota estratégica com a definição do MVP e com a programação das três sprints, devidamente validadas pela empresa.</p>
+Para dar início ao projeto, os integrantes da equipe precisaram definir quais os objetivos e necessidades atuais do cliente. Após a realização do kick-off, os objetivos e necessidades identificados pelo grupo foram informados para o cliente via Slack para confirmação das informações. Pelo mesmo canal foram trocadas informações com o intuito de refinar a proposta do projeto e a partir daí, a equipe foi capaz de montar uma rota estratégica com a definição do MVP e com a programação das quatro sprints, devidamente validadas pelo cliente.</p>
   
 → [Voltar ao topo](#topo)
   
@@ -45,9 +45,12 @@ Para começarmos o projeto, primeiro tivemos que definir quais os objetivos e ne
 
 # 🗃 Banco de dados
   
-<p align="justify">Inicialmente foram definidas as informações que o sistema deveria registrar acerca das aeronaves e condições de pista e clima que são determinantes para o resultado do cálculo. Com isso, foi criado o Diagrama Entidade-Relacionamento para orientar o funcionamento do banco de dados da aplicação:</p>
+<p align="justify">Inicialmente foram definidas as informações que o sistema deveria registrar acerca das aeronaves e condições de pista e clima que são determinantes para o resultado do cálculo. Com isso, foi criado o Diagrama Entidade-Relacionamento para orientar o funcionamento do banco de dados da aplicação:<br>
+<br></p>
+<p align="center">
+<img src="Imagens/DER.png" alt="Diagrama que representa a relação entre as entidades do banco de dados da aplicação" width="80%" height="80%">
+</p>
 
-[Em construção]
 
 → [Voltar ao topo](#topo) 
  
