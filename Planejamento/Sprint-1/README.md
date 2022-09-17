@@ -60,7 +60,11 @@ Para dar início ao projeto, os integrantes da equipe precisaram definir quais o
   
 <p align="justify">Com as informações iniciais bem definidas e a devida aprovação dos protótipos, foi validado como entrega da primeira sprint o formulário de cálculo e a lógica desse cálculo. Assim, a equipe iniciou o desenvolvimento da aplicação com a parte do front-end, utilizando as ferramentas HTML, CSS e JavaScript. Paralelamente a isso, a equipe estruturou o banco de dados a partir do My SQL. Esse banco de dados será incorporado à aplicação a partir da segunda sprint. Por fim, foi elaborada a estrutura lógica do cálculo, na linguagem TypeScript, que foi conectada ao front-end.</p>
   
-[Vídeo]
+
+
+https://user-images.githubusercontent.com/86115352/190877717-99d6b5cd-bbb0-4e68-85b2-71bdbaa922b1.mp4
+
+
 
 → [Voltar ao topo](#topo)
 
