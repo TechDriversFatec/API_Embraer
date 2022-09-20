@@ -1,18 +1,9 @@
-// import { domInjector } from "../decorator/dom-injector"
-
 export default class Condicoes{
-
-    // @domInjector("#peso-aeronave")
     pesoAtual!: HTMLInputElement
-    // @domInjector("#altitude-aeronave")
     alturaAtual!: HTMLInputElement
-    // @domInjector("#temperatura")
     temperaturaAtual!: HTMLInputElement
-    // @domInjector("#vento-proa")
     ventoCabeca!: HTMLInputElement
-    // @domInjector("#vento-cauda")
     ventoCauda!: HTMLInputElement
-    // @domInjector("#slope")
     slope!: HTMLInputElement
     
     constructor(
