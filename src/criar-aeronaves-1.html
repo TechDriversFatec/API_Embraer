@@ -34,6 +34,10 @@
                 <div class="form-group col-lg-4 col-md-6 col-sm-12">
                     <label>Vap (Velocidade):</label>
                     <br>
+                    <label>indicar o padrão de velocidade para o pouso:</label>
+                    <input id="padrao-velocidade-vap" class="form-control" name="padrao-velocidade-vap"
+                    placeholder="Insira o padrão de velocidade para pouso">
+                    <br>
                     <label>indicar o padrão de variação da Vap:</label>
                     <input id="padrao-variacao-vap" class="form-control" name="padrao-variacao-vap"
                     placeholder="Insira o padrão de variação do vap"/>
@@ -62,26 +66,23 @@
                         placeholder="Insira o flap:" />
                 </div>
                 <div class="form-group col-lg-4 col-md-6 col-sm-12">
-                    <div>
-                        <label>Possuí reversor?</label>
-                        <select id="reversor" class="form-control" name="reversor">
-                            <option value="" selected disabled>Selecione</option>
-                            <option value="Sim">Sim</option>
-                            <option value="nao">Não</option>
-                        </select>
-                    </div>
-                </div>
-            </div>
-            <div class="row">
-                <div class="form-group col-lg-4 col-md-6 col-sm-12">
                     <label>Configuração de frenagem:</label>
-                    <select id="reversor" class="form-control" name="reversor">
+                    <select id="frenagem" class="form-control" name="frenagem">
                         <option value="" selected disabled>Selecione</option>
                         <option value="max. manual">Max. Manual</option>
                         <option value="High">High</option>
                         <option value="Medium">Medium</option>
                         <option value="Low">Low</option>
                     </select>
+                </div>
+            </div>
+            <div class="row">
+                <div class="form-group col-lg-4 col-md-6 col-sm-12">
+                    <div>
+                        <label>Quantos reversores a aeronave possuí?</label>
+                        <input id="reversor" class="form-control" name="reversor"
+                        placeholder="Número de reversores:">
+                    </div>
                 </div>
                 <div class="form-group col-lg-4 col-md-6 col-sm-12">
                     <label>Reversor (se houver)</label>
@@ -117,9 +118,23 @@
         </div>
         <div style="text-align:center; margin-bottom: 5%;" class="form-group col-lg-4 col-md-6 col-sm-12">
             <button class="rounded" type="submit" id="btn_proxima" name="submitButton" onclick="proxima()"
-                style="font-size:20px;background-color:#31d3d2; text-transform: uppercase">
-                <b>próxima</b></button>
+                style="font-size:20px;background-color:#31d3d2; text-transform: uppercase"><a href="criar-aeronaves-2.html">
+                <b>próxima</b></a></button>
         </div>
     </div>
 
 </body>
+
+<script src="https://code.jquery.com/jquery-3.3.1.slim.min.js"
+    integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous">
+</script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.3/umd/popper.min.js"
+    integrity="sha384-ZMP7rVo3mIykV+2+9J3UJ46jBk0WLaUAdn689aCwoqbBJiSnjAK/l8WvCWPIPm49" crossorigin="anonymous">
+</script>
+<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/js/bootstrap.min.js"
+    integrity="sha384-ChfqqxuZUCnJSK3+MXmPNIyE6ZbWh2IMqE241rYiqJxyMiZ6OW/JmZQ5stwEULTy" crossorigin="anonymous">
+</script>
+<script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery.mask/1.14.10/jquery.mask.js"></script>
+<script>
+</script>
