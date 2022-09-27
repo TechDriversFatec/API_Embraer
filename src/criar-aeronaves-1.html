@@ -31,21 +31,6 @@
                     <input id="motor" class="form-control" name="motor"
                         placeholder="Insira o motor da aeronave:" />
                 </div>
-                <div class="form-group col-lg-4 col-md-6 col-sm-12">
-                    <label>Vap (Velocidade):</label>
-                    <br>
-                    <label>indicar o padrão de velocidade para o pouso:</label>
-                    <input id="padrao-velocidade-vap" class="form-control" name="padrao-velocidade-vap"
-                    placeholder="Insira o padrão de velocidade para pouso">
-                    <br>
-                    <label>indicar o padrão de variação da Vap:</label>
-                    <input id="padrao-variacao-vap" class="form-control" name="padrao-variacao-vap"
-                    placeholder="Insira o padrão de variação do vap"/>
-                    <br>
-                    <label>indicar os indíces de variação</label>
-                    <input id="indice-variacao-vap" class="form-control" name="indice-variacao-vap"
-                    placeholder="insira o indice de variação do vap" />
-                </div>
             </div>
             <div class="row">
                 <div class="form-group col-lg-4 col-md-6 col-sm-12">
@@ -106,23 +91,35 @@
 
             </div>
         </div>
+        <div class="row">
+            <div class="form-group col-lg-4 col-md-6 col-sm-12">
+                    <label>Vap (Velocidade):</label>
+                    <br>
+                    <label>indicar o padrão de velocidade para o pouso:</label>
+                    <input id="padrao-velocidade-vap" class="form-control" name="padrao-velocidade-vap"
+                    placeholder="Insira o padrão de velocidade para pouso">
+                    <br>
+                    <label>indicar o padrão de variação da Vap:</label>
+                    <input id="padrao-variacao-vap" class="form-control" name="padrao-variacao-vap"
+                    placeholder="Insira o padrão de variação do vap"/>
+                    <br>
+                    <label>indicar os indíces de variação</label>
+                    <input id="indice-variacao-vap" class="form-control" name="indice-variacao-vap"
+                    placeholder="insira o indice de variação do vap" />
+                </div>
+            </div>
     </form>
     <div class="row">
-        <div style="text-align:center; margin-bottom: 5%;" class="form-group col-lg-4 col-md-6 col-sm-12">
-            <button class="rounded" type="submit" id="btn_logout" name="submitButton" onclick="logout()"
-                style="font-size:20px;background-color:#31d3d2; text-transform: uppercase"><b>logout</b></button>
+        <div style="text-align:center; margin-bottom: 5%;" class="form-group col-lg-4-md col-md-6 col-sm-12">
+            <button class="rounded" type="submit" id="btn_voltar" name="submitButton" onclick="voltar()"
+                style="font-size:20px;background-color:#31d3d2; text-transform: uppercase">
+                    <b>início</b></a></button>
         </div>
-        <div style="text-align:center; margin-bottom: 5%;" class="form-group col-lg-4 col-md-6 col-sm-12">
-            <button class="rounded" type="submit" id="btn_salvar" name="submitButton" onclick="salvar()"
-                style="font-size:20px;background-color:#31d3d2; text-transform: uppercase"><b>salvar</b></button>
-        </div>
-        <div style="text-align:center; margin-bottom: 5%;" class="form-group col-lg-4 col-md-6 col-sm-12">
-            <button class="rounded" type="submit" id="btn_proxima" name="submitButton" onclick="proxima()"
-                style="font-size:20px;background-color:#31d3d2; text-transform: uppercase"><a href="criar-aeronaves-2.html">
-                <b>próxima</b></a></button>
+        <div style="text-align:center; margin-bottom: 5%;" class="form-group col-lg-4-md col-md-6 col-sm-12">
+            <button class="rounded" type="submit" id="btn_registrar" name="submitButton" onclick="proxima()"
+                style="font-size:20px;background-color:#31d3d2; text-transform: uppercase"><a href="criar-aeronaves-2.html"><b>próxima</b></a></button>
         </div>
     </div>
-
 </body>
 
 <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js"
