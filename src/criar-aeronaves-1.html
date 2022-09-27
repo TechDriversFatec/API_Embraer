@@ -1,0 +1,137 @@
+<head>
+    <script src="../compile/build/app.js"></script>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css"
+        integrity="sha384-MCw98/SFnGE8fJT3GXwEOngsV7Zt27NXFoaoApmYm81iuXoPkFOJwJ8ERdknLPMO" crossorigin="anonymous">
+</head>
+
+<style>
+    body {
+        color: white;
+    }
+    .row{
+        margin: 5%;
+    }
+</style>
+
+<body style="background-color: #282f55 ;">
+    <div style="text-align:center; padding: 10px;">
+        <h2><i>Para o cadastro de aeronaves, favor inserir os dados solicitados abaixo:</i></h2>
+    </div>
+    <form id="form_criar_aeronave">
+        <div class="container-fluid">
+            <div class="row">
+                <div class="form-group col-lg-4 col-md-6 col-sm-12">
+                    <label>Modelo da aeronave:</label>
+                    <input id="modelo-aeronave" class="form-control" name="modelo-aeronave"
+                    placeholder="Insira o modelo da aeronave:" />
+                </div>
+                <div class="form-group col-lg-4 col-md-6 col-sm-12">
+                    <label>Motor:</label>
+                    <input id="motor" class="form-control" name="motor"
+                        placeholder="Insira o motor da aeronave:" />
+                </div>
+            </div>
+            <div class="row">
+                <div class="form-group col-lg-4 col-md-6 col-sm-12">
+                    <label>Fabricante:</label>
+                    <input id="fabricante" class="form-control" name="fabricante"
+                        placeholder="Insira o fabricante da aeronave:" />
+                </div>
+                <div class="form-group col-lg-4 col-md-6 col-sm-12">
+                    <label>Certificação:</label>
+                    <input id="certificacao" class="form-control" name="certificacao"
+                        placeholder="Insira a crtificação:" />
+                </div>
+            </div>
+            <div class="row">
+                <div class="form-group col-lg-4 col-md-6 col-sm-12">
+                    <label>Flap</label>
+                    <input id="flap" class="form-control"  name="flap"
+                        placeholder="Insira o flap:" />
+                </div>
+                <div class="form-group col-lg-4 col-md-6 col-sm-12">
+                    <label>Configuração de frenagem:</label>
+                    <select id="frenagem" class="form-control" name="frenagem">
+                        <option value="" selected disabled>Selecione</option>
+                        <option value="max. manual">Max. Manual</option>
+                        <option value="High">High</option>
+                        <option value="Medium">Medium</option>
+                        <option value="Low">Low</option>
+                    </select>
+                </div>
+            </div>
+            <div class="row">
+                <div class="form-group col-lg-4 col-md-6 col-sm-12">
+                    <div>
+                        <label>Quantos reversores a aeronave possuí?</label>
+                        <input id="reversor" class="form-control" name="reversor"
+                        placeholder="Número de reversores:">
+                    </div>
+                </div>
+                <div class="form-group col-lg-4 col-md-6 col-sm-12">
+                    <label>Reversor (se houver)</label>
+                    <input id="reversor-inop" class="form-control" name="reversor-inop"
+                    placeholder="Por rev inoperante" />
+                </div>
+            </div>
+            <div class="row">
+
+
+                <div class="form-group col-lg-4 col-md-6 col-sm-12">
+                    <label>Distância ref para o Flap</label>
+                    <input id="distancia-ref-flap" class="form-control" type="tel" name="distancia-ref-flap" placeholder="Distância referencial para o flap:" />
+                </div>
+                <div class="form-group col-lg-4 col-md-6 col-sm-12">
+                    <label>Peso referencial:</label>
+                    <input id="peso-referencial" class="form-control" type="tel" name="peso-referencial"
+                        placeholder="Insira o peso referencial da aeronave:" />
+                </div>
+                <div class="form-group col-lg-4 col-md-6 col-sm-12"></div>
+
+            </div>
+        </div>
+        <div class="row">
+            <div class="form-group col-lg-4 col-md-6 col-sm-12">
+                    <label>Vap (Velocidade):</label>
+                    <br>
+                    <label>indicar o padrão de velocidade para o pouso:</label>
+                    <input id="padrao-velocidade-vap" class="form-control" name="padrao-velocidade-vap"
+                    placeholder="Insira o padrão de velocidade para pouso">
+                    <br>
+                    <label>indicar o padrão de variação da Vap:</label>
+                    <input id="padrao-variacao-vap" class="form-control" name="padrao-variacao-vap"
+                    placeholder="Insira o padrão de variação do vap"/>
+                    <br>
+                    <label>indicar os indíces de variação</label>
+                    <input id="indice-variacao-vap" class="form-control" name="indice-variacao-vap"
+                    placeholder="insira o indice de variação do vap" />
+                </div>
+            </div>
+    </form>
+    <div class="row">
+        <div style="text-align:center; margin-bottom: 5%;" class="form-group col-lg-4-md col-md-6 col-sm-12">
+            <button type="submit" id="btn_voltar" name="submitButton" onclick="voltar()"
+                style="font-size:20px;background-color:#31d3d2; border-radius: 10px; width: 120px;height: 40px; text-transform: uppercase">
+                    <b>início</b></a></button>
+        </div>
+        <div style="text-align:center;vertical-align:middle; margin-bottom: 5%;" class="form-group col-lg-4-md col-md-6 col-sm-12">
+            <button type="submit" id="btn_registrar" name="submitButton" onclick="proxima()"
+                style="font-size:20px;background-color:#31d3d2; border-radius: 10px; width: 120px;height: 40px;  text-transform: uppercase"><a href="criar-aeronaves-2.html"><b>próxima</b></a></button>
+        </div>
+    </div>
+</body>
+
+<script src="https://code.jquery.com/jquery-3.3.1.slim.min.js"
+    integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous">
+</script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.3/umd/popper.min.js"
+    integrity="sha384-ZMP7rVo3mIykV+2+9J3UJ46jBk0WLaUAdn689aCwoqbBJiSnjAK/l8WvCWPIPm49" crossorigin="anonymous">
+</script>
+<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/js/bootstrap.min.js"
+    integrity="sha384-ChfqqxuZUCnJSK3+MXmPNIyE6ZbWh2IMqE241rYiqJxyMiZ6OW/JmZQ5stwEULTy" crossorigin="anonymous">
+</script>
+<script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery.mask/1.14.10/jquery.mask.js"></script>
+<script>
+</script>

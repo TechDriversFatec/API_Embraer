@@ -1,0 +1,125 @@
+<head>
+    <script src="../compile/build/app.js"></script>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css"
+        integrity="sha384-MCw98/SFnGE8fJT3GXwEOngsV7Zt27NXFoaoApmYm81iuXoPkFOJwJ8ERdknLPMO" crossorigin="anonymous">
+</head>
+
+<style>
+    body {
+        color: white;
+    }
+    .row{
+        margin: 5%;
+    }
+</style>
+
+<body style="background-color: #282f55 ;">
+    <div style="text-align:center; padding: 10px;">
+        <h2><i>Critérios de comparação:</i></h2>
+    </div>
+    <form id="form_criar_aeronave">
+        <div class="container-fluid">
+            <div class="row">
+                <div class="form-group col-lg-4-md col-md-6 col-sm-12">
+                    <p>Peso:</p>
+                    <label>Indicar o padrão de variação do peso para comparação:</label>
+                    <br>
+                    <input id="padrao-variacao-peso" class="form-control" name="padrao-variacao-peso"/>
+                    <br>
+                    <label>Indicar os indíces de variação da metragem:</label>
+                    <br>
+                    <input id="indice-variacao-peso-acima" class="form-control" name="indice-variacao-peso-acima"
+                     placeholder="acima">
+                     <br>
+                    <input id="indice-variacao-peso-abaixo" class="form-control" name="indice-variacao-peso-abaixo"
+                    placeholder="Abaixo" />
+                </div>
+                <div class="form-group col-lg-4-md col-md-6 col-sm-12">
+                    <p>Temperatura:</p>
+                    <label>Indicar o padrão de variação da temp. para comparação (ISA):</label>
+                    <br>
+                    <input id="indice-variacao-temperatura" class="form-control" name="indice-variacao-temperatura"
+                        placeholder="°C" />
+                        <br>
+                        <label>Indicar os indíces de variação:</label>
+                    <br>
+                    <input id="indice-variacao-temp-acima" class="form-control" name="indice-variacao-temp-acima"
+                     placeholder="acima ISA" />
+                     <br>
+                    <input id="indice-variacao-temp-abaixo" class="form-control" name="indice-variacao-temp-abaixo"
+                    placeholder="Abaixo ISA" />
+                </div>
+            </div>
+            <div class="row">
+                <div class="form-group col-lg-4-md col-md-6 col-sm-12">
+                    <p>Altitude:</p>
+                    <label>Indicar o padrão de variação da altitude para comparação:</label>
+                    <br>
+                    <input id="padrao-variacao-altitude" class="form-control" name="padrao-variacao-altitude"/>
+                    <br>
+                    <label>Indicar os indíces de variação:</label>
+                    <br>
+                    <input id="indice-variacao-altitude" class="form-control" name="indice-variacao-altitude"
+                     placeholder="acima">
+                </div>
+                <div class="form-group col-lg-4-md col-md-6 col-sm-12">
+                    <p>Vento:</p>
+                    <label>Indicar o padrão de variação do vento para comparação:</label>
+                    <br>
+                    <input id="indice-variacao-vento" class="form-control" name="indice-variacao-vento"
+                        placeholder="nós de vento" />
+                        <br>
+                        <label>Indicar os indíces de variação:</label>
+                    <br>
+                    <input id="indice-variacao-vento-proa" class="form-control" name="indice-variacao-vento-proa"
+                     placeholder="Vento de proa" />
+                     <br>
+                    <input id="indice-variacao-vento-cauda" class="form-control" name="indice-variacao-vento-cauda"
+                    placeholder="Vento de cauda" />
+                </div>
+            </div>
+            <div class="row">
+                <div class="form-group col-lg-4-md col-md-6 col-sm-12">
+                    <p>Slope:</p>
+                    <label>Indicar o padrão de variação do ângulo para comparação:</label>
+                    <br>
+                    <input id="padrao-variacao-slope" class="form-control" name="padrao-variacao-slope"
+                    placeholder="%" />
+                    <br>
+                    <label>Indicar os indíces de variação:</label>
+                    <br>
+                    <input id="indice-variacao-aclive" class="form-control" name="indice-variacao-aclive"
+                     placeholder="aclive">
+                     <br>
+                     <input id="indice-variacao-declive" class="form-control" name="indice-variacao-declive"
+                     placeholder="declive">
+                </div>
+                <div class="form-group col-lg-4-md col-md-6 col-sm-12">
+                    <p>Sobrepeso:</p>
+                    <label>Indicar o padrão de variação do sobrepeso para comparação:</label>
+                    <br>
+                    <input id="indice-variacao-sobrepeso" class="form-control" name="indice-variacao-sobrepeso"
+                        placeholder="" />
+                        <br>
+                        <label>Indicar os indíces de variação:</label>
+                    <br>
+                    <input id="indice-variacao-peso-acima" class="form-control" name="indice-variacao-peso-acima"
+                     placeholder="Peso acima" />
+                </div>
+            </div>
+        </div>
+    </form>
+    <div class="row">
+        <div style="text-align:center; margin-bottom: 5%;" class="form-group col-lg-4-md col-md-6 col-sm-12">
+            <button type="submit" id="btn_voltar" name="submitButton" onclick="voltar()"
+                style="font-size:20px;background-color:#31d3d2; border-radius: 10px; width: 120px;height: 40px; text-transform: uppercase"><a href="criar-aeronaves-1.html">
+                    <b>voltar</b></a></button>
+        </div>
+        <div style="text-align:center; margin-bottom: 5%;" class="form-group col-lg-4-md col-md-6 col-sm-12">
+            <button type="submit" id="btn_registrar" name="submitButton" onclick="registrar()"
+                style="font-size:20px;background-color:#31d3d2; border-radius: 10px; width: 120px;height: 40px; text-transform: uppercase"><b>registrar</b></button>
+        </div>
+    </div>
+
+</body>
