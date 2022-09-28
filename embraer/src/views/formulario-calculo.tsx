@@ -1,11 +1,12 @@
-import React from "react";
-import logo from "./logo.svg";
-import "./App.css";
+import { Component } from "react"
+import "../App.css"
 import "bootstrap/dist/css/bootstrap.min.css";
 
-function App() {
-  return (
-    <>
+class Calculo extends Component{
+
+    render(){
+        return (
+            <>
       <div>
         <h2>
           <i>
@@ -158,8 +159,10 @@ function App() {
         <input hidden placeholder="result" type="text" id="resultadoConta" />
       </div>
     </>
-  );
+        )
+    }
 }
 
-export default App;
 
+
+export default Calculo

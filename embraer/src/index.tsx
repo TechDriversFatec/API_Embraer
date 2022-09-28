@@ -4,13 +4,14 @@ import './index.css';
 import App from './App';
 import reportWebVitals from './reportWebVitals';
 import PaginaInicial from './views/pagina-inicial';
+import Calculo from './views/formulario-calculo';
 
 const root = ReactDOM.createRoot(
   document.getElementById('root') as HTMLElement
 );
 root.render(
   <React.StrictMode>
-    <PaginaInicial />
+    <Calculo />
   </React.StrictMode>
 );
 
