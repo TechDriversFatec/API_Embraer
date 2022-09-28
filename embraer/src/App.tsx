@@ -2,6 +2,7 @@ import React from "react";
 import logo from "./logo.svg";
 import "./App.css";
 import "bootstrap/dist/css/bootstrap.min.css";
+import Exemple from "./views/modal-resultado";
 
 function App() {
   return (
@@ -147,14 +148,15 @@ function App() {
         </div>
       </form>
       <div>
-        <button
+        {/* <button
           className="rounded"
           type="submit"
           id="btn_calcular"
           name="submitButton"
         >
           <b>Calcular</b>
-        </button>
+        </button> */}
+        <Exemple></Exemple>
         <input hidden placeholder="result" type="text" id="resultadoConta" />
       </div>
     </>
