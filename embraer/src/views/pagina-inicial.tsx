@@ -1,4 +1,4 @@
-import "./App.css";
+import "../css/pagina-inicial.css";
 import "bootstrap/dist/css/bootstrap.min.css";
 import { Component } from "react"
 import Table from 'react-bootstrap/Table';
@@ -13,7 +13,7 @@ class PaginaInicial extends Component{
                 </h2>
               </div>
               <div>
-              <Table striped bordered hover>
+              <Table bordered>
               <thead>
                 <tr>
                   <th>Modelo</th>
