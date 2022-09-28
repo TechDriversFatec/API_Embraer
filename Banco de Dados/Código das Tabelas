@@ -9,17 +9,17 @@ USE api_embraer;
 // Criando a Tabela Administrador com suas respectivas colunas:
 
 CREATE TABLE administrator (
-		id INT PRIMARY KEY AUTO_INCREMENT NOT NULL,
-        login_acesso VARCHAR(100) NOT NULL,
-        senha_acesso VARCHAR(10) NOT NULL,
-        nome VARCHAR(100) NOT NULL,
-        email VARCHAR(100) NOT NULL
+    id INT PRIMARY KEY AUTO_INCREMENT NOT NULL,
+    login_acesso VARCHAR(100) NOT NULL,
+    senha_acesso VARCHAR(10) NOT NULL,
+    nome VARCHAR(100) NOT NULL,
+    email VARCHAR(100) NOT NULL
 );
 
 // Criando a Tabela Piloto com suas respectivas colunas:
 
 CREATE TABLE piloto (
-	id INT PRIMARY KEY AUTO_INCREMENT NOT NULL,
+    id INT PRIMARY KEY AUTO_INCREMENT NOT NULL,
     login_acesso VARCHAR(100) NOT NULL,
     senha_acesso VARCHAR(10) NOT NULL,
     nome VARCHAR(100) NOT NULL,
@@ -29,7 +29,7 @@ CREATE TABLE piloto (
 // Criando a Tabela Aeronaves com suas respectivas colunas:
 
 CREATE TABLE aeronaves (
-	id INT PRIMARY KEY AUTO_INCREMENT NOT NULL,
+    id INT PRIMARY KEY AUTO_INCREMENT NOT NULL,
     modelo VARCHAR(30) NOT NULL,
     fabricante VARCHAR(30) NOT NULL,
     motor VARCHAR(30) NOT NULL,
@@ -41,7 +41,7 @@ CREATE TABLE aeronaves (
 // Criando a Tabela Flap com suas respectivas colunas:
 
 CREATE TABLE flap (
-	id INT PRIMARY KEY AUTO_INCREMENT NOT NULL,
+    id INT PRIMARY KEY AUTO_INCREMENT NOT NULL,
     tipo_flap VARCHAR(50) NOT NULL,
     configuracao_freio VARCHAR(50) NOT NULL,
     aeronave_id INT NOT NULL,
@@ -51,7 +51,7 @@ CREATE TABLE flap (
 // Criando a Tabela Modo de Freio Max Man com suas respectivas colunas:
 
 CREATE TABLE freio_max_manual (
-	id INT PRIMARY KEY AUTO_INCREMENT NOT NULL,
+    id INT PRIMARY KEY AUTO_INCREMENT NOT NULL,
     distancia_referencial INT NOT NULL,
     padrao_variacao_peso INT NOT NULL,
     correcao_peso_acima INT NOT NULL,
@@ -84,14 +84,14 @@ CREATE TABLE freio_max_manual (
     correcao_reversor_inoperante INT NOT NULL,
     padrao_variacao_sobrepeso INT NOT NULL,
     correcao_sobrepeso INT NOT NULL,
-	flap_id INT NOT NULL,
+    flap_id INT NOT NULL,
     FOREIGN KEY (flap_id) REFERENCES flap(id)
 );
 
 // Criando a Tabela Modo de Freio High com suas respectivas colunas:
 
 CREATE TABLE freio_high (
-	id INT PRIMARY KEY AUTO_INCREMENT NOT NULL,
+    id INT PRIMARY KEY AUTO_INCREMENT NOT NULL,
     distancia_referencial INT NOT NULL,
     padrao_variacao_peso INT NOT NULL,
     correcao_peso_acima INT NOT NULL,
@@ -124,14 +124,14 @@ CREATE TABLE freio_high (
     correcao_reversor_inoperante INT NOT NULL,
     padrao_variacao_sobrepeso INT NOT NULL,
     correcao_sobrepeso INT NOT NULL,
-	flap_id INT NOT NULL,
+    flap_id INT NOT NULL,
     FOREIGN KEY (flap_id) REFERENCES flap(id)
 );
 
 // Criando a Tabela Modo de Freio Medium com suas respectivas colunas:
 
 CREATE TABLE freio_medium (
-	id INT PRIMARY KEY AUTO_INCREMENT NOT NULL,
+    id INT PRIMARY KEY AUTO_INCREMENT NOT NULL,
     distancia_referencial INT NOT NULL,
     padrao_variacao_peso INT NOT NULL,
     correcao_peso_acima INT NOT NULL,
@@ -164,14 +164,14 @@ CREATE TABLE freio_medium (
     correcao_reversor_inoperante INT NOT NULL,
     padrao_variacao_sobrepeso INT NOT NULL,
     correcao_sobrepeso INT NOT NULL,
-	flap_id INT NOT NULL,
+    flap_id INT NOT NULL,
     FOREIGN KEY (flap_id) REFERENCES flap(id)
 );
 
 // Criando a Tabela Modo de Freio Low com suas respectivas colunas:
 
 CREATE TABLE freio_low (
-	id INT PRIMARY KEY AUTO_INCREMENT NOT NULL,
+    id INT PRIMARY KEY AUTO_INCREMENT NOT NULL,
     distancia_referencial INT NOT NULL,
     padrao_variacao_peso INT NOT NULL,
     correcao_peso_acima INT NOT NULL,
@@ -204,14 +204,14 @@ CREATE TABLE freio_low (
     correcao_reversor_inoperante INT NOT NULL,
     padrao_variacao_sobrepeso INT NOT NULL,
     correcao_sobrepeso INT NOT NULL,
-	flap_id INT NOT NULL,
+    flap_id INT NOT NULL,
     FOREIGN KEY (flap_id) REFERENCES flap(id)
 );
 
 // Criando a Tabela Calculo da Distância com suas respectivas colunas:
 
 CREATE TABLE calculo_distancia (
-	id INT PRIMARY KEY AUTO_INCREMENT NOT NULL,
+    id INT PRIMARY KEY AUTO_INCREMENT NOT NULL,
     input_flap VARCHAR(50) NOT NULL,
     input_aeronave VARCHAR(30) NOT NULL,
     input_peso INT NOT NULL,
