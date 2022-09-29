@@ -1,10 +1,12 @@
-import React from "react";
-import logo from "./logo.svg";
 import "./App.css";
 import "bootstrap/dist/css/bootstrap.min.css";
-import Exemple from "./views/modal-resultado";
+import ModalResultado from "./views/modal-resultado";
+import React, { useState} from "react";
 
 function App() {
+
+  const [Peso, setPeso] = useState(String);
+
   return (
     <>
       <div>
@@ -23,9 +25,11 @@ function App() {
               <input
                 id="peso-aeronave"
                 className="form-control"
-                type="tel"
+                type="teld"
                 name="peso-aeronave"
                 placeholder="Insira o peso da aeronave:"
+                value={Peso}
+                onChange={(e) => setPeso(e.target.value)}
               />
               <small></small>
             </div>
@@ -156,7 +160,7 @@ function App() {
         >
           <b>Calcular</b>
         </button> */}
-        <Exemple></Exemple>
+        <ModalResultado/>
         <input hidden placeholder="result" type="text" id="resultadoConta" />
       </div>
     </>
