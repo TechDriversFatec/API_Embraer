@@ -1,6 +1,0 @@
-Considerando a estimativa para armazenamento dos dados deste projeto, optou-se pela utilização do Banco Relacional MySQL.
-
-A codificação foi toda realizada através da ferramenta Workbench do MySQL.
-
-No momento do desenvolvimento da atual Sprint, estamos considerando a integração do MySQL - Azure para fins de desenvolvimento e acesso de todos os membros do grupo
-à mesma estrutura de tabelas.
