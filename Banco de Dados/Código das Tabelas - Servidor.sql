@@ -1,25 +1,35 @@
+#Criando o Banco de Dados da aplicação:
+
 CREATE DATABASE api_embraer;
+
+#Ativando o Banco de Dados para que seja possível criar a esturutra de tabelas:
 
 USE api_embraer;
 
-CREATE TABLE administrator (
-		id INT PRIMARY KEY AUTO_INCREMENT NOT NULL,
-        login_acesso VARCHAR(100) NOT NULL,
-        senha_acesso VARCHAR(10) NOT NULL,
-        nome VARCHAR(100) NOT NULL,
-        email VARCHAR(100) NOT NULL
-);
+#Criando a tabela Administrador e suas respectivas colunas:
 
-CREATE TABLE piloto (
-	id INT PRIMARY KEY AUTO_INCREMENT NOT NULL,
+CREATE TABLE administrator (
+    id INT PRIMARY KEY AUTO_INCREMENT NOT NULL,
     login_acesso VARCHAR(100) NOT NULL,
     senha_acesso VARCHAR(10) NOT NULL,
     nome VARCHAR(100) NOT NULL,
     email VARCHAR(100) NOT NULL
 );
 
+#Criando a tabela Piloto e suas respectivas colunas:
+
+CREATE TABLE piloto (
+    id INT PRIMARY KEY AUTO_INCREMENT NOT NULL,
+    login_acesso VARCHAR(100) NOT NULL,
+    senha_acesso VARCHAR(10) NOT NULL,
+    nome VARCHAR(100) NOT NULL,
+    email VARCHAR(100) NOT NULL
+);
+
+#Criando a tabela Aeronaves e suas respectivas colunas:
+
 CREATE TABLE aeronaves (
-	id INT PRIMARY KEY AUTO_INCREMENT NOT NULL,
+    id INT PRIMARY KEY AUTO_INCREMENT NOT NULL,
     modelo VARCHAR(30) NOT NULL,
     fabricante VARCHAR(30) NOT NULL,
     motor VARCHAR(30) NOT NULL,
@@ -28,16 +38,20 @@ CREATE TABLE aeronaves (
     peso_referencial INT NOT NULL
 );
 
+#Criando a tabela Flap e suas respectivas colunas:
+
 CREATE TABLE flap (
-	id INT PRIMARY KEY AUTO_INCREMENT NOT NULL,
+    id INT PRIMARY KEY AUTO_INCREMENT NOT NULL,
     tipo_flap VARCHAR(50) NOT NULL,
     configuracao_freio VARCHAR(50) NOT NULL,
     aeronave_id INT NOT NULL,
     FOREIGN KEY (aeronave_id) REFERENCES aeronaves(id)
 );
 
+#Criando a tabela no modo de freio Max Man e suas respectivas colunas:
+
 CREATE TABLE freio_max_manual (
-	id INT PRIMARY KEY AUTO_INCREMENT NOT NULL,
+    id INT PRIMARY KEY AUTO_INCREMENT NOT NULL,
     distancia_referencial INT NOT NULL,
     padrao_variacao_peso INT NOT NULL,
     correcao_peso_acima INT NOT NULL,
@@ -70,13 +84,14 @@ CREATE TABLE freio_max_manual (
     correcao_reversor_inoperante INT NOT NULL,
     padrao_variacao_sobrepeso INT NOT NULL,
     correcao_sobrepeso INT NOT NULL,
-	flap_id INT NOT NULL,
+    flap_id INT NOT NULL,
     FOREIGN KEY (flap_id) REFERENCES flap(id)
 );
 
+#Criando a tabela no modo de freio High e suas respectivas colunas:
 
 CREATE TABLE freio_high (
-	id INT PRIMARY KEY AUTO_INCREMENT NOT NULL,
+    id INT PRIMARY KEY AUTO_INCREMENT NOT NULL,
     distancia_referencial INT NOT NULL,
     padrao_variacao_peso INT NOT NULL,
     correcao_peso_acima INT NOT NULL,
@@ -109,13 +124,14 @@ CREATE TABLE freio_high (
     correcao_reversor_inoperante INT NOT NULL,
     padrao_variacao_sobrepeso INT NOT NULL,
     correcao_sobrepeso INT NOT NULL,
-	flap_id INT NOT NULL,
+    flap_id INT NOT NULL,
     FOREIGN KEY (flap_id) REFERENCES flap(id)
 );
 
+#Criando a tabela no modo de freio Medium e suas respectivas colunas:
 
 CREATE TABLE freio_medium (
-	id INT PRIMARY KEY AUTO_INCREMENT NOT NULL,
+    id INT PRIMARY KEY AUTO_INCREMENT NOT NULL,
     distancia_referencial INT NOT NULL,
     padrao_variacao_peso INT NOT NULL,
     correcao_peso_acima INT NOT NULL,
@@ -148,13 +164,14 @@ CREATE TABLE freio_medium (
     correcao_reversor_inoperante INT NOT NULL,
     padrao_variacao_sobrepeso INT NOT NULL,
     correcao_sobrepeso INT NOT NULL,
-	flap_id INT NOT NULL,
+    flap_id INT NOT NULL,
     FOREIGN KEY (flap_id) REFERENCES flap(id)
 );
 
+#Criando a tabela no modo de freio Low e suas respectivas colunas:
 
 CREATE TABLE freio_low (
-	id INT PRIMARY KEY AUTO_INCREMENT NOT NULL,
+    id INT PRIMARY KEY AUTO_INCREMENT NOT NULL,
     distancia_referencial INT NOT NULL,
     padrao_variacao_peso INT NOT NULL,
     correcao_peso_acima INT NOT NULL,
@@ -187,12 +204,14 @@ CREATE TABLE freio_low (
     correcao_reversor_inoperante INT NOT NULL,
     padrao_variacao_sobrepeso INT NOT NULL,
     correcao_sobrepeso INT NOT NULL,
-	flap_id INT NOT NULL,
+    flap_id INT NOT NULL,
     FOREIGN KEY (flap_id) REFERENCES flap(id)
 );
 
+#Criando a tabela para armazenamento dos inputs dos cálculos realizados:
+
 CREATE TABLE calculo_distancia (
-	id INT PRIMARY KEY AUTO_INCREMENT NOT NULL,
+    id INT PRIMARY KEY AUTO_INCREMENT NOT NULL,
     input_flap VARCHAR(50) NOT NULL,
     input_aeronave VARCHAR(30) NOT NULL,
     input_peso INT NOT NULL,
@@ -205,3 +224,16 @@ CREATE TABLE calculo_distancia (
     input_reversor INT,
     resultado_calculo DECIMAL(6,1)
 );
+
+#Comando para excluir o Banco de Dados:
+
+DROP DATABASE api_embraer;
+
+#Comando para inserção de dados nas colunas da tabela Aeronaves para teste de armazenamento:
+
+INSERT INTO `aeronaves` (`modelo`,`fabricante`,`motor`, `certificacao`,`qtde_reversor`,`peso_referencial`) VALUES ("EBR E190","Embraer","BRT15032E","ANAC",2,40000);
+INSERT INTO `aeronaves` (`modelo`,`fabricante`,`motor`, `certificacao`,`qtde_reversor`,`peso_referencial`) VALUES ("EBR 158AF","Embraer","EFGT2023","ANAC / AIRBUS",0,52300);
+
+#Comando para selecionar e exibir todos os elementos da tabela Aeronaves:
+
+SELECT * FROM aeronaves;
