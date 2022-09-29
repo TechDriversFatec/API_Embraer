@@ -1,4 +1,6 @@
-import "./App.css";
+import React from "react";
+import logo from "./logo.svg";
+import "../src/css/App.css";
 import "bootstrap/dist/css/bootstrap.min.css";
 import ModalResultado from "./views/modal-resultado";
 import React, { useState} from "react";
