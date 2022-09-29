@@ -1,35 +1,42 @@
-export default class Calculos {
+//var metroPes = function(
+//    dist
+//){
+//    dist = dist * 3.28084
+//    return dist.toFixed(2).replace('.',',')
+//}
+
+class Calcular {
+
+    calcularPouso = function (
+        pesoAtual: number,
+        alturaAtual: number,
+        temperaturaAtual: number,
+        vento: number,
+        vref: number,
+        velocidade: number,
+        slope: number,
+        flap: number,
+        frenagem: number,
+        revInoperantes: number
+    ) {
+        let distanciaReferencia = 1026;
+        let chao = 0;
+        let padraoIsa = 0;
+        let ref = 43000;
     
-    pesoAtual!: HTMLInputElement
-    alturaAtual!: HTMLInputElement
-    temperaturaAtual!: HTMLInputElement
-    ventoCabeca!: HTMLInputElement
-    ventoCauda!: HTMLInputElement
-    slope!: HTMLInputElement
-    vref!: HTMLInputElement
-    flap!: HTMLInputElement
-    frenagem!: HTMLInputElement
-    revInoperantes!: HTMLInputElement
-
-
-    calcularPouso(
-        // aeronave: Aeronave,
-        pesoAtual: number = parseInt(this.pesoAtual.value),
-        alturaAtual: number = parseInt(this.alturaAtual.value),
-        temperaturaAtual: number = parseInt(this.temperaturaAtual.value),
-        ventoCabeca: number = parseInt(this.ventoCabeca.value),
-        ventoCauda: number = parseInt(this.ventoCauda.value),
-        slope: number = parseInt(this.slope.value),
-        vref: number = parseInt(this.vref.value),
-        flap: number = parseInt(this.flap.value),
-        frenagem: number = parseInt(this.frenagem.value),
-        revInoperantes: number = parseInt(this.revInoperantes.value),
-        ) {
-        let distanciaReferencia: number = 1026;
-        let chao: number = 0;
-        let padraoIsa: number = 0;
-        let ref: number = 43000;
-            
+        pesoAtual = parseInt(("#peso-aeronave"));
+        alturaAtual = parseInt(('#altitude-aeronave'));
+        temperaturaAtual = parseInt(('#temperatura'));
+        vento = parseInt(('#valorVento'));
+        vref = parseInt(('#vref'));
+        velocidade = parseInt(('#velocidade-aeronave'));
+        slope = parseInt(('#slope'));
+        flap = parseInt(('#flap'));
+        frenagem = parseInt(('#frenagem'));
+        revInoperantes = parseInt(('#rev-inoperantes'));
+    
+        console.log();
+    
         //calculo do peso
         if (pesoAtual > ref) {
             while (pesoAtual > ref) {
@@ -42,7 +49,7 @@ export default class Calculos {
                 pesoAtual += 1000;
             }
         }
-
+    
         //calculo da altura
         if (alturaAtual > chao) {
             while (alturaAtual > chao) {
@@ -50,7 +57,7 @@ export default class Calculos {
                 alturaAtual -= 1000;
             }
         }
-
+    
         //calculo da temperatura
         if (temperaturaAtual > padraoIsa) {
             while (temperaturaAtual > padraoIsa) {
@@ -63,43 +70,49 @@ export default class Calculos {
                 temperaturaAtual += 5;
             }
         }
-
+    
         //calculo do vento
-        if (ventoCabeca >= 5) {
-            while (ventoCabeca >= 5) {
+        if (vento > 0) {
+            if (vento >= 5) {
+                while (vento >= 5) {
+                    distanciaReferencia += 101;
+                    vento -= 5;
+                }
+            }
+        } else {
+            while (vento <= 5) {
                 distanciaReferencia -= 22;
-                ventoCabeca -= 5;
+                vento += 5
             }
         }
-        if (ventoCauda >= 5) {
-            while (ventoCauda >= 5) {
-                distanciaReferencia += 101;
-                ventoCauda -= 5;
-            }
-        }
-
+    
         //calculo do slope
-        if (slope > 0){
+        if (slope > 0) {
             slope = (slope / 100) * 100
-            while (slope > 0){
+            while (slope > 0) {
                 distanciaReferencia += 139
                 slope--
             }
         }
-
-        //calculo VAP
-        //Verificar
-
+    
+        //calculo Vap
+        if (velocidade > vref) {
+            while (velocidade > ref) {
+                distanciaReferencia += 110;
+                velocidade -= 5;
+            }
+        }
+    
         //calculo Rev
-        if(revInoperantes > 0){
-            while (revInoperantes > 0){
+        if (revInoperantes > 0) {
+            while (revInoperantes > 0) {
                 distanciaReferencia += 24
                 revInoperantes--
             }
-
+    
         }
-
-        return distanciaReferencia;
-        
+        return distanciaReferencia
     }
 }
+
+export default Calcular
