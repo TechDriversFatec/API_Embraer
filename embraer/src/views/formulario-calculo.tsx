@@ -3,7 +3,7 @@ import "bootstrap/dist/css/bootstrap.min.css";
 import ModalResultado from "./modal-resultado";
 import React, { useState} from "react"; 
 
-function App() {
+function Calculo() {
 
   const [Peso, setPeso] = useState(String);
   const [Altitude, setAltitude] = useState(String);
@@ -174,7 +174,6 @@ function App() {
         </button> */}
         <ModalResultado/>
         <input hidden placeholder="result" type="text" id="resultadoConta" />
-        <input  placeholder={Peso} type="text" id="resultadoConta" />
       </div>
     </body>
   );
