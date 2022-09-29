@@ -48,7 +48,7 @@ Para dar início ao projeto, os integrantes da equipe precisaram definir quais o
 <p align="justify">Inicialmente foram definidas as informações que o sistema deveria registrar acerca das aeronaves e condições de pista e clima que são determinantes para o resultado do cálculo. Com isso, foi criado o Diagrama Entidade-Relacionamento para orientar o funcionamento do banco de dados da aplicação:<br>
 <br></p>
 <p align="center">
-<img src="Imagens/DER.png" alt="Diagrama que representa a relação entre as entidades do banco de dados da aplicação" width="80%" height="80%">
+<img src="Imagens/DER (Revisado).png" alt="Diagrama que representa a relação entre as entidades do banco de dados da aplicação" width="80%" height="80%">
 </p>
 
 
