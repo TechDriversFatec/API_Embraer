@@ -1,12 +1,18 @@
-import { Component } from "react"
-import "../App.css"
+import "../css/formulario-calculo.css";
 import "bootstrap/dist/css/bootstrap.min.css";
+import ModalResultado from "./modal-resultado";
+import React, { useState} from "react"; 
 
-class Calculo extends Component{
+function App() {
 
-    render(){
-        return (
-            <>
+  const [Peso, setPeso] = useState(String);
+  const [Altitude, setAltitude] = useState(String);
+  const [Temperatura, setTemperatura] = useState(String);
+  const [Vento, setVento] = useState(String);
+  const [VRef, setVRef] = useState(String);
+
+  return (
+    <body className="App">
       <div>
         <h2>
           <i>
@@ -23,9 +29,11 @@ class Calculo extends Component{
               <input
                 id="peso-aeronave"
                 className="form-control"
-                type="tel"
+                type="teld"
                 name="peso-aeronave"
                 placeholder="Insira o peso da aeronave:"
+                value={Peso}
+                onChange={(e) => setPeso(e.target.value)}
               />
               <small></small>
             </div>
@@ -37,6 +45,8 @@ class Calculo extends Component{
                 type="tel"
                 name="altitude-aeronave"
                 placeholder="Insira a altitude:"
+                value={Altitude}
+                onChange={(e) => setAltitude(e.target.value)}
               />
               <small></small>
             </div>
@@ -48,6 +58,8 @@ class Calculo extends Component{
                 name="temperatura"
                 type="tel"
                 placeholder="Insira a temperatura:"
+                value={Temperatura}
+                onChange={(e) => setTemperatura(e.target.value)}
               />
               <small></small>
             </div>
@@ -61,6 +73,8 @@ class Calculo extends Component{
                 type="tel"
                 name="valorVento"
                 placeholder="Insira o vento de Cauda/Proa:"
+                value={Vento}
+                onChange={(e) => setVento(e.target.value)}
               />
               <small></small>
             </div>
@@ -72,6 +86,8 @@ class Calculo extends Component{
                 type="tel"
                 name="vref"
                 placeholder="Insira a velocidade de referência:"
+                value={VRef}
+                onChange={(e) => setVRef(e.target.value)}
               />
               <small></small>
             </div>
@@ -148,21 +164,21 @@ class Calculo extends Component{
         </div>
       </form>
       <div>
-        <button
+        {/* <button
           className="rounded"
           type="submit"
           id="btn_calcular"
           name="submitButton"
         >
           <b>Calcular</b>
-        </button>
+        </button> */}
+        <ModalResultado/>
         <input hidden placeholder="result" type="text" id="resultadoConta" />
+        <input  placeholder={Peso} type="text" id="resultadoConta" />
       </div>
-    </>
-        )
-    }
+    </body>
+  );
 }
 
+export default App;
 
-
-export default Calculo
