@@ -1,12 +1,12 @@
 import React from "react";
 import logo from "./logo.svg";
-import "../src/css/App.css";
+import "./App.css";
 import "bootstrap/dist/css/bootstrap.min.css";
 import Exemple from "./views/modal-resultado";
 
 function App() {
   return (
-    <>
+    <body className="App">
       <div>
         <h2>
           <i>
@@ -159,7 +159,7 @@ function App() {
         <Exemple></Exemple>
         <input hidden placeholder="result" type="text" id="resultadoConta" />
       </div>
-    </>
+    </body>
   );
 }
 
