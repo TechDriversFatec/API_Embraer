@@ -2,9 +2,13 @@ import "../css/formulario-calculo.css";
 import "bootstrap/dist/css/bootstrap.min.css";
 import ModalResultado from "./modal-resultado";
 import React, { useState} from "react"; 
+import { useForm } from "react-hook-form"
 
 function Calculo() {
 
+  const { register, handleSubmit } = useForm();
+  const onSubmit = (data) => console.log(data)
+ 
   const [Peso, setPeso] = useState(String);
   const [Altitude, setAltitude] = useState(String);
   const [Temperatura, setTemperatura] = useState(String);
@@ -21,7 +25,7 @@ function Calculo() {
           </i>
         </h2>
       </div>
-      <form id="form_criar">
+      <form id="form_criar" onSubmit = { handleSubmit(onSubmit) }>
         <div className="container-fluid">
           <div className="row">
             <div className="form-group col-lg-4 col-md-6 col-sm-12 sucess">
