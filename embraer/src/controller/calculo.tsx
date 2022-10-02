@@ -5,6 +5,9 @@
 //    return dist.toFixed(2).replace('.',',')
 //}
 
+import ModalResultado from "../views/modal-resultado";
+import Swal from "sweetalert2";
+
 class Calcular {
 
     calcularPouso = function (
@@ -16,7 +19,7 @@ class Calcular {
         velocidade: number,
         slope: number,
         flap: number,
-        frenagem: number,
+        //frenagem: number,
         revInoperantes: number
     ) {
         let distanciaReferencia = 1026;
@@ -24,18 +27,7 @@ class Calcular {
         let padraoIsa = 0;
         let ref = 43000;
     
-        pesoAtual = parseInt(("#peso-aeronave"));
-        alturaAtual = parseInt(('#altitude-aeronave'));
-        temperaturaAtual = parseInt(('#temperatura'));
-        vento = parseInt(('#valorVento'));
-        vref = parseInt(('#vref'));
-        velocidade = parseInt(('#velocidade-aeronave'));
-        slope = parseInt(('#slope'));
-        flap = parseInt(('#flap'));
-        frenagem = parseInt(('#frenagem'));
-        revInoperantes = parseInt(('#rev-inoperantes'));
-    
-        console.log();
+        console.log("calculando");
     
         //calculo do peso
         if (pesoAtual > ref) {
@@ -111,7 +103,12 @@ class Calcular {
             }
     
         }
-        return distanciaReferencia
+        console.log("calculado");
+        
+        return Swal.fire({
+            icon: 'warning',
+            title: distanciaReferencia
+        })
     }
 }
 

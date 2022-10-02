@@ -3,7 +3,7 @@ import Button from 'react-bootstrap/Button';
 import Modal from 'react-bootstrap/Modal';
 import Calculos from '../controller/calculo';
 
-export default function ModalResultado() {
+export default function ModalResultado(distanciaReferencia: number) {
   const [show, setShow] = useState(false);
 
   const fecharModal = () => setShow(false);
@@ -26,7 +26,7 @@ export default function ModalResultado() {
           <Modal.Title>Boaaaa</Modal.Title>
         </Modal.Header>
         <Modal.Body>
-          {result.valueOf()}
+          {distanciaReferencia}
         </Modal.Body>
         <Modal.Footer>
           <Button variant="secondary" onClick={fecharModal}>

@@ -2,17 +2,27 @@
   text-align: center;
   background-color: #282f55;
 }
+.container-fluid{
+  margin: 25px;
+  background-color: #0b113b;
+}
 label, i{
   color: #FFFFFF;
 }
 div{
   padding: 10px;
 }
-
-.App-logo {
-  height: 40vmin;
-  pointer-events: none;
+.rounded{
+  padding: 7px;
 }
+#erro{
+  color: red;
+  text-align: left;
+}
+
+/* #peso-aeronave, #altitude-aeronave, #temperatura, #valorVento, #vref, #velocidade-aeronave, #slope, #flap, #rev-inoperantes{
+  border-color: red;
+} */
 
 @media (prefers-reduced-motion: no-preference) {
   .App-logo {

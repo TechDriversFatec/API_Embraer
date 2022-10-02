@@ -1,22 +1,52 @@
 import "../css/formulario-calculo.css";
 import "bootstrap/dist/css/bootstrap.min.css";
-import ModalResultado from "./modal-resultado";
 import React, { useState} from "react"; 
-import { useForm } from "react-hook-form"
+import { SubmitHandler, useForm } from "react-hook-form"
+import Calcular from "../controller/calculo";
+
+interface IFormInput {
+  peso: number;
+  altitude: number;
+  temperatura: number;
+  valorVento: number;
+  vref: number;
+  velocidadeAeronave: number;
+  slope: number;
+  revInoperantes: number;
+}
 
 function Calculo() {
 
-  const { register, handleSubmit } = useForm();
-  const onSubmit = (data) => console.log(data)
+  const { register, handleSubmit, formState: { errors } } = useForm<IFormInput>({
+    //reValidateMode: 'onChange',
+    //defaultValues: {peso: 0, altitude: 0, temperatura: 0, valorVento: 0, vref: 0, velocidadeAeronave: 0, slope: 0, revInoperantes: 0},
+    shouldFocusError: true,
+    shouldUseNativeValidation: true
+  });
+  const calcular = new Calcular()
+  const onSubmit: SubmitHandler<IFormInput> = data => calcular.calcularPouso(
+    parseInt(Peso), 
+    parseInt(Altitude), 
+    parseInt(Temperatura), 
+    parseInt(Vento), 
+    parseInt(VRef), 
+    parseInt(VelocidadeAeronave), 
+    parseInt(Slope), 
+    parseInt(Flap), 
+    parseInt(Rev))
  
   const [Peso, setPeso] = useState(String);
   const [Altitude, setAltitude] = useState(String);
   const [Temperatura, setTemperatura] = useState(String);
   const [Vento, setVento] = useState(String);
   const [VRef, setVRef] = useState(String);
+  const [VelocidadeAeronave, setVelocidadeAeronave] = useState(String)
+  const [Slope, setSlope] = useState(String)
+  const [Flap, setFlap] = useState(String)
+  const [Rev, setRev] = useState(String)
 
   return (
-    <body className="App">
+    <div className="App">
       <div>
         <h2>
           <i>
@@ -33,13 +63,13 @@ function Calculo() {
               <input
                 id="peso-aeronave"
                 className="form-control"
+                {...register("peso", {min: 40000, max: 80000})}
                 type="teld"
-                name="peso-aeronave"
                 placeholder="Insira o peso da aeronave:"
                 value={Peso}
                 onChange={(e) => setPeso(e.target.value)}
               />
-              <small></small>
+              {errors.peso && <small id="erro">Peso só pode ser entre 40000 e 80000</small>}
             </div>
             <div className="form-group col-lg-4 col-md-6 col-sm-12">
               <label>Altitude da aeronave:</label>
@@ -47,25 +77,25 @@ function Calculo() {
                 id="altitude-aeronave"
                 className="form-control"
                 type="tel"
-                name="altitude-aeronave"
+                {...register("altitude", {min: 0, max: 13000})}
                 placeholder="Insira a altitude:"
                 value={Altitude}
                 onChange={(e) => setAltitude(e.target.value)}
               />
-              <small></small>
+              {errors.altitude && <small id="erro">Valor de altura inválida</small>}
             </div>
             <div className="form-group col-lg-4 col-md-6 col-sm-12">
               <label>Temperatura:</label>
               <input
                 id="temperatura"
                 className="form-control"
-                name="temperatura"
+                {...register("temperatura", {min: -2, max: 2})}
                 type="tel"
                 placeholder="Insira a temperatura:"
                 value={Temperatura}
                 onChange={(e) => setTemperatura(e.target.value)}
               />
-              <small></small>
+              {errors.temperatura && <small id="erro">Valor inválido para a temperatura</small>}
             </div>
           </div>
           <div className="row">
@@ -75,12 +105,12 @@ function Calculo() {
                 id="valorVento"
                 className="form-control"
                 type="tel"
-                name="valorVento"
+                {...register("valorVento", {min: -100, max: 100})}
                 placeholder="Insira o vento de Cauda/Proa:"
                 value={Vento}
                 onChange={(e) => setVento(e.target.value)}
               />
-              <small></small>
+              {errors.valorVento && <small id="erro">Valor inválido para o vento</small>}
             </div>
             <div className="form-group col-lg-4 col-md-6 col-sm-12">
               <label>Velocidade de Referência:</label>
@@ -88,12 +118,12 @@ function Calculo() {
                 id="vref"
                 className="form-control"
                 type="tel"
-                name="vref"
+                {...register("vref", {min:700, max: 1000 })}
                 placeholder="Insira a velocidade de referência:"
                 value={VRef}
                 onChange={(e) => setVRef(e.target.value)}
               />
-              <small></small>
+              {errors.vref && <small id="erro">Valor inválido para a velocidade de referência</small>}
             </div>
             <div className="form-group col-lg-4 col-md-6 col-sm-12">
               <label>Velocidade da aeronave:</label>
@@ -101,10 +131,12 @@ function Calculo() {
                 id="velocidade-aeronave"
                 className="form-control"
                 type="tel"
-                name="velocidade-aeronave"
+                {...register("velocidadeAeronave", {min: 700, max: 1000})}
                 placeholder="Insira a velocidade:"
+                value={VelocidadeAeronave}
+                onChange={(e) => setVelocidadeAeronave(e.target.value)}
               />
-              <small></small>
+              {errors.velocidadeAeronave && <small id="erro">valor inválido para a velocidade da aeronave</small>}
             </div>
           </div>
           <div className="row">
@@ -113,11 +145,13 @@ function Calculo() {
               <input
                 id="slope"
                 className="form-control"
-                name="slope"
+                {...register("slope", {min: -2, max: 2})}
                 type="tel"
                 placeholder="Insira o slope:"
+                value={Slope}
+                onChange={(e) => setSlope(e.target.value)}
               />
-              <small></small>
+              {errors.slope && <small id="erro">Valor inválido para o slope</small>}
             </div>
             <div className="form-group col-lg-4 col-md-6 col-sm-12">
               <label>Flap:</label>
@@ -127,6 +161,8 @@ function Calculo() {
                 type="tel"
                 name="flap"
                 placeholder="Valor para o flap:"
+                value={Flap}
+                onChange={(e) => setFlap(e.target.value)}
               />
               <small></small>
             </div>
@@ -158,28 +194,29 @@ function Calculo() {
                 id="rev-inoperantes"
                 className="form-control"
                 type="tel"
-                name="rev-inoperantes"
+                {...register("revInoperantes", {min: 0, max: 5})}
                 placeholder="Insira a quantidade de reversores inoperantes:"
+                value={Rev}
+                onChange={(e) => setRev(e.target.value)}
               />
-              <small></small>
+              {errors.revInoperantes && <small id="erro">Valor inválido para os reversores</small>}
             </div>
             <div className="form-group col-lg-4 col-md-6 col-sm-12"></div>
           </div>
         </div>
-      </form>
-      <div>
-        {/* <button
+        <input
           className="rounded"
           type="submit"
           id="btn_calcular"
           name="submitButton"
+          value="calcular"
         >
-          <b>Calcular</b>
-        </button> */}
-        <ModalResultado/>
+        </input> 
+      </form>
+      <div>
         <input hidden placeholder="result" type="text" id="resultadoConta" />
       </div>
-    </body>
+    </div>
   );
 }
 
