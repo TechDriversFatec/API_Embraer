@@ -5,7 +5,6 @@
 //    return dist.toFixed(2).replace('.',',')
 //}
 
-import ModalResultado from "../views/modal-resultado";
 import Swal from "sweetalert2";
 
 class Calcular {
@@ -18,8 +17,8 @@ class Calcular {
         vref: number,
         velocidade: number,
         slope: number,
-        flap: number,
-        frenagem: number,
+        //flap: number,
+        //frenagem: number,
         revInoperantes: number,
         unidade: number
     ) {
@@ -109,7 +108,11 @@ class Calcular {
             distanciaReferencia = parseInt(metroPes(distanciaReferencia).toLocaleString())
         }
 
-        return distanciaReferencia
+        console.log("calculado");
+        
+        return Swal.fire({
+            title: distanciaReferencia
+        })
     }
 }
 
