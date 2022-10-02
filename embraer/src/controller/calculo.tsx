@@ -111,6 +111,7 @@ class Calcular {
         console.log("calculado");
         
         return Swal.fire({
+            icon: 'warning',
             title: distanciaReferencia
         })
     }

@@ -19,6 +19,9 @@ div{
   color: red;
   text-align: left;
 }
+#swal2-title{
+  font-size: 70px;
+}
 
 /* #peso-aeronave, #altitude-aeronave, #temperatura, #valorVento, #vref, #velocidade-aeronave, #slope, #flap, #rev-inoperantes{
   border-color: red;
