@@ -2,16 +2,20 @@ import "../css/pagina-inicial.css";
 import "bootstrap/dist/css/bootstrap.min.css";
 import { Component } from "react"
 import Table from 'react-bootstrap/Table';
+import PesquisarTabela from "./filtro";
+
 
 class PaginaInicial extends Component{
     render(){
         return (
             <div className="App">
+
               <div>
                 <h2>
                     Gerenciar informações
                 </h2>
               </div>
+              <PesquisarTabela/>
               <div>
               <Table bordered>
               <thead>
@@ -25,6 +29,9 @@ class PaginaInicial extends Component{
                 </tr>
               </thead>
               <tbody>
+                {PaginaInicial.filter(val=>{
+                }
+)}
                 <tr>
                   <td>E-195</td>
                   <td>-</td>
@@ -59,6 +66,9 @@ class PaginaInicial extends Component{
             </div>
           );
     }
+  static filter(arg0: (val: any) => void): import("react").ReactNode {
+    throw new Error("Method not implemented.");
+  }
 }
   
 export default PaginaInicial;
