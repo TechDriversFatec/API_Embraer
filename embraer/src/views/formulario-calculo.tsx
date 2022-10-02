@@ -29,7 +29,7 @@ function Calculo() {
         <div className="container-fluid">
           <div className="row">
             <div className="form-group col-lg-4 col-md-6 col-sm-12 sucess">
-              <label>Peso da aeronave:</label>
+              <label>Peso da aeronave em Kg:</label>
               <input
                 id="peso-aeronave"
                 className="form-control"
@@ -42,7 +42,7 @@ function Calculo() {
               <small></small>
             </div>
             <div className="form-group col-lg-4 col-md-6 col-sm-12">
-              <label>Altitude da aeronave:</label>
+              <label>Altitude da aeronave em M:</label>
               <input
                 id="altitude-aeronave"
                 className="form-control"
@@ -55,7 +55,7 @@ function Calculo() {
               <small></small>
             </div>
             <div className="form-group col-lg-4 col-md-6 col-sm-12">
-              <label>Temperatura:</label>
+              <label>Temperatura em °C:</label>
               <input
                 id="temperatura"
                 className="form-control"
@@ -70,7 +70,7 @@ function Calculo() {
           </div>
           <div className="row">
             <div className="form-group col-lg-4 col-md-6 col-sm-12">
-              <label>Vento:</label>
+              <label>Vento em Kt:</label>
               <input
                 id="valorVento"
                 className="form-control"
@@ -83,7 +83,7 @@ function Calculo() {
               <small></small>
             </div>
             <div className="form-group col-lg-4 col-md-6 col-sm-12">
-              <label>Velocidade de Referência:</label>
+              <label>Velocidade de Referência em Km/h:</label>
               <input
                 id="vref"
                 className="form-control"
@@ -96,7 +96,7 @@ function Calculo() {
               <small></small>
             </div>
             <div className="form-group col-lg-4 col-md-6 col-sm-12">
-              <label>Velocidade da aeronave:</label>
+              <label>Velocidade da aeronave em Km/h:</label>
               <input
                 id="velocidade-aeronave"
                 className="form-control"
@@ -151,7 +151,6 @@ function Calculo() {
             </div>
           </div>
           <div className="row">
-            <div className="form-group col-lg-4 col-md-6 col-sm-12"></div>
             <div className="form-group col-lg-4 col-md-6 col-sm-12">
               <label>Quantidade de Reversores inoperantes:</label>
               <input
@@ -164,6 +163,15 @@ function Calculo() {
               <small></small>
             </div>
             <div className="form-group col-lg-4 col-md-6 col-sm-12"></div>
+            <div className="form-group col-lg-4 col-md-6 col-sm-12">
+              <label>Unidade de medida:</label>
+              <select title="unidade" className="form-control" name="unidade" id="unidade">
+                <option value="placeholder" disabled selected>Selecione a unidade de medida:</option>
+                <option value="0">Internacional</option>
+                <option value="1">Imperial</option>   
+              </select>
+              <small></small>
+            </div>
           </div>
         </div>
       </form>

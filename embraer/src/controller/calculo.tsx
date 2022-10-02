@@ -17,7 +17,8 @@ class Calcular {
         slope: number,
         flap: number,
         frenagem: number,
-        revInoperantes: number
+        revInoperantes: number,
+        unidade: number
     ) {
         let distanciaReferencia = 1026;
         let chao = 0;
@@ -34,6 +35,7 @@ class Calcular {
         flap = parseInt(('#flap'));
         frenagem = parseInt(('#frenagem'));
         revInoperantes = parseInt(('#rev-inoperantes'));
+        unidade = parseInt(('#unidade'));
     
         console.log();
     
@@ -111,8 +113,18 @@ class Calcular {
             }
     
         }
+
+        if(unidade === 1){
+            distanciaReferencia = parseInt(metroPes(distanciaReferencia).toLocaleString())
+        }
+
         return distanciaReferencia
     }
 }
 
 export default Calcular
+
+function metroPes(distanciaReferencia: number) {
+    distanciaReferencia = distanciaReferencia * 3.28084
+    return distanciaReferencia.toFixed(2).replace('.',',')
+}
