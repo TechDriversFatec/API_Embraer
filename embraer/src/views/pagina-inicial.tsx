@@ -9,7 +9,6 @@ class PaginaInicial extends Component{
     render(){
         return (
             <div className="App">
-
               <div>
                 <h2>
                     Gerenciar informações
@@ -29,27 +28,25 @@ class PaginaInicial extends Component{
                 </tr>
               </thead>
               <tbody>
-                {PaginaInicial.filter(val=>{
-                }
-)}
+                
                 <tr>
                   <td>E-195</td>
-                  <td>-</td>
-                  <td>-</td>
-                  <td>-</td>
-                  <td>-</td>
-                  <td>-</td>
+                  <td>Embraer</td>
+                  <td>2x GR CF34-10E turbofans 82.3 kN</td>
+                  <td>28.970 kg</td>
+                  <td>5</td>
+                  <td>--</td>
                 </tr>
                 <tr>
                   <td>E-190</td>
-                  <td>-</td>
-                  <td>-</td>
-                  <td>-</td>
-                  <td>-</td>
-                  <td>-</td>
+                  <td>Embraer</td>
+                  <td>2x GR CF34-10E turbofans 82.3 kN</td>
+                  <td>28.080 kg</td>
+                  <td>5</td>
+                  <td>--</td>
                 </tr>
               </tbody>
-            </Table>
+              </Table>
               </div>
               <div>
                 <button

@@ -1,26 +1,26 @@
+#erro{
+  color: red;
+  text-align: left;
+}
+
 .App {
   text-align: center;
   background-color: #282f55;
+  padding: 25px;
 }
 .container-fluid{
   margin: 25px;
   background-color: #0b113b;
 }
+.rounded{
+  padding: 7px;
+}
+
 label, i{
   color: #FFFFFF;
 }
 div{
   padding: 10px;
-}
-.rounded{
-  padding: 7px;
-}
-#erro{
-  color: red;
-  text-align: left;
-}
-#swal2-title{
-  font-size: 70px;
 }
 
 /* #peso-aeronave, #altitude-aeronave, #temperatura, #valorVento, #vref, #velocidade-aeronave, #slope, #flap, #rev-inoperantes{
