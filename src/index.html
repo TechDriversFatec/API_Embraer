@@ -24,17 +24,17 @@
                 <div class="form-group col-lg-4 col-md-6 col-sm-12">
                     <label>Peso da aeronave:</label>
                     <input id="peso-aeronave" class="form-control" type="tel" name="peso-aeronave"
-                        placeholder="Insira o peso da aeronave:" />
+                        placeholder="Insira o peso da aeronave em Kg:" />
                 </div>
                 <div class="form-group col-lg-4 col-md-6 col-sm-12">
                     <label>Altitude da aeronave:</label>
                     <input id="altitude-aeronave" class="form-control" type="tel" name="altitude-aeronave"
-                        placeholder="Insira a altitude:" />
+                        placeholder="Insira a altitude em M:" />
                 </div>
                 <div class="form-group col-lg-4 col-md-6 col-sm-12">
                     <label>Temperatura:</label>
                     <input id="temperatura" class="form-control" name="temperatura" type="tel"
-                        placeholder="Insira a temperatura:" />
+                        placeholder="Insira a temperatura em °C:" />
                 </div>
             </div>
             <div class="row">
@@ -42,17 +42,17 @@
                 <div class="form-group col-lg-4 col-md-6 col-sm-12">
                     <label>Vento:</label>
                     <input id="valorVento" class="form-control" type="tel" name="valorVento"
-                        placeholder="Insira o vento de Cauda/Proa:" />
+                        placeholder="Insira o vento de Cauda/Proa em Nós:" />
                 </div>
                 <div class="form-group col-lg-4 col-md-6 col-sm-12">
                     <label>Velocidade de Referência:</label>
                     <input id="vref" class="form-control" type="tel" name="vref"
-                        placeholder="Insira a velocidade de referência:" />
+                        placeholder="Insira a velocidade de referência em Km/h:" />
                 </div>
                 <div class="form-group col-lg-4 col-md-6 col-sm-12">
                     <label>Velocidade da aeronave:</label>
                     <input id="velocidade-aeronave" class="form-control" type="tel" name="velocidade-aeronave"
-                        placeholder="Insira a velocidade:" />
+                        placeholder="Insira a velocidade em Km/h:" />
                 </div>
 
             </div>
@@ -82,19 +82,29 @@
             </div>
             <div class="row">
 
-                <div class="form-group col-lg-4 col-md-6 col-sm-12"></div>
                 <div class="form-group col-lg-4 col-md-6 col-sm-12">
                     <label>Quantidade de Reversores inoperantes:</label>
                     <input id="rev-inoperantes" class="form-control" type="tel" name="rev-inoperantes"
                         placeholder="Insira a quantidade de reversores inoperantes:" />
                 </div>
-                <div class="form-group col-lg-4 col-md-6 col-sm-12"></div>
-
+                <div class="form-group col-lg-4"></div>
+                <div class="form-group col-lg-4 col-md-6 col-sm-12">
+                    <label>Unidade de medida:</label>
+                    <select title="unidade" class="form-control" name="unidade" id="unidade">
+                        <option value="placeholder" disabled selected>Selecione a unidade de medida:</option>
+                        <option value="0">Internacional</option>
+                        <option value="1">Imperial</option>   
+                </div>
+            </div>
+            <div style="text-align:center; margin-bottom: 5%;">
+                <button class="rounded" type="button" id="btn_calcular" name="submitButton" onclick="calcularPouso()"
+                    style="font-size:20px;background-color:#31d3d2; text-transform: uppercase"><b>Calcular</b></button>
+                <input hidden placeholder="result" type="text" id="resultadoConta" />
             </div>
         </div>
     </form>
     <div style="text-align:center; margin-bottom: 5%;">
-        <button class="rounded" type="submit" id="btn_calcular" name="submitButton" onclick="calcularPouso()"
+        <button class="rounded" type="button" id="btn_calcular" name="submitButton" onclick="calcularPouso()"
             style="font-size:20px;background-color:#31d3d2; text-transform: uppercase"><b>Calcular</b></button>
         <input hidden placeholder="result" type="text" id="resultadoConta" />
     </div>
@@ -114,6 +124,14 @@
 <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery.mask/1.14.10/jquery.mask.js"></script>
 <script>
+    var metroPes = function(
+        dist
+    ){
+        dist = dist * 3.28084
+        return dist.toFixed(2).replace('.',',')
+    }
+
+
     var calcularPouso = function (
         pesoAtual,
         alturaAtual,
@@ -143,6 +161,7 @@
         mapeado.flap = parseInt($('#flap').val());
         mapeado.frenagem = parseInt($('#frenagem').val());
         mapeado.revInoperantes = parseInt($('#rev-inoperantes').val());
+        mapeado.unidade = parseInt($('#unidade').val());
 
         console.log(mapeado);
 
@@ -223,8 +242,19 @@
         $('#resultadoConta').val(distanciaReferencia);
         var resultadoConta = parseInt($('#resultadoConta').val()).toLocaleString()
 
+        var titulo = 'Serão necessários ' + resultadoConta + ' metros de pista para efetuar o pouso.'
+
+        //se sistema imperial, transforma o resultado
+        if(mapeado.unidade == 1){
+            resultadoConta = parseInt($('#resultadoConta').val())
+            resultadoConta = metroPes(resultadoConta).toLocaleString()
+            titulo = 'Serão necessários ' + resultadoConta + ' pés de pista para efetuar o pouso.'
+        }
+
+        
+
         Swal.fire({
-            title: 'Serão necessários ' + resultadoConta + ' metros de pista para efetuar o pouso.',
+            title: titulo,
             //text: 'Serão necessários ' + resultadoConta + ' metros de pista para efetuar o pouso.',
             icon: 'success',
             confirmButtonText: 'Continuar'
