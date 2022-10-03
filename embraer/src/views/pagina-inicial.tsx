@@ -2,55 +2,20 @@ import "../css/pagina-inicial.css";
 import "bootstrap/dist/css/bootstrap.min.css";
 import { Component } from "react"
 import Table from 'react-bootstrap/Table';
-import PesquisarTabela from "./filtro";
+import PesquisarTabela from "../controller/filtro";
+import Tabela from "../controller/tabela";
 
 
 class PaginaInicial extends Component{
     render(){
         return (
             <div className="App">
-
               <div>
                 <h2>
                     Gerenciar informações
                 </h2>
               </div>
-              <PesquisarTabela/>
-              <div>
-              <Table bordered>
-              <thead>
-                <tr>
-                  <th>Modelo</th>
-                  <th>Fabricante</th>
-                  <th>Motor</th>
-                  <th>Peso Referencial</th>
-                  <th>Quantidade de Reversores</th>
-                  <th>Ações</th>
-                </tr>
-              </thead>
-              <tbody>
-                {PaginaInicial.filter(val=>{
-                }
-)}
-                <tr>
-                  <td>E-195</td>
-                  <td>-</td>
-                  <td>-</td>
-                  <td>-</td>
-                  <td>-</td>
-                  <td>-</td>
-                </tr>
-                <tr>
-                  <td>E-190</td>
-                  <td>-</td>
-                  <td>-</td>
-                  <td>-</td>
-                  <td>-</td>
-                  <td>-</td>
-                </tr>
-              </tbody>
-            </Table>
-              </div>
+              <Tabela />
               <div>
                 <button
                   className="rounded"
@@ -66,9 +31,6 @@ class PaginaInicial extends Component{
             </div>
           );
     }
-  static filter(arg0: (val: any) => void): import("react").ReactNode {
-    throw new Error("Method not implemented.");
   }
-}
-  
-export default PaginaInicial;
+
+  export default PaginaInicial
