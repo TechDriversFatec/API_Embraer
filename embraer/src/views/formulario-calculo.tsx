@@ -13,6 +13,7 @@ interface IFormInput {
   velocidadeAeronave: number;
   slope: number;
   revInoperantes: number;
+  unidade: number;
 }
 
 function Calculo() {
@@ -33,7 +34,8 @@ function Calculo() {
     parseInt(VelocidadeAeronave), 
     parseInt(Slope), 
     parseInt(Flap), 
-    parseInt(Rev))
+    parseInt(Rev),
+    parseInt(unidade))
  
   const [Peso, setPeso] = useState(String);
   const [Altitude, setAltitude] = useState(String);
@@ -44,6 +46,7 @@ function Calculo() {
   const [Slope, setSlope] = useState(String)
   const [Flap, setFlap] = useState(String)
   const [Rev, setRev] = useState(String)
+  const [unidade, setUnidade] = useState(String)
 
   return (
     <div className="App">
@@ -203,7 +206,7 @@ function Calculo() {
             <div className="form-group col-lg-4 col-md-6 col-sm-12"></div>
             <div className="form-group col-lg-4 col-md-6 col-sm-12">
               <label>Unidade de medida:</label>
-              <select title="unidade" className="form-control" name="unidade" id="unidade">
+              <select title="unidade" className="form-control" name="unidade" onChange={(e) => setUnidade(e.target.value)} id="unidade">
                 <option value="placeholder" disabled selected>Selecione a unidade de medida:</option>
                 <option value="0">Internacional</option>
                 <option value="1">Imperial</option>   
