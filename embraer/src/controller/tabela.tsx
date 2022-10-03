@@ -1,6 +1,15 @@
-import React from "react"
+import React, { useState } from "react"
+import axios from "axios"
 
-class Tabela extends React.Component{
+function Tabela() {
+
+  // Array com os passageiros falsos da API
+  const [data: Date, setData] = useState(String)
+  // Número total de páginas
+  const [totalPages, setTotalPages] = useState(1)
+  // Número total de passageiros
+  const [totalPassengers, setTotalPassengers] = useState(1)
+
     render(){
         return (
             <div>
