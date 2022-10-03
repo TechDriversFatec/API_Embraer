@@ -13,6 +13,10 @@
     height: 40vmin;
     pointer-events: none;
   }
+  .container-fluid{
+    margin: 25px;
+    background-color: #0b113b;
+  }
   
   @media (prefers-reduced-motion: no-preference) {
     .CriarAeronaves-logo {
