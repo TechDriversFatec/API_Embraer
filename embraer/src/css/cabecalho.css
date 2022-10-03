@@ -1,0 +1,15 @@
+* {
+    margin: 0;
+    padding: 0;
+}
+
+.img-empresa {
+    width: 400px;
+    height: 120px;
+}
+
+.img-equipe {
+    width: 385px;
+    height: 120px;
+    float: right;
+}
