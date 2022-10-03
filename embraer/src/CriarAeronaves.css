@@ -1,0 +1,56 @@
+.CriarAeronaves {
+    text-align: center;
+    background-color: #282f55;
+  }
+  label, i{
+    color: #FFFFFF;
+  }
+  div{
+    padding: 10px;
+  }
+  
+  .CriarAeronaves-logo {
+    height: 40vmin;
+    pointer-events: none;
+  }
+  
+  @media (prefers-reduced-motion: no-preference) {
+    .CriarAeronaves-logo {
+      animation: CriarAeronaves-logo-spin infinite 20s linear;
+    }
+  }
+  
+  .CiarAeronaves-header {
+    background-color: #282c34;
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    font-size: calc(10px + 2vmin);
+    color: white;
+  }
+  
+  .button {
+    background-color:#61dafb;
+    border-radius: 10px;
+    font-size: 20px;
+    height: 40px;
+    width: 120px;
+    text-transform: uppercase;
+
+  }
+  
+  .CriarAeronaves-link {
+    color: #61dafb;
+  }
+  
+  @keyframes CriarAeronaves-logo-spin {
+    from {
+      transform: rotate(0deg);
+    }
+    to {
+      transform: rotate(360deg);
+    }
+  }
+  
