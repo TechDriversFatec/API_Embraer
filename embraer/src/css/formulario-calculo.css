@@ -2,6 +2,9 @@
   color: red;
   text-align: left;
 }
+#swal2-title{
+  font-size: 62px;
+}
 
 .App {
   text-align: center;
