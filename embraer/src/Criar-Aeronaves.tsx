@@ -68,11 +68,11 @@ function CriarAeronaves() {
 
 
                     <div className="form-group col-lg-4-md col-md-6 col-sm-12">
-                        <label>Distância ref para o Flap</label>
+                        <label>Distância ref para o Flap (M):</label>
                         <input id="distancia-ref-flap" className="form-control" type="tel" name="distancia-ref-flap" placeholder="Distância referencial para o flap:" />
                     </div>
                     <div className="form-group col-lg-4-md col-md-6 col-sm-12">
-                        <label>Peso referencial:</label>
+                        <label>Peso referencial (KG):</label>
                         <input id="peso-referencial" className="form-control" type="tel" name="peso-referencial"
                             placeholder="Insira o peso referencial da aeronave:" />
                     </div>
@@ -82,11 +82,11 @@ function CriarAeronaves() {
                 <div className="row">
                 <div className="form-group col-lg-4-md col-md-6 col-sm-12">
                     <label>Peso:</label>
-                    <label>Indicar o padrão de variação do peso para comparação:</label>
+                    <label>Indicar o padrão de variação do peso para comparação (KG):</label>
                     <br></br>
                     <input id="padrao-variacao-peso" className="form-control" name="padrao-variacao-peso"/>
                     <br></br>
-                    <label>Indicar os indíces de variação da metragem:</label>
+                    <label>Indicar os indíces de variação da metragem (M):</label>
                     <br></br>
                     <input id="indice-variacao-<peso-acima" className="form-control" name="indice-variacao-peso-acima"
                      placeholder="acima"></input>
@@ -101,7 +101,7 @@ function CriarAeronaves() {
                     <input id="indice-variacao-temperatura" className="form-control" name="indice-variacao-temperatura"
                         placeholder="°C" />
                         <br></br>
-                        <label>Indicar os indíces de variação:</label>
+                        <label>Indicar os indíces de variação (M):</label>
                         <br></br>
                     <input id="indice-variacao-temp-acima" className="form-control" name="indice-variacao-temp-acima"
                      placeholder="acima ISA" />
@@ -112,24 +112,24 @@ function CriarAeronaves() {
             </div>
             <div className="row">
                 <div className="form-group col-lg-4-md col-md-6 col-sm-12">
-                    <label>Altitude:</label>
+                    <label>Altitude (Pés acima do nível do mar):</label>
                     <label>Indicar o padrão de variação da altitude para comparação:</label>
                     <br></br>
                     <input id="padrao-variacao-altitude" className="form-control" name="padrao-variacao-altitude"/>
                     <br></br>
-                    <label>Indicar os indíces de variação:</label>
+                    <label>Indicar os indíces de variação (M):</label>
                     <br></br>
                     <input id="indice-variacao-altitude" className="form-control" name="indice-variacao-altitude"
                      placeholder="acima"></input>
                 </div>
                 <div className="form-group col-lg-4-md col-md-6 col-sm-12">
                     <label>Vento:</label>
-                    <label>Indicar o padrão de variação do vento para comparação:</label>
+                    <label>Indicar o padrão de variação do vento para comparação (KTAS):</label>
                     <br></br>
                     <input id="indice-variacao-vento" className="form-control" name="indice-variacao-vento"
                         placeholder="nós de vento" />
                         <br></br>
-                        <label>Indicar os indíces de variação:</label>
+                        <label>Indicar os indíces de variação (M):</label>
                         <br></br>
                     <input id="indice-variacao-vento-proa" className="form-control" name="indice-variacao-vento-proa"
                      placeholder="Vento de proa" />
@@ -141,12 +141,13 @@ function CriarAeronaves() {
             <div className="row">
                     <div className="form-group col-lg-4-md col-md-6 col-sm-12">
                         <label>Slope:</label>
-                        <label>Indicar o padrão de variação do ângulo para comparação:</label>
+                        <br></br>
+                        <label>Indicar o padrão de variação do ângulo para comparação (%):</label>
                         <br></br>
                         <input id="padrao-variacao-slope" className="form-control" name="padrao-variacao-slope"
                         placeholder="%" />
                         <br></br>
-                        <label>Indicar os indíces de variação:</label>
+                        <label>Indicar os indíces de variação (M):</label>
                         <br></br>
                         <input id="indice-variacao-aclive" className="form-control" name="indice-variacao-aclive"
                         placeholder="aclive"></input>
@@ -156,12 +157,13 @@ function CriarAeronaves() {
                     </div>
                 <div className="form-group col-lg-4-md col-md-6 col-sm-12">
                     <label>Sobrepeso:</label>
-                    <label>Indicar o padrão de variação do sobrepeso para comparação:</label>
+                    <br></br>
+                    <label>Indicar o padrão de variação do sobrepeso para comparação (KG):</label>
                     <br></br>
                     <input id="indice-variacao-sobrepeso" className="form-control" name="indice-variacao-sobrepeso"
                         placeholder="" />
                         <br></br>
-                        <label>Indicar os indíces de variação:</label>
+                        <label>Indicar os indíces de variação (M):</label>
                         <br></br>
                     <input id="indice-variacao-peso-acima" className="form-control" name="indice-variacao-peso-acima"
                      placeholder="Peso acima" />
@@ -174,11 +176,11 @@ function CriarAeronaves() {
                     <input id="padrao-velocidade-vap" className="form-control" name="padrao-velocidade-vap"
                     placeholder="Insira o padrão de velocidade para pouso" />
                     <br></br>
-                    <label>Indicar o padrão de variação da Vap:</label>
+                    <label>Indicar o padrão de variação da Vap (KM/H):</label>
                     <input id="padrao-variacao-vap" className="form-control" name="padrao-variacao-vap"
                     placeholder="Insira o padrão de variação do vap" />
                     <br></br>
-                    <label>Indicar os indíces de variação</label>
+                    <label>Indicar os indíces de variação (M)</label>
                     <input id="indice-variacao-vap" className="form-control" name="indice-variacao-vap"
                     placeholder="insira o indice de variação do vap" />
                 </div>
@@ -193,7 +195,7 @@ function CriarAeronaves() {
             </div>
             <div className="form-group col-lg-4-md col-md-6 col-sm-12">
                 <button className="rounded" type="submit" id="btn_registrar" name="submitButton">
-                    <a href="criar-aeronaves-2.html"><b>Cadastrar</b></a></button>                   
+                    <b>Cadastrar</b></button>                   
             </div>
         </div>
 
