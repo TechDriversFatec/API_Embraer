@@ -55,24 +55,18 @@ function PaginaInicial() {
     []
   );
 
-  useEffect(() => {
-    // Função para recuperar informações da API
-    axios.get("https://api.instantwebtools.net/v1/passenger?page=0&size=10")
-      .then((res) => {
-        // Pega e define os valores nas respectivas variáveis
-        const { data, totalPages, totalPassengers } = res.data
-        setData(data)
-        setTotalPages(totalPages)
-        setTotalPassengers(totalPassengers)
-      })
-  }, [])
 
+class PaginaInicial extends Component{
+    render(){
         return (
-
             <div className="App">
               <Table columns={columns} data={data} />
             </div>
           );
     }
+<<<<<<< HEAD
 
+=======
+ 
+>>>>>>> 88e989f060978d3f3069a3eed95001f90fadb24f
   export default PaginaInicial
