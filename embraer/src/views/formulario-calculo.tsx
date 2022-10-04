@@ -53,8 +53,7 @@ function Calculo() {
       <div>
         <h2>
           <i>
-            Para o cálculo de distância de pouso, favor inserir os dados
-            solicitados abaixo:
+            Calcular:
           </i>
         </h2>
       </div>
