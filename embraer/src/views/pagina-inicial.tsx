@@ -1,3 +1,4 @@
+/* eslint-disable @typescript-eslint/no-unused-expressions */
 import "../css/pagina-inicial.css";
 import "bootstrap/dist/css/bootstrap.min.css";
 import { Component } from "react"
@@ -5,11 +6,16 @@ import Table from 'react-bootstrap/Table';
 import PesquisarTabela from "./filtro";
 
 
+
 class PaginaInicial extends Component{
     render(){
         return (
             <div className="App">
+              <meta name="viewport" content="width=device-width, initial-scale=1.0"></meta>
               <div>
+                <header>
+                  <img src="" alt=""/>
+                </header>
                 <h2>
                     Gerenciar informações
                 </h2>
@@ -59,6 +65,7 @@ class PaginaInicial extends Component{
                 </button>
                 <input hidden placeholder="register" type="text" id="registrarAeronave"/>
               </div>
+              <footer><p>Todos os direitos reservados.</p></footer>
               <script src="../compile/build/app.js"></script>
             </div>
           );
@@ -67,5 +74,6 @@ class PaginaInicial extends Component{
     throw new Error("Method not implemented.");
   }
 }
+
   
 export default PaginaInicial;
