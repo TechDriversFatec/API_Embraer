@@ -1,7 +1,7 @@
 import React from "react";
 import { useTable } from "react-table";
 
-function Table ( columns: any, data: any ) {
+function Table( columns: any, data: any ) {
   // Utilizando o hook useTable e passando as colunas com os dados.
   // É retornado para a gente todas as informações necessárias para
   // montar a tabela.
@@ -47,5 +47,4 @@ function Table ( columns: any, data: any ) {
     </table>
   );
 }
-
 export default Table;
