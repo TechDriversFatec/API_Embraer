@@ -65,9 +65,9 @@ class PaginaInicial extends Component{
             </div>
           );
     }
-<<<<<<< HEAD
+  }
 
-=======
+}
  
->>>>>>> 88e989f060978d3f3069a3eed95001f90fadb24f
-  export default PaginaInicial
+  
+export default PaginaInicial
