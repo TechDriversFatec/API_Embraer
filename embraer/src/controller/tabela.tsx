@@ -1,51 +1,51 @@
-import React, { useState } from "react"
-import axios from "axios"
+import React from "react";
+import { useTable } from "react-table";
 
-function Tabela() {
-
-  // Array com os passageiros falsos da API
-  const [data: Date, setData] = useState(String)
-  // Número total de páginas
-  const [totalPages, setTotalPages] = useState(1)
-  // Número total de passageiros
-  const [totalPassengers, setTotalPassengers] = useState(1)
-
-    render(){
-        return (
-            <div>
-              <thead>
-                <tr>
-                  <th>Modelo</th>
-                  <th>Fabricante</th>
-                  <th>Motor</th>
-                  <th>Peso Referencial</th>
-                  <th>Quantidade de Reversores</th>
-                  <th>Ações</th>
-                </tr>
-              </thead>
-              <tbody>
-                
-                <tr>
-                  <td>E-195</td>
-                  <td>Embraer</td>
-                  <td>2x GR CF34-10E turbofans 82.3 kN</td>
-                  <td>28.970 kg</td>
-                  <td>5</td>
-                  <td>--</td>
-                </tr>
-                <tr>
-                  <td>E-190</td>
-                  <td>Embraer</td>
-                  <td>2x GR CF34-10E turbofans 82.3 kN</td>
-                  <td>28.080 kg</td>
-                  <td>5</td>
-                  <td>--</td>
-                </tr>
-              </tbody>
-            </div>
-        )
-    }
-              
+function Table ( columns: any, data: any ) {
+  // Utilizando o hook useTable e passando as colunas com os dados.
+  // É retornado para a gente todas as informações necessárias para
+  // montar a tabela.
+  const {
+    getTableProps, // propriedades da tabela
+    getTableBodyProps, // propriedades do corpo da tabela
+    headerGroups, // os valores de agrupamento de tabela, caso sua tabela use
+    rows, // linhas da tabela baseado nos dados e colunas
+    prepareRow // Prepara a linha (Essa função deve ser chamada para cada linha)
+  } = useTable({
+    columns,
+    data
+  });
+  /*
+    Aqui renderizamos a nossa tabela.
+    Como já sabemos, o React Table não possui nenhum comportamento visual, logo,
+    depende que a gente adicione os elementos e estilo.
+    O React Table vai ajudar a gente a controlar os estados e lógicas da tabela.
+  */
+  return (
+    <table {...getTableProps()}>
+      <thead>
+        {headerGroups.map(headerGroup => (
+          <tr {...headerGroup.getHeaderGroupProps()}>
+            {headerGroup.headers.map(column => (
+              <th {...column.getHeaderProps()}>{column.render("Header")}</th>
+            ))}
+          </tr>
+        ))}
+      </thead>
+      <tbody {...getTableBodyProps()}>
+        {rows.map((row, i) => {
+          prepareRow(row);
+          return (
+            <tr {...row.getRowProps()}>
+              {row.cells.map(cell => {
+                return <td {...cell.getCellProps()}>{cell.render("Cell")}</td>;
+              })}
+            </tr>
+          );
+        })}
+      </tbody>
+    </table>
+  );
 }
 
-export default Tabela
+export default Table;
