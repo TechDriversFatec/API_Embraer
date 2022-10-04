@@ -1,79 +1,77 @@
 /* eslint-disable @typescript-eslint/no-unused-expressions */
 import "../css/pagina-inicial.css";
 import "bootstrap/dist/css/bootstrap.min.css";
-import { Component } from "react"
-import Table from 'react-bootstrap/Table';
-import PesquisarTabela from "./filtro";
+import React, { useEffect, useMemo, useState } from "react"
+import Table from "../controller/tabela";
+import axios from "axios"
+ 
+function PaginaInicial() {
+ 
+  // Array com os passageiros falsos da API
+  const [data, setData] = useState()
+  // Número total de páginas
+  const [totalPages, setTotalPages] = useState(1)
+  // Número total de passageiros
+  const [totalPassengers, setTotalPassengers] = useState(1)
+  // Colunas da nossa tabela
+  const columns = useMemo(
+    () => [
+      {
+        // Primeiro grupo - Informações do passageiro
+        Header: "Informações do passageiro",
+        // Colunas do primeiro grupo
+        columns: [
+          {
+            Header: "Nome",
+            accessor: "name"
+          },
+          {
+            Header: "Viagens",
+            accessor: "trips"
+          }
+        ]
+      },
+      {
+        // Segundo grupo - Detalhes do vôo
+        Header: "Detalhes do vôo",
+        // Colunas do segundo grupo
+        columns: [
+          {
+            Header: "Nome",
+            accessor: "airline[0].name"
+          },
+          {
+            Header: "País",
+            accessor: "airline[0].country"
+          },
+          {
+            Header: "Slogan",
+            accessor: "airline[0].slogan"
+          }
+        ]
+      }
+    ],
+    []
+  );
 
-
-
-class PaginaInicial extends Component{
-    render(){
+  // Hook para fazer a primeira chamada do componente
+  useEffect(() => {
+    // Função para recuperar informações da API
+    axios.get("https://api.instantwebtools.net/v1/passenger?page=0&size=10")
+      .then((res) => {
+        // Pega e define os valores nas respectivas variáveis
+        const { data, totalPages, totalPassengers } = res.data
+        setData(data)
+        setTotalPages(totalPages)
+        setTotalPassengers(totalPassengers)
+      })
+  }, [])
+ 
         return (
             <div className="App">
-              <meta name="viewport" content="width=device-width, initial-scale=1.0"></meta>
-              <div>
-                <header>
-                  <img src="" alt=""/>
-                </header>
-                <h2>
-                    Gerenciar informações
-                </h2>
-              </div>
-              <PesquisarTabela/>
-              <div>
-              <Table bordered>
-              <thead>
-                <tr>
-                  <th>Modelo</th>
-                  <th>Fabricante</th>
-                  <th>Motor</th>
-                  <th>Peso Referencial</th>
-                  <th>Quantidade de Reversores</th>
-                  <th>Ações</th>
-                </tr>
-              </thead>
-              <tbody>
-                
-                <tr>
-                  <td>E-195</td>
-                  <td>Embraer</td>
-                  <td>2x GR CF34-10E turbofans 82.3 kN</td>
-                  <td>28.970 kg</td>
-                  <td>5</td>
-                  <td>--</td>
-                </tr>
-                <tr>
-                  <td>E-190</td>
-                  <td>Embraer</td>
-                  <td>2x GR CF34-10E turbofans 82.3 kN</td>
-                  <td>28.080 kg</td>
-                  <td>5</td>
-                  <td>--</td>
-                </tr>
-              </tbody>
-              </Table>
-              </div>
-              <div>
-                <button
-                  className="rounded"
-                  type="submit"
-                  id="btn_calcular"
-                  name="submitButton"
-                >
-                  <b>Registrar Aeronave</b>
-                </button>
-                <input hidden placeholder="register" type="text" id="registrarAeronave"/>
-              </div>
-              <footer><p>Todos os direitos reservados.</p></footer>
-              <script src="../compile/build/app.js"></script>
+              <Table columns={columns} data={data} />
             </div>
           );
     }
-  static filter(arg0: (val: any) => void): import("react").ReactNode {
-    throw new Error("Method not implemented.");
-  }
-}
-
-  
-export default PaginaInicial;
+ 
+  export default PaginaInicial

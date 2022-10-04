@@ -17,10 +17,10 @@ class Calcular {
         vref: number,
         velocidade: number,
         slope: number,
-        //flap: number,
+        flap: number,
         //frenagem: number,
         revInoperantes: number,
-        unidade: number
+        unidade: number,
     ) {
         let distanciaReferencia = 1026;
         let chao = 0;
@@ -104,15 +104,19 @@ class Calcular {
     
         }
 
+        let medida = "Metros"
+
+        console.log(unidade);
+        
         if(unidade === 1){
             distanciaReferencia = parseInt(metroPes(distanciaReferencia).toLocaleString())
+            medida = "Pés"
         }
 
         console.log("calculado");
         
         return Swal.fire({
-            icon: 'warning',
-            title: `Serão necessários ${distanciaReferencia} metros de pista para um pouso seguro`
+            title: `${distanciaReferencia} ${medida}`
         })
     }
 }
