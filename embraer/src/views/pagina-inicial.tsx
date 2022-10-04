@@ -1,36 +1,78 @@
 import "../css/pagina-inicial.css";
 import "bootstrap/dist/css/bootstrap.min.css";
-import { Component } from "react"
-import Table from 'react-bootstrap/Table';
-import PesquisarTabela from "../controller/filtro";
-import Tabela from "../controller/tabela";
+import React, { useEffect, useMemo, useState, Component } from "react"
+import Table from "../controller/tabela";
+import axios from "axios"
 
+function PaginaInicial() {
 
-class PaginaInicial extends Component{
-    render(){
+  // Array com os passageiros falsos da API
+  const [data, setData] = useState()
+  // Número total de páginas
+  const [totalPages, setTotalPages] = useState(1)
+  // Número total de passageiros
+  const [totalPassengers, setTotalPassengers] = useState(1)
+  // Hook para fazer a primeira chamada do componente
+
+  // Colunas da nossa tabela
+  const columns = useMemo(
+    () => [
+      {
+        // Primeiro grupo - Informações do passageiro
+        Header: "Informações do passageiro",
+        // Colunas do primeiro grupo
+        columns: [
+          {
+            Header: "Nome",
+            accessor: "name"
+          },
+          {
+            Header: "Viagens",
+            accessor: "trips"
+          }
+        ]
+      },
+      {
+        // Segundo grupo - Detalhes do vôo
+        Header: "Detalhes do vôo",
+        // Colunas do segundo grupo
+        columns: [
+          {
+            Header: "Nome",
+            accessor: "airline[0].name"
+          },
+          {
+            Header: "País",
+            accessor: "airline[0].country"
+          },
+          {
+            Header: "Slogan",
+            accessor: "airline[0].slogan"
+          }
+        ]
+      }
+    ],
+    []
+  );
+
+  useEffect(() => {
+    // Função para recuperar informações da API
+    axios.get("https://api.instantwebtools.net/v1/passenger?page=0&size=10")
+      .then((res) => {
+        // Pega e define os valores nas respectivas variáveis
+        const { data, totalPages, totalPassengers } = res.data
+        setData(data)
+        setTotalPages(totalPages)
+        setTotalPassengers(totalPassengers)
+      })
+  }, [])
+
         return (
+
             <div className="App">
-              <div>
-                <h2>
-                    Gerenciar informações
-                </h2>
-              </div>
-              <Tabela />
-              <div>
-                <button
-                  className="rounded"
-                  type="submit"
-                  id="btn_calcular"
-                  name="submitButton"
-                >
-                  <b>Registrar Aeronave</b>
-                </button>
-                <input hidden placeholder="register" type="text" id="registrarAeronave"/>
-              </div>
-              <script src="../compile/build/app.js"></script>
+              <Table columns={columns} data={data} />
             </div>
           );
     }
-  }
 
   export default PaginaInicial
