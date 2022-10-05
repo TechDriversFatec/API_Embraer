@@ -1,7 +1,36 @@
+header {
+    padding: 25px 0;
+    text-align: center;
+    background: rgb(221, 221, 220);
+    position: static;
+    width: 100%;
+  }
+
+/*header img {
+  width: 100px;
+  height: 13px;
+}*/
+
 .App {
     text-align: center;
     background-color: #282f55;
-  }
+    height: 100vh;
+}
+
+h2 {
+  padding-top: 20px;
+}
+
 thead, th, tr, td, tbody, h2{
     color: white
+}
+
+footer{
+  margin-top: 1rem;
+  padding: 1rem;
+  background-color: rgb(221, 221, 220);
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  width: 100%;
 }

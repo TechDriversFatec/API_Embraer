@@ -1,3 +1,4 @@
+/* eslint-disable @typescript-eslint/no-unused-expressions */
 import "../css/pagina-inicial.css";
 import "bootstrap/dist/css/bootstrap.min.css";
 import React, { useEffect, useMemo, useState, Component } from "react"
@@ -60,5 +61,14 @@ function PaginaInicial() {
             </div>
           );
     }
+<<<<<<< HEAD
  
   export default PaginaInicial
+=======
+  }
+
+}
+ 
+  
+export default PaginaInicial
+>>>>>>> f356ffd9d936d1d33ffdf94e76b153f0c571988c
