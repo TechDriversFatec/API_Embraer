@@ -1,50 +1,36 @@
-import React from "react";
-import { useTable } from "react-table";
-
-function Table( columns: any, data: any ) {
-  // Utilizando o hook useTable e passando as colunas com os dados.
-  // É retornado para a gente todas as informações necessárias para
-  // montar a tabela.
-  const {
-    getTableProps, // propriedades da tabela
-    getTableBodyProps, // propriedades do corpo da tabela
-    headerGroups, // os valores de agrupamento de tabela, caso sua tabela use
-    rows, // linhas da tabela baseado nos dados e colunas
-    prepareRow // Prepara a linha (Essa função deve ser chamada para cada linha)
-  } = useTable({
-    columns,
-    data
-  });
-  /*
-    Aqui renderizamos a nossa tabela.
-    Como já sabemos, o React Table não possui nenhum comportamento visual, logo,
-    depende que a gente adicione os elementos e estilo.
-    O React Table vai ajudar a gente a controlar os estados e lógicas da tabela.
-  */
+function Table() {
+  
   return (
-    <table {...getTableProps()}>
-      <thead>
-        {headerGroups.map(headerGroup => (
-          <tr {...headerGroup.getHeaderGroupProps()}>
-            {headerGroup.headers.map(column => (
-              <th {...column.getHeaderProps()}>{column.render("Header")}</th>
-            ))}
-          </tr>
-        ))}
-      </thead>
-      <tbody {...getTableBodyProps()}>
-        {rows.map((row, i) => {
-          prepareRow(row);
-          return (
-            <tr {...row.getRowProps()}>
-              {row.cells.map(cell => {
-                return <td {...cell.getCellProps()}>{cell.render("Cell")}</td>;
-              })}
-            </tr>
-          );
-        })}
-      </tbody>
-    </table>
+    <table className="table table-striped table-dark">
+  <thead>
+    <tr>
+      <th scope="col">#</th>
+      <th scope="col">First</th>
+      <th scope="col">Last</th>
+      <th scope="col">Handle</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th scope="row">1</th>
+      <td>Mark</td>
+      <td>Otto</td>
+      <td>@mdo</td>
+    </tr>
+    <tr>
+      <th scope="row">2</th>
+      <td>Jacob</td>
+      <td>Thornton</td>
+      <td>@fat</td>
+    </tr>
+    <tr>
+      <th scope="row">3</th>
+      <td>Larry</td>
+      <td>the Bird</td>
+      <td>@twitter</td>
+    </tr>
+  </tbody>
+</table>
   );
 }
 export default Table;

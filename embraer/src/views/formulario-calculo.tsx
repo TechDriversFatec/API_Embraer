@@ -48,6 +48,8 @@ function Calculo() {
   const [Rev, setRev] = useState(String)
   const [unidade, setUnidade] = useState(String)
 
+  
+
   return (
     <div className="App">
       <div>
@@ -200,7 +202,7 @@ function Calculo() {
                 //value={Rev}
                 //onChange={(e) => setRev(e.target.value)}
               />
-              {errors.revInoperantes && <small id="erro">Valor inválido para os reversores</small>}
+              {errors.revInoperantes && <small id="erro">Valor inválido para os reversores</small>}''
             </div>
             <div className="form-group col-lg-4 col-md-6 col-sm-12"></div>
             <div className="form-group col-lg-4 col-md-6 col-sm-12">
