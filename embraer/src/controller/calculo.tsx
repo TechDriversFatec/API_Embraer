@@ -1,10 +1,3 @@
-//var metroPes = function(
-//    dist
-//){
-//    dist = dist * 3.28084
-//    return dist.toFixed(2).replace('.',',')
-//}
-
 import Swal from "sweetalert2";
 
 class Calcular {
@@ -105,8 +98,6 @@ class Calcular {
         }
 
         let medida = "Metros"
-
-        console.log(unidade);
         
         if(unidade === 1){
             distanciaReferencia = parseInt(metroPes(distanciaReferencia).toLocaleString())

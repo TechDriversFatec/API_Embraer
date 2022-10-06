@@ -25,7 +25,7 @@ function Calculo() {
     shouldUseNativeValidation: true
   });
   const calcular = new Calcular()
-  const onSubmit: SubmitHandler<IFormInput> = data => calcular.calcularPouso(
+  const onSubmit: SubmitHandler<IFormInput> = () => calcular.calcularPouso(
     parseInt(Peso), 
     parseInt(Altitude), 
     parseInt(Temperatura), 
@@ -68,7 +68,7 @@ function Calculo() {
                 {...register("peso", {min: 40000, max: 80000})}
                 type="teld"
                 placeholder="Insira o peso da aeronave:"
-                value={Peso}
+                //value={Peso}
                 onChange={(e) => setPeso(e.target.value)}
               />
               {errors.peso && <small id="erro">Peso só pode ser entre 40000 e 80000</small>}
@@ -81,7 +81,7 @@ function Calculo() {
                 type="tel"
                 {...register("altitude", {min: 0, max: 13000})}
                 placeholder="Insira a altitude:"
-                value={Altitude}
+                //value={Altitude}
                 onChange={(e) => setAltitude(e.target.value)}
               />
               {errors.altitude && <small id="erro">Valor de altura inválida</small>}
@@ -94,7 +94,7 @@ function Calculo() {
                 {...register("temperatura", {min: -2, max: 2})}
                 type="tel"
                 placeholder="Insira a temperatura:"
-                value={Temperatura}
+                //value={Temperatura}
                 onChange={(e) => setTemperatura(e.target.value)}
               />
               {errors.temperatura && <small id="erro">Valor inválido para a temperatura</small>}
@@ -109,8 +109,8 @@ function Calculo() {
                 type="tel"
                 {...register("valorVento", {min: -100, max: 100})}
                 placeholder="Insira o vento de Cauda/Proa:"
-                value={Vento}
-                onChange={(e) => setVento(e.target.value)}
+                //value={Vento}
+                //onChange={(e) => setVento(e.target.value)}
               />
               {errors.valorVento && <small id="erro">Valor inválido para o vento</small>}
             </div>
@@ -122,8 +122,8 @@ function Calculo() {
                 type="tel"
                 {...register("vref", {min:700, max: 1000 })}
                 placeholder="Insira a velocidade de referência:"
-                value={VRef}
-                onChange={(e) => setVRef(e.target.value)}
+                //value={VRef}
+                //onChange={(e) => setVRef(e.target.value)}
               />
               {errors.vref && <small id="erro">Valor inválido para a velocidade de referência</small>}
             </div>
@@ -135,8 +135,8 @@ function Calculo() {
                 type="tel"
                 {...register("velocidadeAeronave", {min: 700, max: 1000})}
                 placeholder="Insira a velocidade:"
-                value={VelocidadeAeronave}
-                onChange={(e) => setVelocidadeAeronave(e.target.value)}
+                //value={VelocidadeAeronave}
+                //onChange={(e) => setVelocidadeAeronave(e.target.value)}
               />
               {errors.velocidadeAeronave && <small id="erro">valor inválido para a velocidade da aeronave</small>}
             </div>
@@ -150,8 +150,8 @@ function Calculo() {
                 {...register("slope", {min: -2, max: 2})}
                 type="tel"
                 placeholder="Insira o slope:"
-                value={Slope}
-                onChange={(e) => setSlope(e.target.value)}
+                //value={Slope}
+                //onChange={(e) => setSlope(e.target.value)}
               />
               {errors.slope && <small id="erro">Valor inválido para o slope</small>}
             </div>
@@ -163,8 +163,8 @@ function Calculo() {
                 type="tel"
                 name="flap"
                 placeholder="Valor para o flap:"
-                value={Flap}
-                onChange={(e) => setFlap(e.target.value)}
+                //value={Flap}
+                //onChange={(e) => setFlap(e.target.value)}
               />
               <small></small>
             </div>
@@ -197,8 +197,8 @@ function Calculo() {
                 type="tel"
                 {...register("revInoperantes", {min: 0, max: 5})}
                 placeholder="Insira a quantidade de reversores inoperantes:"
-                value={Rev}
-                onChange={(e) => setRev(e.target.value)}
+                //value={Rev}
+                //onChange={(e) => setRev(e.target.value)}
               />
               {errors.revInoperantes && <small id="erro">Valor inválido para os reversores</small>}
             </div>

@@ -55,18 +55,11 @@ function PaginaInicial() {
     []
   );
 
-
-class PaginaInicial extends Component{
-    render(){
         return (
             <div className="App">
               <Table columns={columns} data={data} />
             </div>
           );
-    }
-<<<<<<< HEAD
-
-=======
- 
->>>>>>> 88e989f060978d3f3069a3eed95001f90fadb24f
-  export default PaginaInicial
+        }
+    
+    export default PaginaInicial
