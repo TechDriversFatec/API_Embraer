@@ -1,3 +1,4 @@
+/* eslint-disable @typescript-eslint/no-unused-expressions */
 import "../css/pagina-inicial.css";
 import "bootstrap/dist/css/bootstrap.min.css";
 import React, { useEffect, useMemo, useState, Component } from "react"
