@@ -1,6 +1,6 @@
 import React from "react";
 import logo from "./logo.svg";
-import "./CriarAeronaves.css";
+import "./css/CriarAeronaves.css";
 import "bootstrap/dist/css/bootstrap.min.css";
 
 function CriarAeronaves() {

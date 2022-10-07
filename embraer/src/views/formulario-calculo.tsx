@@ -148,7 +148,7 @@ function Calculo() {
                 <div className="row">
                 <h4 id="h3AirplaneConfig">Landing Configurations</h4>
                   <div className="form-group col-lg-4 col-md-6 col-sm-12 sucess">
-                    <label>Peso da aeronave em Kg:</label>
+                    <label>Landing Weight (Kg):</label>
                     <input
                       id="peso-aeronave"
                       className="form-control"
@@ -161,7 +161,7 @@ function Calculo() {
                     {errors.peso && <small id="erro">Peso só pode ser entre 40000 e 80000</small>}
                   </div>
                   <div className="form-group col-lg-4 col-md-6 col-sm-12">
-                    <label>Altitude da aeronave em M:</label>
+                    <label>Aircraft Altitude (Ft):</label>
                     <input
                       id="altitude-aeronave"
                       className="form-control"
@@ -174,7 +174,7 @@ function Calculo() {
                     {errors.altitude && <small id="erro">Valor de altura inválida</small>}
                   </div>
                   <div className="form-group col-lg-4 col-md-6 col-sm-12">
-                    <label>Temperatura em °C:</label>
+                    <label>Temperature ISA (°C):</label>
                     <input
                       id="temperatura"
                       className="form-control"
@@ -189,7 +189,7 @@ function Calculo() {
 
                   <div className="row">
                     <div className="form-group col-lg-4 col-md-6 col-sm-12">
-                      <label>Vento em Kt:</label>
+                      <label>Wind (Kt):</label>
                       <input
                         id="valorVento"
                         className="form-control"
@@ -201,7 +201,18 @@ function Calculo() {
                       />
                       {errors.valorVento && <small id="erro">Valor inválido para o vento</small>}
                     </div>
-                    <div className="form-group col-lg-4 col-md-6 col-sm-12">
+                    <div className="form-group col-lg-4 col-md-6 col-sm-12 sucess">
+                    <label>Vap Overspeed (Kt):</label>
+                    <input
+                      id="vap-aeronave"
+                      className="form-control"
+                      type="tel"
+                      placeholder="Insira o vap:"
+                      //value={Peso}
+                      // onChange={(e) => setPeso(e.target.value)}
+                    />
+                  </div>
+                    {/* <div className="form-group col-lg-4 col-md-6 col-sm-12">
                       <label>Velocidade de Referência em Km/h:</label>
                       <input
                         id="vref"
@@ -226,7 +237,7 @@ function Calculo() {
                       //onChange={(e) => setVelocidadeAeronave(e.target.value)}
                       />
                       {errors.velocidadeAeronave && <small id="erro">valor inválido para a velocidade da aeronave</small>}
-                    </div>
+                    </div> */}
                   </div>
                   <div className="row">
                     <div className="form-group col-lg-4 col-md-6 col-sm-12">
