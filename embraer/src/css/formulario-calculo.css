@@ -64,3 +64,27 @@ h2{
     transform: rotate(360deg);
   }
 }
+
+.select{
+  -o-appearance: menulist !important;
+  -moz-appearance: menulist !important;
+  -webkit-appearance: menulist !important;
+  appearance: menulist !important;
+}
+
+#logoAviaozinho{
+  width: 40px;
+  height: 40px;
+}
+
+#h3Calcular{
+  text-align: left;
+}
+
+#h3AirplaneConfig{
+  text-align: left;
+}
+
+.card-header, .card-footer{
+  background-color: white;
+}
