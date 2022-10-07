@@ -1,6 +1,9 @@
 <br id="topo">
 
-<h1 align="center">TechDrivers - FATEC São José dos Campos - Prof. Jessen Vidal</h1>
+<img align="right" src="Planejamento/Imagens/fatecsjc_400x192.png" alt="logo-fatec-sjc" width="20%" height="20%">
+
+<h1 align="left">TechDrivers</h1>
+
 
 ### Índice
 * <a href="#sobre">Sobre</a><br>
@@ -21,7 +24,7 @@
 | Sprint | Entrega	| Status | Histórico |
 | :-----: | :-----: | :-----: | :-----: |
 | 01 | 18/09/2022 | Concluída | [Ver Relatório](https://github.com/TechDriversFatec/API_Embraer/tree/main/Planejamento/Sprint-1) |
-| 02 | 09/10/2022 | Em andamento | [Em breve] |
+| 02 | 09/10/2022 | Em andamento | [Ver Relatório](https://github.com/TechDriversFatec/API_Embraer/tree/main/Planejamento/Sprint-2) |
 | 03 | 06/11/2022 | Pendente | [Em breve] |
 | 04 | 27/11/2022 | Pendente | [Em breve] |
   
@@ -46,7 +49,14 @@
   <br><br>
   <img src="Planejamento/Imagens/Sprint_2.jpg" alt="Backlog da 1a e 2a Sprint" width="100%" height="100%">
   </p>
-
+ 
+ ### Backlog Priorizado
+ 
+  <p align="center">
+  <img src="Planejamento/Imagens/Backlog-Priorizado.jpg" alt="Backlog organizado a partir da prioridade de cada tarefa" width="60%" height="60%">
+  </p>
+ 
+ 
  → [Voltar ao topo](#topo)
  
  <span id="user">
@@ -115,3 +125,4 @@ Para melhor visualização do protótipo, acesse o [link](https://www.figma.com/
 |   Dev Team   | Renan Vitor Fernandes Mendonça  |  [![GitHub Badge](https://img.shields.io/badge/GitHub-111217?style=flat-square&logo=github&logoColor=white)](https://github.com/RenanVitor)        | [![Linkedin Badge](https://img.shields.io/badge/Linkedin-blue?style=flat-square&logo=Linkedin&logoColor=white)](https://www.linkedin.com/in/renan-vitor/)            |
 
  → [Voltar ao topo](#topo)
+

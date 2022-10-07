@@ -1,7 +1,19 @@
 .App {
-    text-align: center;
-    background-color: #282f55;
-  }
-thead, th, tr, td, tbody, h2{
-    color: white
+  background-color: #282f55;
+  padding: 25px;
+  height: 100vh;
+  text-align: center;
+}
+h2 {
+  padding-top: 20px;
+}
+
+footer{
+  margin-top: 1rem;
+  padding: 1rem;
+  background-color: rgb(221, 221, 220);
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  width: 100%;
 }

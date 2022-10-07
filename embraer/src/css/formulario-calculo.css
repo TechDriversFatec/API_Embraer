@@ -7,13 +7,16 @@
 }
 
 .App {
-  text-align: center;
   background-color: #282f55;
   padding: 25px;
+  height: 100vh;
+  text-align: center;
 }
+
 .container-fluid{
   margin: 25px;
   background-color: #0b113b;
+  padding: 10%;
 }
 .rounded{
   padding: 7px;
@@ -22,8 +25,10 @@
 label, i{
   color: #FFFFFF;
 }
-div{
-  padding: 10px;
+
+h2{
+  color: #FFFFFF;
+  text-align: left;
 }
 
 /* #peso-aeronave, #altitude-aeronave, #temperatura, #valorVento, #vref, #velocidade-aeronave, #slope, #flap, #rev-inoperantes{
@@ -58,4 +63,28 @@ div{
   to {
     transform: rotate(360deg);
   }
+}
+
+.select{
+  -o-appearance: menulist !important;
+  -moz-appearance: menulist !important;
+  -webkit-appearance: menulist !important;
+  appearance: menulist !important;
+}
+
+#logoAviaozinho{
+  width: 40px;
+  height: 40px;
+}
+
+#h3Calcular{
+  text-align: left;
+}
+
+#h3AirplaneConfig{
+  text-align: left;
+}
+
+.card-header, .card-footer{
+  background-color: white;
 }

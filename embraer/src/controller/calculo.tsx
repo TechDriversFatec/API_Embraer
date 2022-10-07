@@ -1,10 +1,3 @@
-//var metroPes = function(
-//    dist
-//){
-//    dist = dist * 3.28084
-//    return dist.toFixed(2).replace('.',',')
-//}
-
 import Swal from "sweetalert2";
 
 class Calcular {
@@ -17,10 +10,10 @@ class Calcular {
         vref: number,
         velocidade: number,
         slope: number,
-        //flap: number,
+        flap: number,
         //frenagem: number,
         revInoperantes: number,
-        unidade: number
+        unidade: number,
     ) {
         let distanciaReferencia = 1026;
         let chao = 0;
@@ -104,14 +97,17 @@ class Calcular {
     
         }
 
+        let medida = "Metros"
+        
         if(unidade === 1){
             distanciaReferencia = parseInt(metroPes(distanciaReferencia).toLocaleString())
+            medida = "Pés"
         }
 
         console.log("calculado");
         
         return Swal.fire({
-            title: `${distanciaReferencia} metros`
+            title: `${distanciaReferencia} ${medida}`
         })
     }
 }
