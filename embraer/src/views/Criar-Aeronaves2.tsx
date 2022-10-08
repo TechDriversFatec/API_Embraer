@@ -54,14 +54,14 @@ function CriarAeronaves() {
             correcao_sobrepeso: values.correcao_sobrepeso
         });
         Swal.fire({
-            text: 'Cadastro realizado com sucesso!',
+            text: 'Aircraft registered successfully!',
           })
     };
   
   return (
     <div className="CriarAeronaves">
         <div>
-            <h2><i>For the aircraft registration, please insert the data below:</i></h2>
+            <h2><i>Aircraft Registration:</i></h2>
         </div>
         <form id="form_criar_aeronave">
             <div className="container-fluid">
@@ -90,7 +90,7 @@ function CriarAeronaves() {
                 </div>
                 <div className="row">
                     <div className="form-group col-lg-4-md col-md-6 col-sm-12">
-                        <label>Flap</label>
+                        <label>Flap:</label>
                         <input id="tipo_flap" className="form-control"  name="tipo_flap"
                         placeholder="Insert the aircraft flap:" onChange={handleChangeValues}/>
                     </div>
@@ -125,7 +125,7 @@ function CriarAeronaves() {
                         <input id="distancia_referencial" className="form-control" type="tel" name="distancia_referencial" placeholder="Ref distance for flap:" onChange={handleChangeValues}/>
                     </div>
                     <div className="form-group col-lg-4-md col-md-6 col-sm-12">
-                        <label>ref weight (Kg):</label>
+                        <label>Ref weight (Kg):</label>
                         <input id="peso_referencial" className="form-control" type="tel" name="peso_referencial"
                             placeholder="Insert the aircraft ref weight:" onChange={handleChangeValues}/>
                     </div>
@@ -134,7 +134,7 @@ function CriarAeronaves() {
                 </div>
                 <div className="row">
                 <div className="form-group col-lg-4-md col-md-6 col-sm-12">
-                    <label id="label-peso">weight:</label>
+                    <label id="label-peso">Weight:</label>
                     <label>Indicate the weight variation pattern for comparison (Kg):</label>
                     <br></br>
                     <input id="padrao_variacao_peso" className="form-control" name="padrao_variacao_peso" onChange={handleChangeValues}/>
@@ -233,7 +233,7 @@ function CriarAeronaves() {
                     <input id="padrao_variacao_velocidade" className="form-control" name="padrao_variacao_velocidade"
                     placeholder="Indicate the Vap variation pattern" onChange={handleChangeValues}/>
                     <br></br>
-                    <label>Insert the variation index (m)</label>
+                    <label>Insert the variation index (m):</label>
                     <input id="correcao_velocidade" className="form-control" name="correcao_velocidade"
                     placeholder="Insert the vap variation index" onChange={handleChangeValues}/>
                 </div>
