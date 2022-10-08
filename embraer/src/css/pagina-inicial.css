@@ -17,6 +17,16 @@ h3{
   text-align: left;
 }
 
+thead, th, tr, td, tbody, h2{
+  color: rgb(0, 0, 0)
+}
+
+a{
+  margin-left: 1rem;
+  margin-right: 1rem;
+  float: right;
+}
+
 footer{
   margin-top: 1rem;
   padding: 1rem;

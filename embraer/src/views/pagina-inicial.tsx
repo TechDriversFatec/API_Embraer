@@ -35,14 +35,16 @@ function PaginaInicial() {
 
           <div className="card-footer w-100 float-right">
 
-            <input
+            <a
               className="rounded btn btn-primary ml-2 float-right"
-              type="submit"
-              id="btn_calcular"
-              name="submitButton"
-              value="calcular"
-            >
-            </input>
+              href="http://localhost:3000/Calculo"
+            >Calcular
+            </a>
+            <a
+              className="rounded btn btn-primary ml-2 float-right"
+              href="http://localhost:3000/Criar"
+            >Criar aeronave
+            </a>
           </div>
         </div>
 
