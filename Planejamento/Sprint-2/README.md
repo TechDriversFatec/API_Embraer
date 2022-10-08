@@ -62,7 +62,7 @@ Para dar continuidade ao projeto, os integrantes da equipe analisaram e optaram 
 
 # 🖥 Aplicação
   
-<p align="justify">Com as informações iniciais bem definidas e a devida aprovação dos protótipos, foi validado como entrega da primeira sprint o formulário de cálculo e a lógica desse cálculo. Assim, a equipe iniciou o desenvolvimento da aplicação com a parte do front-end, utilizando as ferramentas HTML, CSS e JavaScript. Paralelamente a isso, a equipe estruturou o banco de dados a partir do My SQL. Esse banco de dados será incorporado à aplicação a partir da segunda sprint. Por fim, foi elaborada a estrutura lógica do cálculo, na linguagem TypeScript, que foi conectada ao front-end.</p>
+<p align="justify">A partir do feedback colhido na primeira sprint, foi validado como entrega da segunda sprint as alterações nos campos do formulário de cálculo, a criação da tela inicial com filtro, o CRUD dos dados, a adaptação do modal de exibição do resultado dos cálculos e a definição de validadores para os campos do formulário de cálculo. Assim, a equipe deu contuidade ao desenvolvimento da aplicação integrando o front-end e o back-end por meio da biblioteca React. Paralelamente a isso, a equipe realizou o CRUD a partir do My SQL, e esse banco de dados já está integrado à aplicação.</p>
   
 
 
@@ -79,13 +79,14 @@ https://user-images.githubusercontent.com/86115352/190877717-99d6b5cd-bbb0-4e68-
   
 <p align="justify">O gráfico de Burndown é um método usado para acompanhar o andamento da sprint muito comum nas metodologias ágeis. Ele possui a vantagem de permitir a rápida visualização do progresso das atividades por todo o time de desenvolvimento, sem necessariamente entrar nas histórias de usuário.<br>
 <br>
-Neste gráfico de Burndown foi retratada a divisão da equipe em três times: um responsável pela estruturação do banco de dados, outro responsável pelo desenvolvimento do front-end (parte visual da aplicação) e o terceiro responsável pelo back-end (parte lógica da aplicação).<br>
-<br>
-Foram necessárias pesquisas e estudos pontuais para a realização das tarefas, considerando que foram empregadas ferramentas e tecnologias novas.<br>
+Neste gráfico de Burndown foi retratad o tempo empregado no desenvolvimento das atividades propostas e validadas junto ao cliente, bem como o tempo dedicado às pesquisas e estudos necessários para a realização das tarefas.<br>
 </p>
 
+<br>
 <p align="center">
-<img src="Imagens/burndown_prov.jpg" alt="Gráfico de Burndown representando as atividades desenvolvidas na segunda sprint" width="80%" height="80%">
+<img src="Imagens/burndown_2.jpg" alt="Gráfico de Burndown representando as atividades desenvolvidas na segunda sprint" width="80%" height="80%">
+<br>
+<img src="Imagens/Atividades-2.jpg" alt="Descrição das atividades desenvolvidas na segunda sprint" width="80%" height="100%">
 </p>
 
 → [Voltar ao topo](#topo)
