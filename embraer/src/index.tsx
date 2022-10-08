@@ -12,7 +12,11 @@ const root = ReactDOM.createRoot(
 );
 root.render(
   <React.StrictMode>
+<<<<<<< HEAD
     <App />
+=======
+    <CriarAeronaves />
+>>>>>>> 237bdef0d7f318efb7b556533012fde66b9cdeb3
   </React.StrictMode>
 );
 

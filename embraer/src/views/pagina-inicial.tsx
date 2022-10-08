@@ -38,9 +38,22 @@ function PaginaInicial() {
 
           <div className="card-footer w-100 float-right">
 
+<<<<<<< HEAD
           <button title="btnTelaCalc" className="btn btn-primary" onClick={() => {
           history('/Calculo');
           }}>Calculation</button>
+=======
+            <a
+              className="rounded btn btn-primary ml-2 float-right"
+              href="http://localhost:3000/Calculo"
+            >Calculate
+            </a>
+            <a
+              className="rounded btn btn-primary ml-2 float-right"
+              href="http://localhost:3000/Criar"
+            >Add Aircraft
+            </a>
+>>>>>>> 237bdef0d7f318efb7b556533012fde66b9cdeb3
           </div>
         </div>
         <footer>Todos os direitos reservados.</footer>
