@@ -3,8 +3,11 @@ import "../css/pagina-inicial.css";
 import "bootstrap/dist/css/bootstrap.min.css";
 import Table from "../controller/tabela";
 import { Container } from "react-bootstrap";
+import { useNavigate } from 'react-router-dom';
 
 function PaginaInicial() {
+  const history = useNavigate();
+  
   return (
       <div className="App">
         <div>
@@ -18,7 +21,11 @@ function PaginaInicial() {
         <Container>
         <Table />
         </Container>
-        
+        <div>
+          <button title="btnTelaCalc" className="btn btn-primary" onClick={() => {
+          history('/Calculo');
+          }}>Cálculo</button>
+        </div>
         <footer>Todos os direitos reservados.</footer>
       </div>
   );

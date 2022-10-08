@@ -3,6 +3,7 @@ import "bootstrap/dist/css/bootstrap.min.css";
 import React, { useState } from "react";
 import { SubmitHandler, useForm } from "react-hook-form"
 import Calcular from "../controller/calculo";
+import { useNavigate } from 'react-router-dom';
 
 interface IFormInput {
   peso: number;
@@ -48,7 +49,7 @@ function Calculo() {
   const [Rev, setRev] = useState(String)
   const [unidade, setUnidade] = useState(String)
 
-  
+  const history = useNavigate();
 
   return (
     <div className="App">
@@ -148,7 +149,7 @@ function Calculo() {
 
               <li className="list-group-item">
                 <div className="row">
-                <h4 id="h3AirplaneConfig">Landing Configurations</h4>
+                  <h4 id="h3AirplaneConfig">Landing Configurations</h4>
                   <div className="form-group col-lg-4 col-md-6 col-sm-12 sucess">
                     <label>Landing Weight (Kg):</label>
                     <input
@@ -204,16 +205,16 @@ function Calculo() {
                       {errors.valorVento && <small id="erro">Valor inválido para o vento</small>}
                     </div>
                     <div className="form-group col-lg-4 col-md-6 col-sm-12 sucess">
-                    <label>Vap Overspeed (Kt):</label>
-                    <input
-                      id="vap-aeronave"
-                      className="form-control"
-                      type="tel"
-                      placeholder="Insira o vap:"
+                      <label>Vap Overspeed (Ft):</label>
+                      <input
+                        id="vap-aeronave"
+                        className="form-control"
+                        type="tel"
+                        placeholder="Insira o vap:"
                       //value={Peso}
                       // onChange={(e) => setPeso(e.target.value)}
-                    />
-                  </div>
+                      />
+                    </div>
                     {/* <div className="form-group col-lg-4 col-md-6 col-sm-12">
                       <label>Velocidade de Referência em Km/h:</label>
                       <input
@@ -291,8 +292,12 @@ function Calculo() {
 
           <div className="card-footer w-100 float-right">
 
+            <button title="btnVoltar" id="btnVoltar" className="btn btn-primary float-start" onClick={() => {
+              history('/')
+            }}>Voltar</button>
+
             <input
-              className="rounded btn btn-primary ml-2 float-right"
+              className="rounded btn btn-primary ml-2 float-end"
               type="submit"
               id="btn_calcular"
               name="submitButton"
