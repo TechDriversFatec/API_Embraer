@@ -1,7 +1,7 @@
 import React, { useState } from "react";
 import Axios from "axios";
 import logo from "./logo.svg";
-import "../css/CriarAeronaves.css";
+import "../css/CriarAeronaves2.css";
 import "bootstrap/dist/css/bootstrap.min.css";
 import { ModuleResolutionKind } from "typescript";
 import { monitorEventLoopDelay } from "perf_hooks";
@@ -61,43 +61,43 @@ function CriarAeronaves() {
   return (
     <div className="CriarAeronaves">
         <div>
-            <h2><i>Cadastre a Aeronave:</i></h2>
+            <h2><i>For the aircraft registration, please insert the data below:</i></h2>
         </div>
         <form id="form_criar_aeronave">
             <div className="container-fluid">
                 <div className="row">
                     <div className="form-group col-lg-4-md col-md-6 col-sm-12">
-                        <label>Modelo da aeronave:</label>
-                        <input id="modelo" className="form-control" name="modelo" placeholder="Insira o modelo da aeronave:" onChange={handleChangeValues} />
+                        <label>Aircraft model:</label>
+                        <input id="modelo" className="form-control" name="modelo" placeholder="Insert the aircraft model:" onChange={handleChangeValues} />
                     </div>
                     <div className="form-group col-lg-4-md col-md-6 col-sm-12">
                         <label>Motor:</label>
                         <input id="motor" className="form-control" name="motor"
-                        placeholder="Insira o motor da aeronave:" onChange={handleChangeValues}/>
+                        placeholder="Insert the aircraft motor:" onChange={handleChangeValues}/>
                     </div>
                 </div>
                 <div className="row">
                     <div className="form-group col-lg-4-md col-md-6 col-sm-12">
-                        <label>Fabricante:</label>
+                        <label>Manufacturer:</label>
                         <input id="fabricante" className="form-control" name="fabricante"
-                            placeholder="Insira o fabricante da aeronave:" onChange={handleChangeValues}/>
+                            placeholder="Insert the aircraft manufacturer:" onChange={handleChangeValues}/>
                     </div>
                     <div className="form-group col-lg-4-md col-md-6 col-sm-12">
-                        <label>Certificação:</label>
+                        <label>Certification:</label>
                         <input id="certificacao" className="form-control" name="certificacao"
-                            placeholder="Insira a certificação da Aeronave:" onChange={handleChangeValues}/>
+                            placeholder="Insert the aircraft certification:" onChange={handleChangeValues}/>
                     </div>
                 </div>
                 <div className="row">
                     <div className="form-group col-lg-4-md col-md-6 col-sm-12">
                         <label>Flap</label>
                         <input id="tipo_flap" className="form-control"  name="tipo_flap"
-                        placeholder="Insira o tipo do flap:" onChange={handleChangeValues}/>
+                        placeholder="Insert the aircraft flap:" onChange={handleChangeValues}/>
                     </div>
                     <div className="form-group col-lg-4-md col-md-6 col-sm-12">
-                        <label>Configuração de frenagem:</label>
+                        <label>Brake config:</label>
                         <select id="configuracao_freio" className="form-control" name="configuracao_freio" onChange={handleChangeValues}>
-                            <option value="" selected disabled>Selecione</option>
+                            <option value="" selected disabled>Select</option>
                             <option value="Max. Manual">Max. Manual</option>
                             <option value="High">High</option>
                             <option value="Medium">Medium</option>
@@ -107,135 +107,135 @@ function CriarAeronaves() {
                 </div>
                 <div className="row">
                     <div className="form-group col-lg-4-md col-md-6 col-sm-12">
-                            <label>Quantos reversores a aeronave possuí?</label>
+                            <label>How many reversers does the aircraft have?</label>
                             <input id="qtde_reversor" className="form-control" name="qtde_reversor"
-                            placeholder="Número de reversores:" onChange={handleChangeValues}/>
+                            placeholder="Number of reversers:" onChange={handleChangeValues}/>
                     </div>
                     <div className="form-group col-lg-4-md col-md-6 col-sm-12">
-                        <label>Índice de correção (m):</label>
+                        <label>Correction index (m):</label>
                         <input id="correcao_reversor_inoperante" className="form-control" name="correcao_reversor_inoperante"
-                        placeholder="Por rev inoperante:" onChange={handleChangeValues}/>
+                        placeholder="Per rev inoperative:" onChange={handleChangeValues}/>
                     </div>
                 </div>
                 <div className="row">
 
 
                     <div className="form-group col-lg-4-md col-md-6 col-sm-12">
-                        <label>Distância ref para o Flap (m):</label>
-                        <input id="distancia_referencial" className="form-control" type="tel" name="distancia_referencial" placeholder="Distância referencial para o flap:" onChange={handleChangeValues}/>
+                        <label>Ref distance for flap (m):</label>
+                        <input id="distancia_referencial" className="form-control" type="tel" name="distancia_referencial" placeholder="Ref distance for flap:" onChange={handleChangeValues}/>
                     </div>
                     <div className="form-group col-lg-4-md col-md-6 col-sm-12">
-                        <label>Peso referencial (Kg):</label>
+                        <label>ref weight (Kg):</label>
                         <input id="peso_referencial" className="form-control" type="tel" name="peso_referencial"
-                            placeholder="Insira o peso referencial da aeronave:" onChange={handleChangeValues}/>
+                            placeholder="Insert the aircraft ref weight:" onChange={handleChangeValues}/>
                     </div>
                     <div className="form-group col-lg-4-md col-md-6 col-sm-12"></div>
 
                 </div>
                 <div className="row">
                 <div className="form-group col-lg-4-md col-md-6 col-sm-12">
-                    <label id="label-peso">Peso:</label>
-                    <label>Indicar o padrão de variação do peso para comparação (Kg):</label>
+                    <label id="label-peso">weight:</label>
+                    <label>Indicate the weight variation pattern for comparison (Kg):</label>
                     <br></br>
                     <input id="padrao_variacao_peso" className="form-control" name="padrao_variacao_peso" onChange={handleChangeValues}/>
                     <br></br>
-                    <label>Indicar os indíces de variação da metragem (m):</label>
+                    <label>Insert the variation index (m):</label>
                     <br></br>
                     <input id="correcao_peso_acima" className="form-control" name="correcao_peso_acima"
-                     placeholder="Acima" onChange={handleChangeValues}></input>
+                     placeholder="Above" onChange={handleChangeValues}></input>
                      <br></br>
                     <input id="correcao_peso_abaixo" className="form-control" name="correcao_peso_abaixo"
-                    placeholder="Abaixo" onChange={handleChangeValues}></input>
+                    placeholder="Below" onChange={handleChangeValues}></input>
                 </div>
                 <div className="form-group col-lg-4-md col-md-6 col-sm-12">
-                    <label id="label-temp">Temperatura:</label>
-                    <label>Indicar o padrão de variação da temp. para comparação (ISA):</label>
+                    <label id="label-temp">Temperature:</label>
+                    <label>Insert the temperature variation pattern To compare(ISA):</label>
                     <br></br>
                     <input id="padrao_variacao_temperatura" className="form-control" name="padrao_variacao_temperatura"
                         placeholder="°C" onChange={handleChangeValues}/>
                         <br></br>
-                        <label>Indicar os indíces de variação (m):</label>
+                        <label>Insert the variation index (m):</label>
                         <br></br>
                     <input id="correcao_temperatura_acima" className="form-control" name="correcao_temperatura_acima"
-                     placeholder="Acima ISA" onChange={handleChangeValues}/>
+                     placeholder="Above ISA" onChange={handleChangeValues}/>
                      <br></br>
                     <input id="correcao_temperatura_abaixo" className="form-control" name="correcao_temperatura_abaixo"
-                    placeholder="Abaixo ISA" onChange={handleChangeValues}/>
+                    placeholder="Below ISA" onChange={handleChangeValues}/>
                 </div>
             </div>
             <div className="row">
                 <div className="form-group col-lg-4-md col-md-6 col-sm-12">
-                    <label>Altitude (Pés acima do nível do mar):</label>
-                    <label>Indicar o padrão de variação da altitude para comparação:</label>
+                    <label>Altitude (Feets above sea level):</label>
+                    <label>Indicate the altitude variation pattern for comparison:</label>
                     <br></br>
                     <input id="padrao_variacao_altitude" className="form-control" name="padrao_variacao_altitude" onChange={handleChangeValues}/>
                     <br></br>
-                    <label>Indicar os indíces de variação (m):</label>
+                    <label>Insert the variation index (m):</label>
                     <br></br>
                     <input id="correcao_altitude" className="form-control" name="correcao_altitude"
-                     placeholder="Acima" onChange={handleChangeValues}></input>
+                     placeholder="Above" onChange={handleChangeValues}></input>
                 </div>
                 <div className="form-group col-lg-4-md col-md-6 col-sm-12">
-                    <label id="label-vento">Vento:</label>
-                    <label>Indicar o padrão de variação do vento para comparação (KTAS):</label>
+                    <label id="label-vento">Wind:</label>
+                    <label>Indicate the wind variation pattern for comparison (KTAS):</label>
                     <br></br>
                     <input id="padrao_variacao_vento" className="form-control" name="padrao_variacao_vento"
-                        placeholder="Nós de vento" onChange={handleChangeValues}/>
+                        placeholder="Knots of wind" onChange={handleChangeValues}/>
                         <br></br>
-                        <label>Indicar os indíces de variação (m):</label>
+                        <label>Insert the variation index (m):</label>
                         <br></br>
                     <input id="correcao_vento_proa" className="form-control" name="correcao_vento_proa"
-                     placeholder="Vento de proa" onChange={handleChangeValues}/>
+                     placeholder="Head wind" onChange={handleChangeValues}/>
                      <br></br>
                     <input id="correcao_vento_cauda" className="form-control" name="correcao_vento_cauda"
-                    placeholder="Vento de cauda" onChange={handleChangeValues}/>
+                    placeholder="Tail wind" onChange={handleChangeValues}/>
                 </div>
             </div>
             <div className="row">
                     <div className="form-group col-lg-4-md col-md-6 col-sm-12">
                         <label>Slope:</label>
                         <br></br>
-                        <label>Indicar o padrão de variação do ângulo para comparação (%):</label>
+                        <label>Indicate the slope variation pattern for comparison (%):</label>
                         <br></br>
                         <input id="padrao_variacao_inclinacao" className="form-control" name="padrao_variacao_inclinacao"
                         placeholder="%" onChange={handleChangeValues}/>
                         <br></br>
-                        <label>Indicar os indíces de variação (m):</label>
+                        <label>Insert the variation index (m):</label>
                         <br></br>
                         <input id="correcao_aclive" className="form-control" name="correcao_aclive"
-                        placeholder="Aclive" onChange={handleChangeValues}></input>
+                        placeholder="Uphill" onChange={handleChangeValues}></input>
                         <br></br>
                         <input id="correcao_declive" className="form-control" name="correcao_declive"
-                        placeholder="Declive" onChange={handleChangeValues}></input>
+                        placeholder="Downhill" onChange={handleChangeValues}></input>
                     </div>
                 <div className="form-group col-lg-4-md col-md-6 col-sm-12">
-                    <label>Sobrepeso:</label>
+                    <label>Overweight:</label>
                     <br></br>
-                    <label>Indicar o padrão de variação do sobrepeso para comparação (Kg):</label>
+                    <label>Indicate the overweight variation pattern for comparison (Kg):</label>
                     <br></br>
                     <input id="padrao_variacao_sobrepeso" className="form-control" name="padrao_variacao_sobrepeso"
                         placeholder="" onChange={handleChangeValues}/>
                         <br></br>
-                        <label>Indicar os indíces de variação (m):</label>
+                        <label>Insert the variation index (m):</label>
                         <br></br>
                     <input id="correcao_sobrepeso" className="form-control" name="correcao_sobrepeso"
-                     placeholder="Acima" onChange={handleChangeValues}/>
+                     placeholder="Above" onChange={handleChangeValues}/>
                 </div>
             </div>
             <div className="row">
                 <div className="form-group col-lg-4-md col-md-6 col-sm-12">
-                    <label id="label-vap">Vap (Velocidade):</label>
-                    <label>Indicar o padrão de velocidade para o pouso:</label>
+                    <label id="label-vap">Vap (speed):</label>
+                    <label>Insert the speed pattern for landing:</label>
                     <input id="velocidade_referencia" className="form-control" name="velocidade_referencia"
-                    placeholder="Insira o padrão de velocidade para pouso" onChange={handleChangeValues}/>
+                    placeholder="Insert the speed pattern for landing" onChange={handleChangeValues}/>
                     <br></br>
-                    <label>Indicar o padrão de variação da Vap (Km/h):</label>
+                    <label>Insert the Vap variation pattern (Km/h):</label>
                     <input id="padrao_variacao_velocidade" className="form-control" name="padrao_variacao_velocidade"
-                    placeholder="Insira o padrão de variação do Vap" onChange={handleChangeValues}/>
+                    placeholder="Indicate the Vap variation pattern" onChange={handleChangeValues}/>
                     <br></br>
-                    <label>Indicar os indíces de variação (m)</label>
+                    <label>Insert the variation index (m)</label>
                     <input id="correcao_velocidade" className="form-control" name="correcao_velocidade"
-                    placeholder="Insira o indice de variação do Vap" onChange={handleChangeValues}/>
+                    placeholder="Insert the vap variation index" onChange={handleChangeValues}/>
                 </div>
             </div>
             </div>
@@ -243,12 +243,12 @@ function CriarAeronaves() {
         <div className="row">
             <div className="form-group col-lg-4-md col-md-6 col-sm-12">
                 <button className="rounded" type="submit" id="btn_voltar" name="submitButton">
-                    <a><b>Início</b></a>
+                    <a><b>Return</b></a>
                 </button>
             </div>
             <div className="form-group col-lg-4-md col-md-6 col-sm-12">
                 <button className="rounded" type="submit" id="btn_registrar" name="submitButton" onClick={() => handleClickButton(values)}>
-                    <b>Cadastrar</b></button>                   
+                    <b>Register</b></button>                   
             </div>
         </div>
 
