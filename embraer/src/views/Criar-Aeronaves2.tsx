@@ -242,12 +242,13 @@ function CriarAeronaves() {
         </form>
         <div className="row">
             <div className="form-group col-lg-4-md col-md-6 col-sm-12">
-                <button className="rounded" type="submit" id="btn_voltar" name="submitButton">
-                    <a><b>Return</b></a>
-                </button>
+
+                <a className="rounded btn btn-primary ml-2 float-right" href="http://localhost:3000">
+                    Return
+                </a>
             </div>
             <div className="form-group col-lg-4-md col-md-6 col-sm-12">
-                <button className="rounded" type="submit" id="btn_registrar" name="submitButton" onClick={() => handleClickButton(values)}>
+                <button className="rounded btn btn-primary ml-2 float-right" type="submit" id="btn_registrar" name="submitButton" onClick={() => handleClickButton(values)}>
                     <b>Register</b></button>                   
             </div>
         </div>
