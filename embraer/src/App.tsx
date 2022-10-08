@@ -3,7 +3,7 @@ import React from "react";
 import "bootstrap/dist/css/bootstrap.min.css";
 import PaginaInicial from "./views/pagina-inicial";
 import Calculo from "./views/formulario-calculo";
-import CriarAeronaves from "./Criar-Aeronaves";
+import CriarAeronaves from "./views/Criar-Aeronaves2";
 import {BrowserRouter, Navigate, Route, Routes} from 'react-router-dom';
 
 function App() {

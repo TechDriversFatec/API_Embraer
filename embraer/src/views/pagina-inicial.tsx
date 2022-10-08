@@ -18,9 +18,38 @@ function PaginaInicial() {
         </h2>
       </div>
 
-        <Container>
-        <Table />
-        </Container>
+      <div className="card card-custom gutter-b">
+          <div className="card-header">
+            <h3 id="h3Pagina" className="card-title">Página inicial</h3>
+            <div className="card-toolbar">
+            </div>
+          </div>
+          <div className="card-body col-md-12">
+            <ul className="list-group list-group-flush">
+              <li className="list-group-item">
+                <div className="row">
+
+                  <Table />
+                  
+                </div>
+              </li>
+            </ul>
+          </div>
+
+          <div className="card-footer w-100 float-right">
+
+            <input
+              className="rounded btn btn-primary ml-2 float-right"
+              type="submit"
+              id="btn_calcular"
+              name="submitButton"
+              value="calcular"
+            >
+            </input>
+          </div>
+        </div>
+
+        
         <div>
           <button title="btnTelaCalc" className="btn btn-primary" onClick={() => {
           history('/Calculo');

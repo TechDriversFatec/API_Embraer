@@ -4,12 +4,17 @@
   height: 100vh;
   text-align: center;
 }
+#logoAviaozinho{
+  width: 40px;
+  height: 40px;
+}
 h2 {
   padding-top: 20px;
+  text-align: left;
 }
-
-thead, th, tr, td, tbody, h2{
-    color: white
+h3{
+  padding-top: 10px;
+  text-align: left;
 }
 
 footer{
@@ -20,4 +25,10 @@ footer{
   bottom: 0;
   left: 0;
   width: 100%;
+}
+
+@media (prefers-reduced-motion: no-preference) {
+  .App-logo {
+    animation: App-logo-spin infinite 20s linear;
+  }
 }
