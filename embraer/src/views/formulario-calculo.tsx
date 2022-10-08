@@ -10,9 +10,8 @@ interface IFormInput {
   altitude: number;
   temperatura: number;
   valorVento: number;
-  vref: number;
-  velocidadeAeronave: number;
   slope: number;
+  vap: number;
   revInoperantes: number;
   unidade: number;
 }
@@ -31,23 +30,19 @@ function Calculo() {
     parseInt(Altitude),
     parseInt(Temperatura),
     parseInt(Vento),
-    parseInt(VRef),
-    parseInt(VelocidadeAeronave),
     parseInt(Slope),
-    parseInt(Flap),
+    parseInt(vap),
     parseInt(Rev),
     parseInt(unidade))
 
-  const [Peso, setPeso] = useState(String);
-  const [Altitude, setAltitude] = useState(String);
-  const [Temperatura, setTemperatura] = useState(String);
-  const [Vento, setVento] = useState(String);
-  const [VRef, setVRef] = useState(String);
-  const [VelocidadeAeronave, setVelocidadeAeronave] = useState(String)
-  const [Slope, setSlope] = useState(String)
-  const [Flap, setFlap] = useState(String)
-  const [Rev, setRev] = useState(String)
-  const [unidade, setUnidade] = useState(String)
+  const [Peso, setPeso] = useState("");
+  const [Altitude, setAltitude] = useState("");
+  const [Temperatura, setTemperatura] = useState("");
+  const [Vento, setVento] = useState("");
+  const [Slope, setSlope] = useState("")
+  const [vap, setVap] = useState("")
+  const [Rev, setRev] = useState("")
+  const [unidade, setUnidade] = useState("")
 
   const history = useNavigate();
 
@@ -60,13 +55,15 @@ function Calculo() {
           </i>
         </h2>
       </div>
+
       <form id="form_criar" onSubmit={handleSubmit(onSubmit)}>
         <div className="card card-custom gutter-b">
           <div className="card-header">
-            <h3 id="h3Calcular" className="card-title">Calcular:</h3>
+            <h3 id="h3Calcular" className="card-title">Landing Calculation:</h3>
             <div className="card-toolbar">
             </div>
           </div>
+
           <div className="card-body col-md-12">
             <ul className="list-group list-group-flush">
               <li className="list-group-item">
@@ -80,6 +77,7 @@ function Calculo() {
                       <option value="Legacy C780">Legacy C780</option>
                     </select>
                   </div>
+
                   <div className="form-group col-lg-4 col-md-6 col-sm-12 sucess">
                     <label>Motor:</label>
                     <select className="form-control select" id="motor" title="motor">
@@ -99,7 +97,7 @@ function Calculo() {
                     </select>
                   </div>
 
-                  <div className="form-group col-lg-4 col-md-6 col-sm-12">
+                  <div className="form-group col-lg-4 col-md-6 col-sm-12 sucess">
                     <label>Flap:</label>
                     <select className="form-control select" id="flap" title="flap">
                       <option value="" disabled selected>Select a Flap</option>
@@ -110,7 +108,7 @@ function Calculo() {
                     </select>
                   </div>
 
-                  <div className="form-group col-lg-4 col-md-6 col-sm-12">
+                  <div className="form-group col-lg-4 col-md-6 col-sm-12 sucess">
                     <label>Runway Condition:</label>
                     <select className="form-control select" id="condicaoPista" title="condicaoPista">
                       <option value="" disabled selected>Select a Runway Condition</option>
@@ -123,7 +121,7 @@ function Calculo() {
                     </select>
                   </div>
 
-                  <div className="form-group col-lg-4 col-md-6 col-sm-12">
+                  <div className="form-group col-lg-4 col-md-6 col-sm-12 sucess">
                     <label>Break Configuration:</label>
                     <select
                       title="frenagem"
@@ -144,9 +142,6 @@ function Calculo() {
                 </div>
               </li>
 
-
-
-
               <li className="list-group-item">
                 <div className="row">
                   <h4 id="h3AirplaneConfig">Landing Configurations</h4>
@@ -157,133 +152,99 @@ function Calculo() {
                       className="form-control"
                       {...register("peso", { min: 40000, max: 80000 })}
                       type="tel"
-                      placeholder="Insira o peso da aeronave:"
+                      placeholder="Enter Landing Weight:"
                       //value={Peso}
                       onChange={(e) => setPeso(e.target.value)}
                     />
                     {errors.peso && <small id="erro">Peso só pode ser entre 40000 e 80000</small>}
                   </div>
-                  <div className="form-group col-lg-4 col-md-6 col-sm-12">
+
+                  <div className="form-group col-lg-4 col-md-6 col-sm-12 sucess">
                     <label>Aircraft Altitude (Ft):</label>
                     <input
                       id="altitude-aeronave"
                       className="form-control"
                       type="tel"
                       {...register("altitude", { min: 0, max: 13000 })}
-                      placeholder="Insira a altitude:"
+                      placeholder="Enter Aircraft Altitude:"
                       //value={Altitude}
                       onChange={(e) => setAltitude(e.target.value)}
                     />
                     {errors.altitude && <small id="erro">Valor de altura inválida</small>}
                   </div>
-                  <div className="form-group col-lg-4 col-md-6 col-sm-12">
+
+                  <div className="form-group col-lg-4 col-md-6 col-sm-12 sucess">
                     <label>Temperature ISA (°C):</label>
                     <input
                       id="temperatura"
                       className="form-control"
                       {...register("temperatura", { min: -2, max: 2 })}
                       type="tel"
-                      placeholder="Insira a temperatura:"
+                      placeholder="Enter Temperature below or above ISA:"
                       //value={Temperatura}
                       onChange={(e) => setTemperatura(e.target.value)}
                     />
                     {errors.temperatura && <small id="erro">Valor inválido para a temperatura</small>}
                   </div>
 
-                  <div className="row">
-                    <div className="form-group col-lg-4 col-md-6 col-sm-12">
-                      <label>Wind (Kt):</label>
-                      <input
-                        id="valorVento"
-                        className="form-control"
-                        type="tel"
-                        {...register("valorVento", { min: -100, max: 100 })}
-                        placeholder="Insira o vento de Cauda/Proa:"
-                      //value={Vento}
-                      //onChange={(e) => setVento(e.target.value)}
-                      />
-                      {errors.valorVento && <small id="erro">Valor inválido para o vento</small>}
-                    </div>
-                    <div className="form-group col-lg-4 col-md-6 col-sm-12 sucess">
-                      <label>Vap Overspeed (Ft):</label>
-                      <input
-                        id="vap-aeronave"
-                        className="form-control"
-                        type="tel"
-                        placeholder="Insira o vap:"
-                      //value={Peso}
-                      // onChange={(e) => setPeso(e.target.value)}
-                      />
-                    </div>
-                    {/* <div className="form-group col-lg-4 col-md-6 col-sm-12">
-                      <label>Velocidade de Referência em Km/h:</label>
-                      <input
-                        id="vref"
-                        className="form-control"
-                        type="tel"
-                        {...register("vref", { min: 700, max: 1000 })}
-                        placeholder="Insira a velocidade de referência:"
-                      //value={VRef}
-                      //onChange={(e) => setVRef(e.target.value)}
-                      />
-                      {errors.vref && <small id="erro">Valor inválido para a velocidade de referência</small>}
-                    </div>
-                    <div className="form-group col-lg-4 col-md-6 col-sm-12">
-                      <label>Velocidade da aeronave em Km/h:</label>
-                      <input
-                        id="velocidade-aeronave"
-                        className="form-control"
-                        type="tel"
-                        {...register("velocidadeAeronave", { min: 700, max: 1000 })}
-                        placeholder="Insira a velocidade:"
-                      //value={VelocidadeAeronave}
-                      //onChange={(e) => setVelocidadeAeronave(e.target.value)}
-                      />
-                      {errors.velocidadeAeronave && <small id="erro">valor inválido para a velocidade da aeronave</small>}
-                    </div> */}
+                  <div className="form-group col-lg-4 col-md-6 col-sm-12 sucess">
+                    <label>Wind (Kt):</label>
+                    <input
+                      id="valorVento"
+                      className="form-control"
+                      type="tel"
+                      {...register("valorVento", { min: -100, max: 100 })}
+                      placeholder="Enter Tailwind or Headwind"
+                    //value={Vento}
+                    onChange={(e) => setVento(e.target.value)}
+                    />
+                    {errors.valorVento && <small id="erro">Valor inválido para o vento</small>}
                   </div>
-                  <div className="row">
-                    <div className="form-group col-lg-4 col-md-6 col-sm-12">
-                      <label>Slope:</label>
-                      <input
-                        id="slope"
-                        className="form-control"
-                        {...register("slope", { min: -2, max: 2 })}
-                        type="tel"
-                        placeholder="Insira o slope:"
-                      //value={Slope}
-                      //onChange={(e) => setSlope(e.target.value)}
-                      />
-                      {errors.slope && <small id="erro">Valor inválido para o slope</small>}
-                    </div>
 
-
-
+                  <div className="form-group col-lg-4 col-md-6 col-sm-12 sucess">
+                    <label>Slope:</label>
+                    <input
+                      id="slope"
+                      className="form-control"
+                      {...register("slope", { min: -2, max: 2 })}
+                      type="tel"
+                      placeholder="Enter Uphill or Downhill Slope:"
+                    //value={Slope}
+                    onChange={(e) => setSlope(e.target.value)}
+                    />
+                    {errors.slope && <small id="erro">Valor inválido para o slope</small>}
                   </div>
-                  <div className="row">
-                    <div className="form-group col-lg-4 col-md-6 col-sm-12">
-                      <label>Quantidade de Reversores inoperantes:</label>
-                      <input
-                        id="rev-inoperantes"
-                        className="form-control"
-                        type="tel"
-                        {...register("revInoperantes", { min: 0, max: 5 })}
-                        placeholder="Insira a quantidade de reversores inoperantes:"
-                      //value={Rev}
-                      //onChange={(e) => setRev(e.target.value)}
-                      />
-                      {errors.revInoperantes && <small id="erro">Valor inválido para os reversores</small>}
-                    </div>
-                    <div className="form-group col-lg-4 col-md-6 col-sm-12"></div>
-                    <div className="form-group col-lg-4 col-md-6 col-sm-12">
-                      <label>Unidade de medida:</label>
-                      <select title="unidade" className="form-control select" name="unidade" onChange={(e) => setUnidade(e.target.value)} id="unidade">
-                        <option value="placeholder" disabled selected>Selecione a unidade de medida:</option>
-                        <option value="0">Internacional</option>
-                        <option value="1">Imperial</option>
-                      </select>
-                      <small></small>
-                    </div>
+
+                  <div className="form-group col-lg-4 col-md-6 col-sm-12 sucess">
+                    <label>Vap Overspeed (Ft):</label>
+                    <input
+                      id="vap-aeronave"
+                      className="form-control"
+                      type="tel"
+                      placeholder="Enter Overspeed:"
+                    //value={Peso}
+                    onChange={(e) => setVap(e.target.value)}
+                    />
+                  </div>
+
+                  <div className="form-group col-lg-4 col-md-6 col-sm-12 sucess">
+                    <label>Thrust Reverser:</label>
+                    <select className="form-control select" id="rev-inoperantes" title="rev-inoperantes" onChange={(e) => setRev(e.target.value)}>
+                      <option value="" disabled selected>Select a Reverser Option</option>
+                      <option value="1">One Inoperative</option>
+                      <option value="2">All Inoperative</option>
+                      <option value="0">All Operative</option>
+                    </select>
+                  </div>
+
+                  <div className="form-group col-lg-4 col-md-6 col-sm-12 sucess">
+                    <label>Unit Measurement:</label>
+                    <select title="unidade" className="form-control select" name="unidade" onChange={(e) => setUnidade(e.target.value)} id="unidade">
+                      <option value="placeholder" disabled selected>Select an Unite Measurement</option>
+                      <option value="0">International</option>
+                      <option value="1">Imperial</option>
+                    </select>
+                    <small></small>
                   </div>
                 </div>
               </li>
@@ -294,19 +255,18 @@ function Calculo() {
 
             <button title="btnVoltar" id="btnVoltar" className="btn btn-primary float-start" onClick={() => {
               history('/')
-            }}>Voltar</button>
+            }}>Back</button>
 
             <input
               className="rounded btn btn-primary ml-2 float-end"
               type="submit"
               id="btn_calcular"
               name="submitButton"
-              value="calcular"
+              value="Calculate"
             >
             </input>
           </div>
         </div>
-
       </form>
       <div>
         <input hidden placeholder="result" type="text" id="resultadoConta" />

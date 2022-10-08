@@ -20,7 +20,7 @@ function PaginaInicial() {
 
       <div className="card card-custom gutter-b">
           <div className="card-header">
-            <h3 id="h3Pagina" className="card-title">Página inicial</h3>
+            <h3 id="h3Pagina" className="card-title">Home Page</h3>
             <div className="card-toolbar">
             </div>
           </div>
@@ -38,22 +38,10 @@ function PaginaInicial() {
 
           <div className="card-footer w-100 float-right">
 
-            <input
-              className="rounded btn btn-primary ml-2 float-right"
-              type="submit"
-              id="btn_calcular"
-              name="submitButton"
-              value="calcular"
-            >
-            </input>
-          </div>
-        </div>
-
-        
-        <div>
           <button title="btnTelaCalc" className="btn btn-primary" onClick={() => {
           history('/Calculo');
-          }}>Cálculo</button>
+          }}>Calculation</button>
+          </div>
         </div>
         <footer>Todos os direitos reservados.</footer>
       </div>

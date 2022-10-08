@@ -1,7 +1,7 @@
 import React, { useState } from "react";
 import Axios from "axios";
 import logo from "./logo.svg";
-import "../css/CriarAeronaves.css";
+import "../css/CriarAeronaves2.css";
 import "bootstrap/dist/css/bootstrap.min.css";
 import { ModuleResolutionKind } from "typescript";
 import { monitorEventLoopDelay } from "perf_hooks";
