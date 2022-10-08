@@ -17,7 +17,7 @@ function PaginaInicial() {
 
       <div className="card card-custom gutter-b">
           <div className="card-header">
-            <h3 id="h3Pagina" className="card-title">Página inical</h3>
+            <h3 id="h3Pagina" className="card-title">Página inicial</h3>
             <div className="card-toolbar">
             </div>
           </div>
@@ -25,19 +25,8 @@ function PaginaInicial() {
             <ul className="list-group list-group-flush">
               <li className="list-group-item">
                 <div className="row">
-                  <h4 id="h3AirplaneConfig">Airplane Configurations</h4>
 
                   <Table />
-                  
-                </div>
-              </li>
-
-
-
-
-              <li className="list-group-item">
-                <div className="row">
-                <h4 id="h3AirplaneConfig">Landing Configurations</h4>
                   
                 </div>
               </li>
