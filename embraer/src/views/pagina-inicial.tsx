@@ -38,12 +38,12 @@ function PaginaInicial() {
             <a
               className="rounded btn btn-primary ml-2 float-right"
               href="http://localhost:3000/Calculo"
-            >Calcular
+            >Calculate
             </a>
             <a
               className="rounded btn btn-primary ml-2 float-right"
               href="http://localhost:3000/Criar"
-            >Criar aeronave
+            >Add Aircraft
             </a>
           </div>
         </div>
