@@ -87,4 +87,14 @@ h2{
 
 .card-header, .card-footer{
   background-color: white;
+  padding-top: 20px;
+}
+
+.logoAviaoCalculo{
+  display: flex;
+      display: -webkit-flex;
+      justify-content: left;
+      align-items: left;
+      margin-top: 15px;
+      margin-bottom: 15px;
 }

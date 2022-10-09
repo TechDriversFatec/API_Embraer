@@ -4,6 +4,7 @@ import React, { useState } from "react";
 import { SubmitHandler, useForm } from "react-hook-form"
 import Calcular from "../controller/calculo";
 import { useNavigate } from 'react-router-dom';
+import Axios from "axios";
 
 interface IFormInput {
   peso: number;
@@ -25,15 +26,35 @@ function Calculo() {
     shouldUseNativeValidation: true
   });
   const calcular = new Calcular()
-  const onSubmit: SubmitHandler<IFormInput> = () => calcular.calcularPouso(
-    parseInt(Peso),
-    parseInt(Altitude),
-    parseInt(Temperatura),
-    parseInt(Vento),
-    parseInt(Slope),
-    parseInt(vap),
-    parseInt(Rev),
-    parseInt(unidade))
+  const onSubmit: SubmitHandler<IFormInput> = () => {
+    calcular.calcularPouso(
+      parseInt(Peso),
+      parseInt(Altitude),
+      parseInt(Temperatura),
+      parseInt(Vento),
+      parseInt(Slope),
+      parseInt(vap),
+      parseInt(Rev),
+      parseInt(unidade))
+
+    Axios.post("http://localhost:3002/calculo", {
+      aeronave: 'E190',
+      motor: 'EBR1300',
+      certificacao: 'ANAC',
+      flap: 'Flap x with ice accretion',
+      condicaoPista: 'dry',
+      tipoFrenagem: 'MAX MAN',
+      pesoPouso: Peso,
+      altitude: Altitude,
+      temperatura: Temperatura,
+      vento: Vento,
+      inclinacao: Slope,
+      overspeed: vap,
+      reversoresInoperantes: Rev,
+      dataCalculo: Date.now.toString(),
+      resultado_calculo: resultadoCalculo
+    });
+  }
 
   const [Peso, setPeso] = useState("");
   const [Altitude, setAltitude] = useState("");
@@ -43,23 +64,40 @@ function Calculo() {
   const [vap, setVap] = useState("")
   const [Rev, setRev] = useState("")
   const [unidade, setUnidade] = useState("")
+  const [resultadoCalculo, setResultadoCalculo] = useState("")
 
   const history = useNavigate();
+
+  Axios.post("http://localhost:3002/calculo", {
+    aeronave: 'E190',
+    motor: 'EBR1300',
+    certificacao: 'ANAC',
+    flap: 'Flap x with ice accretion',
+    condicaoPista: 'dry',
+    tipoFrenagem: 'MAX MAN',
+    pesoPouso: Peso,
+    altitude: Altitude,
+    temperatura: Temperatura,
+    vento: Vento,
+    inclinacao: Slope,
+    overspeed: vap,
+    reversoresInoperantes: Rev,
+    dataCalculo: Date.now.toString(),
+    resultado_calculo: resultadoCalculo
+  });
 
   return (
     <div className="App">
       <div>
-        <h2>
-          <i>
-            <img src="loguinho.png" id="logoAviaozinho" alt="some text" />
-          </i>
-        </h2>
+        <i>
+          <img className="logoAviaoCalculo" src="loguinho.png" id="logoAviaozinho" alt="some text" />
+        </i>
       </div>
 
       <form id="form_criar" onSubmit={handleSubmit(onSubmit)}>
         <div className="card card-custom gutter-b">
           <div className="card-header">
-            <h3 id="h3Calcular" className="card-title">Landing Calculation:</h3>
+            <h3 id="h3Calcular" className="card-title">Landing Calculation</h3>
             <div className="card-toolbar">
             </div>
           </div>
@@ -122,7 +160,7 @@ function Calculo() {
                   </div>
 
                   <div className="form-group col-lg-4 col-md-6 col-sm-12 sucess">
-                    <label>Break Configuration:</label>
+                    <label>Brake Configuration:</label>
                     <select
                       title="frenagem"
                       className="form-control select"
@@ -195,8 +233,8 @@ function Calculo() {
                       type="tel"
                       {...register("valorVento", { min: -100, max: 100 })}
                       placeholder="Enter Tailwind or Headwind"
-                    //value={Vento}
-                    onChange={(e) => setVento(e.target.value)}
+                      //value={Vento}
+                      onChange={(e) => setVento(e.target.value)}
                     />
                     {errors.valorVento && <small id="erro">Valor inválido para o vento</small>}
                   </div>
@@ -209,8 +247,8 @@ function Calculo() {
                       {...register("slope", { min: -2, max: 2 })}
                       type="tel"
                       placeholder="Enter Uphill or Downhill Slope:"
-                    //value={Slope}
-                    onChange={(e) => setSlope(e.target.value)}
+                      //value={Slope}
+                      onChange={(e) => setSlope(e.target.value)}
                     />
                     {errors.slope && <small id="erro">Valor inválido para o slope</small>}
                   </div>
@@ -222,8 +260,8 @@ function Calculo() {
                       className="form-control"
                       type="tel"
                       placeholder="Enter Overspeed:"
-                    //value={Peso}
-                    onChange={(e) => setVap(e.target.value)}
+                      //value={Peso}
+                      onChange={(e) => setVap(e.target.value)}
                     />
                   </div>
 
@@ -253,23 +291,23 @@ function Calculo() {
 
           <div className="card-footer w-100 float-right">
 
-            <button title="btnVoltar" id="btnVoltar" className="btn btn-primary float-start" onClick={() => {
-              history('/')
-            }}>Back</button>
+            <a className="rounded btn btn-primary ml-2 float-start" href="http://localhost:3000">
+              <b>Return</b>
+            </a>
 
-            <input
+            <button
+            title="btn_calcular"
               className="rounded btn btn-primary ml-2 float-end"
               type="submit"
               id="btn_calcular"
               name="submitButton"
-              value="Calculate"
-            >
-            </input>
+            ><b>Calculate</b>
+            </button>
           </div>
         </div>
       </form>
       <div>
-        <input hidden placeholder="result" type="text" id="resultadoConta" />
+        <input hidden placeholder="result" type="text" id="resultadoConta" onChange={(e) => setResultadoCalculo(e.target.value)} />
       </div>
     </div>
   );

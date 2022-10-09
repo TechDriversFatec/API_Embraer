@@ -2,7 +2,7 @@
   "name": "server",
   "version": "1.0.0",
   "description": "",
-  "main": "indexserver.js",
+  "main": "indexServer.js",
   "scripts": {
     "start": "node indexServer.js",
     "dev": "nodemon indexServer.js",
