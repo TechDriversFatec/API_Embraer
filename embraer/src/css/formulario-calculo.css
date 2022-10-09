@@ -3,13 +3,20 @@
   text-align: left;
 }
 #swal2-title{
-  font-size: 62px;
+  font-size: 60px;
+  padding: 40px;
+  padding-bottom: 0px;
+  padding-top: 60px;
+}
+
+#swal2-html-container{
+  font-size: 25px;
 }
 
 .App {
   background-color: #282f55;
   padding: 25px;
-  height: 100vh;
+  height: 100%;
   text-align: center;
 }
 

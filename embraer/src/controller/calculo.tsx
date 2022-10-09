@@ -27,70 +27,92 @@ class Calcular {
         console.log("revs: " + revInoperantes);
 
         //calculo do peso
-        if (pesoAtual > ref) {
-            while (pesoAtual > ref) {
-                distanciaReferencia += 16;
-                pesoAtual -= 1000;
-            }
-        } else {
-            while (pesoAtual < ref) {
-                distanciaReferencia -= 17;
-                pesoAtual += 1000;
+        if (pesoAtual != 0) {
+            if (pesoAtual > ref) {
+                while (pesoAtual > ref) {
+                    distanciaReferencia += 16;
+                    pesoAtual -= 1000;
+                }
+            } else {
+                while (pesoAtual < ref) {
+                    distanciaReferencia -= 17;
+                    pesoAtual += 1000;
+                }
             }
         }
 
         //calculo da altura
-        if (alturaAtual > chao) {
-            while (alturaAtual > chao) {
-                distanciaReferencia += 26;
-                alturaAtual -= 1000;
+        if (alturaAtual != 0) {
+            if (alturaAtual > chao) {
+
+                while (alturaAtual > chao) {
+                    if (alturaAtual >= 1000) {
+                        distanciaReferencia += 26;
+                        alturaAtual -= 1000;
+                    } else {
+                        distanciaReferencia += 2.6;
+                        alturaAtual -= 100;
+                    }
+                }
+
             }
         }
 
         //calculo da temperatura
         if (temperaturaAtual != 0) {
-            if (temperaturaAtual > padraoIsa) {
-                while (temperaturaAtual > padraoIsa) {
-                    distanciaReferencia += 18;
-                    temperaturaAtual -= 5;
+            if (temperaturaAtual > 0) {
+                if (temperaturaAtual > padraoIsa) {
+                    while (temperaturaAtual > padraoIsa) {
+                        distanciaReferencia += 18;
+                        temperaturaAtual -= 5;
+                    }
                 }
-            }
-            else {
-                while (temperaturaAtual < padraoIsa) {
-                    distanciaReferencia -= 10;
-                    temperaturaAtual += 5;
+                else {
+                    while (temperaturaAtual < padraoIsa) {
+                        distanciaReferencia -= 10;
+                        temperaturaAtual += 5;
+                    }
                 }
             }
         }
 
         //calculo do vento
-        if (vento > 0) {
-            if (vento >= 5) {
-                while (vento >= 5) {
-                    distanciaReferencia -= 22;
-                    vento -= 5;
+        if (vento != 0) {
+            if (vento > 0) {
+                while (vento > 0) {
+                    if (vento >= 5) {
+                        distanciaReferencia -= 22;
+                        vento -= 5;
+                    } else {
+                        distanciaReferencia -= 4.4;
+                        vento -= 1;
+                    }
                 }
-            }
-        } else {
-            if (vento >= -5) {
-                while (vento >= -5) {
-                    distanciaReferencia += 101;
-                    vento += 5
+            } else {
+                while (vento < 0) {
+                    if (vento <= -5) {
+                        distanciaReferencia += 101;
+                        vento += 5
+                    } else {
+                        distanciaReferencia += 20.2;
+                        vento += 1
+                    }
                 }
             }
         }
 
         //calculo do slope
-        if (slope > 0) {
-            slope = (slope / 100) * 100
-            while (slope > 0) {
-                distanciaReferencia -= 5
-                slope--
-            }
-        } else if(slope < 0){
-            while (slope < 0) {
-                distanciaReferencia += 139
-                slope++
+        if (slope != 0) {
+            if (slope > 0) {
+                while (slope > 0) {
+                    distanciaReferencia -= 5
+                    slope--
+                }
+            } else {
+                while (slope < 0) {
+                    distanciaReferencia += 139
+                    slope++
+                }
             }
         }
 
@@ -109,16 +131,27 @@ class Calcular {
 
         let medida = "Meters"
 
+        console.log("calculado");
+        console.log("Resultado: " + (distanciaReferencia));
+
         if (unidade === 1) {
             distanciaReferencia = parseInt(metroPes(distanciaReferencia).toLocaleString())
             medida = "Feet"
+
+            return Swal.fire({
+                title: `${distanciaReferencia.toFixed(2)} ${medida}`,
+                html:
+                    ' <b>Required for the landing</b> '
+            })
+        }
+        else {
+            return Swal.fire({
+                title: `${distanciaReferencia.toFixed(2).replace(".", ",")} ${medida}`,
+                html:
+                    ' <b>Required for the landing</b> '
+            })
         }
 
-        console.log("calculado");
-
-        return Swal.fire({
-            title: `${distanciaReferencia} ${medida}`
-        })
     }
 }
 
