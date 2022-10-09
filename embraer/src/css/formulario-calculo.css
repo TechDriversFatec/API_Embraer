@@ -9,8 +9,26 @@
 .App {
   background-color: #282f55;
   padding: 25px;
-  height: 100vh;
+  height: 100%;
   text-align: center;
+}
+
+.form-field input:focus {
+  outline: none;
+}
+
+.form-field.error input {
+  border: 2px;
+  border-color: red;
+}
+
+.form-field.success input {
+  border-color: var(--success-color);
+}
+
+
+.form-field small {
+  color: var(--error-color);
 }
 
 .container-fluid{
