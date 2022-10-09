@@ -5,17 +5,6 @@ import Calcular from "../controller/calculo";
 import Swal from "sweetalert2";
 import { useNavigate } from 'react-router-dom';
 
-interface IFormInput {
-  peso: number;
-  altitude: number;
-  temperatura: number;
-  valorVento: number;
-  slope: number;
-  vap: number;
-  revInoperantes: number;
-  unidade: number;
-}
-
 
 function Calculo() {
 
@@ -71,17 +60,7 @@ const showSuccess = (input: HTMLElement) => {
         icon: "error",
         title: "Valor inválido para vento"
       })
-    } else if(parseInt(VRef) <= 0 || parseInt(VRef) >= 1000){
-      return Swal.fire({
-        icon: "error",
-        title: "Valor inválido para a velocidade de referência"
-      })
-    } else if(parseInt(VelocidadeAeronave) <= 0 || parseInt(VelocidadeAeronave) >= 1000){
-      return Swal.fire({
-        icon: "error",
-        title: "Valor inválido para a velocidade"
-      })
-    } else if(parseInt(Slope) <= -5 || parseInt(Slope) >= 5){
+    }  else if(parseInt(Slope) <= -5 || parseInt(Slope) >= 5){
       return Swal.fire({
         icon: "error",
         title: "Valor inválido para slope"
@@ -92,16 +71,13 @@ const showSuccess = (input: HTMLElement) => {
         title: "Valor inválido para reversores"
       })
     } else {
-      
       calcular.calcularPouso(
         parseInt(Peso),
         parseInt(Altitude),
         parseInt(Temperatura),
         parseInt(Vento),
-        parseInt(VRef),
-        parseInt(VelocidadeAeronave),
         parseInt(Slope),
-        parseInt(Flap),
+        parseInt(vap),
         parseInt(Rev),
         parseInt(unidade))
     }
@@ -125,16 +101,6 @@ const showSuccess = (input: HTMLElement) => {
   function receberValorVento(evento: any){
     let entrada = evento.target.value;
     setVento(entrada)
-  }
-
-  function receberVref(evento: any){
-    let entrada = evento.target.value;
-    setVRef(entrada)
-  }
-
-  function receberVelocidadeAeronave(evento: any){
-    let entrada = evento.target.value;
-    setVelocidadeAeronave(entrada)
   }
 
   function receberSlope(evento: any){
@@ -307,12 +273,11 @@ const showSuccess = (input: HTMLElement) => {
                       id="valorVento"
                       className="form-control"
                       type="tel"
-                      {...register("valorVento", { min: -100, max: 100 })}
+                      name="valorVento"
                       placeholder="Enter Tailwind or Headwind"
-                    //value={Vento}
-                    onChange={(e) => setVento(e.target.value)}
+                      value={Vento}
+                      onChange={receberValorVento}
                     />
-                    {errors.valorVento && <small id="erro">Valor inválido para o vento</small>}
                   </div>
 
                   <div className="form-group col-lg-4 col-md-6 col-sm-12 sucess">
@@ -320,13 +285,12 @@ const showSuccess = (input: HTMLElement) => {
                     <input
                       id="slope"
                       className="form-control"
-                      {...register("slope", { min: -2, max: 2 })}
+                      name="slope"
                       type="tel"
                       placeholder="Enter Uphill or Downhill Slope:"
-                    //value={Slope}
-                    onChange={(e) => setSlope(e.target.value)}
+                      value={Slope}
+                      onChange={receberSlope}
                     />
-                    {errors.slope && <small id="erro">Valor inválido para o slope</small>}
                   </div>
 
                   <div className="form-group col-lg-4 col-md-6 col-sm-12 sucess">
@@ -343,7 +307,7 @@ const showSuccess = (input: HTMLElement) => {
 
                   <div className="form-group col-lg-4 col-md-6 col-sm-12 sucess">
                     <label>Thrust Reverser:</label>
-                    <select className="form-control select" id="rev-inoperantes" title="rev-inoperantes" onChange={(e) => setRev(e.target.value)}>
+                    <select className="form-control select" id="rev-inoperantes" title="rev-inoperantes" onChange={receberUnidade}>
                       <option value="" disabled selected>Select a Reverser Option</option>
                       <option value="1">One Inoperative</option>
                       <option value="2">All Inoperative</option>

@@ -2,7 +2,6 @@
 import "../css/pagina-inicial.css";
 import "bootstrap/dist/css/bootstrap.min.css";
 import Table from "../controller/tabela";
-import { Container } from "react-bootstrap";
 import { useNavigate } from 'react-router-dom';
 
 function PaginaInicial() {
