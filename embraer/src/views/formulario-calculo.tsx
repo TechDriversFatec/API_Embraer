@@ -44,32 +44,32 @@ function Calculo() {
       showError(idPeso!, "Peso inválido")
       return Swal.fire({
         icon: "error",
-        title: "Valor inválido para o peso"
+        title: "Invalid value for weight"
       })
     } else if (parseInt(Altitude) <= 0 || parseInt(Altitude) >= 10000) {
       return Swal.fire({
         icon: "error",
-        title: "Valor inválido para altitude"
+        title: "Invalid value for altitude"
       })
     } else if (parseInt(Temperatura) <= -4 || parseInt(Temperatura) >= 4) {
       return Swal.fire({
         icon: "error",
-        title: "Valor inválido para temparatura"
+        title: "Invalid value for temperature"
       })
     } else if (parseInt(Vento) <= -10 || parseInt(Vento) >= 10) {
       return Swal.fire({
         icon: "error",
-        title: "Valor inválido para vento"
+        title: "Invalid value for wind"
       })
     } else if (parseInt(Slope) <= -5 || parseInt(Slope) >= 5) {
       return Swal.fire({
         icon: "error",
-        title: "Valor inválido para slope"
+        title: "Invalid value for slope"
       })
     } else if (parseInt(Rev) < 0 || parseInt(Rev) > 2) {
       return Swal.fire({
         icon: "error",
-        title: "Valor inválido para reversores"
+        title: "Invalid value for reversers"
       })
     } else {
       calcular.calcularPouso(
