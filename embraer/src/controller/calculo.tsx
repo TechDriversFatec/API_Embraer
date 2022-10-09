@@ -7,11 +7,8 @@ class Calcular {
         alturaAtual: number,
         temperaturaAtual: number,
         vento: number,
-        vref: number,
-        velocidade: number,
         slope: number,
-        flap: number,
-        //frenagem: number,
+        vap: number,
         revInoperantes: number,
         unidade: number,
     ) {
@@ -19,9 +16,16 @@ class Calcular {
         let chao = 0;
         let padraoIsa = 0;
         let ref = 43000;
-    
+
         console.log("calculando");
-    
+        console.log("peso: " + pesoAtual);
+        console.log("altitude: " + alturaAtual);
+        console.log("temperatura: " + temperaturaAtual);
+        console.log("vento: " + vento);
+        console.log("slope: " + slope);
+        console.log("vap: " + vap);
+        console.log("revs: " + revInoperantes);
+
         //calculo do peso
         if (pesoAtual > ref) {
             while (pesoAtual > ref) {
@@ -34,7 +38,7 @@ class Calcular {
                 pesoAtual += 1000;
             }
         }
-    
+
         //calculo da altura
         if (alturaAtual > chao) {
             while (alturaAtual > chao) {
@@ -42,70 +46,76 @@ class Calcular {
                 alturaAtual -= 1000;
             }
         }
-    
+
         //calculo da temperatura
-        if (temperaturaAtual > padraoIsa) {
-            while (temperaturaAtual > padraoIsa) {
-                distanciaReferencia += 18;
-                temperaturaAtual -= 5;
+        if (temperaturaAtual != 0) {
+            if (temperaturaAtual > padraoIsa) {
+                while (temperaturaAtual > padraoIsa) {
+                    distanciaReferencia += 18;
+                    temperaturaAtual -= 5;
+                }
             }
-        } else {
-            while (temperaturaAtual < padraoIsa) {
-                distanciaReferencia -= 10;
-                temperaturaAtual += 5;
+            else {
+                while (temperaturaAtual < padraoIsa) {
+                    distanciaReferencia -= 10;
+                    temperaturaAtual += 5;
+                }
             }
         }
-    
+
         //calculo do vento
         if (vento > 0) {
             if (vento >= 5) {
                 while (vento >= 5) {
-                    distanciaReferencia += 101;
+                    distanciaReferencia -= 22;
                     vento -= 5;
                 }
             }
         } else {
-            while (vento <= 5) {
-                distanciaReferencia -= 22;
-                vento += 5
+            if (vento >= -5) {
+                while (vento >= -5) {
+                    distanciaReferencia += 101;
+                    vento += 5
+                }
             }
         }
-    
+
         //calculo do slope
         if (slope > 0) {
             slope = (slope / 100) * 100
             while (slope > 0) {
-                distanciaReferencia += 139
+                distanciaReferencia -= 5
                 slope--
             }
-        }
-    
-        //calculo Vap
-        if (velocidade > vref) {
-            while (velocidade > ref) {
-                distanciaReferencia += 110;
-                velocidade -= 5;
+        } else if(slope < 0){
+            while (slope < 0) {
+                distanciaReferencia += 139
+                slope++
             }
-        }
-    
-        //calculo Rev
-        if (revInoperantes > 0) {
-            while (revInoperantes > 0) {
-                distanciaReferencia += 24
-                revInoperantes--
-            }
-    
         }
 
-        let medida = "Metros"
-        
-        if(unidade === 1){
+        //calculo Vap
+        if (vap != 0) {
+            while (vap > 0) {
+                distanciaReferencia += 110;
+                vap -= 5;
+            }
+        }
+
+        //calculo Rev
+        if (revInoperantes > 0) {
+            distanciaReferencia += (24 * revInoperantes)
+        }
+
+        let medida = "Meters"
+
+        if (unidade === 1) {
             distanciaReferencia = parseInt(metroPes(distanciaReferencia).toLocaleString())
-            medida = "Pés"
+            medida = "Feet"
         }
 
         console.log("calculado");
-        
+
         return Swal.fire({
             title: `${distanciaReferencia} ${medida}`
         })
@@ -116,5 +126,5 @@ export default Calcular
 
 function metroPes(distanciaReferencia: number) {
     distanciaReferencia = distanciaReferencia * 3.28084
-    return distanciaReferencia.toFixed(2).replace('.',',')
+    return distanciaReferencia.toFixed(2).replace('.', ',')
 }

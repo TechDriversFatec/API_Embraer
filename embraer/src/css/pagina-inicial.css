@@ -1,7 +1,7 @@
 .App {
   background-color: #282f55;
   padding: 25px;
-  height: 100vh;
+  height: 100%;
   text-align: center;
 }
 #logoAviaozinho{
@@ -15,6 +15,16 @@ h2 {
 h3{
   padding-top: 10px;
   text-align: left;
+}
+
+thead, th, tr, td, tbody, h2{
+  color: rgb(0, 0, 0)
+}
+
+a{
+  margin-left: 1rem;
+  margin-right: 1rem;
+  float: right;
 }
 
 footer{

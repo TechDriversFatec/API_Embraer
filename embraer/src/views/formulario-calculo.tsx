@@ -3,17 +3,17 @@ import "bootstrap/dist/css/bootstrap.min.css";
 import { useState } from "react";
 import Calcular from "../controller/calculo";
 import Swal from "sweetalert2";
+import { useNavigate } from 'react-router-dom';
 
 interface IFormInput {
-  peso: String;
-  altitude: String;
-  temperatura: String;
-  valorVento: String;
-  vref: String;
-  velocidadeAeronave: String;
-  slope: String;
-  revInoperantes: String;
-  unidade: String;
+  peso: number;
+  altitude: number;
+  temperatura: number;
+  valorVento: number;
+  slope: number;
+  vap: number;
+  revInoperantes: number;
+  unidade: number;
 }
 
 
@@ -152,18 +152,16 @@ const showSuccess = (input: HTMLElement) => {
     setUnidade(entrada)
   }
 
-  const [Peso, setPeso] = useState(String);
-  const [Altitude, setAltitude] = useState(String);
-  const [Temperatura, setTemperatura] = useState(String);
-  const [Vento, setVento] = useState(String);
-  const [VRef, setVRef] = useState(String);
-  const [VelocidadeAeronave, setVelocidadeAeronave] = useState(String)
-  const [Slope, setSlope] = useState(String)
-  const [Flap, setFlap] = useState(String)
-  const [Rev, setRev] = useState(String)
-  const [unidade, setUnidade] = useState(String)
+  const [Peso, setPeso] = useState("");
+  const [Altitude, setAltitude] = useState("");
+  const [Temperatura, setTemperatura] = useState("");
+  const [Vento, setVento] = useState("");
+  const [Slope, setSlope] = useState("")
+  const [vap, setVap] = useState("")
+  const [Rev, setRev] = useState("")
+  const [unidade, setUnidade] = useState("")
 
-  
+  const history = useNavigate();
 
   return (
     <div className="App">
@@ -177,10 +175,11 @@ const showSuccess = (input: HTMLElement) => {
       <form id="form_criar" onSubmit={manipularEnvio}>
         <div className="card card-custom gutter-b">
           <div className="card-header">
-            <h3 id="h3Calcular" className="card-title">Calcular:</h3>
+            <h3 id="h3Calcular" className="card-title">Landing Calculation:</h3>
             <div className="card-toolbar">
             </div>
           </div>
+
           <div className="card-body col-md-12">
             <ul className="list-group list-group-flush">
               <li className="list-group-item">
@@ -194,6 +193,7 @@ const showSuccess = (input: HTMLElement) => {
                       <option value="Legacy C780">Legacy C780</option>
                     </select>
                   </div>
+
                   <div className="form-group col-lg-4 col-md-6 col-sm-12 sucess">
                     <label>Motor:</label>
                     <select className="form-control select" id="motor" title="motor">
@@ -213,7 +213,7 @@ const showSuccess = (input: HTMLElement) => {
                     </select>
                   </div>
 
-                  <div className="form-group col-lg-4 col-md-6 col-sm-12">
+                  <div className="form-group col-lg-4 col-md-6 col-sm-12 sucess">
                     <label>Flap:</label>
                     <select className="form-control select" id="flap" title="flap">
                       <option value="" disabled selected>Select a Flap</option>
@@ -224,7 +224,7 @@ const showSuccess = (input: HTMLElement) => {
                     </select>
                   </div>
 
-                  <div className="form-group col-lg-4 col-md-6 col-sm-12">
+                  <div className="form-group col-lg-4 col-md-6 col-sm-12 sucess">
                     <label>Runway Condition:</label>
                     <select className="form-control select" id="condicaoPista" title="condicaoPista">
                       <option value="" disabled selected>Select a Runway Condition</option>
@@ -237,7 +237,7 @@ const showSuccess = (input: HTMLElement) => {
                     </select>
                   </div>
 
-                  <div className="form-group col-lg-4 col-md-6 col-sm-12">
+                  <div className="form-group col-lg-4 col-md-6 col-sm-12 sucess">
                     <label>Break Configuration:</label>
                     <select
                       title="frenagem"
@@ -258,128 +258,107 @@ const showSuccess = (input: HTMLElement) => {
                 </div>
               </li>
 
-
-
-
               <li className="list-group-item">
                 <div className="row">
-                <h4 id="h3AirplaneConfig">Landing Configurations</h4>
+                  <h4 id="h3AirplaneConfig">Landing Configurations</h4>
                   <div className="form-group col-lg-4 col-md-6 col-sm-12 sucess">
-                    <label>Peso da aeronave em Kg:</label>
+                    <label>Landing Weight (Kg):</label>
                     <input
                       id="peso-aeronave"
                       className="form-control"
                       name="peso"
                       type="tel"
-                      placeholder="Insira o peso da aeronave:"
+                      placeholder="Enter Landing Weight:"
                       value={Peso}
                       onChange={receberValorPeso}
                     />
                     <small></small>
                   </div>
-                  <div className="form-group col-lg-4 col-md-6 col-sm-12">
-                    <label>Altitude da aeronave em M:</label>
+
+                  <div className="form-group col-lg-4 col-md-6 col-sm-12 sucess">
+                    <label>Aircraft Altitude (Ft):</label>
                     <input
                       id="altitude-aeronave"
                       className="form-control"
                       type="tel"
                       name="altitude"
-                      placeholder="Insira a altitude:"
+                      placeholder="Enter Aircraft Altitude:"
                       value={Altitude}
                       onChange={receberValorAltitude}
                     />
                   </div>
-                  <div className="form-group col-lg-4 col-md-6 col-sm-12">
-                    <label>Temperatura em °C:</label>
+
+                  <div className="form-group col-lg-4 col-md-6 col-sm-12 sucess">
+                    <label>Temperature ISA (°C):</label>
                     <input
                       id="temperatura"
                       className="form-control"
                       name="temperatura"
                       type="tel"
-                      placeholder="Insira a temperatura:"
+                      placeholder="Enter Temperature below or above ISA:"
                       value={Temperatura}
                       onChange={receberValorTemperatura}
                     />
                   </div>
 
-                  <div className="row">
-                    <div className="form-group col-lg-4 col-md-6 col-sm-12">
-                      <label>Vento em Kt:</label>
-                      <input
-                        id="valorVento"
-                        className="form-control"
-                        type="tel"
-                        name="valorVento"
-                        placeholder="Insira o vento de Cauda/Proa:"
-                      value={Vento}
-                      onChange={receberValorVento}
-                      />
-                    </div>
-                    <div className="form-group col-lg-4 col-md-6 col-sm-12">
-                      <label>Velocidade de Referência em Km/h:</label>
-                      <input
-                        id="vref"
-                        className="form-control"
-                        type="tel"
-                        name="vref"
-                        placeholder="Insira a velocidade de referência:"
-                      value={VRef}
-                      onChange={receberVref}
-                      />
-                    </div>
-                    <div className="form-group col-lg-4 col-md-6 col-sm-12">
-                      <label>Velocidade da aeronave em Km/h:</label>
-                      <input
-                        id="velocidade-aeronave"
-                        className="form-control"
-                        type="tel"
-                        name="velocidadeAeronave"
-                        placeholder="Insira a velocidade:"
-                      value={VelocidadeAeronave}
-                      onChange={receberVelocidadeAeronave}
-                      />
-                    </div>
+                  <div className="form-group col-lg-4 col-md-6 col-sm-12 sucess">
+                    <label>Wind (Kt):</label>
+                    <input
+                      id="valorVento"
+                      className="form-control"
+                      type="tel"
+                      {...register("valorVento", { min: -100, max: 100 })}
+                      placeholder="Enter Tailwind or Headwind"
+                    //value={Vento}
+                    onChange={(e) => setVento(e.target.value)}
+                    />
+                    {errors.valorVento && <small id="erro">Valor inválido para o vento</small>}
                   </div>
-                  <div className="row">
-                    <div className="form-group col-lg-4 col-md-6 col-sm-12">
-                      <label>Slope:</label>
-                      <input
-                        id="slope"
-                        className="form-control"
-                        name="slope"
-                        type="tel"
-                        placeholder="Insira o slope:"
-                      value={Slope}
-                      onChange={receberSlope}
-                      />
-                    </div>
 
-
-
+                  <div className="form-group col-lg-4 col-md-6 col-sm-12 sucess">
+                    <label>Slope:</label>
+                    <input
+                      id="slope"
+                      className="form-control"
+                      {...register("slope", { min: -2, max: 2 })}
+                      type="tel"
+                      placeholder="Enter Uphill or Downhill Slope:"
+                    //value={Slope}
+                    onChange={(e) => setSlope(e.target.value)}
+                    />
+                    {errors.slope && <small id="erro">Valor inválido para o slope</small>}
                   </div>
-                  <div className="row">
-                    <div className="form-group col-lg-4 col-md-6 col-sm-12">
-                      <label>Quantidade de Reversores inoperantes:</label>
-                      <input
-                        id="rev-inoperantes"
-                        className="form-control"
-                        type="tel"
-                        name="revInoperantes"
-                        placeholder="Insira a quantidade de reversores inoperantes:"
-                      value={Rev}
-                      onChange={receberRev}
-                      />
-                    </div>
-                    <div className="form-group col-lg-4 col-md-6 col-sm-12"></div>
-                    <div className="form-group col-lg-4 col-md-6 col-sm-12">
-                      <label>Unidade de medida:</label>
-                      <select title="unidade" className="form-control select" name="unidade" onChange={receberUnidade} id="unidade">
-                        <option value="placeholder" disabled selected>Selecione a unidade de medida:</option>
-                        <option value="0">Internacional</option>
-                        <option value="1">Imperial</option>
-                      </select>
-                      <small></small>
-                    </div>
+
+                  <div className="form-group col-lg-4 col-md-6 col-sm-12 sucess">
+                    <label>Vap Overspeed (Ft):</label>
+                    <input
+                      id="vap-aeronave"
+                      className="form-control"
+                      type="tel"
+                      placeholder="Enter Overspeed:"
+                    //value={Peso}
+                    onChange={(e) => setVap(e.target.value)}
+                    />
+                  </div>
+
+                  <div className="form-group col-lg-4 col-md-6 col-sm-12 sucess">
+                    <label>Thrust Reverser:</label>
+                    <select className="form-control select" id="rev-inoperantes" title="rev-inoperantes" onChange={(e) => setRev(e.target.value)}>
+                      <option value="" disabled selected>Select a Reverser Option</option>
+                      <option value="1">One Inoperative</option>
+                      <option value="2">All Inoperative</option>
+                      <option value="0">All Operative</option>
+                    </select>
+                  </div>
+
+                  <div className="form-group col-lg-4 col-md-6 col-sm-12 sucess">
+                    <label>Unit Measurement:</label>
+                    <select title="unidade" className="form-control select" name="unidade" onChange={(e) => setUnidade(e.target.value)} id="unidade">
+                      <option value="placeholder" disabled selected>Select an Unite Measurement</option>
+                      <option value="0">International</option>
+                      <option value="1">Imperial</option>
+                    </select>
+                    <small></small>
                   </div>
                 </div>
               </li>
@@ -388,17 +367,20 @@ const showSuccess = (input: HTMLElement) => {
 
           <div className="card-footer w-100 float-right">
 
+            <button title="btnVoltar" id="btnVoltar" className="btn btn-primary float-start" onClick={() => {
+              history('/')
+            }}>Back</button>
+
             <input
-              className="rounded btn btn-primary ml-2 float-right"
+              className="rounded btn btn-primary ml-2 float-end"
               type="submit"
               id="btn_calcular"
               name="submitButton"
-              value="calcular"
+              value="Calculate"
             >
             </input>
           </div>
         </div>
-
       </form>
       <div>
         <input hidden placeholder="result" type="text" id="resultadoConta" />
