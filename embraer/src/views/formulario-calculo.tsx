@@ -369,7 +369,7 @@ return (
       </div>
     </form>
     <div>
-      <input placeholder="result" type="text" id="resultadoConta" onChange={receberResultado} />
+      <input hidden placeholder="result" type="text" id="resultadoConta" onChange={receberResultado} />
     </div>
   </div>
 );
