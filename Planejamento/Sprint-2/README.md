@@ -73,6 +73,7 @@ Para dar continuidade ao projeto, os integrantes da equipe analisaram e optaram 
 
 Para acessar o vídeo que demonstra a etapa de cadastro da aeronave dentro da aplicação basta clicar [aqui](https://clipchamp.com/watch/liuBpFZVpDh).
 
+  
 ### Cálculo 
 
 
