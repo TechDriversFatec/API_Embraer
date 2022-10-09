@@ -39,29 +39,29 @@ function Calculo() {
   function manipularEnvio(evento: any) {
     evento.preventDefault()
 
-    if (parseInt(Peso) <= 40000 || parseInt(Peso) >= 80000) {
+    if (parseInt(Peso) < 20000 || parseInt(Peso) > 80000) {
       const idPeso = document.getElementById("peso-aeronave")
       showError(idPeso!, "Peso inválido")
       return Swal.fire({
         icon: "error",
         title: "Valor inválido para o peso"
       })
-    } else if (parseInt(Altitude) <= 0 || parseInt(Altitude) >= 10000) {
+    } else if (parseInt(Altitude) < 0 || parseInt(Altitude) > 10000) {
       return Swal.fire({
         icon: "error",
         title: "Valor inválido para altitude"
       })
-    } else if (parseInt(Temperatura) <= -4 || parseInt(Temperatura) >= 4) {
+    } else if (parseInt(Temperatura) < -20 || parseInt(Temperatura) > 40) {
       return Swal.fire({
         icon: "error",
         title: "Valor inválido para temparatura"
       })
-    } else if (parseInt(Vento) <= -10 || parseInt(Vento) >= 10) {
+    } else if (parseInt(Vento) < -40 || parseInt(Vento) > 40) {
       return Swal.fire({
         icon: "error",
         title: "Valor inválido para vento"
       })
-    } else if (parseInt(Slope) <= -5 || parseInt(Slope) >= 5) {
+    } else if (parseInt(Slope) < -45 || parseInt(Slope) > 45) {
       return Swal.fire({
         icon: "error",
         title: "Valor inválido para slope"
@@ -369,7 +369,7 @@ return (
       </div>
     </form>
     <div>
-      <input placeholder="result" type="text" id="resultadoConta" onChange={receberResultado} />
+      <input hidden placeholder="result" type="text" id="resultadoConta" value={resultadoCalculo} onChange={receberResultado} />
     </div>
   </div>
 );
