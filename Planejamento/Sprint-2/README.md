@@ -30,7 +30,9 @@ Para a segunda sprint, os objetivos da equipe foram divididos da seguinte forma:
 
 * Definição das unidades de medidas dos campos (Internacional/Imperial);
 
-* Criação do modal para exibição do valor final do cálculo.
+* Validação dos campos do formulário de cálculo;
+
+* Adaptação do design das telas.
   
 </div>
 
@@ -62,7 +64,7 @@ Para dar continuidade ao projeto, os integrantes da equipe analisaram e optaram 
 
 # 🖥 Aplicação
   
-<p align="justify">A partir do feedback colhido na primeira sprint, foi validado como entrega da segunda sprint as alterações nos campos do formulário de cálculo, a criação da tela inicial com filtro, o CRUD dos dados, a adaptação do modal de exibição do resultado dos cálculos e a definição de validadores para os campos do formulário de cálculo. Assim, a equipe deu contuidade ao desenvolvimento da aplicação integrando o front-end e o back-end por meio da biblioteca React. Paralelamente a isso, a equipe realizou o CRUD a partir do My SQL, e esse banco de dados já está integrado à aplicação.</p>
+<p align="justify">A partir do feedback colhido na primeira sprint, foi validado como entrega da segunda sprint as alterações nos campos do formulário de cálculo, a criação da tela inicial com filtro, o CRUD dos dados, a adaptação do design das telas e a definição de validadores para os campos do formulário de cálculo. Assim, a equipe deu contuidade ao desenvolvimento da aplicação integrando o front-end e o back-end por meio da biblioteca React. Paralelamente a isso, a equipe iniciou o CRUD a partir do My SQL, e esse banco de dados já está integrado à aplicação.</p>
   
 
 
@@ -79,14 +81,15 @@ https://user-images.githubusercontent.com/86115352/190877717-99d6b5cd-bbb0-4e68-
   
 <p align="justify">O gráfico de Burndown é um método usado para acompanhar o andamento da sprint muito comum nas metodologias ágeis. Ele possui a vantagem de permitir a rápida visualização do progresso das atividades por todo o time de desenvolvimento, sem necessariamente entrar nas histórias de usuário.<br>
 <br>
-Neste gráfico de Burndown foi retratad o tempo empregado no desenvolvimento das atividades propostas e validadas junto ao cliente, bem como o tempo dedicado às pesquisas e estudos necessários para a realização das tarefas.<br>
+Neste gráfico de Burndown foi retratado o tempo empregado no desenvolvimento das atividades propostas e validadas junto ao cliente, bem como o tempo dedicado às pesquisas e estudos necessários para a realização das tarefas.<br>
 </p>
 
 <br>
 <p align="center">
-<img src="Imagens/burndown_2.jpg" alt="Gráfico de Burndown representando as atividades desenvolvidas na segunda sprint" width="80%" height="80%">
+<img src="Imagens/burndown_atualizado.jpg" alt="Gráfico de Burndown representando as atividades desenvolvidas na segunda sprint" width="100%" height="100%">
 <br>
-<img src="Imagens/Atividades-2.jpg" alt="Descrição das atividades desenvolvidas na segunda sprint" width="80%" height="100%">
+<br>
+<img src="Imagens/Atividades-burndown.jpg" alt="Descrição das atividades desenvolvidas na segunda sprint" width="100%" height="100%">
 </p>
 
 → [Voltar ao topo](#topo)

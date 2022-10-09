@@ -50,11 +50,19 @@
   <img src="Planejamento/Imagens/Sprint_2.jpg" alt="Backlog da 1a e 2a Sprint" width="100%" height="100%">
   </p>
  
+ ### Backlog Total
+ 
+ <br>
+  <p align="center">
+  <img src="Planejamento/Imagens/Backlog-Total.jpg" alt="Backlog da 1a e 2a Sprint" width="100%" height="100%">
+ </p>
+ 
+ 
  ### Backlog Priorizado
  
   <br>
   <p align="center">
-  <img src="Planejamento/Imagens/Backlog-Priorizado.jpg" alt="Backlog organizado a partir da prioridade de cada tarefa" width="60%" height="60%">
+  <img src="Planejamento/Imagens/Backlog-Priorizado-atualizado.jpg" alt="Backlog organizado a partir da prioridade de cada tarefa" width="60%" height="60%">
   </p>
  
  
