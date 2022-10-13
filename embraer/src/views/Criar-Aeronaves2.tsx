@@ -185,6 +185,7 @@ function CriarAeronaves() {
                             </div>
                             <div className="form-group col-lg-4-md col-md-6 col-sm-12">
                                 <label id="label-vento">Wind:</label>
+                                <br></br>
                                 <label>Indicate the wind variation pattern for comparison (KTAS):</label>
                                 <br></br>
                                 <input id="padrao_variacao_vento" className="form-control" name="padrao_variacao_vento"
