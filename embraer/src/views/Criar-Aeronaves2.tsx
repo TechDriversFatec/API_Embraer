@@ -234,6 +234,7 @@ function CriarAeronaves() {
                         <div className="row">
                             <div className="form-group col-lg-4-md col-md-6 col-sm-12">
                                 <label id="label-vap">Vap (speed):</label>
+                                <br></br>
                                 <label>Insert the speed pattern for landing:</label>
                                 <input id="velocidade_referencia" className="form-control" name="velocidade_referencia"
                                     placeholder="Insert the speed pattern for landing" onChange={handleChangeValues} />
