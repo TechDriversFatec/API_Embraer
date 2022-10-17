@@ -54,7 +54,7 @@ Para dar continuidade ao projeto, os integrantes da equipe analisaram e optaram 
 <p align="justify">As informações inicialmente definidas foram revisadas e isso resultou na alteração da estrutura do banco de dados previsto na sprint anterior. A seguir, é apresentado o Diagrama Entidade-Relacionamento com as informações relativas às aeronaves e às condições de pista e clima determinantes para o resultado do cálculo. Esse diagrama foi a base para o CRUD realizado:<br>
 <br></p>
 <p align="center">
-<img src="Imagens/DER_revisado.png" alt="Diagrama que representa a relação entre as entidades do banco de dados da aplicação" width="80%" height="80%">
+<img src="Imagens/DER (Revisado).png" alt="Diagrama que representa a relação entre as entidades do banco de dados da aplicação" width="80%" height="80%">
 </p>
 
 
@@ -64,11 +64,20 @@ Para dar continuidade ao projeto, os integrantes da equipe analisaram e optaram 
 
 # 🖥 Aplicação
   
-<p align="justify">A partir do feedback colhido na primeira sprint, foi validado como entrega da segunda sprint as alterações nos campos do formulário de cálculo, a criação da tela inicial com filtro, o CRUD dos dados, a adaptação do design das telas e a definição de validadores para os campos do formulário de cálculo. Assim, a equipe deu contuidade ao desenvolvimento da aplicação integrando o front-end e o back-end por meio da biblioteca React. Paralelamente a isso, a equipe iniciou o CRUD a partir do My SQL, e esse banco de dados já está integrado à aplicação.</p>
+<p align="justify">A partir do feedback colhido na primeira sprint, foi validado como entrega da segunda sprint as alterações nos campos do formulário de cálculo, a criação da tela inicial com filtro, o CRUD dos dados, a adaptação do design das telas e a definição de validadores para os campos do formulário de cálculo. Assim, a equipe deu contuidade ao desenvolvimento da aplicação integrando o front-end e o back-end por meio da biblioteca React. Paralelamente a isso, a equipe iniciou o CRUD a partir do My SQL, e esse banco de dados já está integrado à aplicação.
+<br>
+</p>
+
   
+### Cadastro de aeronave
+
+Para acessar o vídeo que demonstra a etapa de cadastro da aeronave dentro da aplicação basta clicar [aqui](https://clipchamp.com/watch/liuBpFZVpDh).
+
+  
+### Cálculo 
 
 
-https://user-images.githubusercontent.com/86115352/190877717-99d6b5cd-bbb0-4e68-85b2-71bdbaa922b1.mp4
+https://user-images.githubusercontent.com/86115352/194782032-98fa8850-1ed7-4985-af56-7fc29e84ea74.mp4
 
 
 
