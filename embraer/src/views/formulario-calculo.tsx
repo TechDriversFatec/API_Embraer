@@ -41,7 +41,6 @@ function Calculo() {
 
     if (parseInt(Peso) < 20000 || parseInt(Peso) > 80000) {
       const idPeso = document.getElementById("peso-aeronave")
-      showError(idPeso!, "Peso inválido")
       return Swal.fire({
         icon: "error",
         title: "Invalid value for weight"
