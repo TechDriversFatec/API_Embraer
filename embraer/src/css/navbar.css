@@ -1,0 +1,22 @@
+#navBarDiv{
+    width: 100%;
+    padding: 0% !important;
+    
+}
+
+.navbardiv{
+    width: 800;
+    height: 50px;
+    padding: 0% !important;
+    margin: 0px;
+}
+
+.bntcalcularnavbar{
+    width: auto;
+}
+
+.prevent-select {
+    -webkit-user-select: none; /* Safari */
+    -ms-user-select: none; /* IE 10 and IE 11 */
+    user-select: none; /* Standard syntax */
+  }

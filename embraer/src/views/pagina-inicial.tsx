@@ -9,7 +9,7 @@ function PaginaInicial() {
   
   return (
       <div className="App">
-        <div>
+        <div id="divLogoAviao">
         <h2>
           <i>
             <img src="loguinho.png" id="logoAviaozinho" alt="some text" />

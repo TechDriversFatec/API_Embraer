@@ -67,7 +67,7 @@ app.use(express.json());
 //     });
 // });
 
-app.post("/calculo", (req, res) => {
+app.post("/salvarLog", (req, res) => {
     const { aeronave } = req.body;
     const { motor } = req.body;
     const { certificacao } = req.body;
@@ -90,6 +90,28 @@ app.post("/calculo", (req, res) => {
         console.log(err);
     });
 });
+
+app.get("/getAeronaves", (req, res) => {
+
+    let SQL = "SELECT * FROM aeronaves";
+
+    db.query(SQL, (err, result) => {
+        if(err) console.log(err);
+        else res.send(result)
+    });
+});
+
+// app.get("/getAeronaveMotor/:id", (req, res) => {
+
+//     const { id } = req.body
+
+//     let SQL = "SELECT motor FROM aeronaves where Id =" + id;
+
+//     db.query(SQL, (err, result) => {
+//         if(err) console.log(err);
+//         else res.send(result)
+//     });
+// });
 
 app.listen(3002, () => {
     console.log("rodando servidor");
