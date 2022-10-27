@@ -369,17 +369,17 @@ console.log(avioes)
                     />
                   </div>
 
-                  <div className="form-group col-lg-4 col-md-6 col-sm-12 sucess">
-                    <label>Vap Overspeed (Ft):</label>
-                    <input
-                      id="vap-aeronave"
-                      className="form-control"
-                      type="tel"
-                      placeholder="Enter Overspeed:"
-                      value={vap}
-                      onChange={(e) => setVap(e.target.value)}
-                    />
-                  </div>
+                <div className="form-group col-lg-4 col-md-6 col-sm-12 sucess">
+                  <label>Vap Overspeed (Km/h):</label>
+                  <input
+                    id="vap-aeronave"
+                    className="form-control"
+                    type="tel"
+                    placeholder="Enter Overspeed:"
+                    value={vap}
+                    onChange={(e) => setVap(e.target.value)}
+                  />
+                </div>
 
                   <div className="form-group col-lg-4 col-md-6 col-sm-12 sucess">
                     <label>Thrust Reverser:</label>
