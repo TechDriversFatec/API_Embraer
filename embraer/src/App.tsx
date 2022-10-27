@@ -5,6 +5,7 @@ import Calculo from "./views/formulario-calculo";
 import CriarAeronaves from "./views/Criar-Aeronaves2";
 import {BrowserRouter, Navigate, Route, Routes} from 'react-router-dom';
 import PaginaInicial from "./views/pagina-inicial";
+import Navbar from "./views/navbar";
 
 function App() {
   return (
