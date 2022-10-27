@@ -1,8 +1,8 @@
 /* eslint-disable @typescript-eslint/no-unused-expressions */
 import "../css/pagina-inicial.css";
 import "bootstrap/dist/css/bootstrap.min.css";
-import Table from "../controller/tabela";
 import { useNavigate } from 'react-router-dom';
+import { Tabela } from "./components/tabela";
 
 function PaginaInicial() {
   const history = useNavigate();
@@ -28,7 +28,7 @@ function PaginaInicial() {
               <li className="list-group-item">
                 <div className="row">
 
-                  <Table />
+                  <Tabela />
                   
                 </div>
               </li>

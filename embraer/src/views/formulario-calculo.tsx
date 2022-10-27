@@ -41,7 +41,6 @@ function Calculo() {
 
     if (parseInt(Peso) < 20000 || parseInt(Peso) > 80000) {
       const idPeso = document.getElementById("peso-aeronave")
-      showError(idPeso!, "Peso inválido")
       return Swal.fire({
         icon: "error",
         title: "Invalid value for weight"
@@ -316,7 +315,7 @@ return (
                 </div>
 
                 <div className="form-group col-lg-4 col-md-6 col-sm-12 sucess">
-                  <label>Vap Overspeed (Ft):</label>
+                  <label>Vap Overspeed (Km/h):</label>
                   <input
                     id="vap-aeronave"
                     className="form-control"

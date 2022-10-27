@@ -143,6 +143,7 @@ function CriarAeronaves() {
                         <div className="row">
                             <div className="form-group col-lg-4-md col-md-6 col-sm-12">
                                 <label id="label-peso">Weight:</label>
+                                <br></br>
                                 <label>Indicate the weight variation pattern for comparison (Kg):</label>
                                 <br></br>
                                 <input title="padrao_variacao_peso" id="padrao_variacao_peso" className="form-control" name="padrao_variacao_peso" onChange={handleChangeValues} />
@@ -157,6 +158,7 @@ function CriarAeronaves() {
                             </div>
                             <div className="form-group col-lg-4-md col-md-6 col-sm-12">
                                 <label id="label-temp">Temperature:</label>
+                                <br></br>
                                 <label>Insert the temperature variation pattern To compare(ISA):</label>
                                 <br></br>
                                 <input id="padrao_variacao_temperatura" className="form-control" name="padrao_variacao_temperatura"
@@ -174,6 +176,7 @@ function CriarAeronaves() {
                         <div className="row">
                             <div className="form-group col-lg-4-md col-md-6 col-sm-12">
                                 <label>Altitude (Feets above sea level):</label>
+                                <br></br>
                                 <label>Indicate the altitude variation pattern for comparison:</label>
                                 <br></br>
                                 <input title="padrao_variacao_altitude" id="padrao_variacao_altitude" className="form-control" name="padrao_variacao_altitude" onChange={handleChangeValues} />
@@ -185,6 +188,7 @@ function CriarAeronaves() {
                             </div>
                             <div className="form-group col-lg-4-md col-md-6 col-sm-12">
                                 <label id="label-vento">Wind:</label>
+                                <br></br>
                                 <label>Indicate the wind variation pattern for comparison (KTAS):</label>
                                 <br></br>
                                 <input id="padrao_variacao_vento" className="form-control" name="padrao_variacao_vento"
@@ -233,6 +237,7 @@ function CriarAeronaves() {
                         <div className="row">
                             <div className="form-group col-lg-4-md col-md-6 col-sm-12">
                                 <label id="label-vap">Vap (speed):</label>
+                                <br></br>
                                 <label>Insert the speed pattern for landing:</label>
                                 <input id="velocidade_referencia" className="form-control" name="velocidade_referencia"
                                     placeholder="Insert the speed pattern for landing" onChange={handleChangeValues} />
