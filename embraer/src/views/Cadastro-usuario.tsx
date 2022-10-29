@@ -1,5 +1,6 @@
 import React, { useState } from "react";
 import Axios from "axios";
+import axios from "axios";
 import logo from "./logo.svg";
 import "../css/CadastroUsuario.css";
 import "bootstrap/dist/css/bootstrap.min.css";
@@ -20,38 +21,12 @@ function CriarUsuario() {
 
     const handleClickButton = (values: any) => {
         console.log(values);
-        Axios.post("http://localhost:3002/register", {
-            modelo: values.modelo,
-            fabricante: values.fabricante,
-            motor: values.motor,
-            certificacao: values.certificacao,
-            qtde_reversor: values.qtde_reversor,
-            peso_referencial: values.peso_referencial,
-
-            tipo_flap: values.tipo_flap,
-            configuracao_freio: values.configuracao_freio,
-
-            distancia_referencial: values.distancia_referencial,
-            padrao_variacao_peso: values.padrao_variacao_peso,
-            correcao_peso_acima: values.correcao_peso_acima,
-            correcao_peso_abaixo: values.correcao_peso_abaixo,
-            padrao_variacao_altitude: values.padrao_variacao_altitude,
-            correcao_altitude: values.correcao_altitude,
-            padrao_variacao_temperatura: values.padrao_variacao_temperatura,
-            correcao_temperatura_acima: values.correcao_temperatura_acima,
-            correcao_temperatura_abaixo: values.correcao_temperatura_abaixo,
-            padrao_variacao_vento: values.padrao_variacao_vento,
-            correcao_vento_proa: values.correcao_vento_proa,
-            correcao_vento_cauda: values.correcao_vento_cauda,
-            padrao_variacao_inclinacao: values.padrao_variacao_inclinacao,
-            correcao_aclive: values.correcao_aclive,
-            correcao_declive: values.correcao_declive,
-            velocidade_referencia: values.velocidade_referencia,
-            padrao_variacao_velocidade: values.padrao_variacao_velocidade,
-            correcao_velocidade: values.correcao_velocidade,
-            correcao_reversor_inoperante: values.correcao_reversor_inoperante,
-            padrao_variacao_sobrepeso: values.padrao_variacao_sobrepeso,
-            correcao_sobrepeso: values.correcao_sobrepeso
+        Axios.post("http://localhost:3002/criarusuario", {
+            nivel_acesso: values.nivel_acesso,
+            senha_acesso: values.senha_acesso,
+            nome: values.nome,
+            email: values.email,
+            
         });
         Swal.fire({
             text: 'User registered successfully!',
@@ -74,7 +49,7 @@ function CriarUsuario() {
                         <div className="row">
                             <div className="form-group col-lg-4-md col-md-6 col-sm-12">
                                 <label>Username:</label>
-                                <input id="username" className="form-control" name="username" onChange={handleChangeValues} />
+                                <input id="nome" className="form-control" name="nome" onChange={handleChangeValues} />
                             </div>
                             <div className="form-group col-lg-4-md col-md-6 col-sm-12">
                                 <label>Email:</label>
@@ -82,18 +57,14 @@ function CriarUsuario() {
                             </div>
                             <div className="form-group col-lg-4-md col-md-6 col-sm-12">
                                 <label>Password:</label>
-                                <input id="password" type="password" className="form-control" name="password" onChange={handleChangeValues} />
-                            </div>
-                            <div className="form-group col-lg-4-md col-md-6 col-sm-12">
-                                <label>Password Confirm:</label>
-                                <input id="password-confirm" type="password" className="form-control" name="password-confirm" onChange={handleChangeValues} />
+                                <input id="senha_acesso" type="password" className="form-control" name="senha_acesso" placeholder="password max length = 15"onChange={handleChangeValues} />
                             </div>
                             <div className="form-group col-lg-4-md col-md-6 col-sm-12">
                                 <label>User Level:</label>
-                                    <select title="Nível usuário" id="NivelUsuario" className="form-control" name="NivelUsuario" onChange={handleChangeValues}>
+                                    <select title="nivel_acesso" id="NivelUsuario" className="form-control" name="nivel_acesso" onChange={handleChangeValues}>
                                         <option value="" selected disabled>Select</option>
-                                        <option value="Max. Manual">Administrator</option>
-                                        <option value="High">User</option>
+                                        <option value="1">Administrator</option>
+                                        <option value="2">User</option>
                                     </select> 
                             </div>
                         </div>
@@ -107,7 +78,6 @@ function CriarUsuario() {
                         </div>
                 </div>
             </form>
-            <footer >All Rights Reserved</footer> 
 
                 <script src="../compile/build/Cadastro-usuario.js"></script>
         </div>
