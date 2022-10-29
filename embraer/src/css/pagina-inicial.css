@@ -29,6 +29,7 @@ a{
 
 footer{
   margin-top: 1rem;
+  margin-bottom: -60px;
   padding: 1rem;
   background-color: rgb(221, 221, 220);
   position: absolute;

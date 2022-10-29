@@ -48,6 +48,11 @@ function PaginaInicial() {
             </a>
             <a
               className="rounded btn btn-primary ml-2 float-right"
+              href="http://localhost:3000/Cadastrar"
+            >Add User
+            </a>            
+            <a
+              className="rounded btn btn-primary ml-2 float-right"
               href="http://localhost:3000/Criar"
             >Add Aircraft
             </a>
