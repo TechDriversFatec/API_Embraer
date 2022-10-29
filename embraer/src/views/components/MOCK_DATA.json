@@ -1,0 +1,5 @@
+[{"id":1,"model":"E190","manufacturer":"Embraer","engine":2,"referential_weight":46000,"number_of_reversers":2},
+{"id":2,"model":"E195","manufacturer":"Embraer","engine":2,"referential_weight":42000,"number_of_reversers":2},
+{"id":3,"model":"E170","manufacturer":"Embraer","engine":3,"referential_weight":43000,"number_of_reversers":2},
+{"id":4,"model":"Phenom","manufacturer":"Embraer","engine":2,"referential_weight":38000,"number_of_reversers":2},
+{"id":5,"model":"Praetor","manufacturer":"Embraer","engine":3,"referential_weight":45000,"number_of_reversers":2}]
