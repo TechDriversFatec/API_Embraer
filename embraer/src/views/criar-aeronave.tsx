@@ -43,7 +43,7 @@ function manipularEnvio(evento: any){
     vapAbxValido
 
   if(formularioValido){
-    console.log("tudo ok");
+    console.log(`Flap: ${Flap} ${Break} ${Condicao}`);
   }
 }
 
@@ -127,7 +127,7 @@ function validaAltitudeAbx(){
   const idAltitudeAbx = document.getElementById("altitude_abaixo");
   let valido = false;
 
-  if(!ehNumero(AltitudeAcm)){
+  if(!ehNumero(AltitudeAbx)){
     showError(idAltitudeAbx!, `value must be a number`);
   } else {
     showSuccess(idAltitudeAbx!)
@@ -432,6 +432,8 @@ const [VapAcm, setVapAcm] = useState("");
                   id="configuracao_freio"
                   className="form-control"
                   name="configuracao_freio"
+                  value={Break}
+                  onChange={receberBreak}
                 >
                   <option value="" selected disabled>
                     Select
