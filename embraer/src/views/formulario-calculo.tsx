@@ -96,6 +96,8 @@ function Calculo() {
 
     if(!entre(parseInt(Peso), min, max)){
       showError(idPeso!, `Weight must be between ${min} and ${max}`)
+    } else if(!ehNumero(Peso)){
+      showError(idPeso!, `Weight must be a number`)
     } else {
       showSuccess(idPeso!);
       valido = true;
@@ -110,6 +112,8 @@ function Calculo() {
 
     if(!entre(parseInt(Altitude), min, max)){
       showError(idAltitude!, `Height must be between ${min} and ${max}`)
+    } else if(!ehNumero(Altitude)){
+      showError(idAltitude!, `Altitude must be a value`)
     } else {
       showSuccess(idAltitude!);
       valido = true;
@@ -124,6 +128,8 @@ function Calculo() {
 
     if(!entre(parseInt(Temperatura), min, max)){
       showError(idTemperatura!, `Temperature must be between ${min} and ${max}`)
+    } else if(!ehNumero(Temperatura)){
+      showError(idTemperatura!, `Temperature must be a number`)
     } else {
       showSuccess(idTemperatura!);
       valido = true;
@@ -138,6 +144,8 @@ function Calculo() {
 
     if(!entre(parseInt(Vento), min, max)){
       showError(idVento!, `Wind must be between ${min} and ${max}`)
+    } else if(!ehNumero(Vento)){
+      showError(idVento!, `Wind must be a number`)
     } else {
       showSuccess(idVento!);
       valido = true;
@@ -152,6 +160,8 @@ function Calculo() {
 
     if(!entre(parseInt(Slope), min, max)){
       showError(idSlope!, `Slope must be between ${min} and ${max}`)
+    } else if(!ehNumero(Slope)){
+      showError(idSlope!, `Slope must be a number`)
     } else {
       showSuccess(idSlope!);
       valido = true;
