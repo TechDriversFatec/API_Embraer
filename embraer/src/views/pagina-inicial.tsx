@@ -1,15 +1,16 @@
 /* eslint-disable @typescript-eslint/no-unused-expressions */
 import "../css/pagina-inicial.css";
 import "bootstrap/dist/css/bootstrap.min.css";
-import Table from "../controller/tabela";
 import { useNavigate } from 'react-router-dom';
+import { Tabela } from "./components/tabela";
+import { Filtro } from "./components/filtro";
 
 function PaginaInicial() {
   const history = useNavigate();
   
   return (
       <div className="App">
-        <div>
+        <div id="divLogoAviao">
         <h2>
           <i>
             <img src="loguinho.png" id="logoAviaozinho" alt="some text" />
@@ -28,7 +29,7 @@ function PaginaInicial() {
               <li className="list-group-item">
                 <div className="row">
 
-                  <Table />
+                  <Filtro />
                   
                 </div>
               </li>
@@ -48,13 +49,18 @@ function PaginaInicial() {
             </a>
             <a
               className="rounded btn btn-primary ml-2 float-right"
+              href="http://localhost:3000/Cadastrar"
+            >Add User
+            </a>            
+            <a
+              className="rounded btn btn-primary ml-2 float-right"
               href="http://localhost:3000/Criar"
             >Add Aircraft
             </a>
 
           </div>
         </div>
-        <footer>All Rights Reserved.</footer>
+        {/*<footer>All Rights Reserved.</footer>*/}
       </div>
   );
 }
