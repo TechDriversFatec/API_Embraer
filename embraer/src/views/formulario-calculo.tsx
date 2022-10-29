@@ -2,9 +2,6 @@ import "../css/formulario-calculo.css";
 import "bootstrap/dist/css/bootstrap.min.css";
 import { useState } from "react";
 import Calcular from "../controller/calculo";
-import Swal from "sweetalert2";
-import { useNavigate } from 'react-router-dom';
-import Axios from "axios";
 
 
 function Calculo() {
@@ -12,13 +9,10 @@ function Calculo() {
   const calcular = new Calcular()
 
   const showError = (input: HTMLElement, message: string) => {
-    // get the form-field element
     const formField = input.parentElement;
-    // add the error class
     formField!.classList.remove('success');
     formField!.classList.add('error');
 
-    // show the error message
     const error = formField!.querySelector('small');
     error!.textContent = message;
   };
@@ -38,39 +32,19 @@ function Calculo() {
 
   function manipularEnvio(evento: any) {
     evento.preventDefault()
+    let pesoValido = validaValorPeso(),
+      altitudeValida = validaValorAltitude(),
+      temperaturaValida = validaValorTemperatura(),
+      ventoValido = validaValorVento(),
+      slopeValido = validaValorSlope()
 
-    if (parseInt(Peso) < 20000 || parseInt(Peso) > 80000) {
-      const idPeso = document.getElementById("peso-aeronave")
-      return Swal.fire({
-        icon: "error",
-        title: "Invalid value for weight"
-      })
-    } else if (parseInt(Altitude) < 0 || parseInt(Altitude) > 10000) {
-      return Swal.fire({
-        icon: "error",
-        title: "Invalid value for altitude"
-      })
-    } else if (parseInt(Temperatura) < -20 || parseInt(Temperatura) > 40) {
-      return Swal.fire({
-        icon: "error",
-        title: "Invalid value for temperature"
-      })
-    } else if (parseInt(Vento) < -40 || parseInt(Vento) > 40) {
-      return Swal.fire({
-        icon: "error",
-        title: "Invalid value for wind"
-      })
-    } else if (parseInt(Slope) < -45 || parseInt(Slope) > 45) {
-      return Swal.fire({
-        icon: "error",
-        title: "Invalid value for slope"
-      })
-    } else if (parseInt(Rev) < 0 || parseInt(Rev) > 2) {
-      return Swal.fire({
-        icon: "error",
-        title: "Invalid value for reversers"
-      })
-    } else {
+    let formularioValido = pesoValido &&
+     altitudeValida &&
+     temperaturaValida && 
+     ventoValido &&
+     slopeValido
+    
+    if (formularioValido){
       calcular.calcularPouso(
         parseInt(Peso),
         parseInt(Altitude),
@@ -83,9 +57,86 @@ function Calculo() {
     }
   }
 
-  function receberValorPeso(evento: any) {
+  const entre = (valor: number, min: number, max: number) => valor < min || valor > max ? false : true
+  const ehNumero = (valor: string) => {
+    const expressao = new RegExp("^[0-9]+$")
+    return expressao.test(valor)
+  }
+  
+
+  function validaValorPeso(){
+    const idPeso = document.getElementById("peso-aeronave")
+    let valido = false;
+    const min = 40000, max = 80000;
+
+    if(!entre(parseInt(Peso), min, max)){
+      showError(idPeso!, `Weight must be between ${min} and ${max}`)
+    } else {
+      showSuccess(idPeso!);
+      valido = true;
+    }
+    return valido
+  }
+
+  function validaValorAltitude(){
+    const idAltitude = document.getElementById("altitude-aeronave")
+    let valido = false;
+    const min = 0, max = 10000;
+
+    if(!entre(parseInt(Altitude), min, max)){
+      showError(idAltitude!, `Height must be between ${min} and ${max}`)
+    } else {
+      showSuccess(idAltitude!);
+      valido = true;
+    }
+    return valido
+  }
+
+  function validaValorTemperatura(){
+    const idTemperatura = document.getElementById("temperatura")
+    let valido = false;
+    const min = 0, max = 10;
+
+    if(!entre(parseInt(Temperatura), min, max)){
+      showError(idTemperatura!, `Temperature must be between ${min} and ${max}`)
+    } else {
+      showSuccess(idTemperatura!);
+      valido = true;
+    }
+    return valido
+  }
+
+  function validaValorVento(){
+    const idVento = document.getElementById("valorVento")
+    let valido = false;
+    const min = -5, max = 10;
+
+    if(!entre(parseInt(Vento), min, max)){
+      showError(idVento!, `Wind must be between ${min} and ${max}`)
+    } else {
+      showSuccess(idVento!);
+      valido = true;
+    }
+    return valido
+  }
+
+  function validaValorSlope(){
+    const idSlope = document.getElementById("slope")
+    let valido = false;
+    const min = -2, max = 2;
+
+    if(!entre(parseInt(Slope), min, max)){
+      showError(idSlope!, `Slope must be between ${min} and ${max}`)
+    } else {
+      showSuccess(idSlope!);
+      valido = true;
+    }
+    return valido
+  }
+
+  function receberValorPeso(evento: any){
     let entrada = evento.target.value;
-    setPeso(entrada);
+    setPeso(entrada)
   }
 
   function receberValorAltitude(evento: any) {
@@ -273,6 +324,7 @@ return (
                     value={Altitude}
                     onChange={receberValorAltitude}
                   />
+                  <small></small>
                 </div>
 
                 <div className="form-group col-lg-4 col-md-6 col-sm-12 sucess">
@@ -286,6 +338,7 @@ return (
                     value={Temperatura}
                     onChange={receberValorTemperatura}
                   />
+                  <small></small>
                 </div>
 
                 <div className="form-group col-lg-4 col-md-6 col-sm-12 sucess">
@@ -299,6 +352,7 @@ return (
                     value={Vento}
                     onChange={receberValorVento}
                   />
+                  <small></small>
                 </div>
 
                 <div className="form-group col-lg-4 col-md-6 col-sm-12 sucess">
@@ -312,6 +366,7 @@ return (
                     value={Slope}
                     onChange={receberSlope}
                   />
+                  <small></small>
                 </div>
 
                 <div className="form-group col-lg-4 col-md-6 col-sm-12 sucess">
@@ -324,6 +379,7 @@ return (
                     value={vap}
                     onChange={(e) => setVap(e.target.value)}
                   />
+                  <small></small>
                 </div>
 
                 <div className="form-group col-lg-4 col-md-6 col-sm-12 sucess">

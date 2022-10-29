@@ -6,6 +6,7 @@ import CriarAeronaves from './views/Criar-Aeronaves2';
 import reportWebVitals from './reportWebVitals';
 import PaginaInicial from './views/pagina-inicial';
 import Calculo from './views/formulario-calculo';
+import VariaveisAeronaves from './views/criar-aeronave';
 
 const root = ReactDOM.createRoot(
   document.getElementById('root') as HTMLElement

@@ -1,14 +1,12 @@
-#erro{
-  color: red;
-  text-align: left;
-}
 #swal2-title{
   font-size: 60px;
   padding: 40px;
   padding-bottom: 0px;
   padding-top: 60px;
 }
-
+small{
+  color: red;
+}
 #swal2-html-container{
   font-size: 25px;
 }
@@ -18,24 +16,6 @@
   padding: 25px;
   height: 100vh;
   text-align: center;
-}
-
-.form-field input:focus {
-  outline: none;
-}
-
-.form-field.error input {
-  border: 2px;
-  border-color: red;
-}
-
-.form-field.success input {
-  border-color: var(--success-color);
-}
-
-
-.form-field small {
-  color: var(--error-color);
 }
 
 .container-fluid{
