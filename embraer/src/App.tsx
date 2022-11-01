@@ -19,7 +19,7 @@ function App() {
       <Route path="/Calculo" element={<Calculo />}/>
       <Route path="/Criar" element={<CriarAeronaves />}/>
       <Route path="/Cadastrar" element={<CriarUsuario/>}/>
-      <Route path="/Variavel/:id" element={<VariaveisAeronaves />}/>
+      <Route path="/Variavel" element={<VariaveisAeronaves />}/>
     </Routes>
     </BrowserRouter>
   );
