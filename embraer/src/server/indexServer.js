@@ -66,7 +66,17 @@ app.use(express.json());
 //         console.log(err);
 //     });
 // });
+app.post("/criarusuario", (req, res) => {
+    const { nivel_acesso } = req.body;
+    const { senha_acesso } = req.body;
+    const { nome } = req.body;
+    const { email } = req.body;
+    let SQL ="INSERT INTO usuario (nivel_acesso, senha_acesso, nome, email) VALUES (?,?,?,?)";
 
+    db.query(SQL, [nivel_acesso, senha_acesso, nome, email], (err, result) => {
+        console.log(err);
+    });
+});
 app.post("/salvarLog", (req, res) => {
     const { aeronave } = req.body;
     const { motor } = req.body;
@@ -91,15 +101,15 @@ app.post("/salvarLog", (req, res) => {
     });
 });
 
-app.get("/getAeronaves", (req, res) => {
+// app.get("/getAeronaves", (req, res) => {
 
-    let SQL = "SELECT * FROM aeronaves";
+//     let SQL = "SELECT * FROM aeronaves";
 
-    db.query(SQL, (err, result) => {
-        if(err) console.log(err);
-        else res.send(result)
-    });
-});
+//     db.query(SQL, (err, result) => {
+//         if(err) console.log(err);
+//         else res.send(result)
+//     });
+// });
 
 // app.get("/getAeronaveMotor/:id", (req, res) => {
 
