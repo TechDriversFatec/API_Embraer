@@ -390,7 +390,7 @@ const [VapAcm, setVapAcm] = useState("");
 
   return (
     <div className="CriarAeronaves">
-      <div>
+      {/* <div>
         <i>
           <img
             className="logoAviaoCriar"
@@ -399,7 +399,7 @@ const [VapAcm, setVapAcm] = useState("");
             alt="some text"
           />
         </i>
-      </div>
+      </div> */}
       <form id="form_criar_aeronave" onSubmit={manipularEnvio}>
         <div className="card card-custom gutter-b">
           <div className="card-header">

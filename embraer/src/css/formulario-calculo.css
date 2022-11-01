@@ -14,8 +14,8 @@ small{
 .App {
   background-color: #282f55;
   padding: 25px;
-  height: 100%;
-  text-align: center;
+  height: 100vh;
+  text-align: czenter;
 }
 
 .container-fluid{

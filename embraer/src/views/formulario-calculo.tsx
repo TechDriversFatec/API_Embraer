@@ -272,11 +272,11 @@ console.log(avioes)
 
   return (
     <div className="App">
-      <div>
+      {/* <div>
         <i>
           <img className="logoAviaoCalculo" src="loguinho.png" id="logoAviaozinho" alt="some text" />
         </i>
-      </div>
+      </div> */}
       <form id="form_criar" onSubmit={manipularEnvio}>
         <div className="card card-custom gutter-b">
           <div className="card-header">
