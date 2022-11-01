@@ -6,7 +6,8 @@ function VariaveisAeronaves() {
 
 function manipularEnvio(evento: any){
   evento.preventDefault()
-  let pesoAbxValido = validaPesoAbx(),
+  let variacaoPesoValido = validaVariacaoPes(),
+    pesoAbxValido = validaPesoAbx(),
     pesoAcmValido = validaPesoAcm(),
     altitudePdValida = validaAltitudePd(),
     altitudeAcmValida = validaAltitudeAcm(),
@@ -74,6 +75,18 @@ const ehNumero = (valor: any) => {
   return expressao.test(valor)
 }
 
+function validaVariacaoPes(){
+  const id = document.getElementById("variacao_peso");
+  let valido = false;
+
+  if(!ehNumero(PesoAcm)){
+    showError(id!, `Value must be a number`)
+  } else {
+    showSuccess(id!);
+    valido = true;
+  }
+  return valido
+}
 function validaPesoAcm(){
   const idPesoAcm = document.getElementById("peso_acima");
   let valido = false;
@@ -296,6 +309,14 @@ function receberCondicao(evento: any){
   let entrada = evento.target.value;
   setCondicao(entrada)
 }
+function receberDistancia(evento: any){
+  let entrada = evento.target.value;
+  setDistancia(entrada)
+}
+function receberVariacaoPes(evento: any){
+  let entrada = evento.target.value;
+  setVariacaoPes(entrada)
+}
 function receberPesoAbx(evento: any){
   let entrada = evento.target.value;
   setPesoAbx(entrada)
@@ -369,6 +390,8 @@ function receberVapAcm(evento: any){
 const [Flap, setFlap] = useState("");
 const [Break, setBreak] = useState("");
 const [Condicao, setCondicao] = useState("");
+const [Distancia, setDistancia] = useState("");
+const [VariacaoPes, setVariacaoPes] = useState("")
 const [PesoAbx, setPesoAbx] = useState("");
 const [PesoAcm, setPesoAcm] = useState("");
 const [AltitudePd, setAltitudePd] = useState("");
@@ -411,7 +434,7 @@ const [VapAcm, setVapAcm] = useState("");
           <div className="card-body col-md-13">
             <fieldset className="row flap">
                 <legend>Flap configurations</legend>
-              <div className="form-group col-lg-4-md col-md-4 col-sm-12">
+              <div className="form-group col-lg-4-md col-md-3 col-sm-12">
                 <label>Flap:</label>
                 <input
                   id="tipo_flap"
@@ -425,7 +448,7 @@ const [VapAcm, setVapAcm] = useState("");
                 <input className="form-check-input" type="checkbox" role="switch" id="flexSwitchCheckDefault" />
                 <label className="form-check-label">Ice Accretion</label>
               </div>
-              <div className="form-group col-lg-4-md col-md-4 col-sm-12">
+              <div className="form-group col-lg-4-md col-md-3 col-sm-12">
                 <label>Brake config:</label>
                 <select
                   title="configuracao_freio"
@@ -444,7 +467,7 @@ const [VapAcm, setVapAcm] = useState("");
                   <option value="Low">Low</option>
                 </select>
               </div>
-              <div className="form-group col-lg-4-md col-md-4 col-sm-12">
+              <div className="form-group col-lg-4-md col-md-3 col-sm-12">
                 <label>Runway Condition:</label>
                 <input
                   id="correcao_reversor_inoperante"
@@ -456,10 +479,33 @@ const [VapAcm, setVapAcm] = useState("");
                   
                 />
               </div>
+              <div className="form-group col-lg-4-md col-md-3 col-sm-12">
+                <label>Referencial distance:</label>
+                <input
+                  id="distancia_referencia"
+                  className="form-control"
+                  name="distancia_referencia"
+                  placeholder="Insert the referential distance (m)"
+                  value={Distancia}
+                  onChange={receberDistancia}
+                  
+              />
+              </div>
             </fieldset>
             <fieldset className="row col-lg-3 variavel">
               <legend>Wheight variables</legend>
               <div className="form-group col-lg-4-md col-md-12 col-sm-12">
+                <label>For each (Kg)</label>
+                <input
+                  id="variacao_peso"
+                  className="form-control"
+                  name="variacao_peso"
+                  placeholder="for each"
+                  value={VariacaoPes}
+                  onChange={receberVariacaoPes}
+                />
+                <small></small>
+                <br></br>
                 <label>Insert the variation index (m):</label>
                 <input
                   id="peso_acima"
@@ -497,6 +543,17 @@ const [VapAcm, setVapAcm] = useState("");
                   onChange={receberAltitudePd}
                   
                 ></input>
+                <small></small>
+                <br></br>
+                <label>For each (Kg)</label>
+                <input
+                  id="variacao_peso"
+                  className="form-control"
+                  name="variacao_peso"
+                  placeholder="for each"
+                  value={VariacaoPes}
+                  onChange={receberVariacaoPes}
+                />
                 <small></small>
                 <br></br>
                 <label>variation index (m):</label>

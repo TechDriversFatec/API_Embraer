@@ -2,6 +2,7 @@
 import "../css/pagina-inicial.css";
 import "bootstrap/dist/css/bootstrap.min.css";
 import { useNavigate } from 'react-router-dom';
+import { Teste } from 'crud_react'
 
 function PaginaInicial() {
   const history = useNavigate();
@@ -27,6 +28,7 @@ function PaginaInicial() {
               <li className="list-group-item">
                 <div className="row">
 
+                  <Teste />
                   
                 </div>
               </li>
