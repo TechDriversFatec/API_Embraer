@@ -8,6 +8,7 @@ import CriarUsuario from "./views/Cadastro-usuario";
 import PaginaInicial from "./views/pagina-inicial";
 import Navbar from "./views/navbar";
 import VariaveisAeronaves from "./views/criar-aeronave";
+import Login from "./views/login";
 import LogsCalculo from "./views/calculoLogs";
 
 function App() {
@@ -15,8 +16,9 @@ function App() {
     <BrowserRouter>
     <Navbar />
     <Routes>
-      <Route index element={<PaginaInicial/>}/>
+      <Route index element={<Login/>}/>
       <Route path="*" element={<Navigate to="/" />}/>
+      <Route path="/Index" element={<PaginaInicial />}/>
       <Route path="/Calculo" element={<Calculo />}/>
       <Route path="/Criar" element={<CriarAeronaves />}/>
       <Route path="/Cadastrar" element={<CriarUsuario/>}/>

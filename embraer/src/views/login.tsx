@@ -1,8 +1,10 @@
 import React, { useState } from "react";
+import { useNavigate } from "react-router-dom";
 import "../css/CriarAeronaves2.css";
 import "bootstrap/dist/css/bootstrap.min.css";
 import Axios from "axios";
 import axios from "axios";
+import swal from "sweetalert";
 const Swal = require('sweetalert2')
 
 
@@ -13,19 +15,46 @@ const Login = () => {
         setValues((prevValue: any) => ({
             ...prevValue,
             [value.target.name]: value.target.value,
-        }));
+        }));       
     };
+
+    const navigate = useNavigate()
+
+    let params = {
+        email: values.email,
+        senha: values.senha,
+    }
 
     const handleLogin = (values: any) => {
         console.log(values);
-        Axios.get("http://localhost:3002/", {
-            // email: values.email,
-            // senha: values.senha,
+        Axios.get(`http://localhost:3002/getUsuarios/${params.email}`, {
+            params:{params}
             
-        });
-        Swal.fire({
-            text: 'User registered successfully!',
         })
+        .then((response) => {
+            const data = response.data;
+            if(data.senha === params.senha){
+                if(data.nivel_acesso === 1){
+                    navigate("/Index")
+                }
+                navigate("/Calculo")
+            }
+            else if(data.senha !== params.senha){
+                Swal.fire({
+                    title: `Error`,
+                    html:
+                      ' <b>Incorrect Password</b> '
+                })
+            }
+            else{
+                Swal.fire({
+                    title: `Error`,
+                    html:
+                      ' <b>User not found</b> '
+                })
+            }
+          });
+        
     };
 
     return (
