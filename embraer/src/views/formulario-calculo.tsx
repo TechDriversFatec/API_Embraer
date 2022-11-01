@@ -6,6 +6,8 @@ import Swal from "sweetalert2";
 import { useNavigate } from 'react-router-dom';
 import Axios from "axios";
 import axios from "axios";
+import { TipoFrenagem } from "../util/enums/frenagemEnum";
+import { CondicaoPista } from "../util/enums/condicaoPistaEnum";
 
 
 function Calculo() {
@@ -43,12 +45,12 @@ function Calculo() {
       slopeValido = validaValorSlope()
 
     let formularioValido = pesoValido &&
-     altitudeValida &&
-     temperaturaValida && 
-     ventoValido &&
-     slopeValido
-    
-    if (formularioValido){
+      altitudeValida &&
+      temperaturaValida &&
+      ventoValido &&
+      slopeValido
+
+    if (formularioValido) {
       calcular.calcularPouso(
         parseInt(Peso),
         parseInt(Altitude),
@@ -58,28 +60,25 @@ function Calculo() {
         parseInt(vap),
         parseInt(Rev),
         parseInt(unidade))
+
+      Axios.post("http://localhost:3002/salvarLog", {
+        aeronave_id: (document.getElementById('aeronave') as HTMLInputElement).value,
+        motor: (document.getElementById('motor') as HTMLInputElement).value,
+        certificacao: (document.getElementById('certificacao') as HTMLInputElement).value,
+        flap: (document.getElementById('flap') as HTMLSelectElement).options[(document.getElementById('flap') as HTMLSelectElement).selectedIndex].text,
+        condicaoPista: (document.getElementById('condicaoPista') as HTMLInputElement).value,
+        tipoFrenagem: (document.getElementById('frenagem') as HTMLInputElement).value,
+        pesoPouso: Peso,
+        altitude: Altitude,
+        temperatura: Temperatura,
+        vento: Vento,
+        inclinacao: Slope,
+        overspeed: vap,
+        reversoresInoperantes: Rev,
+        dataCalculo: new Date().toLocaleString(),
+        resultado_calculo: resultadoCalculo
+      });
     }
-
-
-
-    Axios.post("http://localhost:3002/salvarLog", {
-      aeronave: 'E190',
-      motor: 'EBR1300',
-      certificacao: 'ANAC',
-      flap: 'Flap x with ice accretion',
-      condicaoPista: 'dry',
-      tipoFrenagem: 'MAX MAN',
-      pesoPouso: Peso,
-      altitude: Altitude,
-      temperatura: Temperatura,
-      vento: Vento,
-      inclinacao: Slope,
-      overspeed: vap,
-      reversoresInoperantes: Rev,
-      dataCalculo: new Date().toLocaleString(),
-      resultado_calculo: resultadoCalculo
-    });
-
   }
 
   const entre = (valor: number, min: number, max: number) => valor < min || valor > max ? false : true
@@ -87,16 +86,16 @@ function Calculo() {
     const expressao = new RegExp("^[0-9]+$")
     return expressao.test(valor)
   }
-  
 
-  function validaValorPeso(){
+
+  function validaValorPeso() {
     const idPeso = document.getElementById("peso-aeronave")
     let valido = false;
     const min = 40000, max = 80000;
 
-    if(!entre(parseInt(Peso), min, max)){
+    if (!entre(parseInt(Peso), min, max)) {
       showError(idPeso!, `Weight must be between ${min} and ${max}`)
-    } else if(!ehNumero(Peso)){
+    } else if (!ehNumero(Peso)) {
       showError(idPeso!, `Weight must be a number`)
     } else {
       showSuccess(idPeso!);
@@ -105,14 +104,14 @@ function Calculo() {
     return valido
   }
 
-  function validaValorAltitude(){
+  function validaValorAltitude() {
     const idAltitude = document.getElementById("altitude-aeronave")
     let valido = false;
     const min = 0, max = 10000;
 
-    if(!entre(parseInt(Altitude), min, max)){
+    if (!entre(parseInt(Altitude), min, max)) {
       showError(idAltitude!, `Height must be between ${min} and ${max}`)
-    } else if(!ehNumero(Altitude)){
+    } else if (!ehNumero(Altitude)) {
       showError(idAltitude!, `Altitude must be a value`)
     } else {
       showSuccess(idAltitude!);
@@ -121,14 +120,14 @@ function Calculo() {
     return valido
   }
 
-  function validaValorTemperatura(){
+  function validaValorTemperatura() {
     const idTemperatura = document.getElementById("temperatura")
     let valido = false;
     const min = 0, max = 10;
 
-    if(!entre(parseInt(Temperatura), min, max)){
+    if (!entre(parseInt(Temperatura), min, max)) {
       showError(idTemperatura!, `Temperature must be between ${min} and ${max}`)
-    } else if(!ehNumero(Temperatura)){
+    } else if (!ehNumero(Temperatura)) {
       showError(idTemperatura!, `Temperature must be a number`)
     } else {
       showSuccess(idTemperatura!);
@@ -137,14 +136,14 @@ function Calculo() {
     return valido
   }
 
-  function validaValorVento(){
+  function validaValorVento() {
     const idVento = document.getElementById("valorVento")
     let valido = false;
     const min = -5, max = 10;
 
-    if(!entre(parseInt(Vento), min, max)){
+    if (!entre(parseInt(Vento), min, max)) {
       showError(idVento!, `Wind must be between ${min} and ${max}`)
-    } else if(!ehNumero(Vento)){
+    } else if (!ehNumero(Vento)) {
       showError(idVento!, `Wind must be a number`)
     } else {
       showSuccess(idVento!);
@@ -153,14 +152,14 @@ function Calculo() {
     return valido
   }
 
-  function validaValorSlope(){
+  function validaValorSlope() {
     const idSlope = document.getElementById("slope")
     let valido = false;
     const min = -2, max = 2;
 
-    if(!entre(parseInt(Slope), min, max)){
+    if (!entre(parseInt(Slope), min, max)) {
       showError(idSlope!, `Slope must be between ${min} and ${max}`)
-    } else if(!ehNumero(Slope)){
+    } else if (!ehNumero(Slope)) {
       showError(idSlope!, `Slope must be a number`)
     } else {
       showSuccess(idSlope!);
@@ -169,7 +168,7 @@ function Calculo() {
     return valido
   }
 
-  function receberValorPeso(evento: any){
+  function receberValorPeso(evento: any) {
     let entrada = evento.target.value;
     setPeso(entrada)
   }
@@ -220,14 +219,6 @@ function Calculo() {
   const [unidade, setUnidade] = useState("")
   const [resultadoCalculo, setResultadoCalculo] = useState("")
 
-  
-
-  const btnget = document.getElementById('btn-teste-get');
-
-  if (btnget)
-    btnget.onclick = function () {
-console.log(avioes)
-    }
 
   type Aeronaves = {
     certificacao: string,
@@ -238,37 +229,107 @@ console.log(avioes)
     peso_referencial: number,
     qtde_reversor: number
   }
+
+  type Flap = {
+    id: number,
+    tipo_flap: string,
+    configuracao_freio: string,
+    condicao_pista: number
+  }
+
   const [avioes, setAvioes] = useState<Aeronaves[]>([]);
-  // const [motorAviao, setMotor] = useState("");
-
-  // let aeronavesSelect = axios.get('http://localhost:3002/getAeronaves').then((Response) => console.log(Response))
-
-  // useEffect(() => {
-  //   axios.get('http://localhost:3002/getAeronaves').then((response) => setData(data, response.data))
-  // }, [])
+  const [aviaoId, setAviaoId] = useState("");
+  const [aviao, setAviao] = useState<Aeronaves[]>([]);
+  const [flaps, setFlaps] = useState<Flap[]>([]);
+  const [flapId, setFlapId] = useState("");
+  const [flap, setFlap] = useState<Flap[]>([]);
 
   useEffect(() => {
     axios
-        .get('http://localhost:3002/getAeronaves')
+      .get('http://localhost:3002/getAeronaves')
+      .then((response) => {
+        const data = response.data;
+        console.log("useEffect 1 Rodou");
+        console.log(data); // returns correctly filled array
+        setAvioes(data);
+        console.log(data); // returns '[]'
+      });
+  }, []);
+
+
+  const setAviaoCalculo = () => {
+    const selectAviaoId = (document.getElementById('aeronave') as HTMLInputElement).value ? (document.getElementById('aeronave') as HTMLInputElement).value : ""
+    const selectFrenagemId = (document.getElementById('frenagem') as HTMLInputElement).value ? (document.getElementById('frenagem') as HTMLInputElement).value : ""
+    const selectcondicaoId = (document.getElementById('condicaoPista') as HTMLInputElement).value ? (document.getElementById('condicaoPista') as HTMLInputElement).value : ""
+    setAviaoId(selectAviaoId)
+
+    let params = {
+      id: selectAviaoId
+    }
+
+    let paramsToFlap = {
+      id: selectAviaoId,
+      configuracao_freio: selectFrenagemId,
+      condicao_pista: selectcondicaoId
+    }
+
+    if (selectAviaoId != "") {
+      axios
+        .get(`http://localhost:3002/getAeronave/${params.id}`, {
+          params: { params }
+        })
         .then((response) => {
-            const data = response.data;
-            console.log(data); // returns correctly filled array
-            setAvioes(data);
-            console.log(data); // returns '[]'
+          const data = response.data;
+          setAviao(data);
+
         });
-}, []); 
+    }
 
-// useEffect(() => {
-//   const idAviao = $('#aeronave').val()
-//   axios
-//   .get('http://localhost:3002/getAeronave/' + idAviao)
-//   .then((response) => {
-//     const data = response.data;
-//     console.log(data);
-//     setMotor(data)
-//   })
-// })
+    if (selectFrenagemId != "" && selectcondicaoId != "") {
+      axios
+        .get(`http://localhost:3002/getFlap/${paramsToFlap.id}/${paramsToFlap.configuracao_freio}/${paramsToFlap.condicao_pista}`, {
+          params: { paramsToFlap }
+        })
+        .then((response) => {
+          const data = response.data;
+          console.log("useEffect flap Rodou");
+          debugger
+          console.log(data); // returns correctly filled array
+          if (data.length > 0) {
+            setFlaps(data);
+            console.log(data); // returns '[]'
+          } else {
+            setFlaps(data);
+            Swal.fire({
+              title: `Please change settings`,
+              html:
+                ' <b>There are no Flaps created for these settings</b> '
+            })
+            console.log(data); // returns '[]'
+          }
 
+        });
+    }
+  }
+
+  // const setFlapCalculo = () => {
+  //   console.log("setou flap");
+  //   const selectFlapId = (document.getElementById('flap') as HTMLInputElement).value
+  //   setFlapId(selectFlapId)
+
+  //   let params = {
+  //     id: selectFlapId
+  //   }
+  //   axios
+  //     .get(`http://localhost:3002/getFlapDetails/${params.id}`, {
+  //       params: { params }
+  //     })
+  //     .then((response) => {
+  //       const data = response.data;
+  //       setFlap(data);
+
+  //     });
+  // }
 
   return (
     <div className="App">
@@ -292,76 +353,81 @@ console.log(avioes)
                   <h4 id="h3AirplaneConfig">Airplane Configurations</h4>
                   <div className="form-group col-lg-4 col-md-6 col-sm-12 sucess">
                     <label>Airplane:</label>
-                    <select className="form-control select" id="aeronave" title="aeronave">
+                    <select className="form-control select" id="aeronave" title="aeronave" onChange={setAviaoCalculo}>
                       <option value="" disabled selected>Select an Airplane</option>
-                      {avioes.map((aviaoteste) =>(
-                        <option key={aviaoteste.id} value={aviaoteste.id}>{aviaoteste.modelo}</option>
+                      {avioes.map((aeronaveSelect) => (
+                        <option key={aeronaveSelect.id} value={aeronaveSelect.id}>{aeronaveSelect.modelo}</option>
                       ))}
                     </select>
                   </div>
 
                   <div className="form-group col-lg-4 col-md-6 col-sm-12 sucess">
-                    <label>Motor:</label>
-                    <select className="form-control select" id="motor" title="motor">
-                      <option value="" disabled selected>Select an airplane to fill</option>
-                      <option value={'motor A'}>Motor A</option>
-                      <option value={'motor B'}>Motor B</option>
-                    </select>
-                  </div>
-
-                  <div className="form-group col-lg-4 col-md-6 col-sm-12 sucess">
-                    <label>Certification:</label>
-                    <select className="form-control select" id="certificacao" title="certificacao">
-                      <option value="" disabled selected>Select a Certification</option>
-                      <option>ANAC</option>
-                      <option>FAA</option>
-                      <option>EASA</option>
-                    </select>
-                  </div>
-
-                  <div className="form-group col-lg-4 col-md-6 col-sm-12 sucess">
-                    <label>Flap:</label>
-                    <select className="form-control select" id="flap" title="flap">
-                      <option value="" disabled selected>Select a Flap</option>
-                      <option>Flap X Without Ice Accretion</option>
-                      <option>Flap X With Ice Accretion</option>
-                      <option>Flap Y Without Ice Accretion </option>
-                      <option>Flap Y With Ice Accretion </option>
+                    <label>Brake Configuration:</label>
+                    <select className="form-control select" id="frenagem" title="frenagem" onChange={setAviaoCalculo}>
+                      <option value="" disabled selected>Select a brake configuration</option>
+                      <option value="1">Max. Manual</option>
+                      <option value="2">High</option>
+                      <option value="3">Medium</option>
+                      <option value="4">Low</option>
                     </select>
                   </div>
 
                   <div className="form-group col-lg-4 col-md-6 col-sm-12 sucess">
                     <label>Runway Condition:</label>
-                    <select className="form-control select" id="condicaoPista" title="condicaoPista">
-                      <option value="" disabled selected>Select a Runway Condition</option>
-                      <option>1 - Ice</option>
-                      <option>2 - Standind Water, Slush</option>
-                      <option>3 - Loose Snow</option>
-                      <option>4 - Compact Snow</option>
-                      <option>5 - Wet</option>
-                      <option>6 - Dry</option>
+                    <select className="form-control select" id="condicaoPista" title="condicaoPista" onChange={setAviaoCalculo}>
+                      <option value="" disabled selected>Select an Airplane</option>
+                      <option value="1">1 - Ice</option>
+                      <option value="2">2 - Standing, Water, Slush</option>
+                      <option value="3">3 - Loose Snow</option>
+                      <option value="4">4 - Compact Snow</option>
+                      <option value="5">5 - Wet</option>
+                      <option value="6">6 - Dry</option>
                     </select>
                   </div>
 
-                  <div className="form-group col-lg-4 col-md-6 col-sm-12 sucess">
-                    <label>Brake Configuration:</label>
-                    <select
-                      title="frenagem"
-                      className="form-control select"
-                      name="frenagem"
-                      id="frenagem"
-                    >
-                      <option value="" disabled selected>
-                        Select a Break Configuration:
-                      </option>
-                      <option value="0">LOW</option>
-                      <option value="1">MEDIUM</option>
-                      <option value="2">HIGH</option>
-                      <option value="3">MAX MAN</option>
-                    </select>
-                    <small></small>
-                  </div>
+                  {aviao.map((aviaoRecebido) => {
+                    return <div className="form-group col-lg-4 col-md-6 col-sm-12 sucess">
+                      <label>Motor:</label>
+                      <input
+                        id="motor"
+                        className="form-control"
+                        name="motor"
+                        placeholder="Select an airplane to fill"
+                        value={aviaoRecebido.motor}
+                        disabled
+                      ></input>
+                      <small></small>
+                    </div>
+                  })}
+
+                  {aviao.map((aviaoRecebido) => {
+                    return <div className="form-group col-lg-4 col-md-6 col-sm-12 sucess">
+                      <label>Certification:</label>
+                      <input
+                        id="certificacao"
+                        className="form-control"
+                        name="certificacao"
+                        placeholder="Select an airplane to fill"
+                        value={"ANAC"}
+                        disabled
+                      ></input>
+                      <small></small>
+                    </div>
+                  })}
+
+                  {flaps.map((flapRecebido) => {
+                    return <div className="form-group col-lg-4 col-md-6 col-sm-12 sucess">
+                      <label>Flap:</label>
+                      <select className="form-control select" id="flap" title="flap">
+                        <option value="" selected disabled>Select a Flap</option>
+                        {flaps.map((flapRecebido) => {
+                          return <option key={flapRecebido.id} value={flapRecebido.id}>{flapRecebido.tipo_flap}</option>
+                        })}
+                      </select>
+                    </div>
+                  })}
                 </div>
+
               </li>
 
               <li className="list-group-item">
@@ -392,7 +458,7 @@ console.log(avioes)
                       value={Altitude}
                       onChange={receberValorAltitude}
                     />
-                  <small></small>
+                    <small></small>
                   </div>
 
                   <div className="form-group col-lg-4 col-md-6 col-sm-12 sucess">
@@ -407,7 +473,7 @@ console.log(avioes)
                       onChange={receberValorTemperatura}
                     />
                     <small></small>
-                </div>
+                  </div>
 
                   <div className="form-group col-lg-4 col-md-6 col-sm-12 sucess">
                     <label>Wind (Kt):</label>
@@ -420,7 +486,7 @@ console.log(avioes)
                       value={Vento}
                       onChange={receberValorVento}
                     />
-                  <small></small>
+                    <small></small>
                   </div>
 
                   <div className="form-group col-lg-4 col-md-6 col-sm-12 sucess">
@@ -435,20 +501,20 @@ console.log(avioes)
                       onChange={receberSlope}
                     />
                     <small></small>
-                </div>
+                  </div>
 
-                <div className="form-group col-lg-4 col-md-6 col-sm-12 sucess">
-                  <label>Vap Overspeed (Km/h):</label>
-                  <input
-                    id="vap-aeronave"
-                    className="form-control"
-                    type="tel"
-                    placeholder="Enter Overspeed:"
-                    value={vap}
-                    onChange={(e) => setVap(e.target.value)}
-                  />
-                  <small></small>
-                </div>
+                  <div className="form-group col-lg-4 col-md-6 col-sm-12 sucess">
+                    <label>Vap Overspeed (Km/h):</label>
+                    <input
+                      id="vap-aeronave"
+                      className="form-control"
+                      type="tel"
+                      placeholder="Enter Overspeed:"
+                      value={vap}
+                      onChange={(e) => setVap(e.target.value)}
+                    />
+                    <small></small>
+                  </div>
 
                   <div className="form-group col-lg-4 col-md-6 col-sm-12 sucess">
                     <label>Thrust Reverser:</label>
@@ -487,16 +553,6 @@ console.log(avioes)
               id="btn_calcular"
               name="submitButton"
             ><b>Calculate</b>
-            </button>
-          </div>
-          <div>
-            <button
-              type="button"
-              title="btn-teste"
-              className="rounded btn btn-primary ml-2 float-end"
-              id="btn-teste-get"
-              name="btn-teste-get"
-            ><b>teste get</b>
             </button>
           </div>
         </div>

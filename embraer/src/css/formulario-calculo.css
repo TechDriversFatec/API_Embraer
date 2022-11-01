@@ -11,6 +11,10 @@ small{
   font-size: 25px;
 }
 
+#motor, #certificacao, #condicaoPista, #frenagem{
+  background-color: #FFFFFF;
+}
+
 .App {
   background-color: #282f55;
   padding: 25px;

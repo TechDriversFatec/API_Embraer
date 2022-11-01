@@ -8,6 +8,7 @@ import CriarUsuario from "./views/Cadastro-usuario";
 import PaginaInicial from "./views/pagina-inicial";
 import Navbar from "./views/navbar";
 import VariaveisAeronaves from "./views/criar-aeronave";
+import LogsCalculo from "./views/calculoLogs";
 
 function App() {
   return (
@@ -20,6 +21,7 @@ function App() {
       <Route path="/Criar" element={<CriarAeronaves />}/>
       <Route path="/Cadastrar" element={<CriarUsuario/>}/>
       <Route path="/Variavel" element={<VariaveisAeronaves />}/>
+      <Route path="/Logs" element={<LogsCalculo />}/>
     </Routes>
     </BrowserRouter>
   );

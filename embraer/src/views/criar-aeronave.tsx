@@ -438,10 +438,10 @@ const [VapAcm, setVapAcm] = useState("");
                   <option value="" selected disabled>
                     Select
                   </option>
-                  <option value="Max. Manual">Max. Manual</option>
-                  <option value="High">High</option>
-                  <option value="Medium">Medium</option>
-                  <option value="Low">Low</option>
+                  <option value="1">Max. Manual</option>
+                  <option value="2">High</option>
+                  <option value="3">Medium</option>
+                  <option value="4">Low</option>
                 </select>
               </div>
               <div className="form-group col-lg-4-md col-md-4 col-sm-12">
