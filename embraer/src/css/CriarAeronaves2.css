@@ -1,7 +1,6 @@
 .CriarAeronaves {
-    text-align: center;
     background-color: #282f55;
-    height: 100%;
+    height: 100vh;
     padding: 25px;
   }
   label, i{

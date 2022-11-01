@@ -332,7 +332,7 @@ function Calculo() {
   // }
 
   return (
-    <div className="App">
+    <div className="formCalculo">
       {/* <div>
         <i>
           <img className="logoAviaoCalculo" src="loguinho.png" id="logoAviaozinho" alt="some text" />
