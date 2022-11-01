@@ -413,7 +413,7 @@ const [VapAcm, setVapAcm] = useState("");
 
   return (
     <div className="CriarAeronaves">
-      <div>
+      {/* <div>
         <i>
           <img
             className="logoAviaoCriar"
@@ -422,7 +422,7 @@ const [VapAcm, setVapAcm] = useState("");
             alt="some text"
           />
         </i>
-      </div>
+      </div> */}
       <form id="form_criar_aeronave" onSubmit={manipularEnvio}>
         <div className="card card-custom gutter-b">
           <div className="card-header">
@@ -461,10 +461,10 @@ const [VapAcm, setVapAcm] = useState("");
                   <option value="" selected disabled>
                     Select
                   </option>
-                  <option value="Max. Manual">Max. Manual</option>
-                  <option value="High">High</option>
-                  <option value="Medium">Medium</option>
-                  <option value="Low">Low</option>
+                  <option value="1">Max. Manual</option>
+                  <option value="2">High</option>
+                  <option value="3">Medium</option>
+                  <option value="4">Low</option>
                 </select>
               </div>
               <div className="form-group col-lg-4-md col-md-3 col-sm-12">

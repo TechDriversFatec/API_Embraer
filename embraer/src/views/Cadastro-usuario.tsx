@@ -157,9 +157,9 @@ function CriarUsuario() {
 
     return (
         <div className="CriarUsuario">
-            <div>
+            {/* <div>
                 <i><img className="logoAviaoCriar" src="loguinho.png" id="logoAviaozinho" alt="some text" /></i>
-            </div>
+            </div> */}
             <form id="form_criar_aeronave" onSubmit={manipularEnvio}>
                 <div className="card card-custom gutter-b">
                     <div className="card-header">

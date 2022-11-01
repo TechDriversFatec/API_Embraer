@@ -1,22 +1,38 @@
-#navBarDiv{
+#navBarDiv {
     width: 100%;
     padding: 0% !important;
-    
+    background: #294F61;
+
 }
 
-.navbardiv{
+.navbardiv {
     width: 800;
     height: 50px;
     padding: 0% !important;
     margin: 0px;
 }
 
-.bntcalcularnavbar{
+.bntcalcularnavbar {
     width: auto;
 }
 
 .prevent-select {
-    -webkit-user-select: none; /* Safari */
-    -ms-user-select: none; /* IE 10 and IE 11 */
-    user-select: none; /* Standard syntax */
-  }
+    -webkit-user-select: none;
+    /* Safari */
+    -ms-user-select: none;
+    /* IE 10 and IE 11 */
+    user-select: none;
+    /* Standard syntax */
+}
+
+#menu-appbar{
+    background-color: black   ;
+    background: black;
+    color: black;
+}
+
+Toolbar{
+    background-color: black   ;
+    background: black;
+    color: black;
+}

@@ -9,13 +9,13 @@ function PaginaInicial() {
   
   return (
       <div className="App">
-        <div id="divLogoAviao">
+        {/* <div id="divLogoAviao">
         <h2>
           <i>
             <img src="loguinho.png" id="logoAviaozinho" alt="some text" />
           </i>
         </h2>
-      </div>
+      </div> */}
 
       <div className="card card-custom gutter-b">
           <div className="card-header">
@@ -35,11 +35,11 @@ function PaginaInicial() {
             </ul>
           </div>
 
-          <div className="card-footer w-100 float-right">
+          {/* <div className="card-footer w-100 float-right">
 
-          {/* <button title="btnTelaCalc" className="btn btn-primary" onClick={() => {
+          <button title="btnTelaCalc" className="btn btn-primary" onClick={() => {
           history('/Calculo');
-          }}>Calculation</button> */}
+          }}>Calculation</button>
 
             <a
               className="rounded btn btn-primary ml-2 float-right"
@@ -57,7 +57,7 @@ function PaginaInicial() {
             >Add Aircraft
             </a>
 
-          </div>
+          </div> */}
         </div>
         {/*<footer>All Rights Reserved.</footer>*/}
       </div>

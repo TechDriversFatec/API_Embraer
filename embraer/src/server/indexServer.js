@@ -1,6 +1,6 @@
 const express = require("express");
 const app = express();
-const mysql = require("mysql2");
+const mysql = require('mysql2')
 const cors = require("cors");
 
 var db = mysql.createConnection({
@@ -66,17 +66,7 @@ app.use(express.json());
 //         console.log(err);
 //     });
 // });
-app.post("/criarusuario", (req, res) => {
-    const { nivel_acesso } = req.body;
-    const { senha_acesso } = req.body;
-    const { nome } = req.body;
-    const { email } = req.body;
-    let SQL ="INSERT INTO usuario (nivel_acesso, senha_acesso, nome, email) VALUES (?,?,?,?)";
 
-    db.query(SQL, [nivel_acesso, senha_acesso, nome, email], (err, result) => {
-        console.log(err);
-    });
-});
 app.post("/salvarLog", (req, res) => {
     const { aeronave } = req.body;
     const { motor } = req.body;
@@ -94,34 +84,78 @@ app.post("/salvarLog", (req, res) => {
     const { dataCalculo } = req.body;
     const { resultado_calculo } = req.body;
 
-    let SQL = "INSERT INTO log_calculo_distancia ( aeronave, motor, certificacao, flap, condicaoPista, tipoFrenagem, pesoPouso, altitude, temperatura, vento, inclinacao, overspeed, reversoresInoperantes, dataCalculo, resultado_calculo ) VALUES ( ?,?,?,?,?,?,?,?,?,?,?,?,?,?,? )";
+    let SQL = "INSERT INTO log_calculo_distancia ( aeronave_id, motor, certificacao, flap, condicaoPista, tipoFrenagem, pesoPouso, altitude, temperatura, vento, inclinacao, overspeed, reversoresInoperantes, dataCalculo, resultado_calculo ) VALUES ( ?,?,?,?,?,?,?,?,?,?,?,?,?,?,? )";
 
     db.query(SQL, [aeronave, motor, certificacao, flap, condicaoPista, tipoFrenagem, pesoPouso, altitude, temperatura, vento, inclinacao, overspeed, reversoresInoperantes, dataCalculo, resultado_calculo], (err, result) => {
         console.log(err);
     });
 });
 
-// app.get("/getAeronaves", (req, res) => {
+app.get("/getAeronaves", (req, res) => {
 
-//     let SQL = "SELECT * FROM aeronaves";
+    let SQL = "SELECT * FROM aeronave";
 
-//     db.query(SQL, (err, result) => {
-//         if(err) console.log(err);
-//         else res.send(result)
-//     });
-// });
+    db.query(SQL, (err, result) => {
+        if(err) console.log(err);
+        else res.send(result)
+    });
+});
 
-// app.get("/getAeronaveMotor/:id", (req, res) => {
+app.get("/getUsuarios/:email", (req, res) => {
+const email = parseInt(req.params.email).toString()
+console.log("params: " + email);
+    let SQL = "SELECT * FROM usuario where email =" + email;
 
-//     const { id } = req.body
+    db.query(SQL, (err, result) => {
+        if(err) console.log(err);
+        else res.send(result)
+    });
+});
 
-//     let SQL = "SELECT motor FROM aeronaves where Id =" + id;
+app.get("/getLogs", (req, res) => {
 
-//     db.query(SQL, (err, result) => {
-//         if(err) console.log(err);
-//         else res.send(result)
-//     });
-// });
+    let SQL = "SELECT * FROM log_calculo_distancia";
+
+    db.query(SQL, (err, result) => {
+        if(err) console.log(err);
+        else res.send(result)
+    });
+});
+
+app.get("/getAeronave/:id", (req, res) => {
+const id = parseInt(req.params.id).toString()
+console.log("params: " + id);
+    let SQL = "SELECT * FROM aeronave where id =" + id ;
+
+    db.query(SQL, (err, result) => {
+        if(err) console.log(err);
+        else res.send(result)
+    });
+});
+
+app.get("/getFlap/:id/:frenagemId/:condicaoId", (req, res) => {
+const id = parseInt(req.params.id).toString()
+const frenagemId = parseInt(req.params.frenagemId).toString()
+const condicaoId = parseInt(req.params.condicaoId).toString()
+console.log("params: " + id);
+    let SQL = "SELECT * FROM flap where aeronave_id =" + id + " and configuracao_freio =" + frenagemId + " and condicao_pista =" + condicaoId;
+
+    db.query(SQL, (err, result) => {
+        if(err) console.log(err);
+        else res.send(result)
+    });
+});
+
+app.get("/getFlapDetails/:id", (req, res) => {
+    const id = parseInt(req.params.id).toString()
+    console.log("params: " + id);
+        let SQL = "SELECT * FROM flap where id =" + id ;
+    
+        db.query(SQL, (err, result) => {
+            if(err) console.log(err);
+            else res.send(result)
+        });
+    });
 
 app.listen(3002, () => {
     console.log("rodando servidor");

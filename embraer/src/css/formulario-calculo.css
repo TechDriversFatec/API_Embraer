@@ -11,11 +11,14 @@ small{
   font-size: 25px;
 }
 
-.App {
+#motor, #certificacao, #condicaoPista, #frenagem{
+  background-color: #FFFFFF;
+}
+
+.formCalculo {
   background-color: #282f55;
   padding: 25px;
-  height: 100%;
-  text-align: center;
+  height: 100vh !important;
 }
 
 .container-fluid{
@@ -46,7 +49,7 @@ h2{
   }
 }
 
-.App-header {
+/* .App-header {
   background-color: #282c34;
   min-height: 100vh;
   display: flex;
@@ -55,7 +58,7 @@ h2{
   justify-content: center;
   font-size: calc(10px + 2vmin);
   color: white;
-}
+} */
 
 .App-link {
   color: #61dafb;
