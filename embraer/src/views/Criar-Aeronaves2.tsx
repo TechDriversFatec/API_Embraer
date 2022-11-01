@@ -6,8 +6,11 @@ import "bootstrap/dist/css/bootstrap.min.css";
 import { ModuleResolutionKind } from "typescript";
 import { monitorEventLoopDelay } from "perf_hooks";
 import Swal from "sweetalert2";
+import { BrowserRouter, Route, Routes, useNavigate } from "react-router-dom";
+import VariaveisAeronaves from "./criar-aeronave";
 
 function CriarAeronaves() {
+  const navigate = useNavigate()
   const [values, setValues] = useState(Object);
 
   const handleChangeValues = (value: any) => {
@@ -90,7 +93,18 @@ function CriarAeronaves() {
       pesoMaxValido
 
     if (formularioValido){
-      console.log("tudo numero")
+      Swal.fire({
+        title: 'Sucessful registered aircraft',
+        text: "Procced with the variables registration?",
+        showCancelButton: true,
+        confirmButtonColor: '#3085d6',
+        cancelButtonColor: '#d33',
+        confirmButtonText: 'Yes, procced'
+      }).then((result) => {
+        if (result.isConfirmed) {
+          navigate("/Variavel/")
+        }
+      })
     }
   }
 
