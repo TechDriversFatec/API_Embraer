@@ -24,6 +24,7 @@
     "@chakra-ui/react": "^2.3.6",
     "@emotion/react": "^11.10.5",
     "@emotion/styled": "^11.10.5",
+    "crud_react": "github:Higor-SM/crud_react",
     "framer-motion": "^7.6.2",
     "react": "^18.2.0",
     "react-table": "^7.8.0",

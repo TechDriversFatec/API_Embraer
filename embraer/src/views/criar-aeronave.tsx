@@ -6,39 +6,53 @@ function VariaveisAeronaves() {
 
 function manipularEnvio(evento: any){
   evento.preventDefault()
-  let pesoAbxValido = validaPesoAbx(),
+  let variacaoPesoValido = validaVariacaoPes(),
+    pesoAbxValido = validaPesoAbx(),
     pesoAcmValido = validaPesoAcm(),
+    sobrepesoValido = validaSobrepeso(),
     altitudePdValida = validaAltitudePd(),
+    variacaoAltValida = validaVariacaoAlt(),
     altitudeAcmValida = validaAltitudeAcm(),
     altitudeAbxValida = validaAltitudeAbx(),
     temperaturaPdValida = validaTemperaturaPd(),
+    variacaoTmpValida = validaVariacaoTmp(),
     temperaturaAcmValida = validaTemperaturaAcm(),
     temperaturaAbxValida = validaTemperaturaAbx(),
     ventoPdValido = validaVentoPd(),
+    variacaoVentoValido = validaVariacaoVento(),
     ventoAcmValido = validaVentoAcm(),
     ventoAbxValido = validaVentoAbx(),
     slopePdValido = validaSlopePd(),
+    variacaoSlopeValido = validaVariacaoSlope(),
     slopeAcmValido = validaSlopeAcm(),
     slopeAbxValido = validaSlopeAbx(),
     vapPdValido = validaVapPd(),
+    variacaoVapValido = validaVariacaoVap(),
     vapAcmValido = validaVapAcm(),
     vapAbxValido = validaVapAbx()
 
-  let formularioValido = pesoAbxValido &&
+  let formularioValido = variacaoPesoValido &&
+    pesoAbxValido &&
     pesoAcmValido &&
+    sobrepesoValido &&
     altitudePdValida &&
+    variacaoAltValida &&
     altitudeAcmValida &&
     altitudeAbxValida &&
     temperaturaPdValida &&
+    variacaoTmpValida &&
     temperaturaAcmValida &&
     temperaturaAbxValida &&
     ventoPdValido &&
+    variacaoVentoValido &&
     ventoAcmValido &&
     ventoAbxValido &&
     slopePdValido &&
+    variacaoSlopeValido &&
     slopeAcmValido &&
     slopeAbxValido &&
     vapPdValido &&
+    variacaoVapValido &&
     vapAcmValido &&
     vapAbxValido
 
@@ -74,6 +88,18 @@ const ehNumero = (valor: any) => {
   return expressao.test(valor)
 }
 
+function validaVariacaoPes(){
+  const id = document.getElementById("variacao_peso");
+  let valido = false;
+
+  if(!ehNumero(PesoAcm)){
+    showError(id!, `Value must be a number`)
+  } else {
+    showSuccess(id!);
+    valido = true;
+  }
+  return valido
+}
 function validaPesoAcm(){
   const idPesoAcm = document.getElementById("peso_acima");
   let valido = false;
@@ -98,6 +124,18 @@ function validaPesoAbx(){
   }
   return valido
 }
+function validaSobrepeso(){
+  const id = document.getElementById("sobrepeso");
+  let valido = false;
+
+  if(!ehNumero(Sobrepeso)){
+    showError(id!, `Value must be a number`)
+  } else {
+    showSuccess(id!);
+    valido = true;
+  }
+  return valido
+}
 
 function validaAltitudePd(){
   const idAltitudePd = document.getElementById("altitude_padrao");
@@ -107,6 +145,18 @@ function validaAltitudePd(){
     showError(idAltitudePd!, `value must be a number`)
   } else {
     showSuccess(idAltitudePd!);
+    valido = true;
+  }
+  return valido
+}
+function validaVariacaoAlt(){
+  const id = document.getElementById("variacao_altitude");
+  let valido = false;
+
+  if(!ehNumero(VariacaoAlt)){
+    showError(id!, `value must be a number`);
+  } else {
+    showSuccess(id!)
     valido = true;
   }
   return valido
@@ -141,6 +191,18 @@ function validaTemperaturaPd(){
   let valido = false;
 
   if(!ehNumero(TemperaturaPd)){
+    showError(id!, `value must be a number`)
+  } else {
+    showSuccess(id!);
+    valido = true
+  }
+  return valido;
+}
+function validaVariacaoTmp(){
+  const id = document.getElementById("variacao_temperatura")
+  let valido = false;
+
+  if(!ehNumero(VariacaoTmp)){
     showError(id!, `value must be a number`)
   } else {
     showSuccess(id!);
@@ -185,6 +247,18 @@ function validaVentoPd(){
   }
   return valido
 }
+function validaVariacaoVento(){
+  const id = document.getElementById("variacao_vento")
+  let valido = false;
+
+  if(!ehNumero(VariacaoVento)){
+    showError(id!, `value must be a number`)
+  } else {
+    showSuccess(id!);
+    valido = true
+  }
+  return valido;
+}
 function validaVentoAcm(){
   const id = document.getElementById("vento_acima")
   let valido = false;
@@ -221,6 +295,18 @@ function validaSlopePd(){
     valido = true;
   }
   return valido
+}
+function validaVariacaoSlope(){
+  const id = document.getElementById("variacao_slope")
+  let valido = false;
+
+  if(!ehNumero(VariacaoSlope)){
+    showError(id!, `value must be a number`)
+  } else {
+    showSuccess(id!);
+    valido = true
+  }
+  return valido;
 }
 function validaSlopeAcm(){
   const id = document.getElementById("slope_acima")
@@ -259,6 +345,18 @@ function validaVapPd(){
   }
   return valido
 }
+function validaVariacaoVap(){
+  const id = document.getElementById("variacao_vap")
+  let valido = false;
+
+  if(!ehNumero(VariacaoSlope)){
+    showError(id!, `value must be a number`)
+  } else {
+    showSuccess(id!);
+    valido = true
+  }
+  return valido;
+}
 function validaVapAcm(){
   const id = document.getElementById("vap_acima")
   let valido = false;
@@ -296,6 +394,14 @@ function receberCondicao(evento: any){
   let entrada = evento.target.value;
   setCondicao(entrada)
 }
+function receberDistancia(evento: any){
+  let entrada = evento.target.value;
+  setDistancia(entrada)
+}
+function receberVariacaoPes(evento: any){
+  let entrada = evento.target.value;
+  setVariacaoPes(entrada)
+}
 function receberPesoAbx(evento: any){
   let entrada = evento.target.value;
   setPesoAbx(entrada)
@@ -303,6 +409,14 @@ function receberPesoAbx(evento: any){
 function receberPesoAcm(evento: any){
   let entrada = evento.target.value;
   setPesoAcm(entrada)
+}
+function receberSobrepeso(evento: any){
+  let entrada = evento.target.value;
+  setSobrepeso(entrada)
+}
+function receberVariacaoAlt(evento: any){
+  let entrada = evento.target.value;
+  setVariacaoAlt(entrada)
 }
 function receberAltitudePd(evento: any){
   let entrada = evento.target.value;
@@ -320,6 +434,10 @@ function receberTemperaturaPd(evento: any){
   let entrada = evento.target.value;
   setTemperaturaPd(entrada)
 }
+function receberVariacaoTmp(evento: any){
+  let entrada = evento.target.value;
+  setVariacaoTmp(entrada)
+}
 function receberTemperaturaAbx(evento: any){
   let entrada = evento.target.value;
   setTemperaturaAbx(entrada)
@@ -331,6 +449,10 @@ function receberTemperaturaAcm(evento: any){
 function receberVentoPd(evento: any){
   let entrada = evento.target.value;
   setVentoPd(entrada)
+}
+function receberVariacaoVento(evento: any){
+  let entrada = evento.target.value;
+  setVariacaoVento(entrada)
 }
 function receberVentoAbx(evento: any){
   let entrada = evento.target.value;
@@ -344,6 +466,10 @@ function receberSlopePd(evento: any){
   let entrada = evento.target.value;
   setSlopePd(entrada)
 }
+function receberVariacaoSlope(evento: any){
+  let entrada = evento.target.value;
+  setVariacaoSlope(entrada)
+}
 function receberSlopeAbx(evento: any){
   let entrada = evento.target.value;
   setSlopeAbx(entrada)
@@ -355,6 +481,10 @@ function receberSlopeAcm(evento: any){
 function receberVapPd(evento: any){
   let entrada = evento.target.value;
   setVapPd(entrada)
+}
+function receberVariacaoVAP(evento: any){
+  let entrada = evento.target.value;
+  setVariacaoVAP(entrada)
 }
 function receberVapAbx(evento: any){
   let entrada = evento.target.value;
@@ -369,21 +499,29 @@ function receberVapAcm(evento: any){
 const [Flap, setFlap] = useState("");
 const [Break, setBreak] = useState("");
 const [Condicao, setCondicao] = useState("");
+const [Distancia, setDistancia] = useState("");
+const [VariacaoPes, setVariacaoPes] = useState("")
 const [PesoAbx, setPesoAbx] = useState("");
 const [PesoAcm, setPesoAcm] = useState("");
+const [Sobrepeso, setSobrepeso] = useState("");
+const [VariacaoAlt, setVariacaoAlt] = useState("")
 const [AltitudePd, setAltitudePd] = useState("");
 const [AltitudeAbx, setAltitudeAbx] = useState("");
 const [AltitudeAcm, setAltitudeAcm] = useState("");
 const [TemperaturaPd, setTemperaturaPd] = useState("");
+const [VariacaoTmp, setVariacaoTmp] = useState("")
 const [TemperaturaAbx, setTemperaturaAbx] = useState("");
 const [TemperaturaAcm, setTemperaturaAcm] = useState("");
 const [VentoPd, setVentoPd] = useState("");
+const [VariacaoVento, setVariacaoVento] = useState("");
 const [VentoAbx, setVentoAbx] = useState("");
 const [VentoAcm, setVentoAcm] = useState("");
 const [SlopePd, setSlopePd] = useState("");
+const [VariacaoSlope, setVariacaoSlope] = useState("");
 const [SlopeAbx, setSlopeAbx] = useState("");
 const [SlopeAcm, setSlopeAcm] = useState("");
 const [VapPd, setVapPd] = useState("");
+const [VariacaoVAP, setVariacaoVAP] = useState("");
 const [VapAbx, setVapAbx] = useState("");
 const [VapAcm, setVapAcm] = useState("");
 
@@ -411,7 +549,7 @@ const [VapAcm, setVapAcm] = useState("");
           <div className="card-body col-md-13">
             <fieldset className="row flap">
                 <legend>Flap configurations</legend>
-              <div className="form-group col-lg-4-md col-md-4 col-sm-12">
+              <div className="form-group col-lg-4-md col-md-3 col-sm-12">
                 <label>Flap:</label>
                 <input
                   id="tipo_flap"
@@ -425,7 +563,7 @@ const [VapAcm, setVapAcm] = useState("");
                 <input className="form-check-input" type="checkbox" role="switch" id="flexSwitchCheckDefault" />
                 <label className="form-check-label">Ice Accretion</label>
               </div>
-              <div className="form-group col-lg-4-md col-md-4 col-sm-12">
+              <div className="form-group col-lg-4-md col-md-3 col-sm-12">
                 <label>Brake config:</label>
                 <select
                   title="configuracao_freio"
@@ -444,7 +582,7 @@ const [VapAcm, setVapAcm] = useState("");
                   <option value="4">Low</option>
                 </select>
               </div>
-              <div className="form-group col-lg-4-md col-md-4 col-sm-12">
+              <div className="form-group col-lg-4-md col-md-3 col-sm-12">
                 <label>Runway Condition:</label>
                 <input
                   id="correcao_reversor_inoperante"
@@ -456,11 +594,34 @@ const [VapAcm, setVapAcm] = useState("");
                   
                 />
               </div>
+              <div className="form-group col-lg-4-md col-md-3 col-sm-12">
+                <label>Referencial distance:</label>
+                <input
+                  id="distancia_referencia"
+                  className="form-control"
+                  name="distancia_referencia"
+                  placeholder="Insert the referential distance (m)"
+                  value={Distancia}
+                  onChange={receberDistancia}
+                  
+              />
+              </div>
             </fieldset>
             <fieldset className="row col-lg-3 variavel">
-              <legend>Wheight variables</legend>
+              <legend>Weight variables</legend>
               <div className="form-group col-lg-4-md col-md-12 col-sm-12">
-                <label>Insert the variation index (m):</label>
+                <label>For each (Kg)</label>
+                <input
+                  id="variacao_peso"
+                  className="form-control"
+                  name="variacao_peso"
+                  placeholder="For each"
+                  value={VariacaoPes}
+                  onChange={receberVariacaoPes}
+                />
+                <small></small>
+                <br></br>
+                <label>Insert the Variation index (m):</label>
                 <input
                   id="peso_acima"
                   className="form-control"
@@ -482,24 +643,47 @@ const [VapAcm, setVapAcm] = useState("");
                   
                 ></input>
                 <small></small>
+                <br></br>
+                <label>Overweight</label>
+                <input
+                  id="sobrepeso"
+                  className="form-control"
+                  name="sobrepeso"
+                  placeholder="Overweight"
+                  value={Sobrepeso}
+                  onChange={receberSobrepeso}
+                  
+                ></input>
+                <small></small>
               </div>
             </fieldset>
             <fieldset className="row col-lg-4 variavel">
               <legend>Altitude variables (Ft)</legend>
               <div className="form-group col-lg-4-md col-md-12 col-sm-12">
-                <label>default value for comparison:</label>
+                <label>Default value for comparison:</label>
                 <input
                   id="altitude_padrao"
                   className="form-control"
                   name="altitude_padrao"
-                  placeholder="default value"
+                  placeholder="Default value"
                   value={AltitudePd}
                   onChange={receberAltitudePd}
                   
                 ></input>
                 <small></small>
                 <br></br>
-                <label>variation index (m):</label>
+                <label>For each (Ft)</label>
+                <input
+                  id="variacao_altitude"
+                  className="form-control"
+                  name="variacao_altitude"
+                  placeholder="For each"
+                  value={VariacaoAlt}
+                  onChange={receberVariacaoAlt}
+                />
+                <small></small>
+                <br></br>
+                <label>Variation index (m):</label>
                 <input
                   id="altitude_acima"
                   className="form-control"
@@ -526,19 +710,30 @@ const [VapAcm, setVapAcm] = useState("");
             <fieldset className="row col-lg-4 variavel">
               <legend>Temperature variables (ISA)</legend>
               <div className="form-group col-lg-4-md col-md-12 col-sm-12">
-                <label>default value for comparison:</label>
+                <label>Default value for comparison:</label>
                 <input
                   id="temperatura_padrao"
                   className="form-control"
                   name="temperatura_padrao"
-                  placeholder="default value in °C"
+                  placeholder="Default value in °C"
                   value={TemperaturaPd}
                   onChange={receberTemperaturaPd}
                   
                 ></input>
                 <small></small>
                 <br></br>
-                <label>variation index (m):</label>
+                <label>For each (°C)</label>
+                <input
+                  id="variacao_temperatura"
+                  className="form-control"
+                  name="variacao_temperatura"
+                  placeholder="For each"
+                  value={VariacaoTmp}
+                  onChange={receberVariacaoTmp}
+                />
+                <small></small>
+                <br></br>
+                <label>Variation index (m):</label>
                 <input
                   id="temperatura_acima"
                   className="form-control"
@@ -565,19 +760,30 @@ const [VapAcm, setVapAcm] = useState("");
             <fieldset className="row col-lg-4 variavel">
               <legend>Wind variables (KTAS)</legend>
               <div className="form-group col-lg-4-md col-md-12 col-sm-12">
-                <label>default value for comparison:</label>
+                <label>Default value for comparison:</label>
                 <input
                   id="vento_padrao"
                   className="form-control"
                   name="vento_padrao"
-                  placeholder="default value"
+                  placeholder="Default value"
                   value={VentoPd}
                   onChange={receberVentoPd}
                   
                 ></input>
                 <small></small>
                 <br></br>
-                <label>variation index (m):</label>
+                <label>For each (KTAS)</label>
+                <input
+                  id="variacao_vento"
+                  className="form-control"
+                  name="variacao_vento"
+                  placeholder="For each"
+                  value={VariacaoVento}
+                  onChange={receberVariacaoVento}
+                />
+                <small></small>
+                <br></br>
+                <label>Variation index (m):</label>
                 <input
                   id="vento_acima"
                   className="form-control"
@@ -604,19 +810,30 @@ const [VapAcm, setVapAcm] = useState("");
             <fieldset className="row col-lg-4 variavel">
               <legend>Slope variables (%)</legend>
               <div className="form-group col-lg-4-md col-md-12 col-sm-12">
-                <label>default value for comparison:</label>
+                <label>Default value for comparison:</label>
                 <input
                   id="slope_padrao"
                   className="form-control"
                   name="slope_padrao"
-                  placeholder="default value"
+                  placeholder="Default value"
                   value={SlopePd}
                   onChange={receberSlopePd}
                   
                 ></input>
                 <small></small>
                 <br></br>
-                <label>variation index (m):</label>
+                <label>For each (%)</label>
+                <input
+                  id="variacao_slope"
+                  className="form-control"
+                  name="variacao_slope"
+                  placeholder="For each"
+                  value={VariacaoSlope}
+                  onChange={receberVariacaoSlope}
+                />
+                <small></small>
+                <br></br>
+                <label>Variation index (m):</label>
                 <input
                   id="slope_acima"
                   className="form-control"
@@ -643,19 +860,30 @@ const [VapAcm, setVapAcm] = useState("");
             <fieldset className="row col-lg-3 variavel">
               <legend>VAP variables (speed)</legend>
               <div className="form-group col-lg-4-md col-md-12 col-sm-12">
-                <label>default value for comparison:</label>
+                <label>Default value for comparison:</label>
                 <input
                   id="vap_padrao"
                   className="form-control"
                   name="vap_padrao"
-                  placeholder="default value"
+                  placeholder="Default value"
                   value={VapPd}
                   onChange={receberVapPd}
                   
                 ></input>
                 <small></small>
                 <br></br>
-                <label>variation index (m):</label>
+                <label>For each (?)</label>
+                <input
+                  id="variacao_vap"
+                  className="form-control"
+                  name="variacao_vap"
+                  placeholder="For each"
+                  value={VariacaoVAP}
+                  onChange={receberVariacaoVAP}
+                />
+                <small></small>
+                <br></br>
+                <label>Variation index (m):</label>
                 <input
                   id="vap_acima"
                   className="form-control"

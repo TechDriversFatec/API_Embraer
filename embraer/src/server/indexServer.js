@@ -113,6 +113,17 @@ app.get("/getAeronaves", (req, res) => {
     });
 });
 
+app.get("/getUsuarios/:email", (req, res) => {
+const email = parseInt(req.params.email).toString()
+console.log("params: " + email);
+    let SQL = "SELECT * FROM usuario where email =" + email;
+
+    db.query(SQL, (err, result) => {
+        if(err) console.log(err);
+        else res.send(result)
+    });
+});
+
 app.get("/getLogs", (req, res) => {
 
     let SQL = "SELECT * FROM log_calculo_distancia";
