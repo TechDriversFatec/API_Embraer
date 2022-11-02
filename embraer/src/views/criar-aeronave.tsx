@@ -124,6 +124,18 @@ function validaAltitudePd(){
   }
   return valido
 }
+function validaVariacaoAlt(){
+  const id = document.getElementById("variacao_altitude");
+  let valido = false;
+
+  if(!ehNumero(VariacaoAlt)){
+    showError(id!, `value must be a number`);
+  } else {
+    showSuccess(id!)
+    valido = true;
+  }
+  return valido
+}
 function validaAltitudeAcm(){
   const idAltitudeAcm = document.getElementById("altitude_acima");
   let valido = false;
@@ -325,6 +337,10 @@ function receberPesoAcm(evento: any){
   let entrada = evento.target.value;
   setPesoAcm(entrada)
 }
+function receberVariacaoAlt(evento: any){
+  let entrada = evento.target.value;
+  setVariacaoAlt(entrada)
+}
 function receberAltitudePd(evento: any){
   let entrada = evento.target.value;
   setAltitudePd(entrada)
@@ -394,6 +410,7 @@ const [Distancia, setDistancia] = useState("");
 const [VariacaoPes, setVariacaoPes] = useState("")
 const [PesoAbx, setPesoAbx] = useState("");
 const [PesoAcm, setPesoAcm] = useState("");
+const [VariacaoAlt, setVariacaoAlt] = useState("")
 const [AltitudePd, setAltitudePd] = useState("");
 const [AltitudeAbx, setAltitudeAbx] = useState("");
 const [AltitudeAcm, setAltitudeAcm] = useState("");
@@ -545,14 +562,14 @@ const [VapAcm, setVapAcm] = useState("");
                 ></input>
                 <small></small>
                 <br></br>
-                <label>For each (Kg)</label>
+                <label>For each (Ft)</label>
                 <input
-                  id="variacao_peso"
+                  id="variacao_altitude"
                   className="form-control"
-                  name="variacao_peso"
+                  name="variacao_altitude"
                   placeholder="for each"
-                  value={VariacaoPes}
-                  onChange={receberVariacaoPes}
+                  value={VariacaoAlt}
+                  onChange={receberVariacaoAlt}
                 />
                 <small></small>
                 <br></br>

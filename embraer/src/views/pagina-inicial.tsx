@@ -1,11 +1,9 @@
 /* eslint-disable @typescript-eslint/no-unused-expressions */
 import "../css/pagina-inicial.css";
 import "bootstrap/dist/css/bootstrap.min.css";
-import { useNavigate } from 'react-router-dom';
-import { Teste } from 'crud_react'
+import Read from "./Tabela";
 
 function PaginaInicial() {
-  const history = useNavigate();
   
   return (
       <div className="App">
@@ -28,7 +26,7 @@ function PaginaInicial() {
               <li className="list-group-item">
                 <div className="row">
 
-                  <Teste />
+                  <Read/ >
                   
                 </div>
               </li>
