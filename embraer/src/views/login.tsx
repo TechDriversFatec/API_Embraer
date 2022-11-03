@@ -31,20 +31,21 @@ const Login = () => {
     function handleLogin (values: any) {
         console.log(params);
         values.preventDefault();
-        debugger
         Axios.get(`http://localhost:3002/getUsuarios/${params.email}`, {
             params:{params}
             
         })
         .then((response) => {
             const data = response.data;
+            console.log(data);
+            
             if(data.senha === params.senha){
                 if(data.nivel_acesso === 1){
                     navigate("/Index")
                 }
                 navigate("/Calculo")
             }
-            else if(data.senha !== params.senha){
+            else if(data.senha !== params.senha && data.lenght > 0){
                 Swal.fire({
                     title: `Error`,
                     html:
