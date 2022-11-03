@@ -104,7 +104,7 @@ app.get("/getAeronaves", (req, res) => {
 app.get("/getUsuarios/:email", (req, res) => {
 const email = req.params.email.toString()
 console.log("params: " + email);
-    let SQL = "SELECT * FROM usuario where email = " + email;
+    let SQL = "SELECT * FROM usuario where email = '" + email + "'";
 
     db.query(SQL, (err, result) => {
         if(err) console.log(err);
