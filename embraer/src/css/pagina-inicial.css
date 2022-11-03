@@ -1,7 +1,7 @@
 .App {
   background-color: #282f55;
   padding: 25px;
-  height: 100vh;
+  height: 100%;
 }
 #logoAviaozinho{
   width: 40px;
@@ -21,25 +21,28 @@ h3{
   text-align: left;
 }
 
-thead, th, tr, td, tbody, h2{
-  color: rgb(0, 0, 0)
+thead, th, tr, td, tbody {
+  color: rgb(0, 0, 0);
+  text-align: center;
+  width: 10%;
 }
 
 a{
-  margin-left: 1rem;
-  margin-right: 1rem;
-  float: right;
+  margin: 5px;
 }
 
 footer{
+  font-family: 'monospace';
   margin-top: 1rem;
-  margin-bottom: -60px;
+  margin-bottom: -100px;
   padding: 1rem;
-  background-color: rgb(221, 221, 220);
-  position: absolute;
+  background-color: #1C1C1C;
+  color: white;
+  position: relative;
   bottom: 0;
   left: 0;
   width: 100%;
+  text-align: center;
 }
 
 @media (prefers-reduced-motion: no-preference) {

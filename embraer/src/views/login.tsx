@@ -3,8 +3,7 @@ import { useNavigate } from "react-router-dom";
 import "../css/CriarAeronaves2.css";
 import "bootstrap/dist/css/bootstrap.min.css";
 import Axios from "axios";
-import axios from "axios";
-import swal from "sweetalert";
+
 const Swal = require('sweetalert2')
 
 
