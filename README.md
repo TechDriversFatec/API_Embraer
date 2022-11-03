@@ -25,7 +25,7 @@
 | :-----: | :-----: | :-----: | :-----: |
 | 01 | 18/09/2022 | Concluída | [Ver Relatório](https://github.com/TechDriversFatec/API_Embraer/tree/main/Planejamento/Sprint-1) |
 | 02 | 09/10/2022 | Concluída | [Ver Relatório](https://github.com/TechDriversFatec/API_Embraer/tree/main/Planejamento/Sprint-2) |
-| 03 | 06/11/2022 | Pendente | [Em breve] |
+| 03 | 06/11/2022 | Em andamento | [Ver relatório](https://github.com/TechDriversFatec/API_Embraer/tree/main/Planejamento/Sprint-3) |
 | 04 | 27/11/2022 | Pendente | [Em breve] |
   
   → [Voltar ao topo](#topo)
@@ -47,7 +47,7 @@
   <p align="center">
   <img src="Planejamento/Imagens/Sprint_1.jpg" alt="Backlog da 1a e 2a Sprint" width="100%" height="100%">
   <br><br>
-  <img src="Planejamento/Imagens/Sprint_2.jpg" alt="Backlog da 1a e 2a Sprint" width="100%" height="100%">
+  <img src="Planejamento/Imagens/Sprint_2.jpg" alt="Backlog da 3a e 4a Sprint" width="100%" height="100%">
   </p>
  
  ### Backlog Total
