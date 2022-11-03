@@ -1,12 +1,14 @@
 import "../css/criar-aeronaves.css";
 import "bootstrap/dist/css/bootstrap.min.css";
 import { useState } from "react";
+import { FormControlLabel, Switch } from "@mui/material";
 
 function VariaveisAeronaves() {
 
 function manipularEnvio(evento: any){
   evento.preventDefault()
-  let variacaoPesoValido = validaVariacaoPes(),
+  let reversorValido = validaReversor(),
+    variacaoPesoValido = validaVariacaoPes(),
     pesoAbxValido = validaPesoAbx(),
     pesoAcmValido = validaPesoAcm(),
     sobrepesoValido = validaSobrepeso(),
@@ -31,7 +33,8 @@ function manipularEnvio(evento: any){
     vapAcmValido = validaVapAcm(),
     vapAbxValido = validaVapAbx()
 
-  let formularioValido = variacaoPesoValido &&
+  let formularioValido = reversorValido &&
+    variacaoPesoValido &&
     pesoAbxValido &&
     pesoAcmValido &&
     sobrepesoValido &&
@@ -88,6 +91,18 @@ const ehNumero = (valor: any) => {
   return expressao.test(valor)
 }
 
+function validaReversor(){
+  const id = document.getElementById("variacao_reversor");
+  let valido = false;
+
+  if(!ehNumero(Reversor)){
+    showError(id!, `Value must be a number`)
+  } else {
+    showSuccess(id!);
+    valido = true;
+  }
+  return valido
+}
 function validaVariacaoPes(){
   const id = document.getElementById("variacao_peso");
   let valido = false;
@@ -386,6 +401,11 @@ function receberFlap(evento: any){
   let entrada = evento.target.value;
   setFlap(entrada)
 }
+function receberGelo(evento: any){
+  let entrada = evento.target.value;
+  setGelo(entrada)
+  return Gelo
+}
 function receberBreak(evento: any){
   let entrada = evento.target.value;
   setBreak(entrada)
@@ -397,6 +417,10 @@ function receberCondicao(evento: any){
 function receberDistancia(evento: any){
   let entrada = evento.target.value;
   setDistancia(entrada)
+}
+function receberReversor(evento: any){
+  let entrada = evento.target.value;
+  setReversor(entrada)
 }
 function receberVariacaoPes(evento: any){
   let entrada = evento.target.value;
@@ -497,9 +521,11 @@ function receberVapAcm(evento: any){
 
 
 const [Flap, setFlap] = useState("");
+const [Gelo, setGelo] = useState("")
 const [Break, setBreak] = useState("");
 const [Condicao, setCondicao] = useState("");
 const [Distancia, setDistancia] = useState("");
+const [Reversor, setReversor] = useState("");
 const [VariacaoPes, setVariacaoPes] = useState("")
 const [PesoAbx, setPesoAbx] = useState("");
 const [PesoAcm, setPesoAcm] = useState("");
@@ -549,7 +575,7 @@ const [VapAcm, setVapAcm] = useState("");
           <div className="card-body col-md-13">
             <fieldset className="row flap">
                 <legend>Flap configurations</legend>
-              <div className="form-group col-lg-4-md col-md-3 col-sm-12">
+              <div className="form-group col-lg-4-md col-md-4 col-sm-12">
                 <label>Flap:</label>
                 <input
                   id="tipo_flap"
@@ -560,10 +586,9 @@ const [VapAcm, setVapAcm] = useState("");
                   onChange={receberFlap}
                   
                 />
-                <input className="form-check-input" type="checkbox" role="switch" id="flexSwitchCheckDefault" />
-                <label className="form-check-label">Ice Accretion</label>
+                <FormControlLabel control={<Switch onChange={receberGelo} />} label="Ice Accretion" />
               </div>
-              <div className="form-group col-lg-4-md col-md-3 col-sm-12">
+              <div className="form-group col-lg-4-md col-md-4 col-sm-12">
                 <label>Brake config:</label>
                 <select
                   title="configuracao_freio"
@@ -582,7 +607,7 @@ const [VapAcm, setVapAcm] = useState("");
                   <option value="4">Low</option>
                 </select>
               </div>
-              <div className="form-group col-lg-4-md col-md-3 col-sm-12">
+              <div className="form-group col-lg-4-md col-md-4 col-sm-12">
                 <label>Runway Condition:</label>
                 <input
                   id="correcao_reversor_inoperante"
@@ -594,15 +619,27 @@ const [VapAcm, setVapAcm] = useState("");
                   
                 />
               </div>
-              <div className="form-group col-lg-4-md col-md-3 col-sm-12">
+              <div className="form-group col-lg-4-md col-md-4 col-sm-12">
                 <label>Referencial distance:</label>
                 <input
                   id="distancia_referencia"
                   className="form-control"
                   name="distancia_referencia"
-                  placeholder="Insert the referential distance (m)"
+                  placeholder="Referential distance (m)"
                   value={Distancia}
                   onChange={receberDistancia}
+                  
+              />
+              </div>
+              <div className="form-group col-lg-4-md col-md-4 col-sm-12">
+                <label>Reverser variation</label>
+                <input
+                  id="variacao_reversor"
+                  className="form-control"
+                  name="variacao_reversor"
+                  placeholder="Per rev inop (m)"
+                  value={Reversor}
+                  onChange={receberReversor}
                   
               />
               </div>

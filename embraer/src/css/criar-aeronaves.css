@@ -20,7 +20,7 @@ legend{
 }
 .CriarAeronaves {
     background-color: #282f55;
-    height: 100% !important;
+    height: 100vh;
     padding: 25px;
   }
   label, i{

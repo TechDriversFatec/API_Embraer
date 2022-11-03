@@ -60,17 +60,11 @@ export default function Read() {
                 <Table.Cell>{data.fabricante}</Table.Cell>
                 <Table.Cell>{data.reversor}</Table.Cell>
                 <Table.Cell>{data.peso}</Table.Cell>
-                <Table.Cell>
-                  <Link to="/Variavel">
-                    <Button onClick={() => setData(data)}><FaPlus/></Button>
-                  </Link>
-                  <Link to="/Variavel">
-                    <Button onClick={() => setData(data)}><FaPen/></Button>
-                  </Link>
-                  <Link to="/Variavel">
-                    <Button onClick={() => onDelete(data.id)}><FaRegTrashAlt/></Button>
-                  </Link>                  
-                </Table.Cell>                
+                <Link to="/Variavel">
+                  <Table.Cell>
+                    <Button onClick={() => setData(data)}>Update</Button>
+                  </Table.Cell>
+                </Link>
               </Table.Row>
             );
           })}
