@@ -401,6 +401,11 @@ function receberFlap(evento: any){
   let entrada = evento.target.value;
   setFlap(entrada)
 }
+function receberGelo(evento: any){
+  let entrada = evento.target.value;
+  setGelo(entrada)
+  return Gelo
+}
 function receberBreak(evento: any){
   let entrada = evento.target.value;
   setBreak(entrada)
@@ -516,6 +521,7 @@ function receberVapAcm(evento: any){
 
 
 const [Flap, setFlap] = useState("");
+const [Gelo, setGelo] = useState("")
 const [Break, setBreak] = useState("");
 const [Condicao, setCondicao] = useState("");
 const [Distancia, setDistancia] = useState("");
@@ -580,7 +586,7 @@ const [VapAcm, setVapAcm] = useState("");
                   onChange={receberFlap}
                   
                 />
-                <FormControlLabel control={<Switch />} label="Ice Accretion" />
+                <FormControlLabel control={<Switch onChange={receberGelo} />} label="Ice Accretion" />
               </div>
               <div className="form-group col-lg-4-md col-md-4 col-sm-12">
                 <label>Brake config:</label>
