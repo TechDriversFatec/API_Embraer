@@ -1,6 +1,7 @@
 import "../css/criar-aeronaves.css";
 import "bootstrap/dist/css/bootstrap.min.css";
 import { useState } from "react";
+import { FormControlLabel, Switch } from "@mui/material";
 
 function VariaveisAeronaves() {
 
@@ -560,8 +561,9 @@ const [VapAcm, setVapAcm] = useState("");
                   onChange={receberFlap}
                   
                 />
-                <input className="form-check-input" type="checkbox" role="switch" id="flexSwitchCheckDefault" />
-                <label className="form-check-label">Ice Accretion</label>
+                <FormControlLabel control={<Switch />} label="Ice Accretion" />
+                {/* <input className="form-check-input" type="checkbox" role="switch" id="flexSwitchCheckDefault" />
+                <label className="form-check-label">Ice Accretion</label> */}
               </div>
               <div className="form-group col-lg-4-md col-md-3 col-sm-12">
                 <label>Brake config:</label>

@@ -44,7 +44,7 @@ export default function Read() {
                 <Table.Cell>{data.fabricante}</Table.Cell>
                 <Table.Cell>{data.reversor}</Table.Cell>
                 <Table.Cell>{data.peso}</Table.Cell>
-                <Link to="/Variavel">
+                <Link to="/Criar">
                   <Table.Cell>
                     <Button onClick={() => setData(data)}>Update</Button>
                   </Table.Cell>

@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import Axios from "axios";
 import logo from "./logo.svg";
 import "../css/CriarAeronaves2.css";
@@ -7,20 +7,20 @@ import { ModuleResolutionKind } from "typescript";
 import { monitorEventLoopDelay } from "perf_hooks";
 import Swal from "sweetalert2";
 import { BrowserRouter, Route, Routes, useNavigate } from "react-router-dom";
-import VariaveisAeronaves from "./criar-aeronave";
+import VariaveisAeronaves from "../criar-aeronave";
 
-function CriarAeronaves() {
+function UpdateAeronaves() {
   const navigate = useNavigate()
   const [values, setValues] = useState(Object);
 
-  const handleChangeValues = (value: any) => {
-    setValues((prevValue: any) => ({
+  const handleChangeValues = (value) => {
+    setValues((prevValue) => ({
       ...prevValue,
       [value.target.name]: value.target.value,
     }));
   };
 
-  //const handleClickButton = (values: any) => {
+  //const handleClickButton = (values) => {
   //  console.log(values);
   //  Axios.post("http://localhost:3002/register", {
   //    modelo: values.modelo,
@@ -60,38 +60,36 @@ function CriarAeronaves() {
   //  });
   //};
 
-  const showError = (input: HTMLElement, message: string) => {
+  const showError = (input, message) => {
     const formField = input.parentElement;
-    formField!.classList.remove('success');
-    formField!.classList.add('error');
+    formField.classList.remove('success');
+    formField.classList.add('error');
 
-    const error = formField!.querySelector('small');
-    error!.textContent = message;
+    const error = formField.querySelector('small');
+    error.textContent = message;
   };
 
-  const showSuccess = (input: HTMLElement) => {
+  const showSuccess = (input) => {
     // get the form-field element
     const formField = input.parentElement;
 
     // remove the error class
-    formField!.classList.remove('error');
-    formField!.classList.add('success');
+    formField.classList.remove('error');
+    formField.classList.add('success');
 
     // hide the error message
-    const error = formField!.querySelector('small');
-    error!.textContent = '';
+    const error = formField.querySelector('small');
+    error.textContent = '';
   }
 
-  function manipularEnvio(evento: any) {
+  function manipularEnvio(evento) {
     evento.preventDefault()
     let pesoValido = validaPeso(),
       pesoMinValido = validaPesoMin(),
-      sobrepesoValido = validaSobrepeso(),
       pesoMaxValido = validaPesoMax()
     
     let formularioValido = pesoValido &&
       pesoMinValido &&
-      sobrepesoValido &&
       pesoMaxValido
 
     if (formularioValido){
@@ -110,7 +108,7 @@ function CriarAeronaves() {
     }
   }
 
-  const ehNumero = (valor: any) => {
+  const ehNumero = (valor) => {
     const expressao = new RegExp("^[0-9]+$")
     return expressao.test(valor)
   }
@@ -120,9 +118,9 @@ function CriarAeronaves() {
     let valido = false;
 
     if(!ehNumero(Peso)){
-      showError(idPeso!, `Weight must be a number`)
+      showError(idPeso, `Weight must be a number`)
     } else {
-      showSuccess(idPeso!);
+      showSuccess(idPeso);
       valido = true
     }
     return valido
@@ -133,25 +131,12 @@ function CriarAeronaves() {
     let valido = false;
 
     if(!ehNumero(PesoMinimo)){
-      showError(idPesoMin!, `Minimum weight must be a number`)
+      showError(idPesoMin, `Minimum weight must be a number`)
     } else {
-      showSuccess(idPesoMin!);
+      showSuccess(idPesoMin);
       valido = true;
     }
     return valido
-  }
-
-  function validaSobrepeso(){
-    const id = document.getElementById("sobrepeso")
-    let valido = false;
-
-    if(!ehNumero(Sobrepeso)){
-      showError(id!, `Overweight must be a number`)
-    } else {
-      showSuccess(id!);
-      valido = true;
-    }
-    return valido;
   }
 
   function validaPesoMax(){
@@ -159,59 +144,55 @@ function CriarAeronaves() {
     let valido = false;
 
     if(!ehNumero(PesoMaximo)){
-      showError(idPesoMax!, `Maximum weight must be a number`)
+      showError(idPesoMax, `Maximum weight must be a number`)
     } else {
-      showSuccess(idPesoMax!);
+      showSuccess(idPesoMax);
       valido = true;
     }
     return valido
   }
 
-  function receberFabricante(evento: any){
+  function receberFabricante(evento){
     let entrada = evento.target.value;
     setFabricante(entrada)
   }
   
-  function receberModelo(evento: any){
+  function receberModelo(evento){
     let entrada = evento.target.value;
     setModelo(entrada)
   }
 
-  function receberCertificacao(evento: any){
+  function receberCertificacao(evento){
     let entrada = evento.target.value;
     setCertificacao(entrada)
   }
 
-  function receberMotor(evento: any){
+  function receberMotor(evento){
     let entrada = evento.target.value;
     setMotor(entrada)
   }
 
-  function receberReversor(evento: any){
+  function receberReversor(evento){
     let entrada = evento.target.value;
     setReversor(entrada)
   }
 
-  function receberPeso(evento: any){
+  function receberPeso(evento){
     let entrada = evento.target.value;
     setPeso(entrada)
   }
 
-  function receberPesoMin(evento: any){
+  function receberPesoMin(evento){
     let entrada = evento.target.value;
     setPesoMinimo(entrada)
   }
 
-  function receberSobrepeso(evento: any){
-    let entrada = evento.target.value;
-    setSobrepeso(entrada);
-  }
-
-  function receberPesoMax(evento: any){
+  function receberPesoMax(evento){
     let entrada = evento.target.value;
     setPesoMaximo(entrada)
   }
 
+  const [id, setID] = useState
   const [Fabricante, setFabricante] = useState("");
   const [Modelo, setModelo] = useState("");
   const [Certificacao, setCertificacao] = useState("");
@@ -219,8 +200,18 @@ function CriarAeronaves() {
   const [Revesor, setReversor] = useState("");
   const [Peso, setPeso] = useState("");
   const [PesoMinimo, setPesoMinimo] = useState("");
-  const [Sobrepeso, setSobrepeso] = useState("");
   const [PesoMaximo, setPesoMaximo] = useState("");
+
+  useEffect(() => {
+    setFabricante(localStorage.getItem('Fabricante'))
+    setModelo(localStorage.getItem('Modelo'))
+    setCertificacao(localStorage.getItem('Certificacao'))
+    setMotor(localStorage.getItem('Motor'))
+    setReversor(localStorage.getItem('Revesor'))
+    setPeso(localStorage.getItem('Peso'))
+    setPesoMinimo(localStorage.getItem('PesoMinimo'))
+    setPesoMaximo(localStorage.getItem('PesoMaximo'))
+  })
 
   return (
     <div className="CriarAeronaves">
@@ -251,7 +242,7 @@ function CriarAeronaves() {
                   className="form-control"
                   name="fabricante"
                   placeholder="Insert the aircraft manufacturer:"
-                  value={Fabricante}
+                  value={fabricante}
                   onChange={receberFabricante}
                 />
               </div>
@@ -321,7 +312,7 @@ function CriarAeronaves() {
               </div>
             </div>
             <div className="row">
-              <div className="form-group col-lg-4-md col-md-4 com-sm-12">
+              <div className="form-group col-lg-4-md col-md-6 com-sm-12">
                 <label>Minimum weight the aircraft can get</label>
                 <input
                   id="peso_minimo"
@@ -333,19 +324,7 @@ function CriarAeronaves() {
                 />
                 <small></small>
               </div>
-              <div className="form-group col-lg-4-md col-md-4 com-sm-12">
-                <label>Overweight of the aircraft </label>
-                <input
-                  id="sobrepeso"
-                  className="form-control"
-                  name="sobrepeso"
-                  placeholder="Insert the overweight:"
-                  value={Sobrepeso}
-                  onChange={receberSobrepeso}
-                />
-                <small></small>
-              </div>
-              <div className="form-group col-lg-4-md col-md-4 com-sm-12">
+              <div className="form-group col-lg-4-md col-md-6 com-sm-12">
                 <label>Maximum weight the aircraft can get</label>
                 <input
                   id="peso_maximo"
@@ -383,4 +362,4 @@ function CriarAeronaves() {
   );
 }
 
-export default CriarAeronaves;
+export default UpdateAeronaves;
