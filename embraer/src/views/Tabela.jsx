@@ -2,7 +2,7 @@ import React, { useEffect, useState } from "react";
 import { Table, Button } from "semantic-ui-react";
 import { Link } from "react-router-dom";
 import axios from "axios";
-import { FaPen, FaPlus, FaRegTrashAlt } from "react-icons/fa";
+import { FaPlus, FaPlaneArrival, FaCalculator, FaTrashAlt } from "react-icons/fa";
 
 //import {PlusCircleOutlined, EditOutlined, DeleteOutlined} from '@ant-design/icons';
 //import { isConstructorDeclaration } from "typescript";
@@ -25,20 +25,6 @@ export default function Read() {
     });
   }, []);
 
-  const onDelete = (id) => {
-    axios.delete(`https://6361b2f7af66cc87dc306632.mockapi.io/embraer/embraer`)
-    .then(() => {
-      getData();
-    })
-  }
-
-  const getData = () => {
-    axios.get(`https://6361b2f7af66cc87dc306632.mockapi.io/embraer/embraer`)
-        .then((getData) => {
-             setAPIData(getData.data);
-         })
-  }
-
   return (
     <div>
       <Table singleLine>
@@ -60,11 +46,20 @@ export default function Read() {
                 <Table.Cell>{data.fabricante}</Table.Cell>
                 <Table.Cell>{data.reversor}</Table.Cell>
                 <Table.Cell>{data.peso}</Table.Cell>
-                <Link to="/Variavel">
-                  <Table.Cell>
-                    <Button onClick={() => setData(data)}>Update</Button>
-                  </Table.Cell>
-                </Link>
+                <Table.Cell>
+                  <Link to="/Variavel">
+                    <Button onClick={() => setData(data)}><FaPlus/></Button>
+                  </Link>
+                  <Link to="/Criar">
+                    <Button onClick={() => setData(data)}><FaPlaneArrival/></Button>
+                  </Link>
+                  <Link to="/Variavel">
+                    <Button onClick={() => setData(data)}><FaCalculator/></Button>
+                  </Link>
+                  <Link to="/Variavel">
+                    <Button onClick={() => setData(data)}><FaTrashAlt/></Button>
+                  </Link>
+                </Table.Cell>
               </Table.Row>
             );
           })}
