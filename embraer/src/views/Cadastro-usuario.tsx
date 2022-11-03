@@ -12,98 +12,132 @@ import Swal from "sweetalert2";
 
 function CriarUsuario() {
 
+    const showError = (input: HTMLElement, message: string) => {
+        const formField = input.parentElement;
+        formField!.classList.remove('success');
+        formField!.classList.add('error');
+    
+        const error = formField!.querySelector('small');
+        error!.textContent = message;
+      };
+    
+      const showSuccess = (input: HTMLElement) => {
+        // get the form-field element
+        const formField = input.parentElement;
+    
+        // remove the error class
+        formField!.classList.remove('error');
+        formField!.classList.add('success');
+    
+        // hide the error message
+        const error = formField!.querySelector('small');
+        error!.textContent = '';
+      }
+
     function manipularEnvio(evento: any){
         evento.preventDefault()
         let NomeValido = validaNome(),
           EmailValido = validaEmail(),
-          SenhaValido = validaSenha(),
-          NivelUsuarioValido = validaNivelUsuario()
+          SenhaValido = validaSenha()
+        //   NivelUsuarioValido = validaNivelUsuario()
 
       
           let formularioValido = NomeValido &&
           EmailValido &&
-          SenhaValido &&
-          NivelUsuarioValido
+          SenhaValido
+        //   NivelUsuarioValido
           
       
         if(formularioValido){
-          console.log(`User registered Successfuly`);
+
+          
+
+          Axios.post("http://localhost:3002/criarusuario", {
+        nivel_acesso: (document.getElementById('NivelUsuario') as HTMLSelectElement).value,
+        senha_acesso: (document.getElementById('senha_acesso') as HTMLInputElement).value,
+        nome: (document.getElementById('nome') as HTMLInputElement).value,
+        email: (document.getElementById('email') as HTMLInputElement).value,
+        
+        
+        });
+        Swal.fire({
+            text: 'User registered successfully!',
+        })
         }
       }
-
-        const showError = (input: HTMLElement, message: string) => {
-            const formField = input.parentElement;
-            formField!.classList.remove('success');
-            formField!.classList.add('error');
-          
-            const error = formField!.querySelector('small');
-            error!.textContent = message;
-          };
-          
-        const showSuccess = (input: HTMLElement) => {
-        // get the form-field element
-        const formField = input.parentElement;
-        
-        // remove the error class
-        formField!.classList.remove('error');
-        formField!.classList.add('success');
-        
-        // hide the error message
-        const error = formField!.querySelector('small');
-        error!.textContent = '';
+        const ehNome = (valor: string) => {
+            const expressao = new RegExp("[A-Z][a-z]")
+            return expressao.test(valor)            
         }
-        
+
+        const ehEmail = (valor: string) => {
+            const expressao = new RegExp("[a-zA-Z0-9]+@+[a-zA-Z0-9]+.+[A-Za-z]")
+            return expressao.test(valor)
+        }
+        const ehSenha = (valor: string) => {
+            const expressao = new RegExp("^(?=.*[a-z])(?=.*[A-Z])(?=.*[0-9])(?=.*[!@#\$%\^&\*])(?=.{8,})")
+            return expressao.test(valor)
+        }
         function validaNome(){
-        const id = document.getElementById("nome")
+        const idNome = document.getElementById("nome")
         let valido = false;
         
-        if(id == null){
-            showError(id!, `name is mandatory!`)
-        } else {
-            showSuccess(id!)
+        if(!ehNome(String(Nome))){
+            showError(idNome!, `please, enter a name in a valid format!`)
+        } else if (idNome === null){
+            showError(idNome!, `name is mandatory`)
+        }
+         else {
+            showSuccess(idNome!)
             valido = true;
         }
         return valido
         }
         
         function validaEmail(){
-        const id = document.getElementById("email")
+        const idEmail = document.getElementById("email")
         let valido = false;
         
-        if(id == null){
-            showError(id!, `email is mandatory!`)
-        } else {
-            showSuccess(id!)
+        if(!ehEmail(String(Email))){
+            showError(idEmail!, `please, enter a email in a valid format!`)
+        } else if (idEmail === null){
+            showError(idEmail!, `Email is mandtory`)
+        }
+         else {
+            showSuccess(idEmail!)
             valido = true;
         }
         return valido
         }
         
         function validaSenha(){
-        const id = document.getElementById("senha_acesso")
+        const idSenha = document.getElementById("senha_acesso")
         let valido = false;
         
-        if(id == null){
-            showError(id!, `password is mandatory!`)
-        } else {
-            showSuccess(id!)
+        if(!ehSenha(String(Senha))){
+            showError(idSenha!, `password must contain 8 characters, 1 uppercase letter, 1 lowercase letter, 1 number and 1 special character`)
+        } else if (idSenha === null){
+            showError(idSenha!, `password is mandtory`)
+        }
+         else {
+            showSuccess(idSenha!)
             valido = true;
         }
         return valido
         }
             
-        function validaNivelUsuario(){
-        const id = document.getElementById("nivel_acesso")
-        let valido = false;
+        // function validaNivelUsuario(){
+        // const id = document.getElementById("nivel_acesso")
+        // let valido = false;
         
-        if(id == null){
-            showError(id!, `user level is mandatory!`)
-        } else {
-            showSuccess(id!)
-            valido = true;
-        }
-        return valido
-        }
+        // if(id == null){
+        //     showError(id!, `user level is mandatory!`)
+        // } else {
+        //     showSuccess(id!)
+        //     valido = true;
+        // }
+        // return valido
+        // }
         
         function receberNome(evento: any){
         let entrada = evento.target.value;
@@ -169,24 +203,28 @@ function CriarUsuario() {
                     </div>
                     <div className="card-body col-md-12">
                         <div className="row">
-                            <div className="form-group col-lg-4-md col-md-6 col-sm-12">
+                            <div className="form-group col-lg-4 col-md-6 col-sm-12">
                                 <label>Username:</label>
                                 <input id="nome" className="form-control" name="nome" value={Nome} onChange={ receberNome } />
+                                <small></small>
                             </div>
-                            <div className="form-group col-lg-4-md col-md-6 col-sm-12">
+                            <div className="form-group col-lg-4 col-md-6 col-sm-12">
                                 <label>Email:</label>
-                                <input id="email" type="email" className="form-control" name="email" value={Email} onChange={receberEmail} />
+                                <input id="email" className="form-control" name="email" value={Email} onChange={receberEmail} />
+                                <small></small>
                             </div>
-                            <div className="form-group col-lg-4-md col-md-6 col-sm-12">
+                            <div className="form-group col-lg-4 col-md-6 col-sm-12">
                                 <label>Password:</label>
                                 <input id="senha_acesso" type="password" className="form-control" name="senha_acesso" value={Senha} placeholder="password max length = 15"onChange={receberSenha} />
+                                <small></small>
                             </div>
-                            <div className="form-group col-lg-4-md col-md-6 col-sm-12">
+                            <div className="form-group col-lg-4 col-md-6 col-sm-12">
                                 <label>User Level:</label>
                                     <select title="nivel_acesso" id="NivelUsuario" className="form-control" name="nivel_acesso" value={NivelUsuario} onChange={receberNivelUsuario}>
                                         <option value="" selected disabled>Select</option>
                                         <option value="1">Administrator</option>
                                         <option value="2">User</option>
+                                        <small></small>
                                     </select> 
                             </div>
                         </div>
@@ -195,7 +233,7 @@ function CriarUsuario() {
                             <a className="rounded btn btn-primary ml-2 float-start" href="http://localhost:3000">
                                 <b>Return</b>
                             </a>
-                            <button className="rounded btn btn-primary ml-2 float-end" type="submit" id="btn_registrar" name="submitButton" onClick={() => handleClickButton(values)}>
+                            <button className="rounded btn btn-primary ml-2 float-end" type="submit" id="btn_registrar" name="submitButton">
                                 <b>Register</b></button>
                         </div>
                 </div>

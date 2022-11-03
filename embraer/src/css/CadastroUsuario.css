@@ -4,6 +4,20 @@
   padding: 25px;
 }
 
+#swal2-title{
+  font-size: 60px;
+  padding: 40px;
+  padding-bottom: 0px;
+  padding-top: 60px;
+}
+small{
+  color: red;
+}
+#swal2-html-container{
+  font-size: 25px;
+}
+
+
 label,
 i {
   color: black;
