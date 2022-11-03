@@ -1,9 +1,11 @@
 import React, { useEffect, useState } from "react";
 import { Table, Button } from "semantic-ui-react";
 import { Link } from "react-router-dom";
-import Axios from "axios";
 import axios from "axios";
-import { isConstructorDeclaration } from "typescript";
+import { FaPen, FaPlus, FaRegTrashAlt } from "react-icons/fa";
+
+//import {PlusCircleOutlined, EditOutlined, DeleteOutlined} from '@ant-design/icons';
+//import { isConstructorDeclaration } from "typescript";
 
 export default function Read() {
   const [APIData, setAPIData] = useState([]);
@@ -23,6 +25,20 @@ export default function Read() {
     });
   }, []);
 
+  const onDelete = (id) => {
+    axios.delete(`https://6361b2f7af66cc87dc306632.mockapi.io/embraer/embraer`)
+    .then(() => {
+      getData();
+    })
+  }
+
+  const getData = () => {
+    axios.get(`https://6361b2f7af66cc87dc306632.mockapi.io/embraer/embraer`)
+        .then((getData) => {
+             setAPIData(getData.data);
+         })
+  }
+
   return (
     <div>
       <Table singleLine>
@@ -32,7 +48,7 @@ export default function Read() {
             <Table.HeaderCell>Manufacturer</Table.HeaderCell>
             <Table.HeaderCell>Reversers</Table.HeaderCell>
             <Table.HeaderCell>Weight</Table.HeaderCell>
-            <Table.HeaderCell>Update</Table.HeaderCell>
+            <Table.HeaderCell>Actions</Table.HeaderCell>
           </Table.Row>
         </Table.Header>
 
