@@ -15,6 +15,8 @@ import Swal from "sweetalert2";
 
 export default function Read() {
   const [APIData, setAPIData] = useState([]);
+  
+
   const setData = (data) => {
     let { id, certificacao, fabricante, modelo, motor, peso, reversor } = data;
     localStorage.setItem("ID", id);
@@ -33,30 +35,40 @@ export default function Read() {
       });
   }, []);
 
-  async function modalSeleciona() {
-    const { value: fruit } = await Swal.fire({
-      title: "Select field validation",
-      input: "select",
-      inputOptions: {
-        APIData
-      },
-      inputPlaceholder: "Select a fruit",
-      showCancelButton: true,
-      inputValidator: (value) => {
-        return new Promise((resolve) => {
-          if (value === "oranges") {
-            resolve();
-          } else {
-            resolve("You need to select oranges :)");
-          }
-        });
-      },
-    });
-
-    if (fruit) {
-      Swal.fire(`You selected: ${fruit}`);
-    }
+  type Flap = {
+    id: number,
+    tipo_flap: string,
+    configuracao_freio: string,
+    condicao_pista: number
   }
+
+  const [flaps, setFlaps] = useState<Flap[]>([]);
+  
+
+  // async function modalSeleciona() {
+  //   const { value: fruit } = await Swal.fire({
+  //     title: "Select field validation",
+  //     input: "select",
+  //     inputOptions: {
+  //       APIData
+  //     },
+  //     inputPlaceholder: "Select a fruit",
+  //     showCancelButton: true,
+  //     inputValidator: (value: any) => {
+  //       return new Promise((resolve) => {
+  //         if (value === "oranges") {
+  //           resolve();
+  //         } else {
+  //           resolve("You need to select oranges :)");
+  //         }
+  //       });
+  //     },
+  //   });
+
+  //   if (fruit) {
+  //     Swal.fire(`You selected: ${fruit}`);
+  //   }
+  // }
 
   return (
     <div>
@@ -72,7 +84,7 @@ export default function Read() {
         </Table.Header>
 
         <Table.Body>
-          {APIData.map((data) => {
+          {APIData.map((data: any) => {
             return (
               <Table.Row>
                 <Table.Cell>{data.modelo}</Table.Cell>
@@ -90,7 +102,7 @@ export default function Read() {
                       <FaPlaneArrival />
                     </Button>
                   </Link>
-                  <Button onClick={modalSeleciona}>
+                  <Button >
                     <FaCalculator />
                   </Button>
                   <Link to="/Variavel">

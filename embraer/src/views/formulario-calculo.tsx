@@ -558,7 +558,7 @@ function Calculo() {
         </div>
       </form>
       <div>
-        <input hidden placeholder="result" type="text" id="resultadoConta" value={resultadoCalculo} onChange={receberResultado} />
+        <input placeholder="result" type="text" id="resultadoConta" value={resultadoCalculo} onChange={receberResultado} />
       </div>
     </div>
   );

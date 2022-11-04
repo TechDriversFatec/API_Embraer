@@ -519,7 +519,6 @@ function receberVapAcm(evento: any){
   setVapAcm(entrada)
 }
 
-
 const [Flap, setFlap] = useState("");
 const [Gelo, setGelo] = useState("")
 const [Break, setBreak] = useState("");
@@ -647,12 +646,12 @@ const [VapAcm, setVapAcm] = useState("");
             <fieldset className="row col-lg-3 variavel">
               <legend>Weight variables</legend>
               <div className="form-group col-lg-4-md col-md-12 col-sm-12">
-                <label>For each (Kg)</label>
+                <label>Increment/decrement step (Kg)</label>
                 <input
                   id="variacao_peso"
                   className="form-control"
                   name="variacao_peso"
-                  placeholder="For each"
+                  placeholder="Increment/decrement step"
                   value={VariacaoPes}
                   onChange={receberVariacaoPes}
                 />
@@ -697,7 +696,7 @@ const [VapAcm, setVapAcm] = useState("");
             <fieldset className="row col-lg-4 variavel">
               <legend>Altitude variables (Ft)</legend>
               <div className="form-group col-lg-4-md col-md-12 col-sm-12">
-                <label>Default value for comparison:</label>
+                <label>Reference value</label>
                 <input
                   id="altitude_padrao"
                   className="form-control"
@@ -709,12 +708,12 @@ const [VapAcm, setVapAcm] = useState("");
                 ></input>
                 <small></small>
                 <br></br>
-                <label>For each (Ft)</label>
+                <label>Increment/decrement step (Ft)</label>
                 <input
                   id="variacao_altitude"
                   className="form-control"
                   name="variacao_altitude"
-                  placeholder="For each"
+                  placeholder="Increment/decrement step"
                   value={VariacaoAlt}
                   onChange={receberVariacaoAlt}
                 />
@@ -747,7 +746,7 @@ const [VapAcm, setVapAcm] = useState("");
             <fieldset className="row col-lg-4 variavel">
               <legend>Temperature variables (ISA)</legend>
               <div className="form-group col-lg-4-md col-md-12 col-sm-12">
-                <label>Default value for comparison:</label>
+                <label>Reference value</label>
                 <input
                   id="temperatura_padrao"
                   className="form-control"
@@ -759,12 +758,12 @@ const [VapAcm, setVapAcm] = useState("");
                 ></input>
                 <small></small>
                 <br></br>
-                <label>For each (°C)</label>
+                <label>Increment/decrement step (°C)</label>
                 <input
                   id="variacao_temperatura"
                   className="form-control"
                   name="variacao_temperatura"
-                  placeholder="For each"
+                  placeholder="Increment/decrement step"
                   value={VariacaoTmp}
                   onChange={receberVariacaoTmp}
                 />
@@ -797,7 +796,7 @@ const [VapAcm, setVapAcm] = useState("");
             <fieldset className="row col-lg-4 variavel">
               <legend>Wind variables (KTAS)</legend>
               <div className="form-group col-lg-4-md col-md-12 col-sm-12">
-                <label>Default value for comparison:</label>
+                <label>Reference value</label>
                 <input
                   id="vento_padrao"
                   className="form-control"
@@ -809,12 +808,12 @@ const [VapAcm, setVapAcm] = useState("");
                 ></input>
                 <small></small>
                 <br></br>
-                <label>For each (KTAS)</label>
+                <label>Increment/decrement step (KTAS)</label>
                 <input
                   id="variacao_vento"
                   className="form-control"
                   name="variacao_vento"
-                  placeholder="For each"
+                  placeholder="Increment/decrement step"
                   value={VariacaoVento}
                   onChange={receberVariacaoVento}
                 />
@@ -847,7 +846,7 @@ const [VapAcm, setVapAcm] = useState("");
             <fieldset className="row col-lg-4 variavel">
               <legend>Slope variables (%)</legend>
               <div className="form-group col-lg-4-md col-md-12 col-sm-12">
-                <label>Default value for comparison:</label>
+                <label>Reference value</label>
                 <input
                   id="slope_padrao"
                   className="form-control"
@@ -859,12 +858,12 @@ const [VapAcm, setVapAcm] = useState("");
                 ></input>
                 <small></small>
                 <br></br>
-                <label>For each (%)</label>
+                <label>Increment/decrement step (%)</label>
                 <input
                   id="variacao_slope"
                   className="form-control"
                   name="variacao_slope"
-                  placeholder="For each"
+                  placeholder="Increment/decrement step"
                   value={VariacaoSlope}
                   onChange={receberVariacaoSlope}
                 />
@@ -897,7 +896,7 @@ const [VapAcm, setVapAcm] = useState("");
             <fieldset className="row col-lg-3 variavel">
               <legend>VAP variables (speed)</legend>
               <div className="form-group col-lg-4-md col-md-12 col-sm-12">
-                <label>Default value for comparison:</label>
+                <label>Reference value</label>
                 <input
                   id="vap_padrao"
                   className="form-control"
@@ -909,12 +908,12 @@ const [VapAcm, setVapAcm] = useState("");
                 ></input>
                 <small></small>
                 <br></br>
-                <label>For each (?)</label>
+                <label>Increment/decrement step (?)</label>
                 <input
                   id="variacao_vap"
                   className="form-control"
                   name="variacao_vap"
-                  placeholder="For each"
+                  placeholder="Increment/decrement step"
                   value={VariacaoVAP}
                   onChange={receberVariacaoVAP}
                 />
