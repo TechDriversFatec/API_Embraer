@@ -60,8 +60,21 @@ export default function Read() {
 
   // function PegaId() {
   //   let html = <></>
-  //   listAeronaves.forEach(element: any => {
-  //     html  =  html + `/AtualizaA/${element.id}`
+  //   let lista = listAeronaves.map(
+  //     return element: any => {
+  //     <Link to="/Variavel/{}">
+  //                   <Button><FaPlus /></Button>
+  //                 </Link>
+                  
+  //                 <Link to="/Variavel">
+  //                   <Button><FaCalculator /></Button>
+  //                 </Link>
+  //                 <Link to="/Variavel">
+  //                   <Button><FaTrashAlt /></Button>
+  //                 </Link>
+  //     html  =  html + <Link to="/AtualizaA/:userId">
+  //     <Button><FaPlaneArrival /></Button>
+  //   </Link>
   //   });
   // }
 
@@ -88,18 +101,7 @@ export default function Read() {
                 <Table.Cell>{data.certificacao}</Table.Cell>
                 <Table.Cell>{data.motor}</Table.Cell>
                 <Table.Cell>
-                  <Link to="/Variavel/{}">
-                    <Button><FaPlus /></Button>
-                  </Link>
-                  <Link to="/AtualizaA/:userId">
-                    <Button><FaPlaneArrival /></Button>
-                  </Link>
-                  <Link to="/Variavel">
-                    <Button><FaCalculator /></Button>
-                  </Link>
-                  <Link to="/Variavel">
-                    <Button><FaTrashAlt /></Button>
-                  </Link>
+                  {PegaId}
                 </Table.Cell>
               </Table.Row>
             );
