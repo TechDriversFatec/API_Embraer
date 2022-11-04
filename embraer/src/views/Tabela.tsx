@@ -72,7 +72,7 @@ export default function Read() {
         </Table.Header>
 
         <Table.Body>
-          {listAeronaves.map((data) => {
+          {listAeronaves.map((data: any) => {
             return (
               <Table.Row>
                 <Table.Cell>{data.modelo}</Table.Cell>
