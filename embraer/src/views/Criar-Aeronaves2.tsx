@@ -20,45 +20,22 @@ function CriarAeronaves() {
     }));
   };
 
-  //const handleClickButton = (values: any) => {
-  //  console.log(values);
-  //  Axios.post("http://localhost:3002/register", {
-  //    modelo: values.modelo,
-  //    fabricante: values.fabricante,
-  //    motor: values.motor,
-  //    certificacao: values.certificacao,
-  //    qtde_reversor: values.qtde_reversor,
-  //    peso_referencial: values.peso_referencial,
-//
-  //    tipo_flap: values.tipo_flap,
-  //    configuracao_freio: values.configuracao_freio,
-//
-  //    distancia_referencial: values.distancia_referencial,
-  //    padrao_variacao_peso: values.padrao_variacao_peso,
-  //    correcao_peso_acima: values.correcao_peso_acima,
-  //    correcao_peso_abaixo: values.correcao_peso_abaixo,
-  //    padrao_variacao_altitude: values.padrao_variacao_altitude,
-  //    correcao_altitude: values.correcao_altitude,
-  //    padrao_variacao_temperatura: values.padrao_variacao_temperatura,
-  //    correcao_temperatura_acima: values.correcao_temperatura_acima,
-  //    correcao_temperatura_abaixo: values.correcao_temperatura_abaixo,
-  //    padrao_variacao_vento: values.padrao_variacao_vento,
-  //    correcao_vento_proa: values.correcao_vento_proa,
-  //    correcao_vento_cauda: values.correcao_vento_cauda,
-  //    padrao_variacao_inclinacao: values.padrao_variacao_inclinacao,
-  //    correcao_aclive: values.correcao_aclive,
-  //    correcao_declive: values.correcao_declive,
-  //    velocidade_referencia: values.velocidade_referencia,
-  //    padrao_variacao_velocidade: values.padrao_variacao_velocidade,
-  //    correcao_velocidade: values.correcao_velocidade,
-  //    correcao_reversor_inoperante: values.correcao_reversor_inoperante,
-  //    padrao_variacao_sobrepeso: values.padrao_variacao_sobrepeso,
-  //    correcao_sobrepeso: values.correcao_sobrepeso,
-  //  });
-  //  Swal.fire({
-  //    text: "Aircraft registered successfully!",
-  //  });
-  //};
+  const handleClickButton = (values: any) => {
+   Axios.post("http://localhost:3002/register", {
+    fabricante: values.fabricante,
+    modelo: values.modelo,
+    certificacao: values.certificacao,
+    motor: values.motor,
+    qtde_reversor: values.qtde_reversor,
+    peso_referencial: values.peso_referencial,
+    peso_minimo: values.peso_minimo,
+    sobrepeso: values.sobrepeso,
+    peso_maximo: values.peso_maximo
+   });
+   Swal.fire({
+     text: "Aircraft registered successfully!",
+   });
+  };
 
   const showError = (input: HTMLElement, message: string) => {
     const formField = input.parentElement;
@@ -253,6 +230,7 @@ function CriarAeronaves() {
                   placeholder="Insert the aircraft manufacturer:"
                   value={Fabricante}
                   onChange={receberFabricante}
+                  onInput={handleChangeValues}
                 />
               </div>
               <div className="form-group col-lg-4-md col-md-4 col-sm-12">
@@ -264,6 +242,7 @@ function CriarAeronaves() {
                   placeholder="Insert the aircraft model:"
                   value={Modelo}
                   onChange={receberModelo}
+                  onInput={handleChangeValues}
                 />
               </div>
               <div className="form-group col-lg-4-md col-md-4 col-sm-12">
@@ -275,6 +254,7 @@ function CriarAeronaves() {
                   placeholder="Insert the aircraft certification:"
                   value={Certificacao}
                   onChange={receberCertificacao}
+                  onInput={handleChangeValues}
                 />
               </div>
             </div>
@@ -288,6 +268,7 @@ function CriarAeronaves() {
                   placeholder="Insert the aircraft motor:"
                   value={Motor}
                   onChange={receberMotor}
+                  onInput={handleChangeValues}
                 />
               </div>
               <div className="form-group col-lg-4-md col-md-4 col-sm-12">
@@ -299,6 +280,7 @@ function CriarAeronaves() {
                   placeholder="Number of reversers:"
                   value={Revesor}
                   onChange={receberReversor}
+                  onInput={handleChangeValues}
                 >
                   <option value="" selected disabled>Select</option>
                   <option value="0">0</option>
@@ -316,6 +298,7 @@ function CriarAeronaves() {
                   placeholder="Insert the aircraft ref weight:"
                   value={Peso}
                   onChange={receberPeso}
+                  onInput={handleChangeValues}
                 />
                 <small></small>
               </div>
@@ -330,6 +313,7 @@ function CriarAeronaves() {
                   placeholder="Insert the aircraft minimum weight:"
                   value={PesoMinimo}
                   onChange={receberPesoMin}
+                  onInput={handleChangeValues}
                 />
                 <small></small>
               </div>
@@ -342,6 +326,7 @@ function CriarAeronaves() {
                   placeholder="Insert the overweight:"
                   value={Sobrepeso}
                   onChange={receberSobrepeso}
+                  onInput={handleChangeValues}
                 />
                 <small></small>
               </div>
@@ -354,6 +339,7 @@ function CriarAeronaves() {
                   placeholder="Insert the aircraft maximum weight:"
                   value={PesoMaximo}
                   onChange={receberPesoMax}
+                  onInput={handleChangeValues}
                 />
                 <small></small>
               </div>
@@ -371,6 +357,7 @@ function CriarAeronaves() {
               type="submit"
               id="btn_registrar"
               name="submitButton"
+              onClick={() => handleClickButton(values)}
             >
               <b>Register</b>
             </button>
