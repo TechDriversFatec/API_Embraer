@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from "react";
 import { Table, Button } from "semantic-ui-react";
-import { Link } from "react-router-dom";
+import { Link, useParams } from "react-router-dom";
 import axios from "axios";
 import {
   FaPlus,
@@ -8,7 +8,7 @@ import {
   FaCalculator,
   FaTrashAlt,
 } from "react-icons/fa";
-import Swal from "sweetalert2";
+import UpdateAeronaves from "./Update-Aeronave";
 
 //import {PlusCircleOutlined, EditOutlined, DeleteOutlined} from '@ant-design/icons';
 //import { isConstructorDeclaration } from "typescript";
@@ -31,7 +31,7 @@ export default function Read() {
   }
 
   const [flaps, setFlaps] = useState<Flap[]>([]);
-  
+
 
   // async function modalSeleciona() {
   //   const { value: fruit } = await Swal.fire({
@@ -58,6 +58,14 @@ export default function Read() {
   //   }
   // }
 
+  // function PegaId() {
+  //   let html = <></>
+  //   listAeronaves.forEach(element: any => {
+  //     html  =  html + `/AtualizaA/${element.id}`
+  //   });
+  // }
+
+  console.log(listAeronaves)
   return (
     <div>
       <Table singleLine>
@@ -65,8 +73,8 @@ export default function Read() {
           <Table.Row>
             <Table.HeaderCell>Model</Table.HeaderCell>
             <Table.HeaderCell>Manufacturer</Table.HeaderCell>
-            <Table.HeaderCell>Reversers</Table.HeaderCell>
-            <Table.HeaderCell>Weight</Table.HeaderCell>
+            <Table.HeaderCell>Certification</Table.HeaderCell>
+            <Table.HeaderCell>Motor</Table.HeaderCell>
             <Table.HeaderCell>Actions</Table.HeaderCell>
           </Table.Row>
         </Table.Header>
@@ -77,13 +85,22 @@ export default function Read() {
               <Table.Row>
                 <Table.Cell>{data.modelo}</Table.Cell>
                 <Table.Cell>{data.fabricante}</Table.Cell>
-                <Table.Cell>{data.qtde_reversor}</Table.Cell>
-                <Table.Cell>{data.peso_referencial}</Table.Cell>
-                <Link to="/Criar">
-                  <Table.Cell>
-                    <Button>Update</Button>
-                  </Table.Cell>
-                </Link>
+                <Table.Cell>{data.certificacao}</Table.Cell>
+                <Table.Cell>{data.motor}</Table.Cell>
+                <Table.Cell>
+                  <Link to="/Variavel/{}">
+                    <Button><FaPlus /></Button>
+                  </Link>
+                  <Link to="/AtualizaA/:userId">
+                    <Button><FaPlaneArrival /></Button>
+                  </Link>
+                  <Link to="/Variavel">
+                    <Button><FaCalculator /></Button>
+                  </Link>
+                  <Link to="/Variavel">
+                    <Button><FaTrashAlt /></Button>
+                  </Link>
+                </Table.Cell>
               </Table.Row>
             );
           })};
