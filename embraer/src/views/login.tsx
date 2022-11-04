@@ -38,33 +38,28 @@ const Login = () => {
         .then((response) => {
             const data = response.data;
             console.log(data);
-            
-            if(data.senha === params.senha){
-                if(data.nivel_acesso === 1){
+            debugger
+            if(data.length === 0){
+                Swal.fire({
+                    title: `Error`,
+                    html:
+                      ' <b>User not found</b>' 
+                    })
+            }else if(data[0].senha_acesso === params.senha){
+                if(data[0].nivel_acesso === 1){
                     navigate("/Index")
                 }
-                navigate("/Calculo")
-            }
-            else if(data.senha !== params.senha && data.lenght > 0){
+                else{
+                    navigate("/Calculo")
+                }
+            }else if(data[0].senha_acesso !== params.senha){
                 Swal.fire({
                     title: `Error`,
                     html:
                       ' <b>Incorrect Password</b> '
                 })
             }
-            else{
-                Swal.fire({
-                    title: `Error`,
-                    html:
-                      ' <b>User not found</b> '
-                })
-            }
           });
-        return Swal.fire({
-            title: `Error`,
-            html:
-              ' <b>User not found</b> '
-        })
     };
 
     return (

@@ -2,8 +2,55 @@ import "../css/criar-aeronaves.css";
 import "bootstrap/dist/css/bootstrap.min.css";
 import { useState } from "react";
 import { FormControlLabel, Switch } from "@mui/material";
+import Axios from "axios";
+import Swal from "sweetalert2";
 
 function VariaveisAeronaves() {
+  const [values, setValues] = useState(Object);
+
+  const handleChangeValues = (value: any) => {
+    setValues((prevValue: any) => ({
+      ...prevValue,
+      [value.target.name]: value.target.value,
+    }));
+  };
+
+  const handleClickButton = (values: any) => {
+    Axios.post("http://localhost:3002/parameter", {
+      tipo_flap: values.tipo_flap,
+      configuracao_freio: values.configuracao_freio,
+      condicao_pista: values.condicao_pista,
+      distancia_referencial: values.distancia_referencial,
+      correcao_reversor_inoperante: values.correcao_reversor_inoperante,
+      padrao_variacao_peso: values.padrao_variacao_peso,
+      correcao_peso_acima: values.correcao_peso_acima,
+      correcao_peso_abaixo: values.correcao_peso_abaixo,
+      correcao_sobrepeso: values.correcao_sobrepeso,
+      altitude_padrao: values.altitude_padrao,
+      padrao_variacao_altitude: values.padrao_variacao_altitude,
+      correcao_altitude_acima: values.correcao_altitude_acima,
+      correcao_altitude_abaixo: values.correcao_altitude_abaixo,
+      temperatura_padrao: values.temperatura_padrao,
+      padrao_variacao_temperatura: values.padrao_variacao_temperatura,
+      correcao_temperatura_acima: values.correcao_temperatura_acima,
+      correcao_temperatura_abaixo: values.correcao_temperatura_abaixo,
+      padrao_vento: values.padrao_vento,
+      padrao_variacao_vento: values.padrao_variacao_vento,
+      correcao_vento_cauda: values.correcao_vento_cauda,
+      correcao_vento_proa: values.correcao_vento_proa,
+      slope_padrao: values.slope_padrao,
+      padrao_variacao_inclinacao: values.padrao_variacao_inclinacao,
+      correcao_aclive: values.correcao_aclive,
+      correcao_declive: values.correcao_declive,
+      vap_padrao: values.vap_padrao,
+      padrao_variacao_velocidade: values.padrao_variacao_velocidade,
+      correcao_velocidade_acima: values.correcao_velocidade_acima,
+      correcao_velocidade_abaixo: values.correcao_velocidade_abaixo,
+    });
+    Swal.fire({
+      text: "Flap registered successfully!",
+    });
+   };
 
 function manipularEnvio(evento: any){
   evento.preventDefault()
@@ -92,7 +139,7 @@ const ehNumero = (valor: any) => {
 }
 
 function validaReversor(){
-  const id = document.getElementById("variacao_reversor");
+  const id = document.getElementById("correcao_reversor_inoperante");
   let valido = false;
 
   if(!ehNumero(Reversor)){
@@ -104,7 +151,7 @@ function validaReversor(){
   return valido
 }
 function validaVariacaoPes(){
-  const id = document.getElementById("variacao_peso");
+  const id = document.getElementById("padrao_variacao_peso");
   let valido = false;
 
   if(!ehNumero(PesoAcm)){
@@ -116,7 +163,7 @@ function validaVariacaoPes(){
   return valido
 }
 function validaPesoAcm(){
-  const idPesoAcm = document.getElementById("peso_acima");
+  const idPesoAcm = document.getElementById("correcao_peso_acima");
   let valido = false;
 
   if(!ehNumero(PesoAcm)){
@@ -275,7 +322,7 @@ function validaVariacaoVento(){
   return valido;
 }
 function validaVentoAcm(){
-  const id = document.getElementById("vento_acima")
+  const id = document.getElementById("correcao_vento_cauda")
   let valido = false;
 
   if(!ehNumero(VentoAcm)){
@@ -287,7 +334,7 @@ function validaVentoAcm(){
   return valido
 }
 function validaVentoAbx(){
-  const id = document.getElementById("vento_abaixo")
+  const id = document.getElementById("correcao_vento_proa")
   let valido = false;
 
   if(!ehNumero(VentoAbx)){
@@ -312,7 +359,7 @@ function validaSlopePd(){
   return valido
 }
 function validaVariacaoSlope(){
-  const id = document.getElementById("variacao_slope")
+  const id = document.getElementById("variacao_inclinacao")
   let valido = false;
 
   if(!ehNumero(VariacaoSlope)){
@@ -336,7 +383,7 @@ function validaSlopeAcm(){
   return valido
 }
 function validaSlopeAbx(){
-  const id = document.getElementById("slope_abaixo")
+  const id = document.getElementById("correcao_declive")
   let valido = false;
 
   if(!ehNumero(SlopeAbx)){
@@ -361,7 +408,7 @@ function validaVapPd(){
   return valido
 }
 function validaVariacaoVap(){
-  const id = document.getElementById("variacao_vap")
+  const id = document.getElementById("padrao_variacao_velocidade")
   let valido = false;
 
   if(!ehNumero(VariacaoSlope)){
@@ -404,7 +451,7 @@ function receberFlap(evento: any){
 function receberGelo(evento: any){
   let entrada = evento.target.value;
   setGelo(entrada)
-  return Gelo
+  return "Gelo"
 }
 function receberBreak(evento: any){
   let entrada = evento.target.value;
@@ -519,7 +566,6 @@ function receberVapAcm(evento: any){
   setVapAcm(entrada)
 }
 
-
 const [Flap, setFlap] = useState("");
 const [Gelo, setGelo] = useState("")
 const [Break, setBreak] = useState("");
@@ -584,9 +630,9 @@ const [VapAcm, setVapAcm] = useState("");
                   placeholder="Insert the aircraft flap:"
                   value={Flap}
                   onChange={receberFlap}
-                  
+                  onInput={handleChangeValues}
                 />
-                <FormControlLabel control={<Switch onChange={receberGelo} />} label="Ice Accretion" />
+                <FormControlLabel control={<Switch onChange={receberGelo} />} label="Ice Accretion"/>
               </div>
               <div className="form-group col-lg-4-md col-md-4 col-sm-12">
                 <label>Brake config:</label>
@@ -597,6 +643,7 @@ const [VapAcm, setVapAcm] = useState("");
                   name="configuracao_freio"
                   value={Break}
                   onChange={receberBreak}
+                  onInput={handleChangeValues}
                 >
                   <option value="" selected disabled>
                     Select
@@ -610,36 +657,39 @@ const [VapAcm, setVapAcm] = useState("");
               <div className="form-group col-lg-4-md col-md-4 col-sm-12">
                 <label>Runway Condition:</label>
                 <input
-                  id="correcao_reversor_inoperante"
+                  id="condicao_pista"
                   className="form-control"
-                  name="correcao_reversor_inoperante"
+                  name="condicao_pista"
                   placeholder="Runway Condition:"
                   value={Condicao}
                   onChange={receberCondicao}
+                  onInput={handleChangeValues}
                   
                 />
               </div>
               <div className="form-group col-lg-4-md col-md-4 col-sm-12">
                 <label>Referencial distance:</label>
                 <input
-                  id="distancia_referencia"
+                  id="distancia_referencial"
                   className="form-control"
-                  name="distancia_referencia"
+                  name="distancia_referencial"
                   placeholder="Referential distance (m)"
                   value={Distancia}
                   onChange={receberDistancia}
+                  onInput={handleChangeValues}
                   
               />
               </div>
               <div className="form-group col-lg-4-md col-md-4 col-sm-12">
                 <label>Reverser variation</label>
                 <input
-                  id="variacao_reversor"
+                  id="correcao_reversor_inoperante"
                   className="form-control"
-                  name="variacao_reversor"
+                  name="correcao_reversor_inoperante"
                   placeholder="Per rev inop (m)"
                   value={Reversor}
                   onChange={receberReversor}
+                  onInput={handleChangeValues}
                   
               />
               </div>
@@ -647,48 +697,52 @@ const [VapAcm, setVapAcm] = useState("");
             <fieldset className="row col-lg-3 variavel">
               <legend>Weight variables</legend>
               <div className="form-group col-lg-4-md col-md-12 col-sm-12">
-                <label>For each (Kg)</label>
+                <label>Increment/decrement step (Kg)</label>
                 <input
-                  id="variacao_peso"
+                  id="padrao_variacao_peso"
                   className="form-control"
-                  name="variacao_peso"
+                  name="padrao_variacao_peso"
                   placeholder="For each"
                   value={VariacaoPes}
                   onChange={receberVariacaoPes}
+                  onInput={handleChangeValues}
                 />
                 <small></small>
                 <br></br>
                 <label>Insert the Variation index (m):</label>
                 <input
-                  id="peso_acima"
+                  id="correcao_peso_acima"
                   className="form-control"
-                  name="peso_acima"
+                  name="correcao_peso_acima"
                   placeholder="Above standard"
                   value={PesoAcm}
                   onChange={receberPesoAcm}
+                  onInput={handleChangeValues}
                   
                 ></input>
                 <small></small>
                 <br></br>
                 <input
-                  id="peso_abaixo"
+                  id="correcao_peso_abaixo"
                   className="form-control"
-                  name="peso_abaixo"
+                  name="correcao_peso_abaixo"
                   placeholder="Below standard"
                   value={PesoAbx}
                   onChange={receberPesoAbx}
+                  onInput={handleChangeValues}
                   
                 ></input>
                 <small></small>
                 <br></br>
                 <label>Overweight</label>
                 <input
-                  id="sobrepeso"
+                  id="correcao_sobrepeso"
                   className="form-control"
-                  name="sobrepeso"
+                  name="correcao_sobrepeso"
                   placeholder="Overweight"
                   value={Sobrepeso}
                   onChange={receberSobrepeso}
+                  onInput={handleChangeValues}
                   
                 ></input>
                 <small></small>
@@ -697,7 +751,7 @@ const [VapAcm, setVapAcm] = useState("");
             <fieldset className="row col-lg-4 variavel">
               <legend>Altitude variables (Ft)</legend>
               <div className="form-group col-lg-4-md col-md-12 col-sm-12">
-                <label>Default value for comparison:</label>
+                <label>Reference value</label>
                 <input
                   id="altitude_padrao"
                   className="form-control"
@@ -705,40 +759,44 @@ const [VapAcm, setVapAcm] = useState("");
                   placeholder="Default value"
                   value={AltitudePd}
                   onChange={receberAltitudePd}
+                  onInput={handleChangeValues}
                   
                 ></input>
                 <small></small>
                 <br></br>
-                <label>For each (Ft)</label>
+                <label>Increment/decrement step (Ft)</label>
                 <input
-                  id="variacao_altitude"
+                  id="padrao_variacao_altitude"
                   className="form-control"
-                  name="variacao_altitude"
+                  name="padrao_variacao_altitude"
                   placeholder="For each"
                   value={VariacaoAlt}
                   onChange={receberVariacaoAlt}
+                  onInput={handleChangeValues}
                 />
                 <small></small>
                 <br></br>
                 <label>Variation index (m):</label>
                 <input
-                  id="altitude_acima"
+                  id="correcao_altitude_acima"
                   className="form-control"
-                  name="altitude_acima"
+                  name="correcao_altitude_acima"
                   placeholder="Above standard"
                   value={AltitudeAcm}
                   onChange={receberAltitudeAcm}
+                  onInput={handleChangeValues}
                   
                 ></input>
                 <small></small>
                 <br></br>
                 <input
-                  id="altitude_abaixo"
+                  id="correcao_altitude_abaixo"
                   className="form-control"
-                  name="altitude_abaixo"
+                  name="correcao_altitude_abaixo"
                   placeholder="Below standard"
                   value={AltitudeAbx}
                   onChange={receberAltitudeAbx}
+                  onInput={handleChangeValues}
                   
                 ></input>
                 <small></small>
@@ -747,7 +805,7 @@ const [VapAcm, setVapAcm] = useState("");
             <fieldset className="row col-lg-4 variavel">
               <legend>Temperature variables (ISA)</legend>
               <div className="form-group col-lg-4-md col-md-12 col-sm-12">
-                <label>Default value for comparison:</label>
+                <label>Reference value</label>
                 <input
                   id="temperatura_padrao"
                   className="form-control"
@@ -755,40 +813,44 @@ const [VapAcm, setVapAcm] = useState("");
                   placeholder="Default value in °C"
                   value={TemperaturaPd}
                   onChange={receberTemperaturaPd}
+                  onInput={handleChangeValues}
                   
                 ></input>
                 <small></small>
                 <br></br>
-                <label>For each (°C)</label>
+                <label>Increment/decrement step (°C)</label>
                 <input
-                  id="variacao_temperatura"
+                  id="padrao_variacao_temperatura"
                   className="form-control"
-                  name="variacao_temperatura"
+                  name="padrao_variacao_temperatura"
                   placeholder="For each"
                   value={VariacaoTmp}
                   onChange={receberVariacaoTmp}
+                  onInput={handleChangeValues}
                 />
                 <small></small>
                 <br></br>
                 <label>Variation index (m):</label>
                 <input
-                  id="temperatura_acima"
+                  id="correcao_temperatura_acima"
                   className="form-control"
-                  name="temperatura_acima"
+                  name="correcao_temperatura_acima"
                   placeholder="Above standard"
                   value={TemperaturaAcm}
                   onChange={receberTemperaturaAcm}
+                  onInput={handleChangeValues}
                   
                 ></input>
                 <small></small>
                 <br></br>
                 <input
-                  id="temperatura_abaixo"
+                  id="correcao_temperatura_abaixo"
                   className="form-control"
-                  name="temperatura_abaixo"
+                  name="correcao_temperatura_abaixo"
                   placeholder="Below standard"
                   value={TemperaturaAbx}
                   onChange={receberTemperaturaAbx}
+                  onInput={handleChangeValues}
                   
                 ></input>
                 <small></small>
@@ -797,48 +859,52 @@ const [VapAcm, setVapAcm] = useState("");
             <fieldset className="row col-lg-4 variavel">
               <legend>Wind variables (KTAS)</legend>
               <div className="form-group col-lg-4-md col-md-12 col-sm-12">
-                <label>Default value for comparison:</label>
+                <label>Reference value</label>
                 <input
-                  id="vento_padrao"
+                  id="padrao_vento"
                   className="form-control"
-                  name="vento_padrao"
+                  name="padrao_vento"
                   placeholder="Default value"
                   value={VentoPd}
                   onChange={receberVentoPd}
+                  onInput={handleChangeValues}
                   
                 ></input>
                 <small></small>
                 <br></br>
-                <label>For each (KTAS)</label>
+                <label>Increment/decrement step (KTAS)</label>
                 <input
-                  id="variacao_vento"
+                  id="padrao_variacao_vento"
                   className="form-control"
-                  name="variacao_vento"
+                  name="padrao_variacao_vento"
                   placeholder="For each"
                   value={VariacaoVento}
                   onChange={receberVariacaoVento}
+                  onInput={handleChangeValues}
                 />
                 <small></small>
                 <br></br>
                 <label>Variation index (m):</label>
                 <input
-                  id="vento_acima"
+                  id="correcao_vento_cauda"
                   className="form-control"
-                  name="vento_acima"
+                  name="correcao_vento_cauda"
                   placeholder="Above standard (Tail wind)"
                   value={VentoAcm}
                   onChange={receberVentoAcm}
+                  onInput={handleChangeValues}
                   
                 ></input>
                 <small></small>
                 <br></br>
                 <input
-                  id="vento_abaixo"
+                  id="correcao_vento_proa"
                   className="form-control"
-                  name="vento_abaixo"
+                  name="correcao_vento_proa"
                   placeholder="Below standard (Head wind)"
                   value={VentoAbx}
                   onChange={receberVentoAbx}
+                  onInput={handleChangeValues}
                   
                 ></input>
                 <small></small>
@@ -847,7 +913,7 @@ const [VapAcm, setVapAcm] = useState("");
             <fieldset className="row col-lg-4 variavel">
               <legend>Slope variables (%)</legend>
               <div className="form-group col-lg-4-md col-md-12 col-sm-12">
-                <label>Default value for comparison:</label>
+                <label>Reference value</label>
                 <input
                   id="slope_padrao"
                   className="form-control"
@@ -855,40 +921,44 @@ const [VapAcm, setVapAcm] = useState("");
                   placeholder="Default value"
                   value={SlopePd}
                   onChange={receberSlopePd}
+                  onInput={handleChangeValues}
                   
                 ></input>
                 <small></small>
                 <br></br>
-                <label>For each (%)</label>
+                <label>Increment/decrement step (%)</label>
                 <input
-                  id="variacao_slope"
+                  id="padrao_variacao_inclinacao"
                   className="form-control"
-                  name="variacao_slope"
+                  name="padrao_variacao_inclinacao"
                   placeholder="For each"
                   value={VariacaoSlope}
                   onChange={receberVariacaoSlope}
+                  onInput={handleChangeValues}
                 />
                 <small></small>
                 <br></br>
                 <label>Variation index (m):</label>
                 <input
-                  id="slope_acima"
+                  id="correcao_aclive"
                   className="form-control"
-                  name="slope_acima"
+                  name="correcao_aclive"
                   placeholder="Above standard"
                   value={SlopeAcm}
                   onChange={receberSlopeAcm}
+                  onInput={handleChangeValues}
                   
                 ></input>
                 <small></small>
                 <br></br>
                 <input
-                  id="slope_abaixo"
+                  id="correcao_declive"
                   className="form-control"
-                  name="slope_abaixo"
+                  name="correcao_declive"
                   placeholder="Below standard"
                   value={SlopeAbx}
                   onChange={receberSlopeAbx}
+                  onInput={handleChangeValues}
                   
                 ></input>
                 <small></small>
@@ -897,7 +967,7 @@ const [VapAcm, setVapAcm] = useState("");
             <fieldset className="row col-lg-3 variavel">
               <legend>VAP variables (speed)</legend>
               <div className="form-group col-lg-4-md col-md-12 col-sm-12">
-                <label>Default value for comparison:</label>
+                <label>Reference value</label>
                 <input
                   id="vap_padrao"
                   className="form-control"
@@ -905,40 +975,44 @@ const [VapAcm, setVapAcm] = useState("");
                   placeholder="Default value"
                   value={VapPd}
                   onChange={receberVapPd}
+                  onInput={handleChangeValues}
                   
                 ></input>
                 <small></small>
                 <br></br>
-                <label>For each (?)</label>
+                <label>Increment/decrement step (?)</label>
                 <input
-                  id="variacao_vap"
+                  id="padrao_variacao_velocidade"
                   className="form-control"
-                  name="variacao_vap"
+                  name="padrao_variacao_velocidade"
                   placeholder="For each"
                   value={VariacaoVAP}
                   onChange={receberVariacaoVAP}
+                  onInput={handleChangeValues}
                 />
                 <small></small>
                 <br></br>
                 <label>Variation index (m):</label>
                 <input
-                  id="vap_acima"
+                  id="correcao_velocidade_acima"
                   className="form-control"
-                  name="vap_acima"
+                  name="correcao_velocidade_acima"
                   placeholder="Above standard"
                   value={VapAcm}
                   onChange={receberVapAcm}
+                  onInput={handleChangeValues}
                   
                 ></input>
                 <small></small>
                 <br></br>
                 <input
-                  id="vap_abaixo"
+                  id="correcao_velocidade_abaixo"
                   className="form-control"
-                  name="vap_abaixo"
+                  name="correcao_velocidade_abaixo"
                   placeholder="Below standard"
                   value={VapAbx}
                   onChange={receberVapAbx}
+                  onInput={handleChangeValues}
                   
                 ></input>
                 <small></small>
@@ -959,6 +1033,7 @@ const [VapAcm, setVapAcm] = useState("");
               type="submit"
               id="btn_registrar"
               name="submitButton"
+              onClick={() => handleClickButton(values)}
             >
               <b>Register</b>
             </button>
