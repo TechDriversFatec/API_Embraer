@@ -3,7 +3,7 @@ import "bootstrap/dist/css/bootstrap.min.css";
 import { useState, useEffect } from "react";
 import Calcular from "../controller/calculo";
 import Swal from "sweetalert2";
-import { useNavigate } from 'react-router-dom';
+import { Link, useNavigate } from 'react-router-dom';
 import Axios from "axios";
 import axios from "axios";
 import { TipoFrenagem } from "../util/enums/frenagemEnum";
@@ -538,22 +538,22 @@ function Calculo() {
                 </div>
               </li>
             </ul>
-          </div>
+            <div className="card-footer w-100 float-right">
 
-          <div className="card-footer w-100 float-right">
-
-            <a className="rounded btn btn-primary ml-2 float-start" href="http://localhost:3000">
-              <b>Return</b>
-            </a>
-
-            <button
-              title="btn_calcular"
-              className="rounded btn btn-primary ml-2 float-end"
-              type="submit"
-              id="btn_calcular"
-              name="submitButton"
-            ><b>Calculate</b>
-            </button>
+              <Link to="/Index">
+                <button className="rounded btn btn-primary ml-2 float-start" >
+                  <b>Return</b>
+                </button>
+              </Link>
+              <button
+                title="btn_calcular"
+                className="rounded btn btn-primary ml-2 float-end"
+                type="submit"
+                id="btn_calcular"
+                name="submitButton"
+              ><b>Calculate</b>
+              </button>
+            </div>
           </div>
         </div>
       </form>

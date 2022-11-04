@@ -57,7 +57,6 @@ function PaginaInicial() {
 
           </div> */}
         </div>
-        {/*<footer>All Rights Reserved.</footer>*/}
       </div>
   );
 }

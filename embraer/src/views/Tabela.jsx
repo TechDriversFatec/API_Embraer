@@ -1,9 +1,17 @@
 import React, { useEffect, useState } from "react";
 import { Table, Button } from "semantic-ui-react";
 import { Link } from "react-router-dom";
-import Axios from "axios";
 import axios from "axios";
-import { isConstructorDeclaration } from "typescript";
+import {
+  FaPlus,
+  FaPlaneArrival,
+  FaCalculator,
+  FaTrashAlt,
+} from "react-icons/fa";
+import Swal from "sweetalert2";
+
+//import {PlusCircleOutlined, EditOutlined, DeleteOutlined} from '@ant-design/icons';
+//import { isConstructorDeclaration } from "typescript";
 
 export default function Read() {
 
@@ -15,6 +23,31 @@ export default function Read() {
     });
   }, []);
 
+  async function modalSeleciona() {
+    const { value: fruit } = await Swal.fire({
+      title: "Select field validation",
+      input: "select",
+      inputOptions: {
+        APIData
+      },
+      inputPlaceholder: "Select a fruit",
+      showCancelButton: true,
+      inputValidator: (value) => {
+        return new Promise((resolve) => {
+          if (value === "oranges") {
+            resolve();
+          } else {
+            resolve("You need to select oranges :)");
+          }
+        });
+      },
+    });
+
+    if (fruit) {
+      Swal.fire(`You selected: ${fruit}`);
+    }
+  }
+
   return (
     <div>
       <Table singleLine>
@@ -24,7 +57,7 @@ export default function Read() {
             <Table.HeaderCell>Manufacturer</Table.HeaderCell>
             <Table.HeaderCell>Reversers</Table.HeaderCell>
             <Table.HeaderCell>Weight</Table.HeaderCell>
-            <Table.HeaderCell>Update</Table.HeaderCell>
+            <Table.HeaderCell>Actions</Table.HeaderCell>
           </Table.Row>
         </Table.Header>
 

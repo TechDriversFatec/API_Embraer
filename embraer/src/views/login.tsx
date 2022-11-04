@@ -3,58 +3,63 @@ import { useNavigate } from "react-router-dom";
 import "../css/CriarAeronaves2.css";
 import "bootstrap/dist/css/bootstrap.min.css";
 import Axios from "axios";
-import axios from "axios";
-import swal from "sweetalert";
+
 const Swal = require('sweetalert2')
 
 
 const Login = () => {
-    const [values, setValues] = useState(Object);
-
-    const handleChangeValues = (value: any) => {
-        setValues((prevValue: any) => ({
-            ...prevValue,
-            [value.target.name]: value.target.value,
-        }));       
-    };
-
     const navigate = useNavigate()
 
-    let params = {
-        email: values.email,
-        senha: values.senha,
+    const [Email, setEmail] = useState("");
+    const [Senha, setSenha] = useState("");
+
+    function receberEmail(evento: any){
+        let entrada = evento.target.value;
+        setEmail(entrada)
+      }
+      
+    function receberSenha(evento: any){
+    let entrada = evento.target.value;
+    setSenha(entrada)
     }
 
-    const handleLogin = (values: any) => {
-        console.log(values);
+    let params = {
+        email: Email,
+        senha: Senha,
+    }
+
+    function handleLogin (values: any) {
+        console.log(params);
+        values.preventDefault();
         Axios.get(`http://localhost:3002/getUsuarios/${params.email}`, {
             params:{params}
             
         })
         .then((response) => {
             const data = response.data;
-            if(data.senha === params.senha){
-                if(data.nivel_acesso === 1){
+            console.log(data);
+            debugger
+            if(data.length === 0){
+                Swal.fire({
+                    title: `Error`,
+                    html:
+                      ' <b>User not found</b>' 
+                    })
+            }else if(data[0].senha_acesso === params.senha){
+                if(data[0].nivel_acesso === 1){
                     navigate("/Index")
                 }
-                navigate("/Calculo")
-            }
-            else if(data.senha !== params.senha){
+                else{
+                    navigate("/Calculo")
+                }
+            }else if(data[0].senha_acesso !== params.senha){
                 Swal.fire({
                     title: `Error`,
                     html:
                       ' <b>Incorrect Password</b> '
                 })
             }
-            else{
-                Swal.fire({
-                    title: `Error`,
-                    html:
-                      ' <b>User not found</b> '
-                })
-            }
           });
-        
     };
 
     return (
@@ -67,16 +72,16 @@ const Login = () => {
             height: '100vh' , 
             textAlign: "center",
         }}>
-            <form action="" style={{top: "35%", position: "relative"}}>
+            <form action="" style={{top: "35%", position: "relative"}} onSubmit={handleLogin}>
                 <h1 className="text-center"><b>Login</b></h1>
                 <br />
-                <input id="email" placeholder="Email" className="form-group col-lg-4 col-md-6 col-sm-12 text-center rounded" type="email" onChange={handleChangeValues} />
+                <input id="email" placeholder="Email" className="form-group col-lg-4 col-md-6 col-sm-12 text-center rounded" type="email" value={Email} onChange={receberEmail} />
                 <br />
                 <br />
-                <input id="senha" placeholder="Password" className="form-group col-lg-4 col-md-6 col-sm-12 text-center rounded" type="password" onChange={handleChangeValues} />
+                <input id="senha" placeholder="Password" className="form-group col-lg-4 col-md-6 col-sm-12 text-center rounded" type="password" value={Senha} onChange={receberSenha} />
                 <br />
                 <br />
-                <button className="rounded btn btn-primary " type="submit" id="btn_logar" name="submitButton" onClick={() => handleLogin(values)}
+                <button title="btn_logar" className="rounded btn btn-primary " type="submit" id="btn_logar" name="submitButton"
                 >Login</button>
 
             </form>

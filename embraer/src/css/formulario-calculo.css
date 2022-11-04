@@ -18,7 +18,7 @@ small{
 .formCalculo {
   background-color: #282f55;
   padding: 25px;
-  height: 100vh !important;
+  height: 100% !important;
 }
 
 .container-fluid{
@@ -106,3 +106,16 @@ h2{
       margin-top: 15px;
       margin-bottom: 15px;
 }
+
+/* footer {
+  margin-top: 1rem;
+  margin-bottom: -110px;
+  padding: 1rem;
+  background-color: #1C1C1C;
+  color: white;
+  position: fixed;
+  bottom: 0;
+  left: 0;
+  width: 100%;
+  text-align: center;
+} */
