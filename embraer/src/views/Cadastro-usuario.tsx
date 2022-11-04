@@ -7,6 +7,7 @@ import "bootstrap/dist/css/bootstrap.min.css";
 import { ModuleResolutionKind } from "typescript";
 import { monitorEventLoopDelay } from "perf_hooks";
 import Swal from "sweetalert2";
+import { Navigate } from "react-router-dom";
 
 
 
@@ -49,9 +50,6 @@ function CriarUsuario() {
           
       
         if(formularioValido){
-
-          
-
           Axios.post("http://localhost:3002/criarusuario", {
         nivel_acesso: (document.getElementById('NivelUsuario') as HTMLSelectElement).value,
         senha_acesso: (document.getElementById('senha_acesso') as HTMLInputElement).value,
@@ -62,7 +60,16 @@ function CriarUsuario() {
         });
         Swal.fire({
             text: 'User registered successfully!',
+            showCancelButton: false,
+            confirmButtonColor: '#3085d6',
+            cancelButtonColor: '#d33',
+            confirmButtonText: 'Ok!'
+        }).then((result) => {
+            if (result.isConfirmed)
+            location.reload()
         })
+        
+        
         }
       }
         const ehNome = (valor: string) => {
@@ -230,7 +237,7 @@ function CriarUsuario() {
                         </div>
                     </div>
                         <div className="card-footer w-100 float-right">
-                            <a className="rounded btn btn-primary ml-2 float-start" href="http://localhost:3000">
+                            <a className="rounded btn btn-primary ml-2 float-start" href="http://localhost:3000/index">
                                 <b>Return</b>
                             </a>
                             <button className="rounded btn btn-primary ml-2 float-end" type="submit" id="btn_registrar" name="submitButton">
