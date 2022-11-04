@@ -72,6 +72,18 @@ app.post("/parameter", (req,res) => {
     });
 });
 
+app.post("/criarusuario", (req, res) => {
+    const { nivel_acesso } = req.body;
+    const { senha_acesso } = req.body;
+    const { nome } = req.body;
+    const { email } = req.body;
+    let SQL ="INSERT INTO usuario (nivel_acesso, senha_acesso, nome, email) VALUES (?,?,?,?)";
+
+    db.query(SQL, [nivel_acesso, senha_acesso, nome, email], (err, result) => {
+        console.log(err);
+    });
+});
+
 app.post("/salvarLog", (req, res) => {
     const { aeronave } = req.body;
     const { motor } = req.body;
