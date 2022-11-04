@@ -230,7 +230,7 @@ function CriarUsuario() {
                         </div>
                     </div>
                         <div className="card-footer w-100 float-right">
-                            <a className="rounded btn btn-primary ml-2 float-start" href="http://localhost:3000">
+                            <a className="rounded btn btn-primary ml-2 float-start" href="http://localhost:3000/index">
                                 <b>Return</b>
                             </a>
                             <button className="rounded btn btn-primary ml-2 float-end" type="submit" id="btn_registrar" name="submitButton">
