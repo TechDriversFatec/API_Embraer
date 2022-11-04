@@ -38,35 +38,40 @@ function CriarUsuario() {
         evento.preventDefault()
         let NomeValido = validaNome(),
           EmailValido = validaEmail(),
-          SenhaValido = validaSenha(),
-          NivelUsuarioValido = validaNivelUsuario()
+          SenhaValido = validaSenha()
+        //   NivelUsuarioValido = validaNivelUsuario()
 
       
           let formularioValido = NomeValido &&
           EmailValido &&
-          SenhaValido &&
-          NivelUsuarioValido
+          SenhaValido
+        //   NivelUsuarioValido
           
       
         if(formularioValido){
-          console.log(`User registered Successfuly`);
+
+          
 
           Axios.post("http://localhost:3002/criarusuario", {
+        nivel_acesso: (document.getElementById('NivelUsuario') as HTMLSelectElement).value,
+        senha_acesso: (document.getElementById('senha_acesso') as HTMLInputElement).value,
         nome: (document.getElementById('nome') as HTMLInputElement).value,
         email: (document.getElementById('email') as HTMLInputElement).value,
-        senha_acesso: (document.getElementById('senha_acesso') as HTMLInputElement).value,
-        nivel_acesso: (document.getElementById('NivelUsuario') as HTMLSelectElement).options[(document.getElementById('NivelUsuario') as HTMLSelectElement).selectedIndex].text,
+        
         
         });
+        Swal.fire({
+            text: 'User registered successfully!',
+        })
         }
       }
         const ehNome = (valor: string) => {
-            const expressao = new RegExp("^[A-Za-z]$")
+            const expressao = new RegExp("[A-Z][a-z]")
             return expressao.test(valor)            
         }
 
         const ehEmail = (valor: string) => {
-            const expressao = new RegExp("/^[a-zA-Z0-9]+@(?:[a-zA-Z0-9]+\.)+[A-Za-z]+$/")
+            const expressao = new RegExp("[a-zA-Z0-9]+@+[a-zA-Z0-9]+.+[A-Za-z]")
             return expressao.test(valor)
         }
         const ehSenha = (valor: string) => {
@@ -121,18 +126,18 @@ function CriarUsuario() {
         return valido
         }
             
-        function validaNivelUsuario(){
-        const id = document.getElementById("nivel_acesso")
-        let valido = false;
+        // function validaNivelUsuario(){
+        // const id = document.getElementById("nivel_acesso")
+        // let valido = false;
         
-        if(id == null){
-            showError(id!, `user level is mandatory!`)
-        } else {
-            showSuccess(id!)
-            valido = true;
-        }
-        return valido
-        }
+        // if(id == null){
+        //     showError(id!, `user level is mandatory!`)
+        // } else {
+        //     showSuccess(id!)
+        //     valido = true;
+        // }
+        // return valido
+        // }
         
         function receberNome(evento: any){
         let entrada = evento.target.value;

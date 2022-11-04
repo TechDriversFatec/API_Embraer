@@ -31,7 +31,7 @@ a{
   margin: 5px;
 }
 
-footer{
+/* footer{
   font-family: 'monospace';
   margin-top: 1rem;
   margin-bottom: -100px;
@@ -43,7 +43,7 @@ footer{
   left: 0;
   width: 100%;
   text-align: center;
-}
+} */
 
 @media (prefers-reduced-motion: no-preference) {
   .App-logo {
