@@ -14,25 +14,13 @@ import Swal from "sweetalert2";
 //import { isConstructorDeclaration } from "typescript";
 
 export default function Read() {
-  const [APIData, setAPIData] = useState([]);
-  
 
-  const setData = (data) => {
-    let { id, certificacao, fabricante, modelo, motor, peso, reversor } = data;
-    localStorage.setItem("ID", id);
-    localStorage.setItem("Certificacao", certificacao);
-    localStorage.setItem("Fabricante", fabricante);
-    localStorage.setItem("Modelo", modelo);
-    localStorage.setItem("Motor", motor);
-    localStorage.setItem("Peso", peso);
-    localStorage.setItem("Reversor", reversor);
-  };
+  const [listAeronaves, setlistAeronaves] = useState([]);
+
   useEffect(() => {
-    axios
-      .get(`https://6361b2f7af66cc87dc306632.mockapi.io/embraer/embraer`)
-      .then((response) => {
-        setAPIData(response.data);
-      });
+    axios.get(`http://localhost:3002/exibirAeronaves`).then((response) => {
+      setlistAeronaves(response.data);
+    });
   }, []);
 
   type Flap = {
@@ -84,38 +72,23 @@ export default function Read() {
         </Table.Header>
 
         <Table.Body>
-          {APIData.map((data: any) => {
+          {listAeronaves.map((data) => {
             return (
               <Table.Row>
                 <Table.Cell>{data.modelo}</Table.Cell>
                 <Table.Cell>{data.fabricante}</Table.Cell>
-                <Table.Cell>{data.reversor}</Table.Cell>
-                <Table.Cell>{data.peso}</Table.Cell>
-                <Table.Cell>
-                  <Link to="/Variavel">
-                    <Button onClick={() => setData(data)}>
-                      <FaPlus />
-                    </Button>
-                  </Link>
-                  <Link to="/Criar">
-                    <Button onClick={() => setData(data)}>
-                      <FaPlaneArrival />
-                    </Button>
-                  </Link>
-                  <Button >
-                    <FaCalculator />
-                  </Button>
-                  <Link to="/Variavel">
-                    <Button onClick={() => setData(data)}>
-                      <FaTrashAlt />
-                    </Button>
-                  </Link>
-                </Table.Cell>
+                <Table.Cell>{data.qtde_reversor}</Table.Cell>
+                <Table.Cell>{data.peso_referencial}</Table.Cell>
+                <Link to="/Criar">
+                  <Table.Cell>
+                    <Button>Update</Button>
+                  </Table.Cell>
+                </Link>
               </Table.Row>
             );
-          })}
+          })};
         </Table.Body>
       </Table>
     </div>
   );
-}
+};
