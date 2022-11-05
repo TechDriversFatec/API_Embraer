@@ -9,6 +9,7 @@ import {
   FaTrashAlt,
 } from "react-icons/fa";
 import UpdateAeronaves from "./Update-Aeronave";
+import { ModelTrainingOutlined } from "@mui/icons-material";
 
 //import {PlusCircleOutlined, EditOutlined, DeleteOutlined} from '@ant-design/icons';
 //import { isConstructorDeclaration } from "typescript";
@@ -22,6 +23,20 @@ export default function Read() {
       setlistAeronaves(response.data);
     });
   }, []);
+
+  const getData = () => {
+    axios.get(`http://localhost:3002/exibirAeronaves`)
+        .then((getData) => {
+             setlistAeronaves(getData.data);
+         });
+};
+
+  const onDelete = (id: number) => {
+    axios.delete(`http://localhost:3002/deleteAeronave/${id}`)
+    .then(() => {
+      getData();
+    });
+  };
 
   type Flap = {
     id: number,
@@ -101,10 +116,16 @@ export default function Read() {
                 <Table.Cell>{data.certificacao}</Table.Cell>
                 <Table.Cell>{data.motor}</Table.Cell>
                 <Table.Cell>
-                  {PegaId}
+                <Link to="/Variavel/">
+                <Button><FaPlus /></Button>
+                </Link>
+                <Link to="/Variavel">
+                <Button><FaCalculator /></Button>
+                </Link>
+                <Button onClick={() => onDelete(data.id)}><FaTrashAlt /></Button>
                 </Table.Cell>
               </Table.Row>
-            );
+            )
           })};
         </Table.Body>
       </Table>
