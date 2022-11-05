@@ -39,19 +39,19 @@ function CriarUsuario() {
         evento.preventDefault()
         let NomeValido = validaNome(),
           EmailValido = validaEmail(),
-          SenhaValido = validaSenha()
-        //   NivelUsuarioValido = validaNivelUsuario()
+          SenhaValido = validaSenha(),
+          NivelUsuarioValido = validaNivelUsuario()
 
       
           let formularioValido = NomeValido &&
           EmailValido &&
-          SenhaValido
-        //   NivelUsuarioValido
+          SenhaValido &&
+          NivelUsuarioValido
           
       
         if(formularioValido){
           Axios.post("http://localhost:3002/criarusuario", {
-        nivel_acesso: (document.getElementById('NivelUsuario') as HTMLSelectElement).value,
+        nivel_acesso: (document.getElementById('NivelUsuario') as HTMLSelectElement).options[(document.getElementById('NivelUsuario') as HTMLSelectElement).selectedIndex].value,
         senha_acesso: (document.getElementById('senha_acesso') as HTMLInputElement).value,
         nome: (document.getElementById('nome') as HTMLInputElement).value,
         email: (document.getElementById('email') as HTMLInputElement).value,
@@ -134,18 +134,18 @@ function CriarUsuario() {
         return valido
         }
             
-        // function validaNivelUsuario(){
-        // const id = document.getElementById("nivel_acesso")
-        // let valido = false;
+        function validaNivelUsuario(){
+        const id = document.getElementById("NivelUsuario")
+        let valido = false;
         
-        // if(id == null){
-        //     showError(id!, `user level is mandatory!`)
-        // } else {
-        //     showSuccess(id!)
-        //     valido = true;
-        // }
-        // return valido
-        // }
+        if(id == null){
+            showError(id!, `user level is mandatory!`)
+        } else {
+            showSuccess(id!)
+            valido = true;
+        }
+        return valido
+        }
         
         function receberNome(evento: any){
         let entrada = evento.target.value;
