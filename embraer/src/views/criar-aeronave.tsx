@@ -4,599 +4,595 @@ import { useState } from "react";
 import { FormControlLabel, Switch } from "@mui/material";
 import Axios from "axios";
 import Swal from "sweetalert2";
+import { useNavigate } from "react-router-dom";
 
 function VariaveisAeronaves() {
-  const [values, setValues] = useState(Object);
+  const navigate = useNavigate()
+  function manipularEnvio(evento: any) {
+    evento.preventDefault();
+    // let variacaoPesoValido = validaVariacaoPes(),
+    //   pesoAbxValido = validaPesoAbx(),
+    //   pesoAcmValido = validaPesoAcm(),
+    //   sobrepesoValido = validaSobrepeso(),
+    //   altitudePdValida = validaAltitudePd(),
+    //   variacaoAltValida = validaVariacaoAlt(),
+    //   altitudeAcmValida = validaAltitudeAcm(),
+    //   altitudeAbxValida = validaAltitudeAbx(),
+    //   temperaturaPdValida = validaTemperaturaPd(),
+    //   variacaoTmpValida = validaVariacaoTmp(),
+    //   temperaturaAcmValida = validaTemperaturaAcm(),
+    //   temperaturaAbxValida = validaTemperaturaAbx(),
+    //   ventoPdValido = validaVentoPd(),
+    //   variacaoVentoValido = validaVariacaoVento(),
+    //   ventoAcmValido = validaVentoAcm(),
+    //   ventoAbxValido = validaVentoAbx(),
+    //   slopePdValido = validaSlopePd(),
+    //   variacaoSlopeValido = validaVariacaoSlope(),
+    //   slopeAcmValido = validaSlopeAcm(),
+    //   slopeAbxValido = validaSlopeAbx(),
+    //   vapPdValido = validaVapPd(),
+    //   variacaoVapValido = validaVariacaoVap(),
+    //   vapAcmValido = validaVapAcm(),
+    //   vapAbxValido = validaVapAbx();
 
-  const handleChangeValues = (value: any) => {
-    setValues((prevValue: any) => ({
-      ...prevValue,
-      [value.target.name]: value.target.value,
-    }));
-  };
+    let formularioValido = true
+      // variacaoPesoValido &&
+      // pesoAbxValido &&
+      // pesoAcmValido &&
+      // sobrepesoValido &&
+      // altitudePdValida &&
+      // variacaoAltValida &&
+      // altitudeAcmValida &&
+      // altitudeAbxValida &&
+      // temperaturaPdValida &&
+      // variacaoTmpValida &&
+      // temperaturaAcmValida &&
+      // temperaturaAbxValida &&
+      // ventoPdValido &&
+      // variacaoVentoValido &&
+      // ventoAcmValido &&
+      // ventoAbxValido &&
+      // slopePdValido &&
+      // variacaoSlopeValido &&
+      // slopeAcmValido &&
+      // slopeAbxValido &&
+      // vapPdValido &&
+      // variacaoVapValido &&
+      // vapAcmValido &&
+      // vapAbxValido;
 
-  const handleClickButton = (values: any) => {
-    Axios.post("http://localhost:3002/parameter", {
-      tipo_flap: values.tipo_flap,
-      configuracao_freio: values.configuracao_freio,
-      condicao_pista: values.condicao_pista,
-      distancia_referencial: values.distancia_referencial,
-      correcao_reversor_inoperante: values.correcao_reversor_inoperante,
-      padrao_variacao_peso: values.padrao_variacao_peso,
-      correcao_peso_acima: values.correcao_peso_acima,
-      correcao_peso_abaixo: values.correcao_peso_abaixo,
-      correcao_sobrepeso: values.correcao_sobrepeso,
-      altitude_padrao: values.altitude_padrao,
-      padrao_variacao_altitude: values.padrao_variacao_altitude,
-      correcao_altitude_acima: values.correcao_altitude_acima,
-      correcao_altitude_abaixo: values.correcao_altitude_abaixo,
-      temperatura_padrao: values.temperatura_padrao,
-      padrao_variacao_temperatura: values.padrao_variacao_temperatura,
-      correcao_temperatura_acima: values.correcao_temperatura_acima,
-      correcao_temperatura_abaixo: values.correcao_temperatura_abaixo,
-      padrao_vento: values.padrao_vento,
-      padrao_variacao_vento: values.padrao_variacao_vento,
-      correcao_vento_cauda: values.correcao_vento_cauda,
-      correcao_vento_proa: values.correcao_vento_proa,
-      slope_padrao: values.slope_padrao,
-      padrao_variacao_inclinacao: values.padrao_variacao_inclinacao,
-      correcao_aclive: values.correcao_aclive,
-      correcao_declive: values.correcao_declive,
-      vap_padrao: values.vap_padrao,
-      padrao_variacao_velocidade: values.padrao_variacao_velocidade,
-      correcao_velocidade_acima: values.correcao_velocidade_acima,
-      correcao_velocidade_abaixo: values.correcao_velocidade_abaixo,
-    });
-    Swal.fire({
-      text: "Flap registered successfully!",
-    });
-   };
-
-function manipularEnvio(evento: any){
-  evento.preventDefault()
-  let reversorValido = validaReversor(),
-    variacaoPesoValido = validaVariacaoPes(),
-    pesoAbxValido = validaPesoAbx(),
-    pesoAcmValido = validaPesoAcm(),
-    sobrepesoValido = validaSobrepeso(),
-    altitudePdValida = validaAltitudePd(),
-    variacaoAltValida = validaVariacaoAlt(),
-    altitudeAcmValida = validaAltitudeAcm(),
-    altitudeAbxValida = validaAltitudeAbx(),
-    temperaturaPdValida = validaTemperaturaPd(),
-    variacaoTmpValida = validaVariacaoTmp(),
-    temperaturaAcmValida = validaTemperaturaAcm(),
-    temperaturaAbxValida = validaTemperaturaAbx(),
-    ventoPdValido = validaVentoPd(),
-    variacaoVentoValido = validaVariacaoVento(),
-    ventoAcmValido = validaVentoAcm(),
-    ventoAbxValido = validaVentoAbx(),
-    slopePdValido = validaSlopePd(),
-    variacaoSlopeValido = validaVariacaoSlope(),
-    slopeAcmValido = validaSlopeAcm(),
-    slopeAbxValido = validaSlopeAbx(),
-    vapPdValido = validaVapPd(),
-    variacaoVapValido = validaVariacaoVap(),
-    vapAcmValido = validaVapAcm(),
-    vapAbxValido = validaVapAbx()
-
-  let formularioValido = reversorValido &&
-    variacaoPesoValido &&
-    pesoAbxValido &&
-    pesoAcmValido &&
-    sobrepesoValido &&
-    altitudePdValida &&
-    variacaoAltValida &&
-    altitudeAcmValida &&
-    altitudeAbxValida &&
-    temperaturaPdValida &&
-    variacaoTmpValida &&
-    temperaturaAcmValida &&
-    temperaturaAbxValida &&
-    ventoPdValido &&
-    variacaoVentoValido &&
-    ventoAcmValido &&
-    ventoAbxValido &&
-    slopePdValido &&
-    variacaoSlopeValido &&
-    slopeAcmValido &&
-    slopeAbxValido &&
-    vapPdValido &&
-    variacaoVapValido &&
-    vapAcmValido &&
-    vapAbxValido
-
-  if(formularioValido){
-    console.log(`Flap: ${Flap} ${Break} ${Condicao}`);
+    if (formularioValido) {
+      Axios.post("http://localhost:3002/parameter", {
+        tipo_flap: Flap,
+        configuracao_freio: Break,
+        condicao_pista: Condicao,
+        distancia_referencial: Distancia,
+        correcao_reversor_inoperante: Reversor,
+        padrao_variacao_peso: VariacaoPes,
+        correcao_peso_acima: PesoAcm,
+        correcao_peso_abaixo: PesoAbx,
+        correcao_sobrepeso: Sobrepeso,
+        altitude_padrao: VariacaoAlt,
+        padrao_variacao_altitude: AltitudePd,
+        correcao_altitude_acima: AltitudeAcm,
+        correcao_altitude_abaixo: AltitudeAbx,
+        temperatura_padrao: TemperaturaPd,
+        padrao_variacao_temperatura: VariacaoTmp,
+        correcao_temperatura_acima: TemperaturaAcm,
+        correcao_temperatura_abaixo: TemperaturaAbx,
+        padrao_vento: VentoPd,
+        padrao_variacao_vento: VariacaoVento,
+        correcao_vento_cauda: VentoAcm,
+        correcao_vento_proa: VentoAbx,
+        slope_padrao: SlopePd,
+        padrao_variacao_inclinacao: VariacaoSlope,
+        correcao_aclive: SlopeAcm,
+        correcao_declive: SlopeAbx,
+        vap_padrao: VapPd,
+        padrao_variacao_velocidade: VariacaoVAP,
+        correcao_velocidade_acima: VapAcm,
+        correcao_velocidade_abaixo: VapAbx,
+      });
+      Swal.fire({
+        title: 'Sucessful registered aircraft',
+        text: "Procced with the variables registration?",
+        showCancelButton: true,
+        confirmButtonColor: '#3085d6',
+        cancelButtonColor: '#d33',
+        confirmButtonText: 'Yes, procced'
+      }).then((result) => {
+        if (result.isConfirmed) {
+          navigate("/Variavel/")
+        }
+      })
+    }
   }
-}
 
-const showError = (input: HTMLElement, message: string) => {
-  const formField = input.parentElement;
-  formField!.classList.remove('success');
-  formField!.classList.add('error');
+  // const showError = (input: HTMLElement, message: string) => {
+  //   const formField = input.parentElement;
+  //   formField!.classList.remove("success");
+  //   formField!.classList.add("error");
 
-  const error = formField!.querySelector('small');
-  error!.textContent = message;
-};
+  //   const error = formField!.querySelector("small");
+  //   error!.textContent = message;
+  // };
 
-const showSuccess = (input: HTMLElement) => {
-  // get the form-field element
-  const formField = input.parentElement;
+  // const showSuccess = (input: HTMLElement) => {
+  //   // get the form-field element
+  //   const formField = input.parentElement;
 
-  // remove the error class
-  formField!.classList.remove('error');
-  formField!.classList.add('success');
+  //   // remove the error class
+  //   formField!.classList.remove("error");
+  //   formField!.classList.add("success");
 
-  // hide the error message
-  const error = formField!.querySelector('small');
-  error!.textContent = '';
-}
+  //   // hide the error message
+  //   const error = formField!.querySelector("small");
+  //   error!.textContent = "";
+  // };
 
-const ehNumero = (valor: any) => {
-  const expressao = new RegExp("^[0-9]+$")
-  return expressao.test(valor)
-}
+  // const ehNumero = (valor: any) => {
+  //   const expressao = new RegExp("^[0-9]+$");
+  //   return expressao.test(valor);
+  // };
 
-function validaReversor(){
-  const id = document.getElementById("correcao_reversor_inoperante");
-  let valido = false;
+  // // function validaReversor() {
+  // //   const id = document.getElementById("correcao_reversor_inoperante");
+  // //   let valido = false;
 
-  if(!ehNumero(Reversor)){
-    showError(id!, `Value must be a number`)
-  } else {
-    showSuccess(id!);
-    valido = true;
+  // //   if (!ehNumero(Reversor)) {
+  // //     showError(id!, `Value must be a number`);
+  // //   } else {
+  // //     showSuccess(id!);
+  // //     valido = true;
+  // //   }
+  // //   return valido;
+  // // }
+  // function validaVariacaoPes() {
+  //   const id = document.getElementById("padrao_variacao_peso");
+  //   let valido = false;
+
+  //   if (!ehNumero(PesoAcm)) {
+  //     showError(id!, `Value must be a number`);
+  //   } else {
+  //     showSuccess(id!);
+  //     valido = true;
+  //   }
+  //   return valido;
+  // }
+  // function validaPesoAcm() {
+  //   const idPesoAcm = document.getElementById("correcao_peso_acima");
+  //   let valido = false;
+
+  //   if (!ehNumero(PesoAcm)) {
+  //     showError(idPesoAcm!, `Value must be a number`);
+  //   } else {
+  //     showSuccess(idPesoAcm!);
+  //     valido = true;
+  //   }
+  //   return valido;
+  // }
+  // function validaPesoAbx() {
+  //   const idPesoAbx = document.getElementById("peso_abaixo");
+  //   let valido = false;
+
+  //   if (!ehNumero(PesoAbx)) {
+  //     showError(idPesoAbx!, `Value must be a number`);
+  //   } else {
+  //     showSuccess(idPesoAbx!);
+  //     valido = true;
+  //   }
+  //   return valido;
+  // }
+  // function validaSobrepeso() {
+  //   const id = document.getElementById("sobrepeso");
+  //   let valido = false;
+
+  //   if (!ehNumero(Sobrepeso)) {
+  //     showError(id!, `Value must be a number`);
+  //   } else {
+  //     showSuccess(id!);
+  //     valido = true;
+  //   }
+  //   return valido;
+  // }
+
+  // function validaAltitudePd() {
+  //   const idAltitudePd = document.getElementById("altitude_padrao");
+  //   let valido = false;
+
+  //   if (!ehNumero(AltitudePd)) {
+  //     showError(idAltitudePd!, `value must be a number`);
+  //   } else {
+  //     showSuccess(idAltitudePd!);
+  //     valido = true;
+  //   }
+  //   return valido;
+  // }
+  // function validaVariacaoAlt() {
+  //   const id = document.getElementById("variacao_altitude");
+  //   let valido = false;
+
+  //   if (!ehNumero(VariacaoAlt)) {
+  //     showError(id!, `value must be a number`);
+  //   } else {
+  //     showSuccess(id!);
+  //     valido = true;
+  //   }
+  //   return valido;
+  // }
+  // function validaAltitudeAcm() {
+  //   const idAltitudeAcm = document.getElementById("altitude_acima");
+  //   let valido = false;
+
+  //   if (!ehNumero(AltitudeAcm)) {
+  //     showError(idAltitudeAcm!, `value must be a number`);
+  //   } else {
+  //     showSuccess(idAltitudeAcm!);
+  //     valido = true;
+  //   }
+  //   return valido;
+  // }
+  // function validaAltitudeAbx() {
+  //   const idAltitudeAbx = document.getElementById("altitude_abaixo");
+  //   let valido = false;
+
+  //   if (!ehNumero(AltitudeAbx)) {
+  //     showError(idAltitudeAbx!, `value must be a number`);
+  //   } else {
+  //     showSuccess(idAltitudeAbx!);
+  //     valido = true;
+  //   }
+  //   return valido;
+  // }
+
+  // function validaTemperaturaPd() {
+  //   const id = document.getElementById("temperatura_padrao");
+  //   let valido = false;
+
+  //   if (!ehNumero(TemperaturaPd)) {
+  //     showError(id!, `value must be a number`);
+  //   } else {
+  //     showSuccess(id!);
+  //     valido = true;
+  //   }
+  //   return valido;
+  // }
+  // function validaVariacaoTmp() {
+  //   const id = document.getElementById("variacao_temperatura");
+  //   let valido = false;
+
+  //   if (!ehNumero(VariacaoTmp)) {
+  //     showError(id!, `value must be a number`);
+  //   } else {
+  //     showSuccess(id!);
+  //     valido = true;
+  //   }
+  //   return valido;
+  // }
+  // function validaTemperaturaAcm() {
+  //   const id = document.getElementById("temperatura_acima");
+  //   let valido = false;
+
+  //   if (!ehNumero(TemperaturaAcm)) {
+  //     showError(id!, `value must be a number`);
+  //   } else {
+  //     showSuccess(id!);
+  //     valido = true;
+  //   }
+  //   return valido;
+  // }
+  // function validaTemperaturaAbx() {
+  //   const id = document.getElementById("temperatura_abaixo");
+  //   let valido = false;
+
+  //   if (!ehNumero(TemperaturaAbx)) {
+  //     showError(id!, `value must be a number`);
+  //   } else {
+  //     showSuccess(id!);
+  //     valido = true;
+  //   }
+  //   return valido;
+  // }
+
+  // function validaVentoPd() {
+  //   const id = document.getElementById("vento_padrao");
+  //   let valido = false;
+
+  //   if (!ehNumero(VentoPd)) {
+  //     showError(id!, `value must be a number`);
+  //   } else {
+  //     showSuccess(id!);
+  //     valido = true;
+  //   }
+  //   return valido;
+  // }
+  // function validaVariacaoVento() {
+  //   const id = document.getElementById("variacao_vento");
+  //   let valido = false;
+
+  //   if (!ehNumero(VariacaoVento)) {
+  //     showError(id!, `value must be a number`);
+  //   } else {
+  //     showSuccess(id!);
+  //     valido = true;
+  //   }
+  //   return valido;
+  // }
+  // function validaVentoAcm() {
+  //   const id = document.getElementById("correcao_vento_cauda");
+  //   let valido = false;
+
+  //   if (!ehNumero(VentoAcm)) {
+  //     showError(id!, `value must be a number`);
+  //   } else {
+  //     showSuccess(id!);
+  //     valido = true;
+  //   }
+  //   return valido;
+  // }
+  // function validaVentoAbx() {
+  //   const id = document.getElementById("correcao_vento_proa");
+  //   let valido = false;
+
+  //   if (!ehNumero(VentoAbx)) {
+  //     showError(id!, `value must be a number`);
+  //   } else {
+  //     showSuccess(id!);
+  //     valido = true;
+  //   }
+  //   return valido;
+  // }
+
+  // function validaSlopePd() {
+  //   const id = document.getElementById("slope_padrao");
+  //   let valido = false;
+
+  //   if (!ehNumero(SlopePd)) {
+  //     showError(id!, `value must be a number`);
+  //   } else {
+  //     showSuccess(id!);
+  //     valido = true;
+  //   }
+  //   return valido;
+  // }
+  // function validaVariacaoSlope() {
+  //   const id = document.getElementById("variacao_inclinacao");
+  //   let valido = false;
+
+  //   if (!ehNumero(VariacaoSlope)) {
+  //     showError(id!, `value must be a number`);
+  //   } else {
+  //     showSuccess(id!);
+  //     valido = true;
+  //   }
+  //   return valido;
+  // }
+  // function validaSlopeAcm() {
+  //   const id = document.getElementById("slope_acima");
+  //   let valido = false;
+
+  //   if (!ehNumero(SlopeAcm)) {
+  //     showError(id!, `value must be a number`);
+  //   } else {
+  //     showSuccess(id!);
+  //     valido = true;
+  //   }
+  //   return valido;
+  // }
+  // function validaSlopeAbx() {
+  //   const id = document.getElementById("correcao_declive");
+  //   let valido = false;
+
+  //   if (!ehNumero(SlopeAbx)) {
+  //     showError(id!, `value must be a number`);
+  //   } else {
+  //     showSuccess(id!);
+  //     valido = true;
+  //   }
+  //   return valido;
+  // }
+
+  // function validaVapPd() {
+  //   const id = document.getElementById("vap_padrao");
+  //   let valido = false;
+
+  //   if (!ehNumero(VapPd)) {
+  //     showError(id!, `value must be a number`);
+  //   } else {
+  //     showSuccess(id!);
+  //     valido = true;
+  //   }
+  //   return valido;
+  // }
+  // function validaVariacaoVap() {
+  //   const id = document.getElementById("padrao_variacao_velocidade");
+  //   let valido = false;
+
+  //   if (!ehNumero(VariacaoSlope)) {
+  //     showError(id!, `value must be a number`);
+  //   } else {
+  //     showSuccess(id!);
+  //     valido = true;
+  //   }
+  //   return valido;
+  // }
+  // function validaVapAcm() {
+  //   const id = document.getElementById("vap_acima");
+  //   let valido = false;
+
+  //   if (!ehNumero(VapAcm)) {
+  //     showError(id!, `value must be a number`);
+  //   } else {
+  //     showSuccess(id!);
+  //     valido = true;
+  //   }
+  //   return valido;
+  // }
+  // function validaVapAbx() {
+  //   const id = document.getElementById("vap_abaixo");
+  //   let valido = false;
+
+  //   if (!ehNumero(VapAbx)) {
+  //     showError(id!, `value must be a number`);
+  //   } else {
+  //     showSuccess(id!);
+  //     valido = true;
+  //   }
+  //   return valido;
+  // }
+
+  function receberFlap(evento: any) {
+    let entrada = evento.target.value;
+    setFlap(entrada);
   }
-  return valido
-}
-function validaVariacaoPes(){
-  const id = document.getElementById("padrao_variacao_peso");
-  let valido = false;
-
-  if(!ehNumero(PesoAcm)){
-    showError(id!, `Value must be a number`)
-  } else {
-    showSuccess(id!);
-    valido = true;
+  function receberGelo(evento: any) {
+    let entrada = evento.target.value;
+    setGelo(entrada);
+    return "Gelo";
   }
-  return valido
-}
-function validaPesoAcm(){
-  const idPesoAcm = document.getElementById("correcao_peso_acima");
-  let valido = false;
-
-  if(!ehNumero(PesoAcm)){
-    showError(idPesoAcm!, `Value must be a number`)
-  } else {
-    showSuccess(idPesoAcm!);
-    valido = true;
+  function receberBreak(evento: any) {
+    let entrada = evento.target.value;
+    setBreak(entrada);
   }
-  return valido
-}
-function validaPesoAbx(){
-  const idPesoAbx = document.getElementById("peso_abaixo");
-  let valido = false;
-
-  if(!ehNumero(PesoAbx)){
-    showError(idPesoAbx!, `Value must be a number`)
-  } else {
-    showSuccess(idPesoAbx!);
-    valido = true;
+  function receberCondicao(evento: any) {
+    let entrada = evento.target.value;
+    setCondicao(entrada);
   }
-  return valido
-}
-function validaSobrepeso(){
-  const id = document.getElementById("sobrepeso");
-  let valido = false;
-
-  if(!ehNumero(Sobrepeso)){
-    showError(id!, `Value must be a number`)
-  } else {
-    showSuccess(id!);
-    valido = true;
+  function receberDistancia(evento: any) {
+    let entrada = evento.target.value;
+    setDistancia(entrada);
   }
-  return valido
-}
-
-function validaAltitudePd(){
-  const idAltitudePd = document.getElementById("altitude_padrao");
-  let valido = false;
-
-  if(!ehNumero(AltitudePd)){
-    showError(idAltitudePd!, `value must be a number`)
-  } else {
-    showSuccess(idAltitudePd!);
-    valido = true;
+  function receberReversor(evento: any) {
+    let entrada = evento.target.value;
+    setReversor(entrada);
   }
-  return valido
-}
-function validaVariacaoAlt(){
-  const id = document.getElementById("variacao_altitude");
-  let valido = false;
-
-  if(!ehNumero(VariacaoAlt)){
-    showError(id!, `value must be a number`);
-  } else {
-    showSuccess(id!)
-    valido = true;
+  function receberVariacaoPes(evento: any) {
+    let entrada = evento.target.value;
+    setVariacaoPes(entrada);
   }
-  return valido
-}
-function validaAltitudeAcm(){
-  const idAltitudeAcm = document.getElementById("altitude_acima");
-  let valido = false;
-
-  if(!ehNumero(AltitudeAcm)){
-    showError(idAltitudeAcm!, `value must be a number`);
-  } else {
-    showSuccess(idAltitudeAcm!)
-    valido = true;
+  function receberPesoAbx(evento: any) {
+    let entrada = evento.target.value;
+    setPesoAbx(entrada);
   }
-  return valido
-}
-function validaAltitudeAbx(){
-  const idAltitudeAbx = document.getElementById("altitude_abaixo");
-  let valido = false;
-
-  if(!ehNumero(AltitudeAbx)){
-    showError(idAltitudeAbx!, `value must be a number`);
-  } else {
-    showSuccess(idAltitudeAbx!)
-    valido = true;
+  function receberPesoAcm(evento: any) {
+    let entrada = evento.target.value;
+    setPesoAcm(entrada);
   }
-  return valido
-}
-
-function validaTemperaturaPd(){
-  const id = document.getElementById("temperatura_padrao")
-  let valido = false;
-
-  if(!ehNumero(TemperaturaPd)){
-    showError(id!, `value must be a number`)
-  } else {
-    showSuccess(id!);
-    valido = true
+  function receberSobrepeso(evento: any) {
+    let entrada = evento.target.value;
+    setSobrepeso(entrada);
   }
-  return valido;
-}
-function validaVariacaoTmp(){
-  const id = document.getElementById("variacao_temperatura")
-  let valido = false;
-
-  if(!ehNumero(VariacaoTmp)){
-    showError(id!, `value must be a number`)
-  } else {
-    showSuccess(id!);
-    valido = true
+  function receberVariacaoAlt(evento: any) {
+    let entrada = evento.target.value;
+    setVariacaoAlt(entrada);
   }
-  return valido;
-}
-function validaTemperaturaAcm(){
-  const id = document.getElementById("temperatura_acima")
-  let valido = false;
-
-  if(!ehNumero(TemperaturaAcm)){
-    showError(id!, `value must be a number`)
-  } else {
-    showSuccess(id!)
-    valido = true;
+  function receberAltitudePd(evento: any) {
+    let entrada = evento.target.value;
+    setAltitudePd(entrada);
   }
-  return valido
-}
-function validaTemperaturaAbx(){
-  const id = document.getElementById("temperatura_abaixo")
-  let valido = false;
-
-  if(!ehNumero(TemperaturaAbx)){
-    showError(id!, `value must be a number`)
-  } else {
-    showSuccess(id!)
-    valido = true;
+  function receberAltitudeAbx(evento: any) {
+    let entrada = evento.target.value;
+    setAltitudeAbx(entrada);
   }
-  return valido
-}
-
-function validaVentoPd(){
-  const id = document.getElementById("vento_padrao")
-  let valido = false;
-
-  if(!ehNumero(VentoPd)){
-    showError(id!, `value must be a number`)
-  } else {
-    showSuccess(id!)
-    valido = true;
+  function receberAltitudeAcm(evento: any) {
+    let entrada = evento.target.value;
+    setAltitudeAcm(entrada);
   }
-  return valido
-}
-function validaVariacaoVento(){
-  const id = document.getElementById("variacao_vento")
-  let valido = false;
-
-  if(!ehNumero(VariacaoVento)){
-    showError(id!, `value must be a number`)
-  } else {
-    showSuccess(id!);
-    valido = true
+  function receberTemperaturaPd(evento: any) {
+    let entrada = evento.target.value;
+    setTemperaturaPd(entrada);
   }
-  return valido;
-}
-function validaVentoAcm(){
-  const id = document.getElementById("correcao_vento_cauda")
-  let valido = false;
-
-  if(!ehNumero(VentoAcm)){
-    showError(id!, `value must be a number`)
-  } else {
-    showSuccess(id!)
-    valido = true;
+  function receberVariacaoTmp(evento: any) {
+    let entrada = evento.target.value;
+    setVariacaoTmp(entrada);
   }
-  return valido
-}
-function validaVentoAbx(){
-  const id = document.getElementById("correcao_vento_proa")
-  let valido = false;
-
-  if(!ehNumero(VentoAbx)){
-    showError(id!, `value must be a number`)
-  } else {
-    showSuccess(id!)
-    valido = true;
+  function receberTemperaturaAbx(evento: any) {
+    let entrada = evento.target.value;
+    setTemperaturaAbx(entrada);
   }
-  return valido
-}
-
-function validaSlopePd(){
-  const id = document.getElementById("slope_padrao")
-  let valido = false;
-
-  if(!ehNumero(SlopePd)){
-    showError(id!, `value must be a number`)
-  } else {
-    showSuccess(id!)
-    valido = true;
+  function receberTemperaturaAcm(evento: any) {
+    let entrada = evento.target.value;
+    setTemperaturaAcm(entrada);
   }
-  return valido
-}
-function validaVariacaoSlope(){
-  const id = document.getElementById("variacao_inclinacao")
-  let valido = false;
-
-  if(!ehNumero(VariacaoSlope)){
-    showError(id!, `value must be a number`)
-  } else {
-    showSuccess(id!);
-    valido = true
+  function receberVentoPd(evento: any) {
+    let entrada = evento.target.value;
+    setVentoPd(entrada);
   }
-  return valido;
-}
-function validaSlopeAcm(){
-  const id = document.getElementById("slope_acima")
-  let valido = false;
-
-  if(!ehNumero(SlopeAcm)){
-    showError(id!, `value must be a number`)
-  } else {
-    showSuccess(id!)
-    valido = true;
+  function receberVariacaoVento(evento: any) {
+    let entrada = evento.target.value;
+    setVariacaoVento(entrada);
   }
-  return valido
-}
-function validaSlopeAbx(){
-  const id = document.getElementById("correcao_declive")
-  let valido = false;
-
-  if(!ehNumero(SlopeAbx)){
-    showError(id!, `value must be a number`)
-  } else {
-    showSuccess(id!)
-    valido = true;
+  function receberVentoAbx(evento: any) {
+    let entrada = evento.target.value;
+    setVentoAbx(entrada);
   }
-  return valido
-}
-
-function validaVapPd(){
-  const id = document.getElementById("vap_padrao")
-  let valido = false;
-
-  if(!ehNumero(VapPd)){
-    showError(id!, `value must be a number`)
-  } else {
-    showSuccess(id!)
-    valido = true;
+  function receberVentoAcm(evento: any) {
+    let entrada = evento.target.value;
+    setVentoAcm(entrada);
   }
-  return valido
-}
-function validaVariacaoVap(){
-  const id = document.getElementById("padrao_variacao_velocidade")
-  let valido = false;
-
-  if(!ehNumero(VariacaoSlope)){
-    showError(id!, `value must be a number`)
-  } else {
-    showSuccess(id!);
-    valido = true
+  function receberSlopePd(evento: any) {
+    let entrada = evento.target.value;
+    setSlopePd(entrada);
   }
-  return valido;
-}
-function validaVapAcm(){
-  const id = document.getElementById("vap_acima")
-  let valido = false;
-
-  if(!ehNumero(VapAcm)){
-    showError(id!, `value must be a number`)
-  } else {
-    showSuccess(id!)
-    valido = true;
+  function receberVariacaoSlope(evento: any) {
+    let entrada = evento.target.value;
+    setVariacaoSlope(entrada);
   }
-  return valido
-}
-function validaVapAbx(){
-  const id = document.getElementById("vap_abaixo")
-  let valido = false;
-
-  if(!ehNumero(VapAbx)){
-    showError(id!, `value must be a number`)
-  } else {
-    showSuccess(id!)
-    valido = true;
+  function receberSlopeAbx(evento: any) {
+    let entrada = evento.target.value;
+    setSlopeAbx(entrada);
   }
-  return valido
-}
+  function receberSlopeAcm(evento: any) {
+    let entrada = evento.target.value;
+    setSlopeAcm(entrada);
+  }
+  function receberVapPd(evento: any) {
+    let entrada = evento.target.value;
+    setVapPd(entrada);
+  }
+  function receberVariacaoVAP(evento: any) {
+    let entrada = evento.target.value;
+    setVariacaoVAP(entrada);
+  }
+  function receberVapAbx(evento: any) {
+    let entrada = evento.target.value;
+    setVapAbx(entrada);
+  }
+  function receberVapAcm(evento: any) {
+    let entrada = evento.target.value;
+    setVapAcm(entrada);
+  }
 
-function receberFlap(evento: any){
-  let entrada = evento.target.value;
-  setFlap(entrada)
-}
-function receberGelo(evento: any){
-  let entrada = evento.target.value;
-  setGelo(entrada)
-  return "Gelo"
-}
-function receberBreak(evento: any){
-  let entrada = evento.target.value;
-  setBreak(entrada)
-}
-function receberCondicao(evento: any){
-  let entrada = evento.target.value;
-  setCondicao(entrada)
-}
-function receberDistancia(evento: any){
-  let entrada = evento.target.value;
-  setDistancia(entrada)
-}
-function receberReversor(evento: any){
-  let entrada = evento.target.value;
-  setReversor(entrada)
-}
-function receberVariacaoPes(evento: any){
-  let entrada = evento.target.value;
-  setVariacaoPes(entrada)
-}
-function receberPesoAbx(evento: any){
-  let entrada = evento.target.value;
-  setPesoAbx(entrada)
-}
-function receberPesoAcm(evento: any){
-  let entrada = evento.target.value;
-  setPesoAcm(entrada)
-}
-function receberSobrepeso(evento: any){
-  let entrada = evento.target.value;
-  setSobrepeso(entrada)
-}
-function receberVariacaoAlt(evento: any){
-  let entrada = evento.target.value;
-  setVariacaoAlt(entrada)
-}
-function receberAltitudePd(evento: any){
-  let entrada = evento.target.value;
-  setAltitudePd(entrada)
-}
-function receberAltitudeAbx(evento: any){
-  let entrada = evento.target.value;
-  setAltitudeAbx(entrada)
-}
-function receberAltitudeAcm(evento: any){
-  let entrada = evento.target.value;
-  setAltitudeAcm(entrada)
-}
-function receberTemperaturaPd(evento: any){
-  let entrada = evento.target.value;
-  setTemperaturaPd(entrada)
-}
-function receberVariacaoTmp(evento: any){
-  let entrada = evento.target.value;
-  setVariacaoTmp(entrada)
-}
-function receberTemperaturaAbx(evento: any){
-  let entrada = evento.target.value;
-  setTemperaturaAbx(entrada)
-}
-function receberTemperaturaAcm(evento: any){
-  let entrada = evento.target.value;
-  setTemperaturaAcm(entrada)
-}
-function receberVentoPd(evento: any){
-  let entrada = evento.target.value;
-  setVentoPd(entrada)
-}
-function receberVariacaoVento(evento: any){
-  let entrada = evento.target.value;
-  setVariacaoVento(entrada)
-}
-function receberVentoAbx(evento: any){
-  let entrada = evento.target.value;
-  setVentoAbx(entrada)
-}
-function receberVentoAcm(evento: any){
-  let entrada = evento.target.value;
-  setVentoAcm(entrada)
-}
-function receberSlopePd(evento: any){
-  let entrada = evento.target.value;
-  setSlopePd(entrada)
-}
-function receberVariacaoSlope(evento: any){
-  let entrada = evento.target.value;
-  setVariacaoSlope(entrada)
-}
-function receberSlopeAbx(evento: any){
-  let entrada = evento.target.value;
-  setSlopeAbx(entrada)
-}
-function receberSlopeAcm(evento: any){
-  let entrada = evento.target.value;
-  setSlopeAcm(entrada)
-}
-function receberVapPd(evento: any){
-  let entrada = evento.target.value;
-  setVapPd(entrada)
-}
-function receberVariacaoVAP(evento: any){
-  let entrada = evento.target.value;
-  setVariacaoVAP(entrada)
-}
-function receberVapAbx(evento: any){
-  let entrada = evento.target.value;
-  setVapAbx(entrada)
-}
-function receberVapAcm(evento: any){
-  let entrada = evento.target.value;
-  setVapAcm(entrada)
-}
-
-const [Flap, setFlap] = useState("");
-const [Gelo, setGelo] = useState("")
-const [Break, setBreak] = useState("");
-const [Condicao, setCondicao] = useState("");
-const [Distancia, setDistancia] = useState("");
-const [Reversor, setReversor] = useState("");
-const [VariacaoPes, setVariacaoPes] = useState("")
-const [PesoAbx, setPesoAbx] = useState("");
-const [PesoAcm, setPesoAcm] = useState("");
-const [Sobrepeso, setSobrepeso] = useState("");
-const [VariacaoAlt, setVariacaoAlt] = useState("")
-const [AltitudePd, setAltitudePd] = useState("");
-const [AltitudeAbx, setAltitudeAbx] = useState("");
-const [AltitudeAcm, setAltitudeAcm] = useState("");
-const [TemperaturaPd, setTemperaturaPd] = useState("");
-const [VariacaoTmp, setVariacaoTmp] = useState("")
-const [TemperaturaAbx, setTemperaturaAbx] = useState("");
-const [TemperaturaAcm, setTemperaturaAcm] = useState("");
-const [VentoPd, setVentoPd] = useState("");
-const [VariacaoVento, setVariacaoVento] = useState("");
-const [VentoAbx, setVentoAbx] = useState("");
-const [VentoAcm, setVentoAcm] = useState("");
-const [SlopePd, setSlopePd] = useState("");
-const [VariacaoSlope, setVariacaoSlope] = useState("");
-const [SlopeAbx, setSlopeAbx] = useState("");
-const [SlopeAcm, setSlopeAcm] = useState("");
-const [VapPd, setVapPd] = useState("");
-const [VariacaoVAP, setVariacaoVAP] = useState("");
-const [VapAbx, setVapAbx] = useState("");
-const [VapAcm, setVapAcm] = useState("");
-
+  const [Flap, setFlap] = useState("");
+  const [Gelo, setGelo] = useState("");
+  const [Break, setBreak] = useState("");
+  const [Condicao, setCondicao] = useState("");
+  const [Distancia, setDistancia] = useState("");
+  const [Reversor, setReversor] = useState("");
+  const [VariacaoPes, setVariacaoPes] = useState("");
+  const [PesoAbx, setPesoAbx] = useState("");
+  const [PesoAcm, setPesoAcm] = useState("");
+  const [Sobrepeso, setSobrepeso] = useState("");
+  const [VariacaoAlt, setVariacaoAlt] = useState("");
+  const [AltitudePd, setAltitudePd] = useState("");
+  const [AltitudeAbx, setAltitudeAbx] = useState("");
+  const [AltitudeAcm, setAltitudeAcm] = useState("");
+  const [TemperaturaPd, setTemperaturaPd] = useState("");
+  const [VariacaoTmp, setVariacaoTmp] = useState("");
+  const [TemperaturaAbx, setTemperaturaAbx] = useState("");
+  const [TemperaturaAcm, setTemperaturaAcm] = useState("");
+  const [VentoPd, setVentoPd] = useState("");
+  const [VariacaoVento, setVariacaoVento] = useState("");
+  const [VentoAbx, setVentoAbx] = useState("");
+  const [VentoAcm, setVentoAcm] = useState("");
+  const [SlopePd, setSlopePd] = useState("");
+  const [VariacaoSlope, setVariacaoSlope] = useState("");
+  const [SlopeAbx, setSlopeAbx] = useState("");
+  const [SlopeAcm, setSlopeAcm] = useState("");
+  const [VapPd, setVapPd] = useState("");
+  const [VariacaoVAP, setVariacaoVAP] = useState("");
+  const [VapAbx, setVapAbx] = useState("");
+  const [VapAcm, setVapAcm] = useState("");
 
   return (
     <div className="CriarAeronaves">
@@ -620,7 +616,7 @@ const [VapAcm, setVapAcm] = useState("");
           </div>
           <div className="card-body col-md-13">
             <fieldset className="row flap">
-                <legend>Flap configurations</legend>
+              <legend>Flap configurations</legend>
               <div className="form-group col-lg-4-md col-md-4 col-sm-12">
                 <label>Flap:</label>
                 <input
@@ -630,9 +626,12 @@ const [VapAcm, setVapAcm] = useState("");
                   placeholder="Insert the aircraft flap:"
                   value={Flap}
                   onChange={receberFlap}
-                  onInput={handleChangeValues}
+                  //onInput={handleChangeValues}
                 />
-                <FormControlLabel control={<Switch onChange={receberGelo} />} label="Ice Accretion"/>
+                <FormControlLabel
+                  control={<Switch onChange={receberGelo} />}
+                  label="Ice Accretion"
+                />
               </div>
               <div className="form-group col-lg-4-md col-md-4 col-sm-12">
                 <label>Brake config:</label>
@@ -643,7 +642,7 @@ const [VapAcm, setVapAcm] = useState("");
                   name="configuracao_freio"
                   value={Break}
                   onChange={receberBreak}
-                  onInput={handleChangeValues}
+                  //onInput={handleChangeValues}
                 >
                   <option value="" selected disabled>
                     Select
@@ -663,8 +662,7 @@ const [VapAcm, setVapAcm] = useState("");
                   placeholder="Runway Condition:"
                   value={Condicao}
                   onChange={receberCondicao}
-                  onInput={handleChangeValues}
-                  
+                  //onInput={handleChangeValues}
                 />
               </div>
               <div className="form-group col-lg-4-md col-md-4 col-sm-12">
@@ -676,9 +674,8 @@ const [VapAcm, setVapAcm] = useState("");
                   placeholder="Referential distance (m)"
                   value={Distancia}
                   onChange={receberDistancia}
-                  onInput={handleChangeValues}
-                  
-              />
+                  //onInput={handleChangeValues}
+                />
               </div>
               <div className="form-group col-lg-4-md col-md-4 col-sm-12">
                 <label>Reverser variation:</label>
@@ -689,9 +686,8 @@ const [VapAcm, setVapAcm] = useState("");
                   placeholder="Per rev inop (m)"
                   value={Reversor}
                   onChange={receberReversor}
-                  onInput={handleChangeValues}
-                  
-              />
+                  //onInput={handleChangeValues}
+                />
               </div>
             </fieldset>
             <fieldset className="row col-lg-3 variavel">
@@ -705,7 +701,7 @@ const [VapAcm, setVapAcm] = useState("");
                   placeholder="For each"
                   value={VariacaoPes}
                   onChange={receberVariacaoPes}
-                  onInput={handleChangeValues}
+                  //onInput={handleChangeValues}
                 />
                 <small></small>
                 <br></br>
@@ -717,8 +713,7 @@ const [VapAcm, setVapAcm] = useState("");
                   placeholder="Above standard"
                   value={PesoAcm}
                   onChange={receberPesoAcm}
-                  onInput={handleChangeValues}
-                  
+                  //onInput={handleChangeValues}
                 ></input>
                 <small></small>
                 <br></br>
@@ -729,8 +724,7 @@ const [VapAcm, setVapAcm] = useState("");
                   placeholder="Below standard"
                   value={PesoAbx}
                   onChange={receberPesoAbx}
-                  onInput={handleChangeValues}
-                  
+                  //onInput={handleChangeValues}
                 ></input>
                 <small></small>
                 <br></br>
@@ -742,8 +736,7 @@ const [VapAcm, setVapAcm] = useState("");
                   placeholder="Overweight"
                   value={Sobrepeso}
                   onChange={receberSobrepeso}
-                  onInput={handleChangeValues}
-                  
+                  //onInput={handleChangeValues}
                 ></input>
                 <small></small>
               </div>
@@ -759,8 +752,7 @@ const [VapAcm, setVapAcm] = useState("");
                   placeholder="Default value"
                   value={AltitudePd}
                   onChange={receberAltitudePd}
-                  onInput={handleChangeValues}
-                  
+                  //onInput={handleChangeValues}
                 ></input>
                 <small></small>
                 <br></br>
@@ -772,7 +764,7 @@ const [VapAcm, setVapAcm] = useState("");
                   placeholder="For each"
                   value={VariacaoAlt}
                   onChange={receberVariacaoAlt}
-                  onInput={handleChangeValues}
+                  //onInput={handleChangeValues}
                 />
                 <small></small>
                 <br></br>
@@ -784,8 +776,7 @@ const [VapAcm, setVapAcm] = useState("");
                   placeholder="Above standard"
                   value={AltitudeAcm}
                   onChange={receberAltitudeAcm}
-                  onInput={handleChangeValues}
-                  
+                  //onInput={handleChangeValues}
                 ></input>
                 <small></small>
                 <br></br>
@@ -796,8 +787,7 @@ const [VapAcm, setVapAcm] = useState("");
                   placeholder="Below standard"
                   value={AltitudeAbx}
                   onChange={receberAltitudeAbx}
-                  onInput={handleChangeValues}
-                  
+                  //onInput={handleChangeValues}
                 ></input>
                 <small></small>
               </div>
@@ -813,8 +803,7 @@ const [VapAcm, setVapAcm] = useState("");
                   placeholder="Default value in °C"
                   value={TemperaturaPd}
                   onChange={receberTemperaturaPd}
-                  onInput={handleChangeValues}
-                  
+                  //onInput={handleChangeValues}
                 ></input>
                 <small></small>
                 <br></br>
@@ -826,7 +815,7 @@ const [VapAcm, setVapAcm] = useState("");
                   placeholder="For each"
                   value={VariacaoTmp}
                   onChange={receberVariacaoTmp}
-                  onInput={handleChangeValues}
+                  //onInput={handleChangeValues}
                 />
                 <small></small>
                 <br></br>
@@ -838,8 +827,7 @@ const [VapAcm, setVapAcm] = useState("");
                   placeholder="Above standard"
                   value={TemperaturaAcm}
                   onChange={receberTemperaturaAcm}
-                  onInput={handleChangeValues}
-                  
+                  //onInput={handleChangeValues}
                 ></input>
                 <small></small>
                 <br></br>
@@ -850,8 +838,7 @@ const [VapAcm, setVapAcm] = useState("");
                   placeholder="Below standard"
                   value={TemperaturaAbx}
                   onChange={receberTemperaturaAbx}
-                  onInput={handleChangeValues}
-                  
+                  //onInput={handleChangeValues}
                 ></input>
                 <small></small>
               </div>
@@ -867,8 +854,7 @@ const [VapAcm, setVapAcm] = useState("");
                   placeholder="Default value"
                   value={VentoPd}
                   onChange={receberVentoPd}
-                  onInput={handleChangeValues}
-                  
+                  //onInput={handleChangeValues}
                 ></input>
                 <small></small>
                 <br></br>
@@ -880,7 +866,7 @@ const [VapAcm, setVapAcm] = useState("");
                   placeholder="For each"
                   value={VariacaoVento}
                   onChange={receberVariacaoVento}
-                  onInput={handleChangeValues}
+                  //onInput={handleChangeValues}
                 />
                 <small></small>
                 <br></br>
@@ -892,8 +878,7 @@ const [VapAcm, setVapAcm] = useState("");
                   placeholder="Above standard (Tail wind)"
                   value={VentoAcm}
                   onChange={receberVentoAcm}
-                  onInput={handleChangeValues}
-                  
+                  //onInput={handleChangeValues}
                 ></input>
                 <small></small>
                 <br></br>
@@ -904,8 +889,7 @@ const [VapAcm, setVapAcm] = useState("");
                   placeholder="Below standard (Head wind)"
                   value={VentoAbx}
                   onChange={receberVentoAbx}
-                  onInput={handleChangeValues}
-                  
+                  //onInput={handleChangeValues}
                 ></input>
                 <small></small>
               </div>
@@ -921,8 +905,7 @@ const [VapAcm, setVapAcm] = useState("");
                   placeholder="Default value"
                   value={SlopePd}
                   onChange={receberSlopePd}
-                  onInput={handleChangeValues}
-                  
+                  //onInput={handleChangeValues}
                 ></input>
                 <small></small>
                 <br></br>
@@ -934,7 +917,7 @@ const [VapAcm, setVapAcm] = useState("");
                   placeholder="For each"
                   value={VariacaoSlope}
                   onChange={receberVariacaoSlope}
-                  onInput={handleChangeValues}
+                  //onInput={handleChangeValues}
                 />
                 <small></small>
                 <br></br>
@@ -946,8 +929,7 @@ const [VapAcm, setVapAcm] = useState("");
                   placeholder="Above standard"
                   value={SlopeAcm}
                   onChange={receberSlopeAcm}
-                  onInput={handleChangeValues}
-                  
+                  //onInput={handleChangeValues}
                 ></input>
                 <small></small>
                 <br></br>
@@ -958,8 +940,7 @@ const [VapAcm, setVapAcm] = useState("");
                   placeholder="Below standard"
                   value={SlopeAbx}
                   onChange={receberSlopeAbx}
-                  onInput={handleChangeValues}
-                  
+                  //onInput={handleChangeValues}
                 ></input>
                 <small></small>
               </div>
@@ -975,8 +956,7 @@ const [VapAcm, setVapAcm] = useState("");
                   placeholder="Default value"
                   value={VapPd}
                   onChange={receberVapPd}
-                  onInput={handleChangeValues}
-                  
+                  //onInput={handleChangeValues}
                 ></input>
                 <small></small>
                 <br></br>
@@ -988,7 +968,7 @@ const [VapAcm, setVapAcm] = useState("");
                   placeholder="For each"
                   value={VariacaoVAP}
                   onChange={receberVariacaoVAP}
-                  onInput={handleChangeValues}
+                  //onInput={handleChangeValues}
                 />
                 <small></small>
                 <br></br>
@@ -1000,8 +980,7 @@ const [VapAcm, setVapAcm] = useState("");
                   placeholder="Above standard"
                   value={VapAcm}
                   onChange={receberVapAcm}
-                  onInput={handleChangeValues}
-                  
+                  //onInput={handleChangeValues}
                 ></input>
                 <small></small>
                 <br></br>
@@ -1012,16 +991,15 @@ const [VapAcm, setVapAcm] = useState("");
                   placeholder="Below standard"
                   value={VapAbx}
                   onChange={receberVapAbx}
-                  onInput={handleChangeValues}
-                  
+                  //onInput={handleChangeValues}
                 ></input>
                 <small></small>
               </div>
             </fieldset>
 
             <div className="clear"></div>
-            </div>
-            <div className="card-footer w-100 float-right">
+          </div>
+          <div className="card-footer w-100 float-right">
             <a
               className="rounded btn btn-primary ml-2 float-start"
               href="http://localhost:3000"
@@ -1033,12 +1011,12 @@ const [VapAcm, setVapAcm] = useState("");
               type="submit"
               id="btn_registrar"
               name="submitButton"
-              onClick={() => handleClickButton(values)}
+              //onClick={() => handleClickButton(values)}
             >
               <b>Register</b>
             </button>
           </div>
-          </div>
+        </div>
       </form>
     </div>
   );
