@@ -184,7 +184,7 @@ app.get("/getFlapDetails/:id", (req, res) => {
     });
 
 app.put("/update/:id", (req,res) => {
-    const { id } = req.body;
+    const { id } = req.params;
     const { modelo } = req.body;
     const { fabricante } = req.body;
     const { motor } = req.body;
@@ -195,9 +195,9 @@ app.put("/update/:id", (req,res) => {
     const { sobrepeso } = req.body;
     const { peso_maximo } = req.body;
 
-    let SQL = "UPDATE aeronave modelo = ?,  fabricante = ?, motor = ?, certificacao = ?, qtde_reversor = ?, peso_referencial = ?, peso_minimo = ?, sobrepeso = ?, peso_maximo = ?, WHERE id =" + id;
+    let SQL = "UPDATE aeronave id = ?, modelo = ?,  fabricante = ?, motor = ?, certificacao = ?, qtde_reversor = ?, peso_referencial = ?, peso_minimo = ?, sobrepeso = ?, peso_maximo = ?, WHERE id =" + id;
 
-    db.query(SQL, [modelo, fabricante, motor, certificacao, qtde_reversor, peso_referencial, peso_minimo, sobrepeso, peso_maximo], (err,result) => {
+    db.query(SQL, [id, modelo, fabricante, motor, certificacao, qtde_reversor, peso_referencial, peso_minimo, sobrepeso, peso_maximo], (err,result) => {
         if (err) console.log(err);
         else res.send(result);
     });

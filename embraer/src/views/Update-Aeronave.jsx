@@ -45,16 +45,16 @@ export default function UpdateAeronaves() {
       pesoMaxValido
 
     if (formularioValido){
-        axios.put(`http://localhost:3002/udate/${Id}`, {
-          Fabricante,
-          Modelo,
-          Certificacao,
-          Motor,
-          Revesor,
-          Peso,
-          PesoMinimo,
-          Sobrepeso,
-          PesoMaximo
+        axios.put(`http://localhost:3002/update/${Id}`, {
+          fabricante: Fabricante,
+          modelo: Modelo,
+          certificacao: Certificacao,
+          motor: Motor,
+          qtde_reversor: Revesor,
+          peso_referencial: Peso,
+          peso_minimo: PesoMinimo,
+          sobrepeso: Sobrepeso,
+          peso_maximo: PesoMaximo
         })
       
       Swal.fire({
