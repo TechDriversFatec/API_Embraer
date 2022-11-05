@@ -10,6 +10,7 @@ import Navbar from "./views/navbar";
 import VariaveisAeronaves from "./views/criar-aeronave";
 import Login from "./views/login";
 import LogsCalculo from "./views/calculoLogs";
+import Footer from "./views/footer";
 import UpdateAeronaves from "./views/Update-Aeronave";
 
 function App() {
@@ -27,6 +28,7 @@ function App() {
       <Route path="/Logs" element={<LogsCalculo />}/>
       <Route path="/AtualizA/:id" element={<UpdateAeronaves />}/>
     </Routes>
+    <Footer />
     </BrowserRouter>
   );
 }
