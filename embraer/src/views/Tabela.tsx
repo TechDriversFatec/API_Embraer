@@ -119,6 +119,9 @@ export default function Read() {
                 <Link to="/Variavel/">
                 <Button><FaPlus /></Button>
                 </Link>
+                <Link to="/AtualizaA/:userId">
+                <Button><FaPlaneArrival /></Button>
+               </Link>
                 <Link to="/Variavel">
                 <Button><FaCalculator /></Button>
                 </Link>
