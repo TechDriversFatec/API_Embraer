@@ -10,6 +10,7 @@ import {
 } from "react-icons/fa";
 import UpdateAeronaves from "./Update-Aeronave";
 import { ModelTrainingOutlined } from "@mui/icons-material";
+import Swal from "sweetalert2";
 
 //import {PlusCircleOutlined, EditOutlined, DeleteOutlined} from '@ant-design/icons';
 //import { isConstructorDeclaration } from "typescript";
@@ -32,6 +33,9 @@ export default function Read() {
   const onDelete = (id: number) => {
     axios.delete(`http://localhost:3002/deleteAeronave/${id}`).then(() => {
       getData();
+    });
+    Swal.fire({
+      text: "Aircraft deleted successfully!",
     });
   };
 
