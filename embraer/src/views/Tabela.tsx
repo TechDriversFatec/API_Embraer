@@ -9,12 +9,12 @@ import {
   FaTrashAlt,
 } from "react-icons/fa";
 import UpdateAeronaves from "./Update-Aeronave";
+import { url } from "inspector";
 
 //import {PlusCircleOutlined, EditOutlined, DeleteOutlined} from '@ant-design/icons';
 //import { isConstructorDeclaration } from "typescript";
 
 export default function Read() {
-
   const [listAeronaves, setlistAeronaves] = useState([]);
 
   useEffect(() => {
@@ -24,14 +24,11 @@ export default function Read() {
   }, []);
 
   type Flap = {
-    id: number,
-    tipo_flap: string,
-    configuracao_freio: string,
-    condicao_pista: number
-  }
-
-  const [flaps, setFlaps] = useState<Flap[]>([]);
-
+    id: number;
+    tipo_flap: string;
+    configuracao_freio: string;
+    condicao_pista: number;
+  };
 
   // async function modalSeleciona() {
   //   const { value: fruit } = await Swal.fire({
@@ -59,26 +56,38 @@ export default function Read() {
   // }
 
   // function PegaId() {
-  //   let html = <></>
-  //   let lista = listAeronaves.map(
-  //     return element: any => {
-  //     <Link to="/Variavel/{}">
-  //                   <Button><FaPlus /></Button>
-  //                 </Link>
-                  
-  //                 <Link to="/Variavel">
-  //                   <Button><FaCalculator /></Button>
-  //                 </Link>
-  //                 <Link to="/Variavel">
-  //                   <Button><FaTrashAlt /></Button>
-  //                 </Link>
-  //     html  =  html + <Link to="/AtualizaA/:userId">
-  //     <Button><FaPlaneArrival /></Button>
-  //   </Link>
-  //   });
+  //   var html = listAeronaves.map((data: any) => {
+  //     let id = data.id
+  //     html = `/Atualiza/${id}`
+  //     return html
+  //   })
+  //   return (
+  //     <>
+  //       <Link to="/Variavel/">
+  //         <Button>
+  //           <FaPlus />
+  //         </Button>
+  //       </Link>
+  //       <Link to={html.toString()}>
+  //         <Button>
+  //           <FaPlaneArrival />
+  //         </Button>
+  //       </Link>
+  //       <Link to="/Variavel">
+  //         <Button>
+  //           <FaCalculator />
+  //         </Button>
+  //       </Link>
+  //       <Link to="/Variavel">
+  //         <Button>
+  //           <FaTrashAlt />
+  //         </Button>
+  //       </Link>
+  //     </>
+  //   )
   // }
 
-  console.log(listAeronaves)
+  console.log(listAeronaves);
   return (
     <div>
       <Table singleLine>
@@ -101,13 +110,13 @@ export default function Read() {
                 <Table.Cell>{data.certificacao}</Table.Cell>
                 <Table.Cell>{data.motor}</Table.Cell>
                 <Table.Cell>
-                  {PegaId}
+                  <PegaId />
                 </Table.Cell>
               </Table.Row>
             );
-          })};
+          })}
         </Table.Body>
       </Table>
     </div>
   );
-};
+}
