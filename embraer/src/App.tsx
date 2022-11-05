@@ -10,6 +10,7 @@ import Navbar from "./views/navbar";
 import VariaveisAeronaves from "./views/criar-aeronave";
 import Login from "./views/login";
 import LogsCalculo from "./views/calculoLogs";
+import Footer from "./views/footer";
 
 function App() {
   return (
@@ -25,6 +26,7 @@ function App() {
       <Route path="/Variavel" element={<VariaveisAeronaves />}/>
       <Route path="/Logs" element={<LogsCalculo />}/>
     </Routes>
+    <Footer />
     </BrowserRouter>
   );
 }
