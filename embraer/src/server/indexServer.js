@@ -183,6 +183,26 @@ app.get("/getFlapDetails/:id", (req, res) => {
         });
     });
 
+app.put("/update/:id", (req,res) => {
+    const { id } = req.body;
+    const { modelo } = req.body;
+    const { fabricante } = req.body;
+    const { motor } = req.body;
+    const { certificacao } = req.body;
+    const { qtde_reversor } = req.body;
+    const { peso_referencial } = req.body;
+    const { peso_minimo } = req.body;
+    const { sobrepeso } = req.body;
+    const { peso_maximo } = req.body;
+
+    let SQL = "UPDATE aeronave modelo = ?,  fabricante = ?, motor = ?, certificacao = ?, qtde_reversor = ?, peso_referencial = ?, peso_minimo = ?, sobrepeso = ?, peso_maximo = ?, WHERE id =" + id;
+
+    db.query(SQL, [modelo, fabricante, motor, certificacao, qtde_reversor, peso_referencial, peso_minimo, sobrepeso, peso_maximo], (err,result) => {
+        if (err) console.log(err);
+        else res.send(result);
+    });
+});
+
 app.delete("/deleteAeronave/:id", (req,res) => {
     const { id } = req.params;
     let SQL = "DELETE FROM aeronave WHERE id =" + id;
