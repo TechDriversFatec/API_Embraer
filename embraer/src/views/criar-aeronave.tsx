@@ -681,7 +681,7 @@ const [VapAcm, setVapAcm] = useState("");
               />
               </div>
               <div className="form-group col-lg-4-md col-md-4 col-sm-12">
-                <label>Reverser variation</label>
+                <label>Reverser variation:</label>
                 <input
                   id="correcao_reversor_inoperante"
                   className="form-control"
@@ -697,7 +697,7 @@ const [VapAcm, setVapAcm] = useState("");
             <fieldset className="row col-lg-3 variavel">
               <legend>Weight variables</legend>
               <div className="form-group col-lg-4-md col-md-12 col-sm-12">
-                <label>Increment/decrement step (Kg)</label>
+                <label>Increment/decrement step (Kg):</label>
                 <input
                   id="padrao_variacao_peso"
                   className="form-control"
@@ -734,7 +734,7 @@ const [VapAcm, setVapAcm] = useState("");
                 ></input>
                 <small></small>
                 <br></br>
-                <label>Overweight</label>
+                <label>Overweight (Kg):</label>
                 <input
                   id="correcao_sobrepeso"
                   className="form-control"
@@ -749,9 +749,9 @@ const [VapAcm, setVapAcm] = useState("");
               </div>
             </fieldset>
             <fieldset className="row col-lg-4 variavel">
-              <legend>Altitude variables (Ft)</legend>
+              <legend>Altitude variables (Ft):</legend>
               <div className="form-group col-lg-4-md col-md-12 col-sm-12">
-                <label>Reference value</label>
+                <label>Reference value:</label>
                 <input
                   id="altitude_padrao"
                   className="form-control"
@@ -764,7 +764,7 @@ const [VapAcm, setVapAcm] = useState("");
                 ></input>
                 <small></small>
                 <br></br>
-                <label>Increment/decrement step (Ft)</label>
+                <label>Increment/decrement step (Ft):</label>
                 <input
                   id="padrao_variacao_altitude"
                   className="form-control"
@@ -803,9 +803,9 @@ const [VapAcm, setVapAcm] = useState("");
               </div>
             </fieldset>
             <fieldset className="row col-lg-4 variavel">
-              <legend>Temperature variables (ISA)</legend>
+              <legend>Temperature variables (ISA):</legend>
               <div className="form-group col-lg-4-md col-md-12 col-sm-12">
-                <label>Reference value</label>
+                <label>Reference value:</label>
                 <input
                   id="temperatura_padrao"
                   className="form-control"
@@ -818,7 +818,7 @@ const [VapAcm, setVapAcm] = useState("");
                 ></input>
                 <small></small>
                 <br></br>
-                <label>Increment/decrement step (°C)</label>
+                <label>Increment/decrement step (°C):</label>
                 <input
                   id="padrao_variacao_temperatura"
                   className="form-control"
@@ -857,9 +857,9 @@ const [VapAcm, setVapAcm] = useState("");
               </div>
             </fieldset>
             <fieldset className="row col-lg-4 variavel">
-              <legend>Wind variables (KTAS)</legend>
+              <legend>Wind variables (KTAS):</legend>
               <div className="form-group col-lg-4-md col-md-12 col-sm-12">
-                <label>Reference value</label>
+                <label>Reference value:</label>
                 <input
                   id="padrao_vento"
                   className="form-control"
@@ -872,7 +872,7 @@ const [VapAcm, setVapAcm] = useState("");
                 ></input>
                 <small></small>
                 <br></br>
-                <label>Increment/decrement step (KTAS)</label>
+                <label>Increment/decrement step (KTAS):</label>
                 <input
                   id="padrao_variacao_vento"
                   className="form-control"
@@ -911,9 +911,9 @@ const [VapAcm, setVapAcm] = useState("");
               </div>
             </fieldset>
             <fieldset className="row col-lg-4 variavel">
-              <legend>Slope variables (%)</legend>
+              <legend>Slope variables (%):</legend>
               <div className="form-group col-lg-4-md col-md-12 col-sm-12">
-                <label>Reference value</label>
+                <label>Reference value:</label>
                 <input
                   id="slope_padrao"
                   className="form-control"
@@ -926,7 +926,7 @@ const [VapAcm, setVapAcm] = useState("");
                 ></input>
                 <small></small>
                 <br></br>
-                <label>Increment/decrement step (%)</label>
+                <label>Increment/decrement step (%):</label>
                 <input
                   id="padrao_variacao_inclinacao"
                   className="form-control"
@@ -965,9 +965,9 @@ const [VapAcm, setVapAcm] = useState("");
               </div>
             </fieldset>
             <fieldset className="row col-lg-3 variavel">
-              <legend>VAP variables (speed)</legend>
+              <legend>VAP variables (speed):</legend>
               <div className="form-group col-lg-4-md col-md-12 col-sm-12">
-                <label>Reference value</label>
+                <label>Reference value:</label>
                 <input
                   id="vap_padrao"
                   className="form-control"
@@ -980,7 +980,7 @@ const [VapAcm, setVapAcm] = useState("");
                 ></input>
                 <small></small>
                 <br></br>
-                <label>Increment/decrement step (?)</label>
+                <label>Increment/decrement step (?):</label>
                 <input
                   id="padrao_variacao_velocidade"
                   className="form-control"

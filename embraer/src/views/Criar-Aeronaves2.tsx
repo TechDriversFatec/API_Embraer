@@ -305,7 +305,7 @@ function CriarAeronaves() {
             </div>
             <div className="row">
               <div className="form-group col-lg-4-md col-md-4 com-sm-12">
-                <label>Minimum weight the aircraft can get</label>
+                <label>Minimum weight the aircraft can get:</label>
                 <input
                   id="peso_minimo"
                   className="form-control"
@@ -318,7 +318,7 @@ function CriarAeronaves() {
                 <small></small>
               </div>
               <div className="form-group col-lg-4-md col-md-4 com-sm-12">
-                <label>Overweight of the aircraft </label>
+                <label>Overweight of the aircraft: </label>
                 <input
                   id="sobrepeso"
                   className="form-control"
@@ -331,7 +331,7 @@ function CriarAeronaves() {
                 <small></small>
               </div>
               <div className="form-group col-lg-4-md col-md-4 com-sm-12">
-                <label>Maximum weight the aircraft can get</label>
+                <label>Maximum weight the aircraft can get:</label>
                 <input
                   id="peso_maximo"
                   className="form-control"

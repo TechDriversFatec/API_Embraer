@@ -4,9 +4,11 @@ import axios from "axios";
 import logo from "./logo.svg";
 import "../css/CadastroUsuario.css";
 import "bootstrap/dist/css/bootstrap.min.css";
-import { ModuleResolutionKind } from "typescript";
+import { ModuleResolutionKind, transform } from "typescript";
 import { monitorEventLoopDelay } from "perf_hooks";
 import Swal from "sweetalert2";
+import { Navigate } from "react-router-dom";
+import { NumberDecrementStepper } from "@chakra-ui/react";
 
 
 
@@ -16,11 +18,10 @@ function CriarUsuario() {
         const formField = input.parentElement;
         formField!.classList.remove('success');
         formField!.classList.add('error');
-    
         const error = formField!.querySelector('small');
         error!.textContent = message;
       };
-    
+      
       const showSuccess = (input: HTMLElement) => {
         // get the form-field element
         const formField = input.parentElement;
@@ -34,26 +35,43 @@ function CriarUsuario() {
         error!.textContent = '';
       }
 
+        const showErro = (select: HTMLElement, message: string) => {
+        const formField = select.parentElement;
+        formField!.classList.remove('success');
+        formField!.classList.add('error');
+        const error = formField!.querySelector('small');
+        error!.textContent = message;
+          }
+    
+          const showSucesso = (select: HTMLElement) => {
+            const formField = select.parentElement;
+            formField!.classList.remove('error');
+            formField!.classList.add('success');
+            const error = formField!.querySelector('small');
+            error!.textContent = '';
+          }
+
+            
+          
+
+
     function manipularEnvio(evento: any){
         evento.preventDefault()
         let NomeValido = validaNome(),
           EmailValido = validaEmail(),
-          SenhaValido = validaSenha()
-        //   NivelUsuarioValido = validaNivelUsuario()
+          SenhaValido = validaSenha(),
+          NivelUsuarioValido = validaNivelUsuario()
 
       
           let formularioValido = NomeValido &&
           EmailValido &&
-          SenhaValido
-        //   NivelUsuarioValido
+          SenhaValido &&
+          NivelUsuarioValido
           
       
         if(formularioValido){
-
-          
-
           Axios.post("http://localhost:3002/criarusuario", {
-        nivel_acesso: (document.getElementById('NivelUsuario') as HTMLSelectElement).value,
+        nivel_acesso: (document.getElementById('NivelUsuario') as HTMLSelectElement).options[(document.getElementById('NivelUsuario') as HTMLSelectElement).selectedIndex].value,
         senha_acesso: (document.getElementById('senha_acesso') as HTMLInputElement).value,
         nome: (document.getElementById('nome') as HTMLInputElement).value,
         email: (document.getElementById('email') as HTMLInputElement).value,
@@ -62,7 +80,17 @@ function CriarUsuario() {
         });
         Swal.fire({
             text: 'User registered successfully!',
+            showCancelButton: false,
+            confirmButtonColor: '#3085d6',
+            cancelButtonColor: '#d33',
+            confirmButtonText: 'Ok!'
+        }).then((result) => {
+            if (result.isConfirmed)
+            // eslint-disable-next-line no-restricted-globals
+            location.reload()
         })
+        
+        
         }
       }
         const ehNome = (valor: string) => {
@@ -78,6 +106,11 @@ function CriarUsuario() {
             const expressao = new RegExp("^(?=.*[a-z])(?=.*[A-Z])(?=.*[0-9])(?=.*[!@#\$%\^&\*])(?=.{8,})")
             return expressao.test(valor)
         }
+        const ehNivel = (valor: string) => {
+            const expressao = new RegExp ("[0-9]")
+            return expressao.test(valor)
+        }
+
         function validaNome(){
         const idNome = document.getElementById("nome")
         let valido = false;
@@ -99,7 +132,7 @@ function CriarUsuario() {
         let valido = false;
         
         if(!ehEmail(String(Email))){
-            showError(idEmail!, `please, enter a email in a valid format!`)
+            showError(idEmail!, `please, enter an email in a valid format!`)
         } else if (idEmail === null){
             showError(idEmail!, `Email is mandtory`)
         }
@@ -126,18 +159,18 @@ function CriarUsuario() {
         return valido
         }
             
-        // function validaNivelUsuario(){
-        // const id = document.getElementById("nivel_acesso")
-        // let valido = false;
+        function validaNivelUsuario(){
+        const idNivel = document.getElementById("NivelUsuario")
+        let valido = false;
         
-        // if(id == null){
-        //     showError(id!, `user level is mandatory!`)
-        // } else {
-        //     showSuccess(id!)
-        //     valido = true;
-        // }
-        // return valido
-        // }
+        if(!ehNivel(String(NivelUsuario))){
+            showErro(idNivel!, `user level is mandatory`)
+        } else {
+            showSucesso(idNivel!)
+            valido = true;
+        }
+        return valido
+        }
         
         function receberNome(evento: any){
         let entrada = evento.target.value;
@@ -224,8 +257,8 @@ function CriarUsuario() {
                                         <option value="" selected disabled>Select</option>
                                         <option value="1">Administrator</option>
                                         <option value="2">User</option>
-                                        <small></small>
                                     </select> 
+                                    <small></small>
                             </div>
                         </div>
                     </div>
