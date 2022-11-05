@@ -25,7 +25,7 @@ function App() {
       <Route path="/Cadastrar" element={<CriarUsuario/>}/>
       <Route path="/Variavel" element={<VariaveisAeronaves />}/>
       <Route path="/Logs" element={<LogsCalculo />}/>
-      <Route path="/AtualizaA/:idAeronave" element={<UpdateAeronaves />}/>
+      <Route path="/AtualizaA/:id" element={<UpdateAeronaves />}/>
     </Routes>
     </BrowserRouter>
   );

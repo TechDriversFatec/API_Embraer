@@ -66,6 +66,7 @@ function CriarUsuario() {
             confirmButtonText: 'Ok!'
         }).then((result) => {
             if (result.isConfirmed)
+            // eslint-disable-next-line no-restricted-globals
             location.reload()
         })
         
