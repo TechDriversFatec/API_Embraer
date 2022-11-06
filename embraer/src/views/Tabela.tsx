@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from "react";
-import { Table, Button } from "semantic-ui-react";
+import { Table, Button, Input } from "semantic-ui-react";
 import { Link, useParams } from "react-router-dom";
 import axios from "axios";
 import {
@@ -7,6 +7,7 @@ import {
   FaPlaneArrival,
   FaCalculator,
   FaTrashAlt,
+  FaSearch,
 } from "react-icons/fa";
 import UpdateAeronaves from "./Update-Aeronave";
 import { ModelTrainingOutlined } from "@mui/icons-material";
@@ -19,6 +20,22 @@ import Swal from "sweetalert2";
 
 export default function Read() {
   const [listAeronaves, setlistAeronaves] = useState([]);
+  const [searchInput, setsearchInput] = useState('');
+  const [resultadoFiltrado, setresultadoFiltrado] = useState([])
+
+  const searchItems = (searchValue) => {
+    setsearchInput(searchValue)
+    if(searchInput !== ''){
+      const aeronaveFiltrada = listAeronaves.filter((item) => {
+        return Object.values(item).join(' ').toLowerCase().includes(searchInput.toLowerCase())
+      })
+      setresultadoFiltrado(aeronaveFiltrada)
+    } else {
+      setresultadoFiltrado(listAeronaves)
+    }
+  }
+  
+
   const setData = (data: any) => {
     let { id, fabricante, modelo, certificacao, motor, qtde_reversor, peso_referencial, peso_minimo, sobrepeso, peso_maximo } = data;
     localStorage.setItem('Id', id)
@@ -58,6 +75,12 @@ export default function Read() {
   console.log(listAeronaves);
   return (
     <div>
+      <div>
+        <Input icon="search"
+        placeholder="Search"
+        onChange={(e) => searchItems(e.target.value)}
+        />
+      </div>
       <Table singleLine>
         <Table.Header>
           <Table.Row>
@@ -70,10 +93,11 @@ export default function Read() {
         </Table.Header>
 
         <Table.Body>
-          {listAeronaves.map((data: any) => {
+          {searchInput.length > 1 ? (
+            resultadoFiltrado.map((data: any) => {
             let url = `/AtualizA/` + data.id;
-            return (
-              <Table.Row>
+              return(
+                <Table.Row>
                 <Table.Cell>{data.modelo}</Table.Cell>
                 <Table.Cell>{data.fabricante}</Table.Cell>
                 <Table.Cell>{data.certificacao}</Table.Cell>
@@ -81,9 +105,7 @@ export default function Read() {
                 <Table.Cell>
                   <Link to="/Variavel/">
                     <IconButton>
-                    <Tooltip title="Variavel">
                       <FaPlus />
-                    </Tooltip>
                     </IconButton>
                   </Link>
                   <Link to={url}>
@@ -91,19 +113,55 @@ export default function Read() {
                     <FaPlaneArrival />
                   </Button>
                   </Link>
-                  <Link to="/Variavel">
+                  {/* <Link to="/Variavel">
                     <Button>
                       <FaCalculator />
                     </Button>
-                  </Link>
+                  </Link> */}
                   <Button onClick={() => onDelete(data.id)}>
                     <FaTrashAlt />
                   </Button>
                 </Table.Cell>
               </Table.Row>
-            );
-          })}
+              )
+            })
+          ) : (
+            listAeronaves.map((data: any) => {
+            let url = `/AtualizA/` + data.id;
+              return (
+                <Table.Row>
+                <Table.Cell>{data.modelo}</Table.Cell>
+                <Table.Cell>{data.fabricante}</Table.Cell>
+                <Table.Cell>{data.certificacao}</Table.Cell>
+                <Table.Cell>{data.motor}</Table.Cell>
+                <Table.Cell>
+                  <Link to="/Variavel/">
+                    <IconButton>
+                      <FaPlus />
+                    </IconButton>
+                  </Link>
+                  <Link to={url}>
+                  <Button onClick={() => setData(data)}>
+                    <FaPlaneArrival />
+                  </Button>
+                  </Link>
+                  {/* <Link to="/Variavel">
+                    <Button>
+                      <FaCalculator />
+                    </Button>
+                  </Link> */}
+                  <Button onClick={() => onDelete(data.id)}>
+                    <FaTrashAlt />
+                  </Button>
+                </Table.Cell>
+              </Table.Row>
+              )
+            })
+          )}
+            
         </Table.Body>
+
+        
       </Table>
     </div>
   );
