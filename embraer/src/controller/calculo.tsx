@@ -138,18 +138,10 @@ class Calcular {
             distanciaReferencia = parseInt(metroPes(distanciaReferencia).toLocaleString())
             medida = "Feet"
 
-            return Swal.fire({
-                title: `${distanciaReferencia.toFixed(2)} ${medida}`,
-                html:
-                    ' <b>Required for the landing</b> '
-            })
+            return `${distanciaReferencia.toFixed(2)} ${medida} to perform the landing`
         }
         else {
-            return Swal.fire({
-                title: `${distanciaReferencia.toFixed(2).replace(".", ",")} ${medida}`,
-                html:
-                    ' <b>Required for the landing</b> '
-            })
+            return `${distanciaReferencia.toFixed(2).replace(".", ",")} ${medida} to perform the landing`
         }
 
     }

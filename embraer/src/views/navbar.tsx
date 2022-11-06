@@ -47,154 +47,260 @@ function ResponsiveAppBar() {
   };
 
   const handleLogout = () => {
-      localStorage.clear();      
-      window.location.href = '/';
+    localStorage.clear();
+    window.location.href = '/';
   };
 
   const handleCloseUserMenu = () => {
     setAnchorElUser(null);
   };
 
-  if (window.location.pathname != "/") {
-    return (
+  if (window.location.pathname !== "/") {
+    if (localStorage.getItem('nivelAcesso') === '1') {
+      return (
 
-      <AppBar style={{ background: '#1C1C1C', height: '50px' }} position="static">
-        <Container style={{ padding: '0px', height: '50px' }} maxWidth="xl">
-          <Toolbar style={{ padding: '0px', height: '50px', paddingBottom: '10px' }} disableGutters>
-            <i style={{ marginRight: '5px', marginLeft: '5px' }}>
-              <img src="loguinho.png" id="logoAviaozinho" alt="some text" />
-            </i>
-            {/* <AdbIcon sx={{ display: { xs: 'none', md: 'flex' }, mr: 1 }} /> */}
-            <Typography
-              variant="h6"
-              noWrap
-              component="a"
-              href="/Index"
-              sx={{
-                mr: 2,
-                display: { xs: 'none', md: 'flex' },
-                fontFamily: 'monospace',
-                fontWeight: 700,
-                letterSpacing: '.3rem',
-                color: 'inherit',
-                textDecoration: 'none',
-              }}
-            >
-              EMBRAER
-            </Typography>
-
-            <Box sx={{ flexGrow: 1, display: { xs: 'flex', md: 'none' } }}>
-              <IconButton
-                size="large"
-                aria-label="account of current user"
-                aria-controls="menu-appbar"
-                aria-haspopup="true"
-                onClick={handleOpenNavMenu}
-                color="inherit"
-              >
-                <MenuIcon />
-              </IconButton>
-              <Menu
-                id="menu-appbar"
-                anchorEl={anchorElNav}
-                anchorOrigin={{
-                  vertical: 'bottom',
-                  horizontal: 'left',
-                }}
-                keepMounted
-                transformOrigin={{
-                  vertical: 'top',
-                  horizontal: 'left',
-                }}
-                open={Boolean(anchorElNav)}
-                onClose={handleCloseNavMenu}
+        <AppBar style={{ background: '#1C1C1C', height: '50px' }} position="static">
+          <Container style={{ padding: '0px', height: '50px' }} maxWidth="xl">
+            <Toolbar style={{ padding: '0px', height: '50px', paddingBottom: '10px' }} disableGutters>
+              <i style={{ marginRight: '5px', marginLeft: '5px' }}>
+                <img src="loguinho.png" id="logoAviaozinho" alt="some text" />
+              </i>
+              {/* <AdbIcon sx={{ display: { xs: 'none', md: 'flex' }, mr: 1 }} /> */}
+              <Typography
+                variant="h6"
+                noWrap
+                component="a"
+                href="/Index"
                 sx={{
-                  display: { xs: 'block', md: 'none' },
+                  mr: 2,
+                  display: { xs: 'none', md: 'flex' },
+                  fontFamily: 'monospace',
+                  fontWeight: 700,
+                  letterSpacing: '.3rem',
+                  color: 'inherit',
+                  textDecoration: 'none',
                 }}
               >
-                {pages.map((page) => (
-                  <MenuItem key={page} onClick={handleCloseNavMenu}>
-                    <Typography textAlign="center">{page}</Typography>
-                  </MenuItem>
-                ))}
-              </Menu>
-            </Box>
-            <AdbIcon sx={{ display: { xs: 'flex', md: 'none' }, mr: 1 }} />
-            <Box sx={{ flexGrow: 1, display: { xs: 'none', md: 'flex' } }}>
-              <Button
-                key={'Calculo'}
-                onClick={handleCalculo}
-                sx={{ my: 2, color: 'white', display: 'block' }}
-              >
-                {'Calculation'}
-              </Button>
-              <Button
-                key={'CadastarAeronave'}
-                onClick={handleAddAircraft}
-                sx={{ my: 2, color: 'white', display: 'block' }}
-              >
-                {'Add Aircraft'}
-              </Button>
-              <Button
-                key={'CadastrarUsuario'}
-                onClick={handleAddUser}
-                sx={{ my: 2, color: 'white', display: 'block' }}
-              >
-                {'Add User'}
-              </Button>
-              {/* {pages.map((page) => (
-              <Button
-                key={page}
-                onClick={handleCloseNavMenu}
-                sx={{ my: 2, color: 'white', display: 'block' }}
-              >
-                {page}
-              </Button>
-            ))} */}
-            </Box>
-
-            <Box sx={{ flexGrow: 0 }}>
-              <MenuItem onClick={handleOpenUserMenu}>
+                EMBRAER
+              </Typography>
+              <Box sx={{ flexGrow: 1, display: { xs: 'flex', md: 'none' } }}>
                 <IconButton
                   size="large"
                   aria-label="account of current user"
-                  aria-controls="primary-search-account-menu"
+                  aria-controls="menu-appbar"
                   aria-haspopup="true"
+                  onClick={handleOpenNavMenu}
                   color="inherit"
                 >
-                  <AccountCircle />
+                  <MenuIcon />
                 </IconButton>
-                {/* <p>Profile</p> */}
-              </MenuItem>
-              <Menu
-                sx={{ mt: '45px' }}
-                id="menu-appbar"
-                anchorEl={anchorElUser}
-                anchorOrigin={{
-                  vertical: 'top',
-                  horizontal: 'right',
-                }}
-                keepMounted
-                transformOrigin={{
-                  vertical: 'top',
-                  horizontal: 'right',
-                }}
-                open={Boolean(anchorElUser)}
-                onClose={handleCloseUserMenu}
-              >
-                <MenuItem key={'Profile'} onClick={handleCloseUserMenu}>
-                  <Typography textAlign="center">{'Profile'}</Typography>
-                </MenuItem>
+                <Menu
+                  id="menu-appbar"
+                  anchorEl={anchorElNav}
+                  anchorOrigin={{
+                    vertical: 'bottom',
+                    horizontal: 'left',
+                  }}
+                  keepMounted
+                  transformOrigin={{
+                    vertical: 'top',
+                    horizontal: 'left',
+                  }}
+                  open={Boolean(anchorElNav)}
+                  onClose={handleCloseNavMenu}
+                  sx={{
+                    display: { xs: 'block', md: 'none' },
+                  }}
+                >
+                  {pages.map((page) => (
+                    <MenuItem key={page} onClick={handleCloseNavMenu}>
+                      <Typography textAlign="center">{page}</Typography>
+                    </MenuItem>
+                  ))}
+                </Menu>
+              </Box>
+              <AdbIcon sx={{ display: { xs: 'flex', md: 'none' }, mr: 1 }} />
+              <Box sx={{ flexGrow: 1, display: { xs: 'none', md: 'flex' } }}>
+                <Button
+                  key={'Calculo'}
+                  onClick={handleCalculo}
+                  sx={{ my: 2, color: 'white', display: 'block' }}
+                >
+                  {'Calculation'}
+                </Button>
+                <Button
+                  key={'CadastarAeronave'}
+                  onClick={handleAddAircraft}
+                  sx={{ my: 2, color: 'white', display: 'block' }}
+                >
+                  {'Add Aircraft'}
+                </Button>
+                <Button
+                  key={'CadastrarUsuario'}
+                  onClick={handleAddUser}
+                  sx={{ my: 2, color: 'white', display: 'block' }}
+                >
+                  {'Add User'}
+                </Button>
+              </Box>
+              <Box>Welcome, {localStorage.getItem('nomeUsuario')}</Box>
 
-                <MenuItem key={'Logout'} onClick={handleLogout}>
-                  <Typography textAlign="center">{'Logout'}</Typography>
+              <Box sx={{ flexGrow: 0 }}>
+                <MenuItem onClick={handleOpenUserMenu}>
+                  <IconButton
+                    size="large"
+                    aria-label="account of current user"
+                    aria-controls="primary-search-account-menu"
+                    aria-haspopup="true"
+                    color="inherit"
+                  >
+                    <AccountCircle />
+                  </IconButton>
+                  {/* <p>Profile</p> */}
                 </MenuItem>
-              </Menu>
-            </Box>
-          </Toolbar>
-        </Container>
-      </AppBar>
-    );
+                <Menu
+                  sx={{ mt: '45px' }}
+                  id="menu-appbar"
+                  anchorEl={anchorElUser}
+                  anchorOrigin={{
+                    vertical: 'top',
+                    horizontal: 'right',
+                  }}
+                  keepMounted
+                  transformOrigin={{
+                    vertical: 'top',
+                    horizontal: 'right',
+                  }}
+                  open={Boolean(anchorElUser)}
+                  onClose={handleCloseUserMenu}
+                >
+                  <MenuItem key={'Profile'} onClick={handleCloseUserMenu}>
+                    <Typography textAlign="center">{'Profile'}</Typography>
+                  </MenuItem>
+
+                  <MenuItem key={'Logout'} onClick={handleLogout}>
+                    <Typography textAlign="center">{'Logout'}</Typography>
+                  </MenuItem>
+                </Menu>
+              </Box>
+            </Toolbar>
+          </Container>
+        </AppBar>
+      );
+    } else {
+      return (
+
+        <AppBar style={{ background: '#1C1C1C', height: '50px' }} position="static">
+          <Container style={{ padding: '0px', height: '50px' }} maxWidth="xl">
+            <Toolbar style={{ padding: '0px', height: '50px', paddingBottom: '10px' }} disableGutters>
+              <i style={{ marginRight: '5px', marginLeft: '5px' }}>
+                <img src="loguinho.png" id="logoAviaozinho" alt="some text" />
+              </i>
+              {/* <AdbIcon sx={{ display: { xs: 'none', md: 'flex' }, mr: 1 }} /> */}
+              <Typography
+                variant="h6"
+                noWrap
+                component="a"
+                sx={{
+                  mr: 2,
+                  display: { xs: 'none', md: 'flex' },
+                  fontFamily: 'monospace',
+                  fontWeight: 700,
+                  letterSpacing: '.3rem',
+                  color: 'inherit',
+                  textDecoration: 'none',
+                }}
+              >
+                EMBRAER
+              </Typography>
+              <Box sx={{ flexGrow: 1, display: { xs: 'flex', md: 'none' } }}>
+                <IconButton
+                  size="large"
+                  aria-label="account of current user"
+                  aria-controls="menu-appbar"
+                  aria-haspopup="true"
+                  onClick={handleOpenNavMenu}
+                  color="inherit"
+                >
+                  <MenuIcon />
+                </IconButton>
+                <Menu
+                  id="menu-appbar"
+                  anchorEl={anchorElNav}
+                  anchorOrigin={{
+                    vertical: 'bottom',
+                    horizontal: 'left',
+                  }}
+                  keepMounted
+                  transformOrigin={{
+                    vertical: 'top',
+                    horizontal: 'left',
+                  }}
+                  open={Boolean(anchorElNav)}
+                  onClose={handleCloseNavMenu}
+                  sx={{
+                    display: { xs: 'block', md: 'none' },
+                  }}
+                >
+                  <MenuItem key={'Calculation'} onClick={handleCloseNavMenu}>
+                    <Typography textAlign="center">{'Calculation'}</Typography>
+                  </MenuItem>
+                </Menu>
+              </Box>
+              <AdbIcon sx={{ display: { xs: 'flex', md: 'none' }, mr: 1 }} />
+              <Box sx={{ flexGrow: 1, display: { xs: 'none', md: 'flex' } }}>
+                <Button
+                  key={'Calculo'}
+                  onClick={handleCalculo}
+                  sx={{ my: 2, color: 'white', display: 'block' }}
+                >
+                  {'Calculation'}
+                </Button>
+              </Box>
+
+              <Box sx={{ flexGrow: 0 }}>
+                <MenuItem onClick={handleOpenUserMenu}>
+                  <IconButton
+                    size="large"
+                    aria-label="account of current user"
+                    aria-controls="primary-search-account-menu"
+                    aria-haspopup="true"
+                    color="inherit"
+                  >
+                    <AccountCircle />
+                  </IconButton>
+                  {/* <p>Profile</p> */}
+                </MenuItem>
+                <Menu
+                  sx={{ mt: '45px' }}
+                  id="menu-appbar"
+                  anchorEl={anchorElUser}
+                  anchorOrigin={{
+                    vertical: 'top',
+                    horizontal: 'right',
+                  }}
+                  keepMounted
+                  transformOrigin={{
+                    vertical: 'top',
+                    horizontal: 'right',
+                  }}
+                  open={Boolean(anchorElUser)}
+                  onClose={handleCloseUserMenu}
+                >
+                  <MenuItem key={'Profile'} onClick={handleCloseUserMenu}>
+                    <Typography textAlign="center">{'Profile'}</Typography>
+                  </MenuItem>
+
+                  <MenuItem key={'Logout'} onClick={handleLogout}>
+                    <Typography textAlign="center">{'Logout'}</Typography>
+                  </MenuItem>
+                </Menu>
+              </Box>
+            </Toolbar>
+          </Container>
+        </AppBar>
+      );
+    }
   } else {
     return (
       <></>

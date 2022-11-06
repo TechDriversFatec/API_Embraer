@@ -16,7 +16,6 @@ const root = ReactDOM.createRoot(
 );
 
 const checarLogado = () => {
-  debugger
   if (window.location.pathname != '/') {
     if (localStorage.getItem('idUsuario') == null) {
       window.location.href = '/';

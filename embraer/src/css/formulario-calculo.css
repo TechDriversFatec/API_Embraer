@@ -1,3 +1,13 @@
+
+div#resultadoDiv{
+  text-align: center;
+}
+
+.col-form-label-lg{
+  font-size: 50px;
+  font-family:DejaVu Sans Mono, monospace ;
+}
+
 #swal2-title{
   font-size: 60px;
   padding: 40px;

@@ -96,7 +96,7 @@ export default function Read() {
                 <Table.Cell>{data.certificacao}</Table.Cell>
                 <Table.Cell>{data.motor}</Table.Cell>
                 <Table.Cell>
-                  <Link to="/Variavel/">
+                  <Link to="/Variavel">
                     <Tooltip title="Create">
                       <IconButton>
                         <AddIcon />
@@ -134,7 +134,7 @@ export default function Read() {
                 <Table.Cell>{data.certificacao}</Table.Cell>
                 <Table.Cell>{data.motor}</Table.Cell>
                 <Table.Cell>
-                  <Link to="/Variavel/">
+                  <Link to="/Variavel">
                     <Tooltip title="Create">
                       <IconButton>
                         <AddIcon />

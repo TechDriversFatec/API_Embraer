@@ -51,7 +51,8 @@ function Calculo() {
       slopeValido
 
     if (formularioValido) {
-      calcular.calcularPouso(
+
+      setResultadoCalculo(calcular.calcularPouso(
         parseInt(Peso),
         parseInt(Altitude),
         parseInt(Temperatura),
@@ -59,8 +60,9 @@ function Calculo() {
         parseInt(Slope),
         parseInt(vap),
         parseInt(Rev),
-        parseInt(unidade))
+        parseInt(unidade)))
 
+      debugger
       Axios.post("http://localhost:3002/salvarLog", {
         aeronave_id: (document.getElementById('aeronave') as HTMLInputElement).value,
         motor: (document.getElementById('motor') as HTMLInputElement).value,
@@ -208,7 +210,6 @@ function Calculo() {
     setResultadoCalculo(entrada)
   }
 
-
   const [Peso, setPeso] = useState("");
   const [Altitude, setAltitude] = useState("");
   const [Temperatura, setTemperatura] = useState("");
@@ -218,7 +219,6 @@ function Calculo() {
   const [Rev, setRev] = useState("")
   const [unidade, setUnidade] = useState("")
   const [resultadoCalculo, setResultadoCalculo] = useState("")
-
 
   type Aeronaves = {
     certificacao: string,
@@ -330,6 +330,26 @@ function Calculo() {
 
   //     });
   // }
+
+
+  function btnReturn(nivel_acesso: string) {
+    if (nivel_acesso === '1') {
+      return (<Link to="/Index">
+        <button className="rounded btn btn-primary ml-2 float-start" >
+          <b>Return</b>
+        </button>
+      </Link>)
+    } else {
+      return <></>
+    }
+  }
+
+  function mostrarResult() {
+    if (resultadoCalculo != '') {
+      return (<li>
+        teste</li>)
+    }
+  }
 
   return (
     <div className="formCalculo">
@@ -538,13 +558,12 @@ function Calculo() {
                 </div>
               </li>
             </ul>
-            <div className="card-footer w-100 float-right">
+            <div id='resultadoDiv'>
+              <label className=" col-form-label col-form-label-lg">{resultadoCalculo}</label>
+            </div>
 
-              <Link to="/Index">
-                <button className="rounded btn btn-primary ml-2 float-start" >
-                  <b>Return</b>
-                </button>
-              </Link>
+            <div className="card-footer w-100 float-right">
+              {btnReturn(localStorage.getItem('nivelAcesso') ?? "")}
               <button
                 title="btn_calcular"
                 className="rounded btn btn-primary ml-2 float-end"
@@ -557,9 +576,6 @@ function Calculo() {
           </div>
         </div>
       </form>
-      <div>
-        <input placeholder="result" type="text" id="resultadoConta" value={resultadoCalculo} onChange={receberResultado} />
-      </div>
     </div>
   );
 }

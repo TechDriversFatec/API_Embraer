@@ -49,11 +49,15 @@ const Login = () => {
                     if (data[0].nivel_acesso === 1) {
                         localStorage.setItem('idUsuario',`${data[0].id}`)
                         localStorage.setItem('nomeUsuario',`${data[0].nome}`)
+                        localStorage.setItem('nivelAcesso',`${data[0].nivel_acesso
+                        }`)
                         navigate("/Index")
                     }
                     else {
                         localStorage.setItem('idUsuario',`${data[0].id}`)
                         localStorage.setItem('nomeUsuario',`${data[0].nome}`)
+                        localStorage.setItem('nivelAcesso',`${data[0].nivel_acesso
+                        }`)
                         navigate("/Calculo")
                         
                     }
