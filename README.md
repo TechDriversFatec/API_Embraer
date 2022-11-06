@@ -54,7 +54,7 @@
  
  <br>
   <p align="center">
-  <img src="Planejamento/Imagens/Backlog-Total-3.jpg" alt="Backlog com as atividades das quatro sprints" width="100%" height="100%">
+  <img src="Planejamento/Imagens/Backlog-total.jpg" alt="Backlog com as atividades das quatro sprints" width="100%" height="100%">
  </p>
  
  
@@ -141,3 +141,6 @@ Para melhor visualização do protótipo, acesse o [link](https://www.figma.com/
 
  → [Voltar ao topo](#topo)
 
+> Equipe Tech Drivers, 2022 <br>
+> 🖱️ [Github](https://github.com/TechDriversFatec)<br>
+> 📧 [E-mail](mailto:techdrivers.fatec@gmail.com)
