@@ -98,7 +98,7 @@ Neste gráfico de Burndown foi retratado o tempo empregado no desenvolvimento da
 
 <br>
 <p align="center">
-<img src="Imagens/Burndown-3.jpg" alt="Gráfico de Burndown representando as atividades desenvolvidas na terceira sprint" width="100%" height="100%">
+<img src="Imagens/Burndown.jpg" alt="Gráfico de Burndown representando as atividades desenvolvidas na terceira sprint" width="100%" height="100%">
 <br>
 <br>
 <img src="Imagens/atividades-3.jpg" alt="Descrição das atividades desenvolvidas na terceira sprint" width="100%" height="100%">
