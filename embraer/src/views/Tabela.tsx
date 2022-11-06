@@ -1,19 +1,11 @@
-import React, { useEffect, useState } from "react";
-import { Table, Button, Input } from "semantic-ui-react";
-import { Link, useParams } from "react-router-dom";
+import { IconButton } from "@mui/material";
 import axios from "axios";
 import { useEffect, useState } from "react";
 import {
-  FaPlus,
-  FaPlaneArrival,
-  FaCalculator,
-  FaTrashAlt,
-  FaSearch,
+  FaPlaneArrival, FaPlus, FaTrashAlt
 } from "react-icons/fa";
 import { Link } from "react-router-dom";
-import { Button, Table } from "semantic-ui-react";
-import { Tooltip } from "react-bootstrap";
-import { IconButton } from "@mui/material";
+import { Button, Input, Table } from "semantic-ui-react";
 import Swal from "sweetalert2";
 
 //import {PlusCircleOutlined, EditOutlined, DeleteOutlined} from '@ant-design/icons';

@@ -28,7 +28,7 @@ function App() {
       <Route path="/Logs" element={<LogsCalculo />}/>
       <Route path="/AtualizA/:id" element={<UpdateAeronaves />}/>
     </Routes>
-    <Footer />
+   {/* <Footer />*/}
     </BrowserRouter>
   );
 }
