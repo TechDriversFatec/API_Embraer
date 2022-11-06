@@ -12,6 +12,7 @@ import Login from "./views/login";
 import LogsCalculo from "./views/calculoLogs";
 import Footer from "./views/footer";
 import UpdateAeronaves from "./views/Update-Aeronave";
+import UserProfile from "./views/user-profile"
 
 function App() {
   return (
@@ -27,6 +28,7 @@ function App() {
         <Route path="/Variavel" element={<VariaveisAeronaves />} />
         <Route path="/Logs" element={<LogsCalculo />} />
         <Route path="/AtualizA/:id" element={<UpdateAeronaves />} />
+        <Route path="/Profile" element={<UserProfile />} />
       </Routes>
       <Footer />
     </BrowserRouter>
