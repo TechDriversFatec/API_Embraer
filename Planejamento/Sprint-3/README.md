@@ -86,12 +86,12 @@ https://user-images.githubusercontent.com/86115352/200194699-e742fe05-b88b-48fa-
 
 ## Cadastro de variáveis
 
-Para visualizar a demonstração, clique [aqui](https://clipchamp.com/watch/go3hNmUcdKu)
+Para visualizar a demonstração, clique [aqui](https://clipchamp.com/watch/go3hNmUcdKu).
 
   
-### Cálculo 
+### Login do piloto e Cálculo 
 
-[Em breve}
+Para visualizar a demonstração, clique [aqui](https://clipchamp.com/watch/TeCwyL1M3AN).
 
 
 → [Voltar ao topo](#topo)
