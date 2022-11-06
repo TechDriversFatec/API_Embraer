@@ -1,15 +1,10 @@
-import React, { useEffect, useState } from "react";
-import { Table, Button } from "semantic-ui-react";
-import { Link, useParams } from "react-router-dom";
 import axios from "axios";
+import { useEffect, useState } from "react";
 import {
-  FaPlus,
-  FaPlaneArrival,
-  FaCalculator,
-  FaTrashAlt,
+  FaCalculator, FaPlaneArrival, FaPlus, FaTrashAlt
 } from "react-icons/fa";
-import UpdateAeronaves from "./Update-Aeronave";
-import { ModelTrainingOutlined } from "@mui/icons-material";
+import { Link } from "react-router-dom";
+import { Button, Table } from "semantic-ui-react";
 
 //import {PlusCircleOutlined, EditOutlined, DeleteOutlined} from '@ant-design/icons';
 //import { isConstructorDeclaration } from "typescript";
