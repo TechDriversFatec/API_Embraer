@@ -14,8 +14,21 @@ import Login from './views/login';
 const root = ReactDOM.createRoot(
   document.getElementById('root') as HTMLElement
 );
+
+const checarLogado = () => {
+  debugger
+  if (window.location.pathname != '/') {
+    if (localStorage.getItem('idUsuario') == null) {
+      window.location.href = '/';
+    }
+  }
+}
+
+checarLogado()
+
 root.render(
   <React.StrictMode>
+
     <App />
   </React.StrictMode>
 );

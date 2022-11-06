@@ -54,7 +54,7 @@ Para dar continuidade ao projeto, os integrantes da equipe analisaram e optaram 
 <p align="justify">As informações inicialmente definidas foram revisadas e isso resultou na alteração das estruturas do banco de dados previstas nas sprints anteriores. A seguir, é apresentado o Diagrama Entidade-Relacionamento com as informações relativas às aeronaves e às condições de pista e clima determinantes para o resultado do cálculo. Esse diagrama foi a base para o CRUD realizado:<br>
 <br></p>
 <p align="center">
-<img src="..." alt="Diagrama que representa a relação entre as entidades do banco de dados da aplicação" width="80%" height="80%">
+<img src="Imagens/DER-atualizado.png" alt="Diagrama que representa a relação entre as entidades do banco de dados da aplicação" width="80%" height="80%">
 </p>
 
 
@@ -98,10 +98,10 @@ Neste gráfico de Burndown foi retratado o tempo empregado no desenvolvimento da
 
 <br>
 <p align="center">
-<img src="..." alt="Gráfico de Burndown representando as atividades desenvolvidas na terceira sprint" width="100%" height="100%">
+<img src="Imagens/Burndown.jpg" alt="Gráfico de Burndown representando as atividades desenvolvidas na terceira sprint" width="100%" height="100%">
 <br>
 <br>
-<img src="..." alt="Descrição das atividades desenvolvidas na terceira sprint" width="100%" height="100%">
+<img src="Imagens/atividades-3.jpg" alt="Descrição das atividades desenvolvidas na terceira sprint" width="100%" height="100%">
 </p>
 
 → [Voltar ao topo](#topo)

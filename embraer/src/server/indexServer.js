@@ -195,14 +195,53 @@ app.put("/update/:id", (req,res) => {
     const { sobrepeso } = req.body;
     const { peso_maximo } = req.body;
 
-    let SQL = "UPDATE aeronave id = ?, modelo = ?,  fabricante = ?, motor = ?, certificacao = ?, qtde_reversor = ?, peso_referencial = ?, peso_minimo = ?, sobrepeso = ?, peso_maximo = ?, WHERE id =" + id;
+    let SQL = "UPDATE aeronave SET modelo = ?,  fabricante = ?, motor = ?, certificacao = ?, qtde_reversor = ?, peso_referencial = ?, peso_minimo = ?, sobrepeso = ?, peso_maximo = ? WHERE id =" + id;
 
-    db.query(SQL, [id, modelo, fabricante, motor, certificacao, qtde_reversor, peso_referencial, peso_minimo, sobrepeso, peso_maximo], (err,result) => {
+    db.query(SQL, [modelo, fabricante, motor, certificacao, qtde_reversor, peso_referencial, peso_minimo, sobrepeso, peso_maximo], (err,result) => {
         if (err) console.log(err);
         else res.send(result);
     });
 });
 
+app.put("/updateVariavel/:id", (req,res) => {
+    const { id } = req.params;
+    const { tipo_flap } = req.body;
+    const { configuracao_freio } = req.body;
+    const { condicao_pista } = req.body;
+    const { distancia_referencial } = req.body;
+    const { correcao_reversor_inoperante } = req.body;
+    const { padrao_variacao_peso } = req.body;
+    const { correcao_peso_acima } = req.body;
+    const { correcao_peso_abaixo } = req.body;
+    const { correcao_sobrepeso } = req.body;
+    const { altitude_padrao } = req.body;
+    const { padrao_variacao_altitude } = req.body;
+    const { correcao_altitude_acima } = req.body;
+    const { correcao_altitude_abaixo } = req.body;
+    const { temperatura_padrao } = req.body;
+    const { padrao_variacao_temperatura } = req.body;
+    const { correcao_temperatura_acima } = req.body;
+    const { correcao_temperatura_abaixo } = req.body;
+    const { padrao_vento } = req.body;
+    const { padrao_variacao_vento } = req.body;
+    const { correcao_vento_cauda } = req.body;
+    const { correcao_vento_proa } = req.body;
+    const { slope_padrao } = req.body;
+    const { padrao_variacao_inclinacao } = req.body;
+    const { correcao_aclive } = req.body;
+    const { correcao_declive } = req.body;
+    const { vap_padrao } = req.body;
+    const { padrao_variacao_velocidade } = req.body;
+    const { correcao_velocidade_acima } = req.body;
+    const { correcao_velocidade_abaixo } = req.body;
+
+    let SQL = "UPDATE flap SET tipo_flap = ?, configuracao_freio = ?, condicao_pista = ?, distancia_referencial = ?, correcao_reversor_inoperante = ?, padrao_variacao_peso = ?, correcao_peso_acima = ?, correcao_peso_abaixo = ?, correcao_sobrepeso = ?, altitude_padrao = ?, padrao_variacao_altitude = ?, correcao_altitude_acima = ?, correcao_altitude_abaixo = ?, temperatura_padrao = ?, padrao_variacao_temperatura = ?, correcao_temperatura_acima = ?, correcao_temperatura_abaixo = ?, padrao_vento = ?, padrao_variacao_vento = ?, correcao_vento_cauda = ?, correcao_vento_proa = ?, slope_padrao = ?, padrao_variacao_inclinacao = ?, correcao_aclive = ?, correcao_declive = ?, vap_padrao = ?, padrao_variacao_velocidade = ?, correcao_velocidade_acima = ?, correcao_velocidade_abaixo = ? WHERE id =" + id;
+
+    db.query(SQL, [tipo_flap, configuracao_freio, condicao_pista, distancia_referencial, correcao_reversor_inoperante, padrao_variacao_peso, correcao_peso_acima, correcao_peso_abaixo, correcao_sobrepeso, altitude_padrao, padrao_variacao_altitude, correcao_altitude_acima, correcao_altitude_abaixo, temperatura_padrao, padrao_variacao_temperatura, correcao_temperatura_acima, correcao_temperatura_abaixo, padrao_vento, padrao_variacao_vento, correcao_vento_cauda, correcao_vento_proa, slope_padrao, padrao_variacao_inclinacao, correcao_aclive, correcao_declive, vap_padrao, padrao_variacao_velocidade, correcao_velocidade_acima, correcao_velocidade_abaixo], (err,result) => {
+        if (err) console.log(err);
+        else res.send(result);
+    });
+})
 app.delete("/deleteAeronave/:id", (req,res) => {
     const { id } = req.params;
     let SQL = "DELETE FROM aeronave WHERE id =" + id;

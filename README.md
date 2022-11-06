@@ -1,6 +1,6 @@
 <br id="topo">
 
-<img align="right" src="Planejamento/Imagens/fatecsjc_400x192.png" alt="logo-fatec-sjc" width="20%" height="20%">
+<img align="right" src="Planejamento/Imagens/fatecsjc_400x192.png" alt="logo-fatec-sjc" width="30%" height="30%">
 
 <h1 align="left">TechDrivers</h1>
 
@@ -25,8 +25,8 @@
 | :-----: | :-----: | :-----: | :-----: |
 | 01 | 18/09/2022 | Concluída | [Ver Relatório](https://github.com/TechDriversFatec/API_Embraer/tree/main/Planejamento/Sprint-1) |
 | 02 | 09/10/2022 | Concluída | [Ver Relatório](https://github.com/TechDriversFatec/API_Embraer/tree/main/Planejamento/Sprint-2) |
-| 03 | 06/11/2022 | Em andamento | [Ver relatório](https://github.com/TechDriversFatec/API_Embraer/tree/main/Planejamento/Sprint-3) |
-| 04 | 27/11/2022 | Pendente | [Em breve] |
+| 03 | 06/11/2022 | Concluída | [Ver relatório](https://github.com/TechDriversFatec/API_Embraer/tree/main/Planejamento/Sprint-3) |
+| 04 | 27/11/2022 | Em breve | [Em breve] |
   
   → [Voltar ao topo](#topo)
   
@@ -54,7 +54,7 @@
  
  <br>
   <p align="center">
-  <img src="Planejamento/Imagens/Backlog-Total.jpg" alt="Backlog da 1a e 2a Sprint" width="100%" height="100%">
+  <img src="Planejamento/Imagens/Backlog-total.jpg" alt="Backlog com as atividades das quatro sprints" width="100%" height="100%">
  </p>
  
  
@@ -102,18 +102,24 @@ Para melhor visualização do protótipo, acesse o [link](https://www.figma.com/
   <p>Para a troca de informações, validação, prototipagem e criação do projeto foram utilizadas as seguintes ferramentas:</p><br>
 
   <div align="center">
-  <img width="50 rem" src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/slack/slack-original.svg"/> Slack    
+  <img width="50 rem" src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/slack/slack-original.svg"/> Slack
+  <img width="50 rem" src="https://cdn.icon-icons.com/icons2/3132/PNG/512/microsoft_team_social_network_management_business_icon_192283.png"/> MS Teams
+  <img width="50 rem" src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/git/git-original.svg" /> Git      
   <img width="50 rem" src="https://cdn.icon-icons.com/icons2/936/PNG/512/github-logo_icon-icons.com_73546.png"/> GitHub
   <img width="50 rem" src="https://cdn.icon-icons.com/icons2/2389/PNG/512/azure_devops_logo_icon_145466.png"/> DevOps
   <img width="50 rem" src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/figma/figma-original.svg"/> Figma
   <img width="50 rem" src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/vscode/vscode-original.svg"/> Visual Studio Code
   <br>
   <br>
+  <img width="50 rem" src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/react/react-original.svg"/> React
   <img width="50 rem" src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/typescript/typescript-original.svg"/> TypeScript 
-  <img width="50 rem" src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/html5/html5-original.svg"/> HTML 5
   <img width="50 rem" src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/javascript/javascript-original.svg"/> JavaScript
+  <img width="50 rem" src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/html5/html5-original.svg"/> HTML 5
+  <img width="50 rem" src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/css3/css3-original.svg" /> CSS 3
   <img width="50 rem" src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/bootstrap/bootstrap-original.svg"/> Bootstrap
   <img width="50 rem" src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/mysql/mysql-original.svg"/> MySQL
+  <img width="50 rem" src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/yarn/yarn-original.svg" /> Yarn
+          
   </div>
   
   → [Voltar ao topo](#topo)
@@ -135,3 +141,6 @@ Para melhor visualização do protótipo, acesse o [link](https://www.figma.com/
 
  → [Voltar ao topo](#topo)
 
+> Equipe Tech Drivers, 2022 <br>
+> 🖱️ [Github](https://github.com/TechDriversFatec)<br>
+> 📧 [E-mail](mailto:techdrivers.fatec@gmail.com)

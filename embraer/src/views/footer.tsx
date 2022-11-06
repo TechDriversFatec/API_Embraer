@@ -1,8 +1,8 @@
 import React from 'react';
-import "../css/navbar.css";
+import "../css/footer.css";
   
 const AppBar = () => (
-  <footer className="footer" style={{ background: '#1C1C1C', height: '50px', padding: '10px', paddingBottom: '10px'}}>
+  <footer className="footer" style={{ background: '#1C1C1C', width: '100%', height: '50px', padding: '10px', paddingBottom: '10px', position: 'relative'}}>
     <p text-align="center" style={{color: 'white', textAlign: 'center'}}>All Rights Reserved.</p>
   
   </footer>
