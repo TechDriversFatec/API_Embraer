@@ -5,12 +5,28 @@ import {
 } from "react-icons/fa";
 import { Link } from "react-router-dom";
 import { Button, Table } from "semantic-ui-react";
+import { Tooltip } from "react-bootstrap";
+import { IconButton } from "@mui/material";
+import Swal from "sweetalert2";
 
 //import {PlusCircleOutlined, EditOutlined, DeleteOutlined} from '@ant-design/icons';
 //import { isConstructorDeclaration } from "typescript";
 
 export default function Read() {
   const [listAeronaves, setlistAeronaves] = useState([]);
+  const setData = (data: any) => {
+    let { id, fabricante, modelo, certificacao, motor, qtde_reversor, peso_referencial, peso_minimo, sobrepeso, peso_maximo } = data;
+    localStorage.setItem('Id', id)
+    localStorage.setItem('Fabricante', fabricante)
+    localStorage.setItem('Modelo', modelo)
+    localStorage.setItem('Certificacao', certificacao)
+    localStorage.setItem('Motor', motor)
+    localStorage.setItem('Qtde Reversor', qtde_reversor)
+    localStorage.setItem('Peso Referencial', peso_referencial)
+    localStorage.setItem('Peso Minimo', peso_minimo)
+    localStorage.setItem('Sobrepeso', sobrepeso)
+    localStorage.setItem('Peso Maximo', peso_maximo)
+  }
 
   useEffect(() => {
     axios.get(`http://localhost:3002/exibirAeronaves`).then((response) => {
@@ -27,6 +43,9 @@ export default function Read() {
   const onDelete = (id: number) => {
     axios.delete(`http://localhost:3002/deleteAeronave/${id}`).then(() => {
       getData();
+    });
+    Swal.fire({
+      text: "Aircraft deleted successfully!",
     });
   };
 
@@ -47,7 +66,7 @@ export default function Read() {
 
         <Table.Body>
           {listAeronaves.map((data: any) => {
-            let url = `/AtualizA/${data.id}`;
+            let url = `/AtualizA/` + data.id;
             return (
               <Table.Row>
                 <Table.Cell>{data.modelo}</Table.Cell>
@@ -56,12 +75,14 @@ export default function Read() {
                 <Table.Cell>{data.motor}</Table.Cell>
                 <Table.Cell>
                   <Link to="/Variavel/">
-                    <Button>
+                    <IconButton>
+                    <Tooltip title="Variavel">
                       <FaPlus />
-                    </Button>
+                    </Tooltip>
+                    </IconButton>
                   </Link>
                   <Link to={url}>
-                  <Button>
+                  <Button onClick={() => setData(data)}>
                     <FaPlaneArrival />
                   </Button>
                   </Link>
