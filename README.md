@@ -104,6 +104,7 @@ Para melhor visualização do protótipo, acesse o [link](https://www.figma.com/
   <div align="center">
   <img width="50 rem" src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/slack/slack-original.svg"/> Slack
   <img width="50 rem" src="https://cdn.icon-icons.com/icons2/3132/PNG/512/microsoft_team_social_network_management_business_icon_192283.png"/> MS Teams
+  <img width="50 rem" src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/git/git-original.svg" /> Git      
   <img width="50 rem" src="https://cdn.icon-icons.com/icons2/936/PNG/512/github-logo_icon-icons.com_73546.png"/> GitHub
   <img width="50 rem" src="https://cdn.icon-icons.com/icons2/2389/PNG/512/azure_devops_logo_icon_145466.png"/> DevOps
   <img width="50 rem" src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/figma/figma-original.svg"/> Figma
@@ -114,6 +115,7 @@ Para melhor visualização do protótipo, acesse o [link](https://www.figma.com/
   <img width="50 rem" src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/typescript/typescript-original.svg"/> TypeScript 
   <img width="50 rem" src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/javascript/javascript-original.svg"/> JavaScript
   <img width="50 rem" src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/html5/html5-original.svg"/> HTML 5
+  <img width="50 rem" src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/css3/css3-original.svg" /> CSS 3
   <img width="50 rem" src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/bootstrap/bootstrap-original.svg"/> Bootstrap
   <img width="50 rem" src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/mysql/mysql-original.svg"/> MySQL
   <img width="50 rem" src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/yarn/yarn-original.svg" /> Yarn
