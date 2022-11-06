@@ -71,12 +71,22 @@ Para dar continuidade ao projeto, os integrantes da equipe analisaram e optaram 
 
 ### Login e cadastro de usuários
   
-[Em breve}
+
+
+https://user-images.githubusercontent.com/86115352/200194684-d46a5839-ab05-43f6-884e-a2aa7bcb6868.mp4
+
   
   
 ### Cadastro de aeronaves
 
-Para acessar o vídeo que demonstra a etapa de cadastro da aeronave dentro da aplicação basta clicar [aqui](https://clipchamp.com/watch/liuBpFZVpDh).
+
+
+https://user-images.githubusercontent.com/86115352/200194699-e742fe05-b88b-48fa-b0a9-a1ce93c2573c.mp4
+
+
+## Cadastro de variáveis
+
+Para visualizar a demonstração, clique [aqui](https://clipchamp.com/watch/go3hNmUcdKu)
 
   
 ### Cálculo 
