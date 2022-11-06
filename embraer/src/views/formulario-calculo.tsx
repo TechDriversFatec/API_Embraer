@@ -8,6 +8,8 @@ import Axios from "axios";
 import axios from "axios";
 import { TipoFrenagem } from "../util/enums/frenagemEnum";
 import { CondicaoPista } from "../util/enums/condicaoPistaEnum";
+import Alert from 'react-bootstrap/Alert';
+import Button from 'react-bootstrap/Button';
 
 
 function Calculo() {
@@ -62,7 +64,8 @@ function Calculo() {
         parseInt(Rev),
         parseInt(unidade)))
 
-      debugger
+        setShow(true)
+
       Axios.post("http://localhost:3002/salvarLog", {
         aeronave_id: (document.getElementById('aeronave') as HTMLInputElement).value,
         motor: (document.getElementById('motor') as HTMLInputElement).value,
@@ -344,12 +347,28 @@ function Calculo() {
     }
   }
 
-  function mostrarResult() {
-    if (resultadoCalculo != '') {
-      return (<li>
-        teste</li>)
-    }
-  }
+  const [show, setShow] = useState(false);
+
+  function AlertDismissible(resultado: string, showStatus: boolean) {
+
+    return (
+        <>
+            <Alert show={showStatus} variant="white" className="square border border-3" style={{ width: "100%" }}>
+                <p id='alertP'>
+                    Necessary to perform the landing:
+                </p>
+                <p id='resultP'>
+                    {resultado}
+                </p>
+                <div className="d-flex justify-content-end botaoFecharAlert">
+                    <Button onClick={() => setShow(false)} variant="rounded btn btn-primary ml-2 float-end">
+                        <b>Close</b>
+                    </Button>
+                </div>
+            </Alert>
+        </>
+    );
+}
 
   return (
     <div className="formCalculo">
@@ -559,7 +578,7 @@ function Calculo() {
               </li>
             </ul>
             <div id='resultadoDiv'>
-              <label className=" col-form-label col-form-label-lg">{resultadoCalculo}</label>
+                  {AlertDismissible(resultadoCalculo, show)}
             </div>
 
             <div className="card-footer w-100 float-right">

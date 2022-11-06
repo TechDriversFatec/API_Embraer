@@ -138,10 +138,10 @@ class Calcular {
             distanciaReferencia = parseInt(metroPes(distanciaReferencia).toLocaleString())
             medida = "Feet"
 
-            return `${distanciaReferencia.toFixed(2)} ${medida} to perform the landing`
+            return `${distanciaReferencia.toFixed(2)} ${medida}`
         }
         else {
-            return `${distanciaReferencia.toFixed(2).replace(".", ",")} ${medida} to perform the landing`
+            return `${distanciaReferencia.toFixed(2).replace(".", ",")} ${medida}`
         }
 
     }
