@@ -18,7 +18,7 @@ small{
 .formCalculo {
   background-color: #282f55;
   padding: 25px;
-  height: 100% !important;
+  height: 100vh !important;
 }
 
 .container-fluid{
