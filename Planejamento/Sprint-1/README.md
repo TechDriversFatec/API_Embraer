@@ -85,3 +85,8 @@ Foram necessárias muitas pesquisas e estudos para a realização das tarefas, c
 </p>
 
 → [Voltar ao topo](#topo)
+
+> Equipe Tech Drivers, 2022 <br>
+> 🖱️ [Github](https://github.com/TechDriversFatec)<br>
+> 📧 [E-mail](mailto:techdrivers.fatec@gmail.com)
+
