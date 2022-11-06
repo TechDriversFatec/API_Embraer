@@ -99,29 +99,12 @@ Para melhor visualização do protótipo, acesse o [link](https://www.figma.com/
   
 ## 💻 Tecnologias
   
-  <p>Para a troca de informações, validação, prototipagem e criação do projeto foram utilizadas as seguintes ferramentas:</p><br>
+  Para a troca de informações, validação, prototipagem, comunicação visual e criação do projeto foram utilizadas as seguintes ferramentas:
 
-  <div align="center">
-  <img width="50 rem" src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/slack/slack-original.svg"/> Slack
-  <img width="50 rem" src="https://cdn.icon-icons.com/icons2/3132/PNG/512/microsoft_team_social_network_management_business_icon_192283.png"/> MS Teams
-  <img width="50 rem" src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/git/git-original.svg" /> Git      
-  <img width="50 rem" src="https://cdn.icon-icons.com/icons2/936/PNG/512/github-logo_icon-icons.com_73546.png"/> GitHub
-  <img width="50 rem" src="https://cdn.icon-icons.com/icons2/2389/PNG/512/azure_devops_logo_icon_145466.png"/> DevOps
-  <img width="50 rem" src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/figma/figma-original.svg"/> Figma
-  <img width="50 rem" src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/vscode/vscode-original.svg"/> Visual Studio Code
-  <br>
-  <br>
-  <img width="50 rem" src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/react/react-original.svg"/> React
-  <img width="50 rem" src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/typescript/typescript-original.svg"/> TypeScript 
-  <img width="50 rem" src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/javascript/javascript-original.svg"/> JavaScript
-  <img width="50 rem" src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/html5/html5-original.svg"/> HTML 5
-  <img width="50 rem" src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/css3/css3-original.svg" /> CSS 3
-  <img width="50 rem" src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/bootstrap/bootstrap-original.svg"/> Bootstrap
-  <img width="50 rem" src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/mysql/mysql-original.svg"/> MySQL
-  <img width="50 rem" src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/yarn/yarn-original.svg" /> Yarn
-          
-  </div>
-  
+ 
+<img src="https://img.shields.io/badge/Slack-4A154B?style=for-the-badge&logo=slack&logoColor=white" alt="Slack" /> <img src="https://img.shields.io/badge/Microsoft_Teams-6264A7?style=for-the-badge&logo=microsoft-teams&logoColor=white" alt="MS Teams" /> <img src="https://img.shields.io/badge/Figma-20232A?style=for-the-badge&logo=figma&logoColor=DC143C" alt="Figma" /> <img src="https://img.shields.io/badge/Canva-%2300C4CC.svg?&style=for-the-badge&logo=Canva&logoColor=white" alt="Canva" /> <img src="https://img.shields.io/badge/GIT-E44C30?style=for-the-badge&logo=git&logoColor=white" alt="Git" /> <img src="https://img.shields.io/badge/GitHub-100000?style=for-the-badge&logo=github&logoColor=white" alt="Github" /> <img src="https://img.shields.io/badge/HTML5-20232A?style=for-the-badge&logo=html5&logoColor=E34F26" alt="HTML5" /> <img src="https://img.shields.io/badge/CSS3-20232A?style=for-the-badge&logo=css3&logoColor=1572B6" alt="CSS3" />  <img src="https://img.shields.io/badge/JavaScript-20232A?style=for-the-badge&logo=javascript&logoColor=F7DF1E" alt="Javascript" /> <img src="https://img.shields.io/badge/TypeScript-20232A?style=for-the-badge&logo=typescript&logoColor=007ACC" alt="Typescript" /> <img src="https://img.shields.io/badge/React-20232A?style=for-the-badge&logo=react&logoColor=61DAFB" alt="React" /> <img src="https://img.shields.io/badge/Yarn-2C8EBB?style=for-the-badge&logo=yarn&logoColor=white" alt="Yarn" /> <img src="https://img.shields.io/badge/Bootstrap-563D7C?style=for-the-badge&logo=bootstrap&logoColor=white" alt="Bootstrap" /> <img src="https://img.shields.io/badge/Azure_DevOps-0078D7?style=for-the-badge&logo=azure-devops&logoColor=white" alt="Azure DevOps" />  <img src="https://img.shields.io/badge/Visual_Studio_Code-0078D4?style=for-the-badge&logo=visual%20studio%20code&logoColor=white" alt="Visual Studio Code" /> <img src="https://img.shields.io/badge/MySQL-20232A?style=for-the-badge&logo=mysql&logoColor=1E90FF" alt="MySQL" /> <img src="https://img.shields.io/badge/Windows-0078D6?style=for-the-badge&logo=windows&logoColor=white" alt="Windows" />
+           
+ 
   → [Voltar ao topo](#topo)
   
 <span id="equipe">
