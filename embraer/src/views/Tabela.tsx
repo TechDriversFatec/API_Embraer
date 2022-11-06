@@ -1,21 +1,15 @@
 import React, { useEffect, useState } from "react";
-import { Table, Button, Input } from "semantic-ui-react";
+import { Table, Input } from "semantic-ui-react";
 import { Link, useParams } from "react-router-dom";
 import axios from "axios";
-import {
-  FaPlus,
-  FaPlaneArrival,
-  FaCalculator,
-  FaTrashAlt,
-  FaSearch,
-} from "react-icons/fa";
 import UpdateAeronaves from "./Update-Aeronave";
 import { ModelTrainingOutlined } from "@mui/icons-material";
-import { Tooltip } from "react-bootstrap";
 import { IconButton } from "@mui/material";
+import AddIcon from '@mui/icons-material/Add';
+import AirplanemodeActiveIcon from '@mui/icons-material/AirplanemodeActive';
+import DeleteOutlineIcon from '@mui/icons-material/DeleteOutline';
+import Tooltip from '@mui/material/Tooltip';
 import Swal from "sweetalert2";
-
-//import {PlusCircleOutlined, EditOutlined, DeleteOutlined} from '@ant-design/icons';
 //import { isConstructorDeclaration } from "typescript";
 
 export default function Read() {
@@ -34,7 +28,6 @@ export default function Read() {
       setresultadoFiltrado(listAeronaves)
     }
   }
-  
 
   const setData = (data: any) => {
     let { id, fabricante, modelo, certificacao, motor, qtde_reversor, peso_referencial, peso_minimo, sobrepeso, peso_maximo } = data;
@@ -104,23 +97,29 @@ export default function Read() {
                 <Table.Cell>{data.motor}</Table.Cell>
                 <Table.Cell>
                   <Link to="/Variavel/">
-                    <IconButton>
-                      <FaPlus />
-                    </IconButton>
+                    <Tooltip title="Create">
+                      <IconButton>
+                        <AddIcon />
+                      </IconButton>
+                    </Tooltip>
                   </Link>
                   <Link to={url}>
-                  <Button onClick={() => setData(data)}>
-                    <FaPlaneArrival />
-                  </Button>
+                    <Tooltip title="Edit">
+                      <IconButton onClick={() => setData(data)}>
+                        <AirplanemodeActiveIcon />
+                      </IconButton>
+                    </Tooltip>
                   </Link>
                   {/* <Link to="/Variavel">
                     <Button>
                       <FaCalculator />
                     </Button>
                   </Link> */}
-                  <Button onClick={() => onDelete(data.id)}>
-                    <FaTrashAlt />
-                  </Button>
+                  <Tooltip title="Delete">
+                    <IconButton onClick={() => onDelete(data.id)}>
+                      <DeleteOutlineIcon />
+                    </IconButton>
+                  </Tooltip>
                 </Table.Cell>
               </Table.Row>
               )
@@ -136,23 +135,29 @@ export default function Read() {
                 <Table.Cell>{data.motor}</Table.Cell>
                 <Table.Cell>
                   <Link to="/Variavel/">
-                    <IconButton>
-                      <FaPlus />
-                    </IconButton>
+                    <Tooltip title="Create">
+                      <IconButton>
+                        <AddIcon />
+                      </IconButton>
+                    </Tooltip>
                   </Link>
                   <Link to={url}>
-                  <Button onClick={() => setData(data)}>
-                    <FaPlaneArrival />
-                  </Button>
+                    <Tooltip title="Edit">
+                      <IconButton onClick={() => setData(data)}>
+                        <AirplanemodeActiveIcon />
+                      </IconButton>
+                    </Tooltip>
                   </Link>
                   {/* <Link to="/Variavel">
                     <Button>
                       <FaCalculator />
                     </Button>
                   </Link> */}
-                  <Button onClick={() => onDelete(data.id)}>
-                    <FaTrashAlt />
-                  </Button>
+                  <Tooltip title="Delete">
+                    <IconButton onClick={() => onDelete(data.id)}>
+                      <DeleteOutlineIcon />
+                    </IconButton>
+                  </Tooltip>
                 </Table.Cell>
               </Table.Row>
               )
