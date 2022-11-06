@@ -2,21 +2,14 @@ import React, { useEffect, useState } from "react";
 import { Table, Input } from "semantic-ui-react";
 import { Link, useParams } from "react-router-dom";
 import axios from "axios";
-import { useEffect, useState } from "react";
-import {
-  FaPlus,
-  FaPlaneArrival,
-  FaCalculator,
-  FaTrashAlt,
-  FaSearch,
-} from "react-icons/fa";
-import { Link } from "react-router-dom";
-import { Button, Table } from "semantic-ui-react";
-import { Tooltip } from "react-bootstrap";
+import UpdateAeronaves from "./Update-Aeronave";
+import { ModelTrainingOutlined } from "@mui/icons-material";
 import { IconButton } from "@mui/material";
+import AddIcon from '@mui/icons-material/Add';
+import AirplanemodeActiveIcon from '@mui/icons-material/AirplanemodeActive';
+import DeleteOutlineIcon from '@mui/icons-material/DeleteOutline';
+import Tooltip from '@mui/material/Tooltip';
 import Swal from "sweetalert2";
-
-//import {PlusCircleOutlined, EditOutlined, DeleteOutlined} from '@ant-design/icons';
 //import { isConstructorDeclaration } from "typescript";
 
 export default function Read() {
