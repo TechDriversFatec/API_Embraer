@@ -62,10 +62,13 @@ function CriarAeronaves() {
         showCancelButton: true,
         confirmButtonColor: '#3085d6',
         cancelButtonColor: '#d33',
-        confirmButtonText: 'Yes, procced'
+        confirmButtonText: 'Yes, procced',
+        cancelButtonText: 'No, go to home page'
       }).then((result) => {
         if (result.isConfirmed) {
           navigate("/Variavel/:id")
+        } else {
+          navigate("/Index")
         }
       })
     }
