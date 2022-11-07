@@ -60,6 +60,11 @@ function ResponsiveAppBar() {
     setAnchorElUser(null);
   };
 
+  const nomeUsuario = (nome: string) => {
+    var primeiroNome = nome.split(" ")
+    return primeiroNome[0]
+  }
+
   if (window.location.pathname !== "/") {
     if (localStorage.getItem('nivelAcesso') === '1') {
       return (
@@ -148,7 +153,7 @@ function ResponsiveAppBar() {
                   {'Add User'}
                 </Button>
               </Box>
-              <Box>Welcome, {localStorage.getItem('nomeUsuario')}</Box>
+              <Box>Welcome, {nomeUsuario(localStorage.getItem('nomeUsuario') ?? "User")}</Box>
 
               <Box sx={{ flexGrow: 0 }}>
                 <MenuItem onClick={handleOpenUserMenu}>
