@@ -9,30 +9,6 @@ function CriarAeronaves() {
   const navigate = useNavigate()
   const [values, setValues] = useState(Object);
 
-  // const handleChangeValues = (value: any) => {
-  //   setValues((prevValue: any) => ({
-  //     ...prevValue,
-  //     [value.target.name]: value.target.value,
-  //   }));
-  // };
-
-  // const handleClickButton = (values: any) => {
-  //  Axios.post("http://localhost:3002/register", {
-  //   fabricante: values.fabricante,
-  //   modelo: values.modelo,
-  //   certificacao: values.certificacao,
-  //   motor: values.motor,
-  //   qtde_reversor: values.qtde_reversor,
-  //   peso_referencial: values.peso_referencial,
-  //   peso_minimo: values.peso_minimo,
-  //   sobrepeso: values.sobrepeso,
-  //   peso_maximo: values.peso_maximo
-  //  });
-  //  Swal.fire({
-  //    text: "Aircraft registered successfully!",
-  //  });
-  // };
-
   const showError = (input: HTMLElement, message: string) => {
     const formField = input.parentElement;
     formField!.classList.remove('success');
@@ -89,7 +65,7 @@ function CriarAeronaves() {
         confirmButtonText: 'Yes, procced'
       }).then((result) => {
         if (result.isConfirmed) {
-          navigate("/Variavel/")
+          navigate("/Variavel/:id")
         }
       })
     }
