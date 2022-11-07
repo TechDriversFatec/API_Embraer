@@ -8,6 +8,12 @@ import { useNavigate } from "react-router-dom";
 
 function VariaveisAeronaves() {
   const navigate = useNavigate();
+
+  const url_atual = window.location.href;
+  console.log(url_atual);
+  const id = window.location.href.split('http://localhost:3000/Variavel/')[1];
+  console.log(id);
+
   function manipularEnvio(evento: any) {
     evento.preventDefault();
     let distanciaValida = validaDistancia(),
@@ -96,18 +102,19 @@ function VariaveisAeronaves() {
         padrao_variacao_velocidade: VariacaoVAP,
         correcao_velocidade_acima: VapAcm,
         correcao_velocidade_abaixo: VapAbx,
+        aeronave_id: id
       });
       Swal.fire({
         title: "Sucessful registered variables",
-        text: "Procced with the variables registration?",
+        text: "Procced with the registration of more variables?",
         showCancelButton: true,
         confirmButtonColor: "#3085d6",
         cancelButtonColor: "#d33",
         confirmButtonText: "Yes, procced",
       }).then((result) => {
         if (result.isConfirmed) {
-          navigate("/Variavel/");
-        }
+          navigate("/Variavel/:id");
+        };
       });
     }
   }

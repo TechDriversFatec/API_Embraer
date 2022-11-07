@@ -3,6 +3,7 @@ import { Table, Input } from "semantic-ui-react";
 import { Link, useParams } from "react-router-dom";
 import axios from "axios";
 import UpdateAeronaves from "./Update-Aeronave";
+import VariaveisAeronaves from "./criar-aeronave";
 import { ModelTrainingOutlined } from "@mui/icons-material";
 import { IconButton } from "@mui/material";
 import AddIcon from '@mui/icons-material/Add';
@@ -89,6 +90,7 @@ export default function Read() {
           {searchInput.length > 1 ? (
             resultadoFiltrado.map((data: any) => {
             let url = `/AtualizA/` + data.id;
+            let url2 = `/Variavel/` + data.id;
               return(
                 <Table.Row>
                 <Table.Cell>{data.modelo}</Table.Cell>
@@ -96,9 +98,9 @@ export default function Read() {
                 <Table.Cell>{data.certificacao}</Table.Cell>
                 <Table.Cell>{data.motor}</Table.Cell>
                 <Table.Cell>
-                  <Link to="/Variavel">
+                  <Link to={url2}>
                     <Tooltip title="Create">
-                      <IconButton>
+                      <IconButton onClick={() => setData(data)}>
                         <AddIcon />
                       </IconButton>
                     </Tooltip>
@@ -127,6 +129,7 @@ export default function Read() {
           ) : (
             listAeronaves.map((data: any) => {
             let url = `/AtualizA/` + data.id;
+            let url2 = `/Variavel/` + data.id;
               return (
                 <Table.Row>
                 <Table.Cell>{data.modelo}</Table.Cell>
@@ -134,9 +137,9 @@ export default function Read() {
                 <Table.Cell>{data.certificacao}</Table.Cell>
                 <Table.Cell>{data.motor}</Table.Cell>
                 <Table.Cell>
-                  <Link to="/Variavel">
+                  <Link to={url2}>
                     <Tooltip title="Create">
-                      <IconButton>
+                      <IconButton onClick={() => setData(data)}>
                         <AddIcon />
                       </IconButton>
                     </Tooltip>

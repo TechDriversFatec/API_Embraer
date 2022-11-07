@@ -25,7 +25,7 @@ function App() {
         <Route path="/Calculo" element={<Calculo />} />
         <Route path="/Criar/" element={<CriarAeronaves />} />
         <Route path="/Cadastrar" element={<CriarUsuario />} />
-        <Route path="/Variavel" element={<VariaveisAeronaves />} />
+        <Route path="/Variavel/:id" element={<VariaveisAeronaves />} />
         <Route path="/Logs" element={<LogsCalculo />} />
         <Route path="/AtualizA/:id" element={<UpdateAeronaves />} />
         <Route path="/Profile" element={<UserProfile />} />
