@@ -40,6 +40,7 @@ function Calculo() {
 
   function manipularEnvio(evento: any) {
     evento.preventDefault()
+    console.log(typeof(Peso))
     let pesoValido = validaValorPeso(),
       altitudeValida = validaValorAltitude(),
       temperaturaValida = validaValorTemperatura(),
@@ -88,7 +89,7 @@ function Calculo() {
 
   const entre = (valor: number, min: number, max: number) => valor < min || valor > max ? false : true
   const ehNumero = (valor: string) => {
-    const expressao = new RegExp("^[0-9]+$")
+    const expressao = new RegExp("[^0-9]")
     return expressao.test(valor)
   }
 
@@ -96,7 +97,7 @@ function Calculo() {
   function validaValorPeso() {
     const idPeso = document.getElementById("peso-aeronave")
     let valido = false;
-    const min = 40000, max = 80000;
+    const min = -40000, max = 80000;
 
     if (!entre(parseInt(Peso), min, max)) {
       showError(idPeso!, `Weight must be between ${min} and ${max}`)
@@ -117,7 +118,7 @@ function Calculo() {
     if (!entre(parseInt(Altitude), min, max)) {
       showError(idAltitude!, `Height must be between ${min} and ${max}`)
     } else if (!ehNumero(Altitude)) {
-      showError(idAltitude!, `Altitude must be a value`)
+      showError(idAltitude!, `Altitude must be a number`)
     } else {
       showSuccess(idAltitude!);
       valido = true;

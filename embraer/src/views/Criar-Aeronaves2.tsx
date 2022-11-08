@@ -33,6 +33,7 @@ function CriarAeronaves() {
 
   function manipularEnvio(evento: any) {
     evento.preventDefault()
+    console.log(typeof(Sobrepeso))
     let pesoValido = validaPeso(),
       pesoMinValido = validaPesoMin(),
       sobrepesoValido = validaSobrepeso(),
@@ -75,7 +76,7 @@ function CriarAeronaves() {
   }
 
   const ehNumero = (valor: any) => {
-    const expressao = new RegExp("^[0-9]+$")
+    const expressao = new RegExp("[^0-9]")
     return expressao.test(valor)
   }
 

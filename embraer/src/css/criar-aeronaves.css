@@ -1,7 +1,7 @@
 
 fieldset{
     margin: 1em 0;
-    padding: 1em;
+    /* padding: 1em; */
     border: 1px solid !important;
     border-color: rgba(211, 206, 206, 0.745) !important;
     background: #f8f8f8;
@@ -9,14 +9,15 @@ fieldset{
 .variavel{
   border-radius: 3%;
   float: left;
-  margin-right: 1%;
-  margin-left: 1%;
+  margin-right: 12px;
+  /* margin-left: 1%; */
 }
 .clear{
   clear: both;
 }
 legend{
     font-weight: bold;
+    font-size: large;
 }
 .CriarAeronaves {
     background-color: #282f55;
