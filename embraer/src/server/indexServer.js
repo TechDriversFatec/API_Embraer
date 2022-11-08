@@ -147,6 +147,16 @@ app.get("/getLogs", (req, res) => {
     });
 });
 
+app.get("/getUsers", (req, res) => {
+
+    let SQL = "SELECT * FROM usuario";
+
+    db.query(SQL, (err, result) => {
+        if(err) console.log(err);
+        else res.send(result)
+    });
+});
+
 app.get("/getAeronave/:id", (req, res) => {
 const id = parseInt(req.params.id).toString()
 console.log("params: " + id);
@@ -244,6 +254,15 @@ app.put("/updateVariavel/:id", (req,res) => {
 app.delete("/deleteAeronave/:id", (req,res) => {
     const { id } = req.params;
     let SQL = "DELETE FROM aeronave WHERE id =" + id;
+    db.query(SQL, [id], (err,result) => {
+        if (err) console.log(err);
+        else res.send(result);
+    });
+});
+
+app.delete("/deleteUser/:id", (req,res) => {
+    const { id } = req.params;
+    let SQL = "DELETE FROM usuario WHERE id =" + id;
     db.query(SQL, [id], (err,result) => {
         if (err) console.log(err);
         else res.send(result);
