@@ -11,6 +11,7 @@ import AirplanemodeActiveIcon from '@mui/icons-material/AirplanemodeActive';
 import DeleteOutlineIcon from '@mui/icons-material/DeleteOutline';
 import Tooltip from '@mui/material/Tooltip';
 import Swal from "sweetalert2";
+import "../css/tabela.css"
 //import { isConstructorDeclaration } from "typescript";
 
 export default function Read() {
@@ -57,12 +58,24 @@ export default function Read() {
   };
 
   const onDelete = (id: number) => {
-    axios.delete(`http://localhost:3002/deleteAeronave/${id}`).then(() => {
-      getData();
-    });
+
     Swal.fire({
-      text: "Aircraft deleted successfully!",
-    });
+      icon: "warning",
+      title: 'Are you sure you want to delete the aircraft?',
+      showCancelButton: true,
+      confirmButtonColor: '#3085d6',
+      cancelButtonColor: '#d33',
+      confirmButtonText: 'Yes, delete'
+    }).then((result) => {
+      if (result.isConfirmed) {
+        axios.delete(`http://localhost:3002/deleteAeronave/${id}`).then(() => {
+          getData();
+        });
+        Swal.fire({
+          title: "DELETED"
+        })
+      }
+    })
   };
 
 

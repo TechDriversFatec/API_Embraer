@@ -66,7 +66,7 @@ export default function UpdateAeronaves() {
         confirmButtonText: 'Yes, procced'
       }).then((result) => {
         if (result.isConfirmed) {
-          navigate("/Index/")
+          navigate("/Index")
         }
       })
     }
