@@ -142,7 +142,7 @@ function VariaveisAeronaves() {
   };
 
   const ehNumero = (valor: any) => {
-    const expressao = new RegExp("^[0-9]+$");
+    const expressao = new RegExp("[^0-9]");
     return expressao.test(valor);
   };
 
@@ -637,7 +637,7 @@ function VariaveisAeronaves() {
           <div className="card-body col-md-13">
             <fieldset className="row flap">
               <legend>Flap configurations</legend>
-              <div className="form-group col-lg-4-md col-md-4 col-sm-12">
+              <div className="form-group col-lg-4-md col-md-2 col-sm-12">
                 <label>Flap:</label>
                 <input
                   id="tipo_flap"
@@ -653,7 +653,7 @@ function VariaveisAeronaves() {
                   label="Ice Accretion"
                 />
               </div>
-              <div className="form-group col-lg-4-md col-md-4 col-sm-12">
+              <div className="form-group col-lg-4-md col-md-2 col-sm-12">
                 <label>Brake config:</label>
                 <select
                   title="configuracao_freio"
@@ -685,7 +685,7 @@ function VariaveisAeronaves() {
                   //onInput={handleChangeValues}
                 />
               </div>
-              <div className="form-group col-lg-4-md col-md-4 col-sm-12">
+              <div className="form-group col-lg-4-md col-md-2 col-sm-12">
                 <label>Referencial distance:</label>
                 <input
                   id="distancia_referencial"
@@ -698,7 +698,7 @@ function VariaveisAeronaves() {
                 />
                 <small></small>
               </div>
-              <div className="form-group col-lg-4-md col-md-4 col-sm-12">
+              <div className="form-group col-lg-4-md col-md-2 col-sm-12">
                 <label>Reverser variation:</label>
                 <input
                   id="correcao_reversor_inoperante"
@@ -712,8 +712,8 @@ function VariaveisAeronaves() {
                 <small></small>
               </div>
             </fieldset>
-            <fieldset className="row col-lg-3 variavel">
-              <legend>Weight variables</legend>
+            <fieldset className="row col-lg-2 variavel">
+              <legend>Weight</legend>
               <div className="form-group col-lg-4-md col-md-12 col-sm-12">
                 <label>Increment/decrement step (Kg):</label>
                 <input
@@ -763,8 +763,8 @@ function VariaveisAeronaves() {
                 <small></small>
               </div>
             </fieldset>
-            <fieldset className="row col-lg-4 variavel">
-              <legend>Altitude variables (Ft):</legend>
+            <fieldset className="row col-lg-2 variavel">
+              <legend>Altitude (Ft):</legend>
               <div className="form-group col-lg-4-md col-md-12 col-sm-12">
                 <label>Reference value:</label>
                 <input
@@ -814,8 +814,8 @@ function VariaveisAeronaves() {
                 <small></small>
               </div>
             </fieldset>
-            <fieldset className="row col-lg-4 variavel">
-              <legend>Temperature variables (ISA):</legend>
+            <fieldset className="row col-lg-2 variavel">
+              <legend>Temperature (ISA):</legend>
               <div className="form-group col-lg-4-md col-md-12 col-sm-12">
                 <label>Reference value:</label>
                 <input
@@ -865,8 +865,8 @@ function VariaveisAeronaves() {
                 <small></small>
               </div>
             </fieldset>
-            <fieldset className="row col-lg-4 variavel">
-              <legend>Wind variables (KTAS):</legend>
+            <fieldset className="row col-lg-2 variavel">
+              <legend>Wind (KTAS):</legend>
               <div className="form-group col-lg-4-md col-md-12 col-sm-12">
                 <label>Reference value:</label>
                 <input
@@ -916,8 +916,8 @@ function VariaveisAeronaves() {
                 <small></small>
               </div>
             </fieldset>
-            <fieldset className="row col-lg-4 variavel">
-              <legend>Slope variables (%):</legend>
+            <fieldset className="row col-lg-2 variavel">
+              <legend>Slope (%):</legend>
               <div className="form-group col-lg-4-md col-md-12 col-sm-12">
                 <label>Reference value:</label>
                 <input
@@ -967,8 +967,8 @@ function VariaveisAeronaves() {
                 <small></small>
               </div>
             </fieldset>
-            <fieldset className="row col-lg-3 variavel">
-              <legend>VAP variables (speed):</legend>
+            <fieldset className="row col-lg-2 variavel">
+              <legend>VAP (speed):</legend>
               <div className="form-group col-lg-4-md col-md-12 col-sm-12">
                 <label>Reference value:</label>
                 <input
