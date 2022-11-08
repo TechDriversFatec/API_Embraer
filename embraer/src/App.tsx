@@ -14,6 +14,7 @@ import Footer from "./views/footer";
 import UpdateAeronaves from "./views/Update-Aeronave";
 import UserProfile from "./views/user-profile"
 import Users from "./views/Users";
+import UpdateUsuario from "./views/update-usuario";
 
 function App() {
   return (
@@ -30,6 +31,7 @@ function App() {
         <Route path="/Logs" element={<LogsCalculo />} />
         <Route path="/Users" element={<Users />} />
         <Route path="/AtualizA/:id" element={<UpdateAeronaves />} />
+        <Route path="/AtualizarUsuario/:id" element={<UpdateUsuario />} />
         <Route path="/Profile" element={<UserProfile />} />
       </Routes>
       <Footer />

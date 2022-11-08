@@ -41,9 +41,9 @@ function ResponsiveAppBar() {
     setAnchorElNav(null);
     navigate('/Criar')
   };
-  const handleAddUser = () => {
+  const handleUser = () => {
     setAnchorElNav(null);
-    navigate('/Cadastrar')
+    navigate('/Users')
   };
 
   const handleLogout = () => {
@@ -146,11 +146,11 @@ function ResponsiveAppBar() {
                   {'Add Aircraft'}
                 </Button>
                 <Button
-                  key={'CadastrarUsuario'}
-                  onClick={handleAddUser}
+                  key={'Usuarios'}
+                  onClick={handleUser}
                   sx={{ my: 2, color: 'white', display: 'block' }}
                 >
-                  {'Add User'}
+                  {'Users'}
                 </Button>
               </Box>
               <Box>Welcome, {nomeUsuario(localStorage.getItem('nomeUsuario') ?? "User")}</Box>

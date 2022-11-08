@@ -1,0 +1,8 @@
+.swal2-icon--success__hide-corners {
+    background: none !important;
+}
+
+.swal2-icon--success:before,
+.swal2-icon--success:after {
+    background: none !important;
+}
