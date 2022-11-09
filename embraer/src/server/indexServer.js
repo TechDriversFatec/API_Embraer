@@ -32,7 +32,7 @@ app.post("/register", (req, res) => {
     });
 });
 
-app.post("/parameter", (req,res) => {
+app.post("/parameter", (req, res) => {
     const { tipo_flap } = req.body;
     const { configuracao_freio } = req.body;
     const { condicao_pista } = req.body;
@@ -62,7 +62,7 @@ app.post("/parameter", (req,res) => {
     const { padrao_variacao_velocidade } = req.body;
     const { correcao_velocidade_acima } = req.body;
     const { correcao_velocidade_abaixo } = req.body;
-    const { aeronave_id } = req.body;    
+    const { aeronave_id } = req.body;
 
     let SQL = "INSERT INTO flap ( tipo_flap, configuracao_freio, condicao_pista, distancia_referencial, correcao_reversor_inoperante, padrao_variacao_peso, correcao_peso_acima, correcao_peso_abaixo, correcao_sobrepeso, altitude_padrao, padrao_variacao_altitude, correcao_altitude_acima, correcao_altitude_abaixo, temperatura_padrao, padrao_variacao_temperatura, correcao_temperatura_acima, correcao_temperatura_abaixo, padrao_vento, padrao_variacao_vento, correcao_vento_cauda, correcao_vento_proa, slope_padrao, padrao_variacao_inclinacao, correcao_aclive, correcao_declive, vap_padrao, padrao_variacao_velocidade, correcao_velocidade_acima, correcao_velocidade_abaixo, aeronave_id ) VALUES ( ?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,? )";
 
@@ -76,7 +76,7 @@ app.post("/criarusuario", (req, res) => {
     const { senha_acesso } = req.body;
     const { nome } = req.body;
     const { email } = req.body;
-    let SQL ="INSERT INTO usuario (nivel_acesso, senha_acesso, nome, email) VALUES (?,?,?,?)";
+    let SQL = "INSERT INTO usuario (nivel_acesso, senha_acesso, nome, email) VALUES (?,?,?,?)";
 
     db.query(SQL, [nivel_acesso, senha_acesso, nome, email], (err, result) => {
         console.log(err);
@@ -107,11 +107,11 @@ app.post("/salvarLog", (req, res) => {
     });
 });
 
-app.get("/exibirAeronaves", (req,res) => {
+app.get("/exibirAeronaves", (req, res) => {
     let SQL = "SELECT * FROM aeronave";
 
     db.query(SQL, (err, result) => {
-        if(err) console.log(err);
+        if (err) console.log(err);
         else res.send(result);
     });
 });
@@ -121,18 +121,29 @@ app.get("/getAeronaves", (req, res) => {
     let SQL = "SELECT * FROM aeronave";
 
     db.query(SQL, (err, result) => {
-        if(err) console.log(err);
+        if (err) console.log(err);
         else res.send(result)
     });
 });
 
 app.get("/getUsuarios/:email", (req, res) => {
-const email = req.params.email.toString()
-console.log("params: " + email);
+    const email = req.params.email.toString()
+    console.log("params: " + email);
     let SQL = "SELECT * FROM usuario where email = '" + email + "'";
 
     db.query(SQL, (err, result) => {
-        if(err) console.log(err);
+        if (err) console.log(err);
+        else res.send(result)
+    });
+});
+
+app.get("/getUser/:id", (req, res) => {
+    const id = req.params.id
+    console.log("params: " + id);
+    let SQL = "SELECT * FROM usuario where id =" + id;
+
+    db.query(SQL, (err, result) => {
+        if (err) console.log(err);
         else res.send(result)
     });
 });
@@ -142,7 +153,7 @@ app.get("/getLogs", (req, res) => {
     let SQL = "SELECT * FROM log_calculo_distancia";
 
     db.query(SQL, (err, result) => {
-        if(err) console.log(err);
+        if (err) console.log(err);
         else res.send(result)
     });
 });
@@ -152,31 +163,31 @@ app.get("/getUsers", (req, res) => {
     let SQL = "SELECT * FROM usuario";
 
     db.query(SQL, (err, result) => {
-        if(err) console.log(err);
+        if (err) console.log(err);
         else res.send(result)
     });
 });
 
 app.get("/getAeronave/:id", (req, res) => {
-const id = parseInt(req.params.id).toString()
-console.log("params: " + id);
-    let SQL = "SELECT * FROM aeronave where id =" + id ;
+    const id = parseInt(req.params.id).toString()
+    console.log("params: " + id);
+    let SQL = "SELECT * FROM aeronave where id =" + id;
 
     db.query(SQL, (err, result) => {
-        if(err) console.log(err);
+        if (err) console.log(err);
         else res.send(result)
     });
 });
 
 app.get("/getFlap/:id/:frenagemId/:condicaoId", (req, res) => {
-const id = parseInt(req.params.id).toString()
-const frenagemId = parseInt(req.params.frenagemId).toString()
-const condicaoId = parseInt(req.params.condicaoId).toString()
-console.log("params: " + id);
+    const id = parseInt(req.params.id).toString()
+    const frenagemId = parseInt(req.params.frenagemId).toString()
+    const condicaoId = parseInt(req.params.condicaoId).toString()
+    console.log("params: " + id);
     let SQL = "SELECT * FROM flap where aeronave_id =" + id + " and configuracao_freio =" + frenagemId + " and condicao_pista =" + condicaoId;
 
     db.query(SQL, (err, result) => {
-        if(err) console.log(err);
+        if (err) console.log(err);
         else res.send(result)
     });
 });
@@ -184,15 +195,15 @@ console.log("params: " + id);
 app.get("/getFlapDetails/:id", (req, res) => {
     const id = parseInt(req.params.id).toString()
     console.log("params: " + id);
-        let SQL = "SELECT * FROM flap where id =" + id ;
-    
-        db.query(SQL, (err, result) => {
-            if(err) console.log(err);
-            else res.send(result)
-        });
-    });
+    let SQL = "SELECT * FROM flap where id =" + id;
 
-app.put("/update/:id", (req,res) => {
+    db.query(SQL, (err, result) => {
+        if (err) console.log(err);
+        else res.send(result)
+    });
+});
+
+app.put("/update/:id", (req, res) => {
     const { id } = req.params;
     const { modelo } = req.body;
     const { fabricante } = req.body;
@@ -206,13 +217,28 @@ app.put("/update/:id", (req,res) => {
 
     let SQL = "UPDATE aeronave SET modelo = ?,  fabricante = ?, motor = ?, certificacao = ?, qtde_reversor = ?, peso_referencial = ?, peso_minimo = ?, sobrepeso = ?, peso_maximo = ? WHERE id =" + id;
 
-    db.query(SQL, [modelo, fabricante, motor, certificacao, qtde_reversor, peso_referencial, peso_minimo, sobrepeso, peso_maximo], (err,result) => {
+    db.query(SQL, [modelo, fabricante, motor, certificacao, qtde_reversor, peso_referencial, peso_minimo, sobrepeso, peso_maximo], (err, result) => {
+        if (err) console.log(err);
+        else res.send(result);
+    });
+});
+debugger
+app.put("/updateUser/:id", (req, res) => {
+    const { id } = req.params;
+    const { nivel_acesso } = req.body;
+    const { senha_acesso } = req.body;
+    const { nome } = req.body;
+    const { email } = req.body;
+
+    let SQL = "UPDATE usuario SET nivel_acesso = ?,  senha_acesso = ?, nome = ?, email = ? WHERE id =" + id;
+
+    db.query(SQL, [nivel_acesso, senha_acesso, nome, email], (err, result) => {
         if (err) console.log(err);
         else res.send(result);
     });
 });
 
-app.put("/updateVariavel/:id", (req,res) => {
+app.put("/updateVariavel/:id", (req, res) => {
     const { id } = req.params;
     const { tipo_flap } = req.body;
     const { configuracao_freio } = req.body;
@@ -246,24 +272,24 @@ app.put("/updateVariavel/:id", (req,res) => {
 
     let SQL = "UPDATE flap SET tipo_flap = ?, configuracao_freio = ?, condicao_pista = ?, distancia_referencial = ?, correcao_reversor_inoperante = ?, padrao_variacao_peso = ?, correcao_peso_acima = ?, correcao_peso_abaixo = ?, correcao_sobrepeso = ?, altitude_padrao = ?, padrao_variacao_altitude = ?, correcao_altitude_acima = ?, correcao_altitude_abaixo = ?, temperatura_padrao = ?, padrao_variacao_temperatura = ?, correcao_temperatura_acima = ?, correcao_temperatura_abaixo = ?, padrao_vento = ?, padrao_variacao_vento = ?, correcao_vento_cauda = ?, correcao_vento_proa = ?, slope_padrao = ?, padrao_variacao_inclinacao = ?, correcao_aclive = ?, correcao_declive = ?, vap_padrao = ?, padrao_variacao_velocidade = ?, correcao_velocidade_acima = ?, correcao_velocidade_abaixo = ? WHERE id =" + id;
 
-    db.query(SQL, [tipo_flap, configuracao_freio, condicao_pista, distancia_referencial, correcao_reversor_inoperante, padrao_variacao_peso, correcao_peso_acima, correcao_peso_abaixo, correcao_sobrepeso, altitude_padrao, padrao_variacao_altitude, correcao_altitude_acima, correcao_altitude_abaixo, temperatura_padrao, padrao_variacao_temperatura, correcao_temperatura_acima, correcao_temperatura_abaixo, padrao_vento, padrao_variacao_vento, correcao_vento_cauda, correcao_vento_proa, slope_padrao, padrao_variacao_inclinacao, correcao_aclive, correcao_declive, vap_padrao, padrao_variacao_velocidade, correcao_velocidade_acima, correcao_velocidade_abaixo], (err,result) => {
+    db.query(SQL, [tipo_flap, configuracao_freio, condicao_pista, distancia_referencial, correcao_reversor_inoperante, padrao_variacao_peso, correcao_peso_acima, correcao_peso_abaixo, correcao_sobrepeso, altitude_padrao, padrao_variacao_altitude, correcao_altitude_acima, correcao_altitude_abaixo, temperatura_padrao, padrao_variacao_temperatura, correcao_temperatura_acima, correcao_temperatura_abaixo, padrao_vento, padrao_variacao_vento, correcao_vento_cauda, correcao_vento_proa, slope_padrao, padrao_variacao_inclinacao, correcao_aclive, correcao_declive, vap_padrao, padrao_variacao_velocidade, correcao_velocidade_acima, correcao_velocidade_abaixo], (err, result) => {
         if (err) console.log(err);
         else res.send(result);
     });
 })
-app.delete("/deleteAeronave/:id", (req,res) => {
+app.delete("/deleteAeronave/:id", (req, res) => {
     const { id } = req.params;
     let SQL = "DELETE FROM aeronave WHERE id =" + id;
-    db.query(SQL, [id], (err,result) => {
+    db.query(SQL, [id], (err, result) => {
         if (err) console.log(err);
         else res.send(result);
     });
 });
 
-app.delete("/deleteUser/:id", (req,res) => {
+app.delete("/deleteUser/:id", (req, res) => {
     const { id } = req.params;
     let SQL = "DELETE FROM usuario WHERE id =" + id;
-    db.query(SQL, [id], (err,result) => {
+    db.query(SQL, [id], (err, result) => {
         if (err) console.log(err);
         else res.send(result);
     });
