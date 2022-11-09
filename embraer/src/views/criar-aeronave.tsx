@@ -908,7 +908,7 @@ function VariaveisAeronaves() {
                 ></input>
                 <small></small>
                 <br></br>
-                <label>Increment/decrement step (?):</label>
+                <label>Increment/decrement step:</label>
                 <input
                   id="padrao_variacao_velocidade"
                   className="form-control"

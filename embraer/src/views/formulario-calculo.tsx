@@ -45,13 +45,15 @@ function Calculo() {
       altitudeValida = validaValorAltitude(),
       temperaturaValida = validaValorTemperatura(),
       ventoValido = validaValorVento(),
-      slopeValido = validaValorSlope()
+      slopeValido = validaValorSlope(),
+      vapValido = validaVap()
 
     let formularioValido = pesoValido &&
       altitudeValida &&
       temperaturaValida &&
       ventoValido &&
-      slopeValido
+      slopeValido &&
+      vapValido
 
     if (formularioValido) {
 
@@ -88,15 +90,18 @@ function Calculo() {
   }
 
   const entre = (valor: number, min: number, max: number) => valor < min || valor > max ? false : true
+  const vazio = (valor: string) => valor === '' ? false : true
 
 
   function validaValorPeso() {
     const idPeso = document.getElementById("peso-aeronave")
     let valido = false;
-    const min = -40000, max = 80000;
+    const min = 40000, max = 80000;
 
     if (!entre(parseInt(Peso), min, max)) {
       showError(idPeso!, `Weight must be between ${min} and ${max}`)
+    } else if(!vazio(Peso)){
+      showError(idPeso!, `field must not be empty`)
     } else {
       showSuccess(idPeso!);
       valido = true;
@@ -107,10 +112,12 @@ function Calculo() {
   function validaValorAltitude() {
     const idAltitude = document.getElementById("altitude-aeronave")
     let valido = false;
-    const min = 0, max = 10000;
+    const min = -400, max = 4500;
 
     if (!entre(parseInt(Altitude), min, max)) {
       showError(idAltitude!, `Height must be between ${min} and ${max}`)
+    } else if(!vazio(Altitude)){
+      showError(idAltitude!, `field must not be empty`)
     } else {
       showSuccess(idAltitude!);
       valido = true;
@@ -121,10 +128,12 @@ function Calculo() {
   function validaValorTemperatura() {
     const idTemperatura = document.getElementById("temperatura")
     let valido = false;
-    const min = 0, max = 10;
+    const min = 0, max = 25;
 
     if (!entre(parseInt(Temperatura), min, max)) {
       showError(idTemperatura!, `Temperature must be between ${min} and ${max}`)
+    } else if(!vazio(Temperatura)){
+      showError(idTemperatura!, `field must not be empty`)
     } else {
       showSuccess(idTemperatura!);
       valido = true;
@@ -135,10 +144,12 @@ function Calculo() {
   function validaValorVento() {
     const idVento = document.getElementById("valorVento")
     let valido = false;
-    const min = -5, max = 10;
+    const min = -20, max = 20;
 
     if (!entre(parseInt(Vento), min, max)) {
       showError(idVento!, `Wind must be between ${min} and ${max}`)
+    } else if(!vazio(Vento)){
+      showError(idVento!, `field must not be empty`)
     } else {
       showSuccess(idVento!);
       valido = true;
@@ -149,13 +160,31 @@ function Calculo() {
   function validaValorSlope() {
     const idSlope = document.getElementById("slope")
     let valido = false;
-    const min = -2, max = 2;
+    const min = -10, max = 10;
 
     if (!entre(parseInt(Slope), min, max)) {
       showError(idSlope!, `Slope must be between ${min} and ${max}`)
+    } else if(!vazio(Slope)){
+      showError(idSlope!, `field must not be empty`)
     } else {
       showSuccess(idSlope!);
       valido = true;
+    }
+    return valido
+  }
+
+  function validaVap(){
+    const id = document.getElementById("vap-aeronave")
+    let valido = false;
+    const min = 0, max = 100;
+
+    if(!entre(parseInt(vap), min, max)) {
+      showError(id!, `Vap must be between ${min} and ${max}`)
+    } else if (!vazio(vap)) {
+      showError(id!, `field must not be empty`)
+    } else {
+      showSuccess(id!);
+      valido = true
     }
     return valido
   }
@@ -530,7 +559,7 @@ function Calculo() {
                   </div>
 
                   <div className="form-group col-lg-4 col-md-6 col-sm-12 sucess">
-                    <label>Vap Overspeed (Km/h):</label>
+                    <label>Vap Overspeed (Kt):</label>
                     <input
                       id="vap-aeronave"
                       className="form-control"
