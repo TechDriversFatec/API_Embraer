@@ -158,9 +158,9 @@ app.get("/getLogs", (req, res) => {
     });
 });
 
-app.get("/getUsers", (req, res) => {
-
-    let SQL = "SELECT * FROM usuario";
+app.get("/getUsers/:id", (req, res) => {
+    const id = req.params.id
+    let SQL = "SELECT * FROM usuario where id !=" + id;
 
     db.query(SQL, (err, result) => {
         if (err) console.log(err);

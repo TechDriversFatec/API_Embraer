@@ -76,7 +76,7 @@ function UpdateUsuario() {
         
         });
         Swal.fire({
-            text: 'User registered successfully!',
+            title: 'User updated successfully!',
             showCancelButton: false,
             confirmButtonColor: '#3085d6',
             cancelButtonColor: '#d33',
@@ -260,7 +260,7 @@ function UpdateUsuario() {
                                 <b>Return</b>
                             </a>
                             <button className="rounded btn btn-primary ml-2 float-end" type="submit" id="btn_registrar" name="submitButton">
-                                <b>Register</b></button>
+                                <b>Save</b></button>
                         </div>
                 </div>
             </form>

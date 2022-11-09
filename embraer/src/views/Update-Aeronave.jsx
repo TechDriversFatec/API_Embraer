@@ -291,7 +291,7 @@ export default function UpdateAeronaves() {
               id="btn_registrar"
               name="submitButton"
             >
-              <b>Register</b>
+              <b>Save</b>
             </button>
           </div>
         </div>
