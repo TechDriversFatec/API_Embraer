@@ -463,7 +463,7 @@ function Calculo() {
                         className="form-control"
                         name="certificacao"
                         placeholder="Select an airplane to fill"
-                        value={"ANAC"}
+                        value={aviaoRecebido.certificacao}
                         disabled
                       ></input>
                       <small></small>
