@@ -45,13 +45,15 @@ export default function UserTable() {
   }
 
   useEffect(() => {
-    axios.get(`http://localhost:3002/getUsers`).then((response) => {
-      setUsers(response.data);
+    const id = localStorage.getItem('idUsuario')
+    axios.get(`http://localhost:3002/getUsers/${id}`).then((getData) => {
+      setUsers(getData.data);
     });
   }, []);
 
   const getData = () => {
-    axios.get(`http://localhost:3002/getUsers`).then((getData) => {
+    const id = localStorage.getItem('idUsuario')
+    axios.get(`http://localhost:3002/getUsers/${id}`).then((getData) => {
       setUsers(getData.data);
     });
   };
