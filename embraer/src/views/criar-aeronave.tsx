@@ -91,14 +91,14 @@ function VariaveisAeronaves() {
       Swal.fire({
         title: "Sucessful registered variables",
         text: "Return to the home page?",
-        showCancelButton: true,
+        showCancelButton: false,
         confirmButtonColor: "#3085d6",
         cancelButtonColor: "#d33",
         confirmButtonText: "Yes, procced",
       }).then((result) => {
         if (result.isConfirmed) {
           navigate(`/Index`);
-        };
+        }
       });
     }
   }
