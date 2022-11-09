@@ -90,14 +90,14 @@ function VariaveisAeronaves() {
       });
       Swal.fire({
         title: "Sucessful registered variables",
-        text: "Procced with the registration of more variables?",
+        text: "Return to the home page?",
         showCancelButton: true,
         confirmButtonColor: "#3085d6",
         cancelButtonColor: "#d33",
         confirmButtonText: "Yes, procced",
       }).then((result) => {
         if (result.isConfirmed) {
-          navigate(`/Variavel/:id`);
+          navigate(`/Index`);
         };
       });
     }
