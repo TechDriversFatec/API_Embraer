@@ -88,10 +88,6 @@ function Calculo() {
   }
 
   const entre = (valor: number, min: number, max: number) => valor < min || valor > max ? false : true
-  const ehNumero = (valor: string) => {
-    const expressao = new RegExp("[^0-9]")
-    return expressao.test(valor)
-  }
 
 
   function validaValorPeso() {
@@ -101,8 +97,6 @@ function Calculo() {
 
     if (!entre(parseInt(Peso), min, max)) {
       showError(idPeso!, `Weight must be between ${min} and ${max}`)
-    } else if (!ehNumero(Peso)) {
-      showError(idPeso!, `Weight must be a number`)
     } else {
       showSuccess(idPeso!);
       valido = true;
@@ -117,8 +111,6 @@ function Calculo() {
 
     if (!entre(parseInt(Altitude), min, max)) {
       showError(idAltitude!, `Height must be between ${min} and ${max}`)
-    } else if (!ehNumero(Altitude)) {
-      showError(idAltitude!, `Altitude must be a number`)
     } else {
       showSuccess(idAltitude!);
       valido = true;
@@ -133,8 +125,6 @@ function Calculo() {
 
     if (!entre(parseInt(Temperatura), min, max)) {
       showError(idTemperatura!, `Temperature must be between ${min} and ${max}`)
-    } else if (!ehNumero(Temperatura)) {
-      showError(idTemperatura!, `Temperature must be a number`)
     } else {
       showSuccess(idTemperatura!);
       valido = true;
@@ -149,8 +139,6 @@ function Calculo() {
 
     if (!entre(parseInt(Vento), min, max)) {
       showError(idVento!, `Wind must be between ${min} and ${max}`)
-    } else if (!ehNumero(Vento)) {
-      showError(idVento!, `Wind must be a number`)
     } else {
       showSuccess(idVento!);
       valido = true;
@@ -165,8 +153,6 @@ function Calculo() {
 
     if (!entre(parseInt(Slope), min, max)) {
       showError(idSlope!, `Slope must be between ${min} and ${max}`)
-    } else if (!ehNumero(Slope)) {
-      showError(idSlope!, `Slope must be a number`)
     } else {
       showSuccess(idSlope!);
       valido = true;
@@ -479,7 +465,7 @@ function Calculo() {
                       id="peso-aeronave"
                       className="form-control"
                       name="peso"
-                      type="tel"
+                      type="number"
                       placeholder="Enter Landing Weight:"
                       value={Peso}
                       onChange={receberValorPeso}
@@ -492,7 +478,7 @@ function Calculo() {
                     <input
                       id="altitude-aeronave"
                       className="form-control"
-                      type="tel"
+                      type="number"
                       name="altitude"
                       placeholder="Enter Aircraft Altitude:"
                       value={Altitude}
@@ -507,7 +493,7 @@ function Calculo() {
                       id="temperatura"
                       className="form-control"
                       name="temperatura"
-                      type="tel"
+                      type="number"
                       placeholder="Enter Temperature below or above ISA:"
                       value={Temperatura}
                       onChange={receberValorTemperatura}
@@ -520,7 +506,7 @@ function Calculo() {
                     <input
                       id="valorVento"
                       className="form-control"
-                      type="tel"
+                      type="number"
                       name="valorVento"
                       placeholder="Enter Tailwind or Headwind"
                       value={Vento}
@@ -535,7 +521,7 @@ function Calculo() {
                       id="slope"
                       className="form-control"
                       name="slope"
-                      type="tel"
+                      type="number"
                       placeholder="Enter Uphill or Downhill Slope:"
                       value={Slope}
                       onChange={receberSlope}
@@ -548,7 +534,7 @@ function Calculo() {
                     <input
                       id="vap-aeronave"
                       className="form-control"
-                      type="tel"
+                      type="number"
                       placeholder="Enter Overspeed:"
                       value={vap}
                       onChange={(e) => setVap(e.target.value)}

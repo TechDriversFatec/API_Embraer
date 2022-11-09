@@ -1,13 +1,21 @@
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import Axios from "axios";
 import "../css/CriarAeronaves2.css";
 import "bootstrap/dist/css/bootstrap.min.css";
 import Swal from "sweetalert2";
 import { useNavigate } from "react-router-dom";
+import axios from "axios";
 
 function CriarAeronaves() {
   const navigate = useNavigate()
   const [values, setValues] = useState(Object);
+  const [listAeronaves, setlistAeronaves] = useState([]);
+
+  useEffect(() => {
+    axios.get(`http://localhost:3002/exibirAeronaves`).then((response) => {
+      setlistAeronaves(response.data);
+    });
+  }, []);
 
   const showError = (input: HTMLElement, message: string) => {
     const formField = input.parentElement;
@@ -67,7 +75,12 @@ function CriarAeronaves() {
         cancelButtonText: 'No, go to home page'
       }).then((result) => {
         if (result.isConfirmed) {
-          navigate("/Variavel/:id")
+          let id: any
+          listAeronaves.forEach((data: any) => {
+            id = parseInt(data.id) + 1
+            return id.toString()
+          })
+          navigate(`/Variavel/${id}`)
         } else {
           navigate("/Index")
         }
@@ -75,17 +88,15 @@ function CriarAeronaves() {
     }
   }
 
-  const ehNumero = (valor: any) => {
-    const expressao = new RegExp("[^0-9]")
-    return expressao.test(valor)
-  }
+  const entre = (valor: number, min: number, max: number) => valor < min || valor > max ? false : true
 
   function validaPeso(){
     const idPeso = document.getElementById("peso_referencial")
     let valido = false;
+    const min = 0, max = 900000
 
-    if(!ehNumero(Peso)){
-      showError(idPeso!, `Weight must be a number`)
+    if(!entre(parseInt(Peso), min, max)){
+      showError(idPeso!, `Value must be greater than ${min}`)
     } else {
       showSuccess(idPeso!);
       valido = true
@@ -96,9 +107,10 @@ function CriarAeronaves() {
   function validaPesoMin(){
     const idPesoMin = document.getElementById("peso_minimo")
     let valido = false;
+    const min = 0, max = 900000
 
-    if(!ehNumero(PesoMinimo)){
-      showError(idPesoMin!, `Minimum weight must be a number`)
+    if(!entre(parseInt(PesoMinimo), min, max)){
+      showError(idPesoMin!, `Value must be greater than ${min}`)
     } else {
       showSuccess(idPesoMin!);
       valido = true;
@@ -109,9 +121,10 @@ function CriarAeronaves() {
   function validaSobrepeso(){
     const id = document.getElementById("sobrepeso")
     let valido = false;
+    const min = 0, max = 900000
 
-    if(!ehNumero(Sobrepeso)){
-      showError(id!, `Overweight must be a number`)
+    if(!entre(parseInt(Sobrepeso), min, max)){
+      showError(id!, `Value must be greater than ${min}`)
     } else {
       showSuccess(id!);
       valido = true;
@@ -122,9 +135,10 @@ function CriarAeronaves() {
   function validaPesoMax(){
     const idPesoMax = document.getElementById("peso_maximo")
     let valido = false;
+    const min = 0, max = 900000
 
-    if(!ehNumero(PesoMaximo)){
-      showError(idPesoMax!, `Maximum weight must be a number`)
+    if(!entre(parseInt(PesoMaximo), min, max)){
+      showError(idPesoMax!, `Value must be greater than ${min}`)
     } else {
       showSuccess(idPesoMax!);
       valido = true;
@@ -281,7 +295,7 @@ function CriarAeronaves() {
                 <input
                   id="peso_referencial"
                   className="form-control"
-                  type="tel"
+                  type="number"
                   name="peso_referencial"
                   placeholder="Insert the aircraft ref weight:"
                   value={Peso}
@@ -299,6 +313,7 @@ function CriarAeronaves() {
                   className="form-control"
                   name="peso_minimo"
                   placeholder="Insert the aircraft minimum weight:"
+                  type="number"
                   value={PesoMinimo}
                   onChange={receberPesoMin}
                   //onInput={handleChangeValues}
@@ -312,6 +327,7 @@ function CriarAeronaves() {
                   className="form-control"
                   name="sobrepeso"
                   placeholder="Insert the overweight:"
+                  type="number"
                   value={Sobrepeso}
                   onChange={receberSobrepeso}
                   //onInput={handleChangeValues}
@@ -325,6 +341,7 @@ function CriarAeronaves() {
                   className="form-control"
                   name="peso_maximo"
                   placeholder="Insert the aircraft maximum weight:"
+                  type="number"
                   value={PesoMaximo}
                   onChange={receberPesoMax}
                   //onInput={handleChangeValues}
