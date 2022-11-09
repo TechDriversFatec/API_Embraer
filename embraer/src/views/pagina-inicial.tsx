@@ -13,6 +13,10 @@ function PaginaInicial() {
     navigate('/Criar')
   }
 
+  // if (localStorage.getItem("nivelAcesso") === '2') {
+  //   window.location.href = '/Calculo';
+  // }
+
   return (
     <div className="App">
       {/* <div id="divLogoAviao">
