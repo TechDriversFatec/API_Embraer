@@ -60,8 +60,7 @@ export default function UserTable() {
 
   const onDelete = (id: number) => {
     Swal.fire({
-      title: 'Are you sure?',
-      text: "You won't be able to revert this!",
+      title: 'Are you sure you want to delete this user??',
       icon: 'warning',
       showCancelButton: true,
       confirmButtonColor: '#3085d6',
@@ -73,8 +72,7 @@ export default function UserTable() {
           getData();
         });
         Swal.fire({
-          title: 'Deleted!',
-          text: 'User successfully deleted',
+          title: 'User successfully deleted!'
         })
       }
     })

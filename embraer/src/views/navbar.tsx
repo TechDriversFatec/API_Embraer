@@ -13,7 +13,7 @@ import Typography from '@mui/material/Typography';
 import * as React from 'react';
 import { useNavigate } from 'react-router-dom';
 
-const pages = ['Calculation', 'Add Aircraft', 'Add User'];
+const pages = ['Calculation', 'Add User'];
 const settings = ['Profile', 'Logout'];
 
 function ResponsiveAppBar() {
@@ -137,13 +137,6 @@ function ResponsiveAppBar() {
                   sx={{ my: 2, color: 'white', display: 'block' }}
                 >
                   {'Calculation'}
-                </Button>
-                <Button
-                  key={'CadastarAeronave'}
-                  onClick={handleAddAircraft}
-                  sx={{ my: 2, color: 'white', display: 'block' }}
-                >
-                  {'Add Aircraft'}
                 </Button>
                 <Button
                   key={'Usuarios'}
