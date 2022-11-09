@@ -14,6 +14,7 @@ import Tooltip from '@mui/material/Tooltip';
 import Swal from "sweetalert2";
 //import { isConstructorDeclaration } from "typescript";
 import { accessLevel } from "../util/enums/accessLevel";
+import '../css/user.css'
 
 export default function UserTable() {
   const [users, setUsers] = useState([]);
@@ -59,12 +60,25 @@ export default function UserTable() {
   };
 
   const onDelete = (id: number) => {
-    axios.delete(`http://localhost:3002/deleteUser/${id}`).then(() => {
-      getData();
-    });
     Swal.fire({
-      text: "User deleted successfully!",
-    });
+      title: 'Are you sure?',
+      text: "You won't be able to revert this!",
+      icon: 'warning',
+      showCancelButton: true,
+      confirmButtonColor: '#3085d6',
+      cancelButtonColor: '#d33',
+      confirmButtonText: 'Yes, delete it!'
+    }).then((result) => {
+      if (result.isConfirmed) {
+        axios.delete(`http://localhost:3002/deleteUser/${id}`).then(() => {
+          getData();
+        });
+        Swal.fire({
+          title: 'Deleted!',
+          text: 'User successfully deleted',
+        })
+      }
+    })
   };
 
 
@@ -129,7 +143,7 @@ export default function UserTable() {
           ) : (
             users.map((data: any) => {
               let url = `/AtualizA/` + data.id;
-              let url2 = `/Variavel/` + data.id;
+              let url2 = `/AtualizarUsuario/` + data.id;
               return (
                 <Table.Row>
                   <Table.Cell>{data.nome}</Table.Cell>
@@ -137,7 +151,7 @@ export default function UserTable() {
                   <Table.Cell>{accessLevel[data.nivel_acesso]}</Table.Cell>
                   <Table.Cell>
                     <Link to={url2}>
-                      <Tooltip title="Create">
+                      <Tooltip title="Edit">
                         <IconButton onClick={() => setData(data)}>
                           <EditIcon />
                         </IconButton>
