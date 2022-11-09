@@ -7,7 +7,7 @@ import { useNavigate } from "react-router-dom";
 import axios from "axios";
 
 function CriarAeronaves() {
-  const navigate = useNavigate()
+  const navigate = useNavigate();
   const [values, setValues] = useState(Object);
   const [listAeronaves, setlistAeronaves] = useState([]);
 
@@ -19,10 +19,10 @@ function CriarAeronaves() {
 
   const showError = (input: HTMLElement, message: string) => {
     const formField = input.parentElement;
-    formField!.classList.remove('success');
-    formField!.classList.add('error');
+    formField!.classList.remove("success");
+    formField!.classList.add("error");
 
-    const error = formField!.querySelector('small');
+    const error = formField!.querySelector("small");
     error!.textContent = message;
   };
 
@@ -31,28 +31,40 @@ function CriarAeronaves() {
     const formField = input.parentElement;
 
     // remove the error class
-    formField!.classList.remove('error');
-    formField!.classList.add('success');
+    formField!.classList.remove("error");
+    formField!.classList.add("success");
 
     // hide the error message
-    const error = formField!.querySelector('small');
-    error!.textContent = '';
-  }
+    const error = formField!.querySelector("small");
+    error!.textContent = "";
+  };
 
   function manipularEnvio(evento: any) {
-    evento.preventDefault()
-    console.log(typeof(Sobrepeso))
+    evento.preventDefault();
+    console.log(typeof(Fabricante));
+    debugger
     let pesoValido = validaPeso(),
-      pesoMinValido = validaPesoMin(),
-      sobrepesoValido = validaSobrepeso(),
-      pesoMaxValido = validaPesoMax()
-    
-    let formularioValido = pesoValido &&
+    pesoMinValido = validaPesoMin(),
+    sobrepesoValido = validaSobrepeso(),
+    pesoMaxValido = validaPesoMax(),
+    fabricanteValido = validaFabricante(),
+    modeloValido = validaModelo(),
+    certificacaoValida = validaCertificacao(),
+    motorValido = validaMotor(),
+    reversorValido = validaReversor();
+
+    let formularioValido =
+      pesoValido &&
       pesoMinValido &&
       sobrepesoValido &&
-      pesoMaxValido
+      pesoMaxValido &&
+      fabricanteValido &&
+      modeloValido &&
+      certificacaoValida &&
+      motorValido &&
+      reversorValido;
 
-    if (formularioValido){
+    if (formularioValido) {
       Axios.post("http://localhost:3002/register", {
         fabricante: Fabricante,
         modelo: Modelo,
@@ -62,69 +74,141 @@ function CriarAeronaves() {
         peso_referencial: Peso,
         peso_minimo: PesoMinimo,
         sobrepeso: Sobrepeso,
-        peso_maximo: PesoMaximo
-       })
+        peso_maximo: PesoMaximo,
+      });
 
       Swal.fire({
-        title: 'Sucessful registered aircraft',
+        title: "Sucessful registered aircraft",
         text: "Procced with the variables registration?",
         showCancelButton: true,
-        confirmButtonColor: '#3085d6',
-        cancelButtonColor: '#d33',
-        confirmButtonText: 'Yes, procced',
-        cancelButtonText: 'No, go to home page'
+        confirmButtonColor: "#3085d6",
+        cancelButtonColor: "#d33",
+        confirmButtonText: "Yes, procced",
+        cancelButtonText: "No, go to home page",
       }).then((result) => {
         if (result.isConfirmed) {
-          let id: any
+          let id: any;
           listAeronaves.forEach((data: any) => {
-            id = parseInt(data.id) + 1
-            return id.toString()
-          })
-          navigate(`/Variavel/${id}`)
+            id = parseInt(data.id) + 1;
+            return id.toString();
+          });
+          navigate(`/Variavel/${id}`);
         } else {
-          navigate("/Index")
+          navigate("/Index");
         }
-      })
+      });
     }
   }
 
-  const entre = (valor: number, min: number, max: number) => valor < min || valor > max ? false : true
+  const entre = (valor: number, min: number, max: number) =>
+    valor < min || valor > max ? false : true;
+  const vazio = (valor: string) => (valor === "" ? false : true);
 
-  function validaPeso(){
-    const idPeso = document.getElementById("peso_referencial")
+  function validaFabricante() {
+    const id = document.getElementById("fabricante");
     let valido = false;
-    const min = 0, max = 900000
+    
+    if (!vazio(Fabricante)) {
+      showError(id!, `field must not be empty`);
+    } else {
+      showSuccess(id!);
+      valido = true;
+    }
+    return valido;
+  }
+  debugger
+  function validaModelo() {
+    const id = document.getElementById("modelo");
+    let valido = false;
+    debugger;
+    if (!vazio(Modelo)) {
+      showError(id!, `field must not be empty`);
+    } else {
+      showSuccess(id!);
+      valido = true;
+    }
+    return valido;
+  }
+  function validaCertificacao() {
+    const id = document.getElementById("certificacao");
+    let valido = false;
 
-    if(!entre(parseInt(Peso), min, max)){
-      showError(idPeso!, `Value must be greater than ${min}`)
+    if (!vazio(Certificacao)) {
+      showError(id!, `field must not be empty`);
+    } else {
+      showSuccess(id!);
+      valido = true;
+    }
+    return valido;
+  }
+  function validaReversor() {
+    const id = document.getElementById("qtde_reversor");
+    let valido = false;
+
+    if (!vazio(Revesor)) {
+      showError(id!, `field must not be empty`);
+    } else {
+      showSuccess(id!);
+      valido = true;
+    }
+    return valido;
+  }
+  function validaMotor() {
+    const id = document.getElementById("motor");
+    let valido = false;
+
+    if (!vazio(Motor)) {
+      showError(id!, `field must not be empty`);
+    } else {
+      showSuccess(id!);
+      valido = true;
+    }
+    return valido;
+  }
+  function validaPeso() {
+    const idPeso = document.getElementById("peso_referencial");
+    let valido = false;
+    const min = 0,
+      max = 900000;
+
+    if (!entre(parseInt(Peso), min, max)) {
+      showError(idPeso!, `Value must be greater than ${min}`);
+    } else if (!vazio(Peso)) {
+      showError(idPeso!, `field must not be empty`);
     } else {
       showSuccess(idPeso!);
-      valido = true
+      valido = true;
     }
-    return valido
+    return valido;
   }
 
-  function validaPesoMin(){
-    const idPesoMin = document.getElementById("peso_minimo")
+  function validaPesoMin() {
+    const idPesoMin = document.getElementById("peso_minimo");
     let valido = false;
-    const min = 0, max = 900000
+    const min = 0,
+      max = 900000;
 
-    if(!entre(parseInt(PesoMinimo), min, max)){
-      showError(idPesoMin!, `Value must be greater than ${min}`)
+    if (!entre(parseInt(PesoMinimo), min, max)) {
+      showError(idPesoMin!, `Value must be greater than ${min}`);
+    } else if (!vazio(PesoMinimo)) {
+      showError(idPesoMin!, `field must not be empty`);
     } else {
       showSuccess(idPesoMin!);
       valido = true;
     }
-    return valido
+    return valido;
   }
 
-  function validaSobrepeso(){
-    const id = document.getElementById("sobrepeso")
+  function validaSobrepeso() {
+    const id = document.getElementById("sobrepeso");
     let valido = false;
-    const min = 0, max = 900000
+    const min = 0,
+      max = 900000;
 
-    if(!entre(parseInt(Sobrepeso), min, max)){
-      showError(id!, `Value must be greater than ${min}`)
+    if (!entre(parseInt(Sobrepeso), min, max)) {
+      showError(id!, `Value must be greater than ${min}`);
+    } else if (!vazio(Sobrepeso)) {
+      showError(id!, `field must not be empty`);
     } else {
       showSuccess(id!);
       valido = true;
@@ -132,63 +216,66 @@ function CriarAeronaves() {
     return valido;
   }
 
-  function validaPesoMax(){
-    const idPesoMax = document.getElementById("peso_maximo")
+  function validaPesoMax() {
+    const idPesoMax = document.getElementById("peso_maximo");
     let valido = false;
-    const min = 0, max = 900000
+    const min = 0,
+      max = 900000;
 
-    if(!entre(parseInt(PesoMaximo), min, max)){
-      showError(idPesoMax!, `Value must be greater than ${min}`)
+    if (!entre(parseInt(PesoMaximo), min, max)) {
+      showError(idPesoMax!, `Value must be greater than ${min}`);
+    } else if (!vazio(PesoMaximo)) {
+      showError(idPesoMax!, `field must not be empty`);
     } else {
       showSuccess(idPesoMax!);
       valido = true;
     }
-    return valido
+    return valido;
   }
 
-  function receberFabricante(evento: any){
+  function receberFabricante(evento: any) {
     let entrada = evento.target.value;
-    setFabricante(entrada)
-  }
-  
-  function receberModelo(evento: any){
-    let entrada = evento.target.value;
-    setModelo(entrada)
+    setFabricante(entrada);
   }
 
-  function receberCertificacao(evento: any){
+  function receberModelo(evento: any) {
     let entrada = evento.target.value;
-    setCertificacao(entrada)
+    setModelo(entrada);
   }
 
-  function receberMotor(evento: any){
+  function receberCertificacao(evento: any) {
     let entrada = evento.target.value;
-    setMotor(entrada)
+    setCertificacao(entrada);
   }
 
-  function receberReversor(evento: any){
+  function receberMotor(evento: any) {
     let entrada = evento.target.value;
-    setReversor(entrada)
+    setMotor(entrada);
   }
 
-  function receberPeso(evento: any){
+  function receberReversor(evento: any) {
     let entrada = evento.target.value;
-    setPeso(entrada)
+    setReversor(entrada);
   }
 
-  function receberPesoMin(evento: any){
+  function receberPeso(evento: any) {
     let entrada = evento.target.value;
-    setPesoMinimo(entrada)
+    setPeso(entrada);
   }
 
-  function receberSobrepeso(evento: any){
+  function receberPesoMin(evento: any) {
+    let entrada = evento.target.value;
+    setPesoMinimo(entrada);
+  }
+
+  function receberSobrepeso(evento: any) {
     let entrada = evento.target.value;
     setSobrepeso(entrada);
   }
 
-  function receberPesoMax(evento: any){
+  function receberPesoMax(evento: any) {
     let entrada = evento.target.value;
-    setPesoMaximo(entrada)
+    setPesoMaximo(entrada);
   }
 
   const [Fabricante, setFabricante] = useState("");
@@ -234,6 +321,7 @@ function CriarAeronaves() {
                   onChange={receberFabricante}
                   //onInput={handleChangeValues}
                 />
+                <small></small>
               </div>
               <div className="form-group col-lg-4-md col-md-4 col-sm-12">
                 <label>Aircraft model:</label>
@@ -246,6 +334,7 @@ function CriarAeronaves() {
                   onChange={receberModelo}
                   //onInput={handleChangeValues}
                 />
+                <small></small>
               </div>
               <div className="form-group col-lg-4-md col-md-4 col-sm-12">
                 <label>Certification:</label>
@@ -258,6 +347,7 @@ function CriarAeronaves() {
                   onChange={receberCertificacao}
                   //onInput={handleChangeValues}
                 />
+                <small></small>
               </div>
             </div>
             <div className="row">
@@ -272,6 +362,7 @@ function CriarAeronaves() {
                   onChange={receberMotor}
                   //onInput={handleChangeValues}
                 />
+                <small></small>
               </div>
               <div className="form-group col-lg-4-md col-md-4 col-sm-12">
                 <label>How many reversers does the aircraft have?</label>
@@ -284,7 +375,9 @@ function CriarAeronaves() {
                   onChange={receberReversor}
                   //onInput={handleChangeValues}
                 >
-                  <option value="" selected disabled>Select</option>
+                  <option value="" selected disabled>
+                    Select
+                  </option>
                   <option value="0">0</option>
                   <option value="1">1</option>
                   <option value="2">2</option>
