@@ -5,6 +5,7 @@ import { FormControlLabel, Switch } from "@mui/material";
 import Axios from "axios";
 import Swal from "sweetalert2";
 import { useNavigate } from "react-router-dom";
+import { Navigation } from "@mui/icons-material";
 
 function VariaveisAeronaves() {
   const navigate = useNavigate();
@@ -90,14 +91,18 @@ function VariaveisAeronaves() {
       });
       Swal.fire({
         title: "Sucessful registered variables",
-        text: "Return to the home page?",
-        showCancelButton: false,
+        text: "Register another?",
+        showCancelButton: true,
         confirmButtonColor: "#3085d6",
         cancelButtonColor: "#d33",
-        confirmButtonText: "Yes, procced",
+        confirmButtonText: "Yes",
+        cancelButtonText: "No, return to home page"
       }).then((result) => {
         if (result.isConfirmed) {
-          navigate(`/Index`);
+          // eslint-disable-next-line no-restricted-globals
+          location.reload();
+        } else {
+          navigate(`/Index`)
         }
       });
     }
