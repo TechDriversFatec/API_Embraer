@@ -11,7 +11,7 @@ function VariaveisAeronaves() {
 
   const url_atual = window.location.href;
   console.log(url_atual);
-  const id = window.location.href.split('http://localhost:3000/')[1];
+  const id = window.location.href.split('/')[4];
   console.log(id);
 
   function manipularEnvio(evento: any) {
