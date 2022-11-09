@@ -16,60 +16,44 @@ function VariaveisAeronaves() {
 
   function manipularEnvio(evento: any) {
     evento.preventDefault();
-    let distanciaValida = validaDistancia(),
-      reversorValido = validaReversor(),
-      variacaoPesoValida = validaVariacaoPes(),
-      pesoAcmValido = validaPesoAcm(),
-      pesoAbxValido = validaPesoAbx(),
-      sobrepesoValido = validaSobrepeso(),
-      altitudePdValida = validaAltitudePd(),
-      variacaoAltValida = validaVariacaoAlt(),
-      altitudeAcmValida = validaAltitudeAcm(),
-      altitudeAbxValida = validaAltitudeAbx(),
-      temperaturaPdValida = validaTemperaturaPd(),
-      variacaoTmpValida = validaVariacaoTmp(),
-      temperaturaAcmValida = validaTemperaturaAcm(),
-      temperaturaAbxValida = validaTemperaturaAbx(),
-      ventoPdValido = validaVentoPd(),
-      variacaoVentoValida = validaVariacaoVento(),
-      ventoAcmValido = validaVentoAcm(),
-      ventoAbxValido = validaVentoAbx(),
-      slopePdValido = validaSlopePd(),
-      variacaoSlopeValido = validaVariacaoSlope(),
-      slopeAcmValido = validaSlopeAcm(),
-      slopeAbxValido = validaSlopeAbx(),
-      vapPdValido = validaVapPd(),
-      variacaoVapValido = validaVariacaoVap(),
-      vapAcmValido = validaVapAcm(),
-      vapAbxValido = validaVapAbx();
+    // let distanciaValida = validaDistancia(),
+    //   reversorValido = validaReversor(),
+    //   variacaoPesoValida = validaVariacaoPes(),
+    //   pesoAcmValido = validaPesoAcm(),
+    //   sobrepesoValido = validaSobrepeso(),
+    //   variacaoAltValida = validaVariacaoAlt(),
+    //   altitudeAcmValida = validaAltitudeAcm(),
+    //   variacaoTmpValida = validaVariacaoTmp(),
+    //   temperaturaAcmValida = validaTemperaturaAcm(),
+    //   ventoPdValido = validaVentoPd(),
+    //   variacaoVentoValida = validaVariacaoVento(),
+    //   ventoAcmValido = validaVentoAcm(),
+    //   slopePdValido = validaSlopePd(),
+    //   variacaoSlopeValido = validaVariacaoSlope(),
+    //   slopeAbxValido = validaSlopeAbx(),
+    //   vapPdValido = validaVapPd(),
+    //   variacaoVapValido = validaVariacaoVap(),
+    //   vapAcmValido = validaVapAcm()
 
-    let formularioValido =
-      distanciaValida &&
-      reversorValido &&
-      variacaoPesoValida &&
-      pesoAcmValido &&
-      pesoAbxValido &&
-      sobrepesoValido &&
-      altitudePdValida &&
-      variacaoAltValida &&
-      altitudeAcmValida &&
-      altitudeAbxValida &&
-      temperaturaPdValida &&
-      variacaoTmpValida &&
-      temperaturaAcmValida &&
-      temperaturaAbxValida &&
-      ventoPdValido &&
-      variacaoVentoValida &&
-      ventoAcmValido &&
-      ventoAbxValido &&
-      slopePdValido &&
-      variacaoSlopeValido &&
-      slopeAcmValido &&
-      slopeAbxValido &&
-      vapPdValido &&
-      variacaoVapValido &&
-      vapAcmValido &&
-      vapAbxValido;
+    let formularioValido = true
+      // distanciaValida &&
+      // reversorValido &&
+      // variacaoPesoValida &&
+      // pesoAcmValido &&
+      // sobrepesoValido &&
+      // variacaoAltValida &&
+      // altitudeAcmValida &&
+      // variacaoTmpValida &&
+      // temperaturaAcmValida &&
+      // ventoPdValido &&
+      // variacaoVentoValida &&
+      // ventoAcmValido &&
+      // slopePdValido &&
+      // variacaoSlopeValido &&
+      // slopeAbxValido &&
+      // vapPdValido &&
+      // variacaoVapValido &&
+      // vapAcmValido;
 
     if (formularioValido) {
       Axios.post("http://localhost:3002/parameter", {
@@ -113,7 +97,7 @@ function VariaveisAeronaves() {
         confirmButtonText: "Yes, procced",
       }).then((result) => {
         if (result.isConfirmed) {
-          navigate("/Variavel/:id");
+          navigate(`/Variavel/:id`);
         };
       });
     }
@@ -141,17 +125,15 @@ function VariaveisAeronaves() {
     error!.textContent = "";
   };
 
-  const ehNumero = (valor: any) => {
-    const expressao = new RegExp("[^0-9]");
-    return expressao.test(valor);
-  };
+  const entre = (valor: number, min: number, max: number) => valor < min || valor > max ? false : true
 
   function validaDistancia() {
     const id = document.getElementById("distancia_referencial");
     let valido = false;
+    const min: number = 0, max: number = 900000;
 
-    if (!ehNumero(Distancia)) {
-      showError(id!, `Value must be a number`);
+    if (!entre(parseInt(Distancia), min, max)) {
+      showError(id!, `Value must be greater than ${min}`);
     } else {
       showSuccess(id!);
       valido = true;
@@ -162,9 +144,10 @@ function VariaveisAeronaves() {
   function validaReversor() {
     const id = document.getElementById("correcao_reversor_inoperante");
     let valido = false;
+    const min = 0, max = 900000
 
-    if (!ehNumero(Reversor)) {
-      showError(id!, `Value must be a number`);
+    if (!entre(parseInt(Reversor), min, max)) {
+      showError(id!, `Value must be greater than ${min}`);
     } else {
       showSuccess(id!);
       valido = true;
@@ -175,9 +158,10 @@ function VariaveisAeronaves() {
   function validaVariacaoPes() {
     const id = document.getElementById("padrao_variacao_peso");
     let valido = false;
+    const min = 0, max = 900000
 
-    if (!ehNumero(VariacaoPes)) {
-      showError(id!, `Value must be a number`);
+    if (!entre(parseInt(VariacaoPes), min, max)) {
+      showError(id!, `Value must be greater than ${min}`);
     } else {
       showSuccess(id!);
       valido = true;
@@ -187,21 +171,10 @@ function VariaveisAeronaves() {
   function validaPesoAcm() {
     const id = document.getElementById("correcao_peso_acima");
     let valido = false;
+    const min = 0, max = 900000
 
-    if (!ehNumero(PesoAcm)) {
-      showError(id!, `Value must be a number`);
-    } else {
-      showSuccess(id!);
-      valido = true;
-    }
-    return valido;
-  }
-  function validaPesoAbx() {
-    const id = document.getElementById("correcao_peso_abaixo");
-    let valido = false;
-
-    if (!ehNumero(PesoAbx)) {
-      showError(id!, `Value must be a number`);
+    if (!entre(parseInt(PesoAcm), min, max)) {
+      showError(id!, `Value must be greater than ${min}`);
     } else {
       showSuccess(id!);
       valido = true;
@@ -211,21 +184,10 @@ function VariaveisAeronaves() {
   function validaSobrepeso() {
     const id = document.getElementById("correcao_sobrepeso");
     let valido = false;
+    const min = 0, max = 900000
 
-    if (!ehNumero(Sobrepeso)) {
-      showError(id!, `Value must be a number`);
-    } else {
-      showSuccess(id!);
-      valido = true;
-    }
-    return valido;
-  }
-  function validaAltitudePd() {
-    const id = document.getElementById("altitude_padrao");
-    let valido = false;
-
-    if (!ehNumero(AltitudePd)) {
-      showError(id!, `value must be a number`);
+    if (!entre(parseInt(Sobrepeso), min, max)) {
+      showError(id!, `Value must be greater than ${min}`);
     } else {
       showSuccess(id!);
       valido = true;
@@ -235,9 +197,10 @@ function VariaveisAeronaves() {
   function validaVariacaoAlt() {
     const id = document.getElementById("padrao_variacao_altitude");
     let valido = false;
+    const min = 0, max = 900000
 
-    if (!ehNumero(VariacaoAlt)) {
-      showError(id!, `value must be a number`);
+    if (!entre(parseInt(VariacaoAlt), min, max)) {
+      showError(id!, `Value must be greater than ${min}`);
     } else {
       showSuccess(id!);
       valido = true;
@@ -247,33 +210,10 @@ function VariaveisAeronaves() {
   function validaAltitudeAcm() {
     const id = document.getElementById("correcao_altitude_acima");
     let valido = false;
+    const min = 0, max = 900000
 
-    if (!ehNumero(AltitudeAcm)) {
-      showError(id!, `value must be a number`);
-    } else {
-      showSuccess(id!);
-      valido = true;
-    }
-    return valido;
-  }
-  function validaAltitudeAbx() {
-    const id = document.getElementById("correcao_altitude_abaixo");
-    let valido = false;
-
-    if (!ehNumero(AltitudeAbx)) {
-      showError(id!, `value must be a number`);
-    } else {
-      showSuccess(id!);
-      valido = true;
-    }
-    return valido;
-  }
-  function validaTemperaturaPd() {
-    const id = document.getElementById("temperatura_padrao");
-    let valido = false;
-
-    if (!ehNumero(TemperaturaPd)) {
-      showError(id!, `value must be a number`);
+    if (!entre(parseInt(AltitudeAcm), min, max)) {
+      showError(id!, `Value must be greater than ${min}`);
     } else {
       showSuccess(id!);
       valido = true;
@@ -283,9 +223,10 @@ function VariaveisAeronaves() {
   function validaVariacaoTmp() {
     const id = document.getElementById("padrao_variacao_temperatura");
     let valido = false;
+    const min = 0, max = 900000
 
-    if (!ehNumero(VariacaoTmp)) {
-      showError(id!, `value must be a number`);
+    if (!entre(parseInt(VariacaoTmp), min, max)) {
+      showError(id!, `Value must be greater than ${min}`);
     } else {
       showSuccess(id!);
       valido = true;
@@ -295,20 +236,9 @@ function VariaveisAeronaves() {
   function validaTemperaturaAcm() {
     const id = document.getElementById("correcao_temperatura_acima");
     let valido = false;
+    const min = 0, max = 900000
 
-    if (!ehNumero(TemperaturaAcm)) {
-      showError(id!, `value must be a number`);
-    } else {
-      showSuccess(id!);
-      valido = true;
-    }
-    return valido;
-  }
-  function validaTemperaturaAbx() {
-    const id = document.getElementById("correcao_temperatura_abaixo");
-    let valido = false;
-
-    if (!ehNumero(TemperaturaAbx)) {
+    if (!entre(parseInt(TemperaturaAcm), min, max)) {
       showError(id!, `value must be a number`);
     } else {
       showSuccess(id!);
@@ -319,9 +249,10 @@ function VariaveisAeronaves() {
   function validaVentoPd() {
     const id = document.getElementById("padrao_vento");
     let valido = false;
+    const min = 0, max = 900000
 
-    if (!ehNumero(VentoPd)) {
-      showError(id!, `value must be a number`);
+    if (!entre(parseInt(VentoPd), min, max)) {
+      showError(id!, `Value must be greater than ${min}`);
     } else {
       showSuccess(id!);
       valido = true;
@@ -331,9 +262,10 @@ function VariaveisAeronaves() {
   function validaVariacaoVento() {
     const id = document.getElementById("padrao_variacao_vento");
     let valido = false;
+    const min = 0, max = 900000
 
-    if (!ehNumero(VariacaoVento)) {
-      showError(id!, `value must be a number`);
+    if (!entre(parseInt(VariacaoVento), min, max)) {
+      showError(id!, `Value must be greater than ${min}`);
     } else {
       showSuccess(id!);
       valido = true;
@@ -343,21 +275,10 @@ function VariaveisAeronaves() {
   function validaVentoAcm() {
     const id = document.getElementById("correcao_vento_cauda");
     let valido = false;
+    const min = 0, max = 900000
 
-    if (!ehNumero(VentoAcm)) {
-      showError(id!, `value must be a number`);
-    } else {
-      showSuccess(id!);
-      valido = true;
-    }
-    return valido;
-  }
-  function validaVentoAbx() {
-    const id = document.getElementById("correcao_vento_proa");
-    let valido = false;
-
-    if (!ehNumero(VentoAbx)) {
-      showError(id!, `value must be a number`);
+    if (!entre(parseInt(VentoAcm), min, max)) {
+      showError(id!, `Value must be greater than ${min}`);
     } else {
       showSuccess(id!);
       valido = true;
@@ -367,9 +288,10 @@ function VariaveisAeronaves() {
   function validaSlopePd() {
     const id = document.getElementById("slope_padrao");
     let valido = false;
+    const min = 0, max = 900000
 
-    if (!ehNumero(SlopePd)) {
-      showError(id!, `value must be a number`);
+    if (!entre(parseInt(SlopePd), min, max)) {
+      showError(id!, `Value must be greater than ${min}`);
     } else {
       showSuccess(id!);
       valido = true;
@@ -379,21 +301,10 @@ function VariaveisAeronaves() {
   function validaVariacaoSlope() {
     const id = document.getElementById("padrao_variacao_inclinacao");
     let valido = false;
+    const min = 0, max = 900000
 
-    if (!ehNumero(VariacaoSlope)) {
-      showError(id!, `value must be a number`);
-    } else {
-      showSuccess(id!);
-      valido = true;
-    }
-    return valido;
-  }
-  function validaSlopeAcm() {
-    const id = document.getElementById("correcao_aclive");
-    let valido = false;
-
-    if (!ehNumero(SlopeAcm)) {
-      showError(id!, `value must be a number`);
+    if (!entre(parseInt(VariacaoSlope), min, max)) {
+      showError(id!, `Value must be greater than ${min}`);
     } else {
       showSuccess(id!);
       valido = true;
@@ -403,9 +314,10 @@ function VariaveisAeronaves() {
   function validaSlopeAbx() {
     const id = document.getElementById("correcao_declive");
     let valido = false;
+    const min = 0, max = 900000
 
-    if (!ehNumero(SlopeAbx)) {
-      showError(id!, `value must be a number`);
+    if (!entre(parseInt(SlopeAbx), min, max)) {
+      showError(id!, `Value must be greater than ${min}`);
     } else {
       showSuccess(id!);
       valido = true;
@@ -415,9 +327,10 @@ function VariaveisAeronaves() {
   function validaVapPd() {
     const id = document.getElementById("vap_padrao");
     let valido = false;
+    const min = 0, max = 900000
 
-    if (!ehNumero(VapPd)) {
-      showError(id!, `value must be a number`);
+    if (!entre(parseInt(VapPd), min, max)) {
+      showError(id!, `Value must be greater than ${min}`);
     } else {
       showSuccess(id!);
       valido = true;
@@ -427,9 +340,10 @@ function VariaveisAeronaves() {
   function validaVariacaoVap() {
     const id = document.getElementById("padrao_variacao_velocidade");
     let valido = false;
+    const min = 0, max = 900000
 
-    if (!ehNumero(VariacaoSlope)) {
-      showError(id!, `value must be a number`);
+    if (!entre(parseInt(VariacaoSlope), min, max)) {
+      showError(id!, `Value must be greater than ${min}`);
     } else {
       showSuccess(id!);
       valido = true;
@@ -439,21 +353,10 @@ function VariaveisAeronaves() {
   function validaVapAcm() {
     const id = document.getElementById("correcao_velocidade_acima");
     let valido = false;
+    const min = 0, max = 900000
 
-    if (!ehNumero(VapAcm)) {
-      showError(id!, `value must be a number`);
-    } else {
-      showSuccess(id!);
-      valido = true;
-    }
-    return valido;
-  }
-  function validaVapAbx() {
-    const id = document.getElementById("correcao_velocidade_abaixo");
-    let valido = false;
-
-    if (!ehNumero(VapAbx)) {
-      showError(id!, `value must be a number`);
+    if (!entre(parseInt(VapAcm), min, max)) {
+      showError(id!, `Value must be greater than ${min}`);
     } else {
       showSuccess(id!);
       valido = true;
@@ -675,15 +578,15 @@ function VariaveisAeronaves() {
               </div>
               <div className="form-group col-lg-4-md col-md-4 col-sm-12">
                 <label>Runway Condition:</label>
-                <input
-                  id="condicao_pista"
-                  className="form-control"
-                  name="condicao_pista"
-                  placeholder="Runway Condition:"
-                  value={Condicao}
-                  onChange={receberCondicao}
-                  //onInput={handleChangeValues}
-                />
+                    <select className="form-control select" id="condicao_pista" title="condicaoPista" value={Condicao} onChange={receberCondicao}>
+                      <option value="" disabled selected>Select a runway condition</option>
+                      <option value="1">1 - Ice</option>
+                      <option value="2">2 - Standing, Water, Slush</option>
+                      <option value="3">3 - Loose Snow</option>
+                      <option value="4">4 - Compact Snow</option>
+                      <option value="5">5 - Wet</option>
+                      <option value="6">6 - Dry</option>
+                    </select>
               </div>
               <div className="form-group col-lg-4-md col-md-2 col-sm-12">
                 <label>Referencial distance:</label>
@@ -692,6 +595,7 @@ function VariaveisAeronaves() {
                   className="form-control"
                   name="distancia_referencial"
                   placeholder="Referential distance (m)"
+                  type="number"
                   value={Distancia}
                   onChange={receberDistancia}
                   //onInput={handleChangeValues}
@@ -705,6 +609,7 @@ function VariaveisAeronaves() {
                   className="form-control"
                   name="correcao_reversor_inoperante"
                   placeholder="Per rev inop (m)"
+                  type="number"
                   value={Reversor}
                   onChange={receberReversor}
                   //onInput={handleChangeValues}
@@ -721,6 +626,7 @@ function VariaveisAeronaves() {
                   className="form-control"
                   name="padrao_variacao_peso"
                   placeholder="For each"
+                  type="number"
                   value={VariacaoPes}
                   onChange={receberVariacaoPes}
                   //onInput={handleChangeValues}
@@ -733,6 +639,7 @@ function VariaveisAeronaves() {
                   className="form-control"
                   name="correcao_peso_acima"
                   placeholder="Above standard"
+                  type="number"
                   value={PesoAcm}
                   onChange={receberPesoAcm}
                   //onInput={handleChangeValues}
@@ -744,6 +651,7 @@ function VariaveisAeronaves() {
                   className="form-control"
                   name="correcao_peso_abaixo"
                   placeholder="Below standard"
+                  type="number"
                   value={PesoAbx}
                   onChange={receberPesoAbx}
                   //onInput={handleChangeValues}
@@ -756,6 +664,7 @@ function VariaveisAeronaves() {
                   className="form-control"
                   name="correcao_sobrepeso"
                   placeholder="Overweight"
+                  type="number"
                   value={Sobrepeso}
                   onChange={receberSobrepeso}
                   //onInput={handleChangeValues}
@@ -772,6 +681,7 @@ function VariaveisAeronaves() {
                   className="form-control"
                   name="altitude_padrao"
                   placeholder="Default value"
+                  type="number"
                   value={AltitudePd}
                   onChange={receberAltitudePd}
                   //onInput={handleChangeValues}
@@ -784,6 +694,7 @@ function VariaveisAeronaves() {
                   className="form-control"
                   name="padrao_variacao_altitude"
                   placeholder="For each"
+                  type="number"
                   value={VariacaoAlt}
                   onChange={receberVariacaoAlt}
                   //onInput={handleChangeValues}
@@ -796,6 +707,7 @@ function VariaveisAeronaves() {
                   className="form-control"
                   name="correcao_altitude_acima"
                   placeholder="Above standard"
+                  type="number"
                   value={AltitudeAcm}
                   onChange={receberAltitudeAcm}
                   //onInput={handleChangeValues}
@@ -807,6 +719,7 @@ function VariaveisAeronaves() {
                   className="form-control"
                   name="correcao_altitude_abaixo"
                   placeholder="Below standard"
+                  type="number"
                   value={AltitudeAbx}
                   onChange={receberAltitudeAbx}
                   //onInput={handleChangeValues}
@@ -823,6 +736,7 @@ function VariaveisAeronaves() {
                   className="form-control"
                   name="temperatura_padrao"
                   placeholder="Default value in °C"
+                  type="number"
                   value={TemperaturaPd}
                   onChange={receberTemperaturaPd}
                   //onInput={handleChangeValues}
@@ -835,6 +749,7 @@ function VariaveisAeronaves() {
                   className="form-control"
                   name="padrao_variacao_temperatura"
                   placeholder="For each"
+                  type="number"
                   value={VariacaoTmp}
                   onChange={receberVariacaoTmp}
                   //onInput={handleChangeValues}
@@ -847,6 +762,7 @@ function VariaveisAeronaves() {
                   className="form-control"
                   name="correcao_temperatura_acima"
                   placeholder="Above standard"
+                  type="number"
                   value={TemperaturaAcm}
                   onChange={receberTemperaturaAcm}
                   //onInput={handleChangeValues}
@@ -858,6 +774,7 @@ function VariaveisAeronaves() {
                   className="form-control"
                   name="correcao_temperatura_abaixo"
                   placeholder="Below standard"
+                  type="number"
                   value={TemperaturaAbx}
                   onChange={receberTemperaturaAbx}
                   //onInput={handleChangeValues}
@@ -874,6 +791,7 @@ function VariaveisAeronaves() {
                   className="form-control"
                   name="padrao_vento"
                   placeholder="Default value"
+                  type="number"
                   value={VentoPd}
                   onChange={receberVentoPd}
                   //onInput={handleChangeValues}
@@ -886,6 +804,7 @@ function VariaveisAeronaves() {
                   className="form-control"
                   name="padrao_variacao_vento"
                   placeholder="For each"
+                  type="number"
                   value={VariacaoVento}
                   onChange={receberVariacaoVento}
                   //onInput={handleChangeValues}
@@ -898,6 +817,7 @@ function VariaveisAeronaves() {
                   className="form-control"
                   name="correcao_vento_cauda"
                   placeholder="Above standard (Tail wind)"
+                  type="number"
                   value={VentoAcm}
                   onChange={receberVentoAcm}
                   //onInput={handleChangeValues}
@@ -909,6 +829,7 @@ function VariaveisAeronaves() {
                   className="form-control"
                   name="correcao_vento_proa"
                   placeholder="Below standard (Head wind)"
+                  type="number"
                   value={VentoAbx}
                   onChange={receberVentoAbx}
                   //onInput={handleChangeValues}
@@ -925,6 +846,7 @@ function VariaveisAeronaves() {
                   className="form-control"
                   name="slope_padrao"
                   placeholder="Default value"
+                  type="number"
                   value={SlopePd}
                   onChange={receberSlopePd}
                   //onInput={handleChangeValues}
@@ -937,6 +859,7 @@ function VariaveisAeronaves() {
                   className="form-control"
                   name="padrao_variacao_inclinacao"
                   placeholder="For each"
+                  type="number"
                   value={VariacaoSlope}
                   onChange={receberVariacaoSlope}
                   //onInput={handleChangeValues}
@@ -949,6 +872,7 @@ function VariaveisAeronaves() {
                   className="form-control"
                   name="correcao_aclive"
                   placeholder="Above standard"
+                  type="number"
                   value={SlopeAcm}
                   onChange={receberSlopeAcm}
                   //onInput={handleChangeValues}
@@ -960,6 +884,7 @@ function VariaveisAeronaves() {
                   className="form-control"
                   name="correcao_declive"
                   placeholder="Below standard"
+                  type="number"
                   value={SlopeAbx}
                   onChange={receberSlopeAbx}
                   //onInput={handleChangeValues}
@@ -976,6 +901,7 @@ function VariaveisAeronaves() {
                   className="form-control"
                   name="vap_padrao"
                   placeholder="Default value"
+                  type="number"
                   value={VapPd}
                   onChange={receberVapPd}
                   //onInput={handleChangeValues}
@@ -988,6 +914,7 @@ function VariaveisAeronaves() {
                   className="form-control"
                   name="padrao_variacao_velocidade"
                   placeholder="For each"
+                  type="number"
                   value={VariacaoVAP}
                   onChange={receberVariacaoVAP}
                   //onInput={handleChangeValues}
@@ -1000,6 +927,7 @@ function VariaveisAeronaves() {
                   className="form-control"
                   name="correcao_velocidade_acima"
                   placeholder="Above standard"
+                  type="number"
                   value={VapAcm}
                   onChange={receberVapAcm}
                   //onInput={handleChangeValues}
@@ -1011,6 +939,7 @@ function VariaveisAeronaves() {
                   className="form-control"
                   name="correcao_velocidade_abaixo"
                   placeholder="Below standard"
+                  type="number"
                   value={VapAbx}
                   onChange={receberVapAbx}
                   //onInput={handleChangeValues}
