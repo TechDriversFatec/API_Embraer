@@ -1,6 +1,6 @@
 import Axios from "axios";
 import "bootstrap/dist/css/bootstrap.min.css";
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import { useNavigate } from "react-router-dom";
 import Swal from "sweetalert2";
 
@@ -64,7 +64,10 @@ function UpdateUsuario() {
           
       
         if(formularioValido){
-          Axios.post("http://localhost:3002/criarusuario", {
+            const url = window.location.pathname;
+            const id = url.split('/')[2]
+
+          Axios.put(`http://localhost:3002/updateUser/${id}`, {
         nivel_acesso: (document.getElementById('NivelUsuario')).options[(document.getElementById('NivelUsuario')).selectedIndex].value,
         senha_acesso: (document.getElementById('senha_acesso')).value,
         nome: (document.getElementById('nome')).value,
@@ -185,11 +188,32 @@ function UpdateUsuario() {
         setNivelUsuario(entrada)
         }
         
+        const[eye,seteye]=useState(true);
+        const[type,settype]=useState(false);
+        const [NivelUsuario, setNivelUsuario] = useState("");
+        const [Senha, setSenha] = useState("password");
         const [Nome, setNome] = useState("");
         const [Email, setEmail] = useState("");
-        const [Senha, setSenha] = useState("");
-        const [NivelUsuario, setNivelUsuario] = useState("");
 
+        const Eye=()=>{
+            if(Senha=="password"){
+                setSenha("text");
+                seteye(false);
+                settype(true);
+            }
+            else{
+                setSenha("password");
+                seteye(true);
+                settype(false);
+            }
+        }
+        
+        useEffect(() => {
+            setNivelUsuario(localStorage.getItem('userNivelAcesso'));
+            setSenha(localStorage.getItem('userSenha'))
+            setNome(localStorage.getItem('userNome'))
+            setEmail(localStorage.getItem('userEmail'))
+          }, [])
     return (
         <div className="CriarUsuario">
             {/* <div>
@@ -217,6 +241,7 @@ function UpdateUsuario() {
                             <div className="form-group col-lg-4 col-md-6 col-sm-12">
                                 <label>Password:</label>
                                 <input id="senha_acesso" type="password" className="form-control" name="senha_acesso" value={Senha} placeholder="password max length = 15"onChange={receberSenha} />
+                                <i className="fa fa-eye password-icon"></i>
                                 <small></small>
                             </div>
                             <div className="form-group col-lg-4 col-md-6 col-sm-12">

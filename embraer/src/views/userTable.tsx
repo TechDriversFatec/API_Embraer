@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from "react";
 import { Table, Input } from "semantic-ui-react";
-import { Link, useParams } from "react-router-dom";
+import { Link, Navigate, useParams, useNavigate } from "react-router-dom";
 import axios from "axios";
 import UpdateAeronaves from "./Update-Aeronave";
 import VariaveisAeronaves from "./criar-aeronave";
@@ -21,6 +21,8 @@ export default function UserTable() {
   const [searchInput, setsearchInput] = useState('');
   const [resultadoFiltrado, setresultadoFiltrado] = useState([])
 
+  const navigate = useNavigate()
+
   const searchItems = (searchValue) => {
     setsearchInput(searchValue)
     if (searchInput !== '') {
@@ -34,17 +36,12 @@ export default function UserTable() {
   }
 
   const setData = (data: any) => {
-    let { id, fabricante, modelo, certificacao, motor, qtde_reversor, peso_referencial, peso_minimo, sobrepeso, peso_maximo } = data;
-    localStorage.setItem('Id', id)
-    localStorage.setItem('Fabricante', fabricante)
-    localStorage.setItem('Modelo', modelo)
-    localStorage.setItem('Certificacao', certificacao)
-    localStorage.setItem('Motor', motor)
-    localStorage.setItem('Qtde Reversor', qtde_reversor)
-    localStorage.setItem('Peso Referencial', peso_referencial)
-    localStorage.setItem('Peso Minimo', peso_minimo)
-    localStorage.setItem('Sobrepeso', sobrepeso)
-    localStorage.setItem('Peso Maximo', peso_maximo)
+    let { id, nivel_acesso,senha_acesso, nome, email} = data;
+    localStorage.setItem('userId', id)
+    localStorage.setItem('userNivelAcesso', nivel_acesso)
+    localStorage.setItem('userSenha', senha_acesso)
+    localStorage.setItem('userNome', nome)
+    localStorage.setItem('userEmail', email)
   }
 
   useEffect(() => {
