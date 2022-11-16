@@ -11,6 +11,9 @@ fieldset{
   margin-right: 12px;
   /* margin-left: 1%; */
 }
+.flap{
+  float: left;
+}
 .clear{
   clear: both;
 }

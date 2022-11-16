@@ -1,11 +1,11 @@
 import React, { useEffect, useState } from "react";
-import { Table, Input } from "semantic-ui-react";
+import { Table, Input, TableFooter } from "semantic-ui-react";
 import { Link, Navigate, useParams, useNavigate } from "react-router-dom";
 import axios from "axios";
 import UpdateAeronaves from "./Update-Aeronave";
 import VariaveisAeronaves from "./criar-aeronave";
 import { ModelTrainingOutlined } from "@mui/icons-material";
-import { IconButton } from "@mui/material";
+import { IconButton, TablePagination } from "@mui/material";
 import EditIcon from '@mui/icons-material/Edit';
 import AddIcon from '@mui/icons-material/Add';
 import AirplanemodeActiveIcon from '@mui/icons-material/AirplanemodeActive';
@@ -20,6 +20,24 @@ export default function UserTable() {
   const [users, setUsers] = useState([]);
   const [searchInput, setsearchInput] = useState('');
   const [resultadoFiltrado, setresultadoFiltrado] = useState([])
+  const [page, setPage] = React.useState(0);
+  const [rowsPerPage, setRowsPerPage] = React.useState(5);
+
+  const handleChangePage = (
+    event: React.MouseEvent<HTMLButtonElement> | null,
+    newPage: number,
+  ) => {
+    setPage(newPage);
+  };
+
+  const handleChangeRowsPerPage = (
+    event: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>,
+  ) => {
+    setRowsPerPage(parseInt(event.target.value, 10));
+    setPage(0);
+  };
+
+  const emptyRows: any = rowsPerPage - Math.min(rowsPerPage, users.length - page * rowsPerPage);
 
   const navigate = useNavigate()
 
@@ -140,7 +158,7 @@ export default function UserTable() {
               )
             })
           ) : (
-            users.map((data: any) => {
+            users.slice(page * rowsPerPage, page * rowsPerPage + rowsPerPage).map((data: any) => {
               let url = `/AtualizA/` + data.id;
               let url2 = `/AtualizarUsuario/` + data.id;
               return (
@@ -166,10 +184,23 @@ export default function UserTable() {
               )
             })
           )}
-
+          {emptyRows > 0 && (
+              <Table.Row style={{ height: 53 * emptyRows }}>
+                <Table.Cell colSpan={6} />
+              </Table.Row>
+              )}
         </Table.Body>
-
-
+        <TableFooter>
+          <TablePagination
+            rowsPerPageOptions={[5, 10, 20]}
+            component="div"
+            count={users.length}
+            page={page}
+            onPageChange={handleChangePage}
+            rowsPerPage={rowsPerPage}
+            onRowsPerPageChange={handleChangeRowsPerPage}
+          />
+        </TableFooter>
       </Table>
     </div>
   );
