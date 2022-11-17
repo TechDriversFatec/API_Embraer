@@ -8,7 +8,6 @@ import axios from "axios";
 
 function CriarAeronaves() {
   const navigate = useNavigate();
-  const [values, setValues] = useState(Object);
   const [listAeronaves, setlistAeronaves] = useState([]);
 
   useEffect(() => {
@@ -16,6 +15,30 @@ function CriarAeronaves() {
       setlistAeronaves(response.data);
     });
   }, []);
+  const setData = (data: any) => {
+    let {
+      id,
+      fabricante,
+      modelo,
+      certificacao,
+      motor,
+      qtde_reversor,
+      peso_referencial,
+      peso_minimo,
+      sobrepeso,
+      peso_maximo,
+    } = data;
+    localStorage.setItem("Id", id);
+    localStorage.setItem("Fabricante", fabricante);
+    localStorage.setItem("Modelo", modelo);
+    localStorage.setItem("Certificacao", certificacao);
+    localStorage.setItem("Motor", motor);
+    localStorage.setItem("Qtde Reversor", qtde_reversor);
+    localStorage.setItem("Peso Referencial", peso_referencial);
+    localStorage.setItem("Peso Minimo", peso_minimo);
+    localStorage.setItem("Sobrepeso", sobrepeso);
+    localStorage.setItem("Peso Maximo", peso_maximo);
+  };
 
   const showError = (input: HTMLElement, message: string) => {
     const formField = input.parentElement;
@@ -41,17 +64,15 @@ function CriarAeronaves() {
 
   function manipularEnvio(evento: any) {
     evento.preventDefault();
-    console.log(typeof(Fabricante));
-    debugger
     let pesoValido = validaPeso(),
-    pesoMinValido = validaPesoMin(),
-    sobrepesoValido = validaSobrepeso(),
-    pesoMaxValido = validaPesoMax(),
-    fabricanteValido = validaFabricante(),
-    modeloValido = validaModelo(),
-    certificacaoValida = validaCertificacao(),
-    motorValido = validaMotor(),
-    reversorValido = validaReversor();
+      pesoMinValido = validaPesoMin(),
+      sobrepesoValido = validaSobrepeso(),
+      pesoMaxValido = validaPesoMax(),
+      fabricanteValido = validaFabricante(),
+      modeloValido = validaModelo(),
+      certificacaoValida = validaCertificacao(),
+      motorValido = validaMotor(),
+      reversorValido = validaReversor();
 
     let formularioValido =
       pesoValido &&
@@ -79,8 +100,8 @@ function CriarAeronaves() {
 
       Swal.fire({
         title: "Sucessful registered aircraft",
-        text: "Procced with the variables registration?",
-        showCancelButton: true,
+        text: "You must register the flap",
+        showCancelButton: false,
         confirmButtonColor: "#3085d6",
         cancelButtonColor: "#d33",
         confirmButtonText: "Yes, procced",
@@ -92,7 +113,20 @@ function CriarAeronaves() {
             id = parseInt(data.id) + 1;
             return id.toString();
           });
-          navigate(`/Variavel/${id}`);
+          let data = [
+            id,
+            Fabricante,
+            Modelo,
+            Certificacao,
+            Motor,
+            Revesor,
+            Peso,
+            PesoMinimo,
+            Sobrepeso,
+            PesoMaximo,
+          ];
+          setData(data);
+          navigate(`/AtualizA/${id}`);
         } else {
           navigate("/Index");
         }
@@ -107,7 +141,7 @@ function CriarAeronaves() {
   function validaFabricante() {
     const id = document.getElementById("fabricante");
     let valido = false;
-    
+
     if (!vazio(Fabricante)) {
       showError(id!, `field must not be empty`);
     } else {
@@ -116,11 +150,9 @@ function CriarAeronaves() {
     }
     return valido;
   }
-  debugger
   function validaModelo() {
     const id = document.getElementById("modelo");
     let valido = false;
-    debugger;
     if (!vazio(Modelo)) {
       showError(id!, `field must not be empty`);
     } else {
@@ -233,51 +265,6 @@ function CriarAeronaves() {
     return valido;
   }
 
-  function receberFabricante(evento: any) {
-    let entrada = evento.target.value;
-    setFabricante(entrada);
-  }
-
-  function receberModelo(evento: any) {
-    let entrada = evento.target.value;
-    setModelo(entrada);
-  }
-
-  function receberCertificacao(evento: any) {
-    let entrada = evento.target.value;
-    setCertificacao(entrada);
-  }
-
-  function receberMotor(evento: any) {
-    let entrada = evento.target.value;
-    setMotor(entrada);
-  }
-
-  function receberReversor(evento: any) {
-    let entrada = evento.target.value;
-    setReversor(entrada);
-  }
-
-  function receberPeso(evento: any) {
-    let entrada = evento.target.value;
-    setPeso(entrada);
-  }
-
-  function receberPesoMin(evento: any) {
-    let entrada = evento.target.value;
-    setPesoMinimo(entrada);
-  }
-
-  function receberSobrepeso(evento: any) {
-    let entrada = evento.target.value;
-    setSobrepeso(entrada);
-  }
-
-  function receberPesoMax(evento: any) {
-    let entrada = evento.target.value;
-    setPesoMaximo(entrada);
-  }
-
   const [Fabricante, setFabricante] = useState("");
   const [Modelo, setModelo] = useState("");
   const [Certificacao, setCertificacao] = useState("");
@@ -290,16 +277,6 @@ function CriarAeronaves() {
 
   return (
     <div className="CriarAeronaves">
-      {/* <div>
-        <i>
-          <img
-            className="logoAviaoCriar"
-            src="loguinho.png"
-            id="logoAviaozinho"
-            alt="some text"
-          />
-        </i>
-      </div> */}
       <form id="form_criar_aeronave" onSubmit={manipularEnvio}>
         <div className="card card-custom gutter-b">
           <div className="card-header">
@@ -318,8 +295,7 @@ function CriarAeronaves() {
                   name="fabricante"
                   placeholder="Insert the aircraft manufacturer:"
                   value={Fabricante}
-                  onChange={receberFabricante}
-                  //onInput={handleChangeValues}
+                  onChange={(e) => setFabricante(e.target.value)}
                 />
                 <small></small>
               </div>
@@ -331,8 +307,7 @@ function CriarAeronaves() {
                   name="modelo"
                   placeholder="Insert the aircraft model:"
                   value={Modelo}
-                  onChange={receberModelo}
-                  //onInput={handleChangeValues}
+                  onChange={(e) => setModelo(e.target.value)}
                 />
                 <small></small>
               </div>
@@ -344,8 +319,7 @@ function CriarAeronaves() {
                   name="certificacao"
                   placeholder="Insert the aircraft certification:"
                   value={Certificacao}
-                  onChange={receberCertificacao}
-                  //onInput={handleChangeValues}
+                  onChange={(e) => setCertificacao(e.target.value)}
                 />
                 <small></small>
               </div>
@@ -359,8 +333,7 @@ function CriarAeronaves() {
                   name="motor"
                   placeholder="Insert the aircraft motor:"
                   value={Motor}
-                  onChange={receberMotor}
-                  //onInput={handleChangeValues}
+                  onChange={(e) => setMotor(e.target.value)}
                 />
                 <small></small>
               </div>
@@ -372,8 +345,7 @@ function CriarAeronaves() {
                   name="qtde_reversor"
                   placeholder="Number of reversers:"
                   value={Revesor}
-                  onChange={receberReversor}
-                  //onInput={handleChangeValues}
+                  onChange={(e) => setReversor(e.target.value)}
                 >
                   <option value="" selected disabled>
                     Select
@@ -382,6 +354,7 @@ function CriarAeronaves() {
                   <option value="1">1</option>
                   <option value="2">2</option>
                 </select>
+                <small></small>
               </div>
               <div className="form-group col-lg-4-md col-md-4 col-sm-12">
                 <label>Aircraft weight (Kg):</label>
@@ -392,8 +365,7 @@ function CriarAeronaves() {
                   name="peso_referencial"
                   placeholder="Insert the aircraft ref weight:"
                   value={Peso}
-                  onChange={receberPeso}
-                  //onInput={handleChangeValues}
+                  onChange={(e) => setPeso(e.target.value)}
                 />
                 <small></small>
               </div>
@@ -408,8 +380,7 @@ function CriarAeronaves() {
                   placeholder="Insert the aircraft minimum weight:"
                   type="number"
                   value={PesoMinimo}
-                  onChange={receberPesoMin}
-                  //onInput={handleChangeValues}
+                  onChange={(e) => setPesoMinimo(e.target.value)}
                 />
                 <small></small>
               </div>
@@ -422,8 +393,7 @@ function CriarAeronaves() {
                   placeholder="Insert the overweight:"
                   type="number"
                   value={Sobrepeso}
-                  onChange={receberSobrepeso}
-                  //onInput={handleChangeValues}
+                  onChange={(e) => setSobrepeso(e.target.value)}
                 />
                 <small></small>
               </div>
@@ -436,8 +406,7 @@ function CriarAeronaves() {
                   placeholder="Insert the aircraft maximum weight:"
                   type="number"
                   value={PesoMaximo}
-                  onChange={receberPesoMax}
-                  //onInput={handleChangeValues}
+                  onChange={(e) => setPesoMaximo(e.target.value)}
                 />
                 <small></small>
               </div>
@@ -455,7 +424,6 @@ function CriarAeronaves() {
               type="submit"
               id="btn_registrar"
               name="submitButton"
-              //onClick={() => handleClickButton(values)}
             >
               <b>Register</b>
             </button>

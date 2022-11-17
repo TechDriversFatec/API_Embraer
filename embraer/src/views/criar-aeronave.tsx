@@ -553,8 +553,7 @@ function VariaveisAeronaves() {
                   name="tipo_flap"
                   placeholder="Insert the aircraft flap:"
                   value={Flap}
-                  onChange={receberFlap}
-                  //onInput={handleChangeValues}
+                  onChange={(e) => setFlap(e.target.value)}
                 />
                 <FormControlLabel
                   control={<Switch onChange={receberGelo} />}
@@ -569,8 +568,7 @@ function VariaveisAeronaves() {
                   className="form-control"
                   name="configuracao_freio"
                   value={Break}
-                  onChange={receberBreak}
-                  //onInput={handleChangeValues}
+                  onChange={(e) => setBreak(e.target.value)}
                 >
                   <option value="" selected disabled>
                     Select
@@ -602,8 +600,7 @@ function VariaveisAeronaves() {
                   placeholder="Referential distance (m)"
                   type="number"
                   value={Distancia}
-                  onChange={receberDistancia}
-                  //onInput={handleChangeValues}
+                  onChange={(e) => setDistancia(e.target.value)}
                 />
                 <small></small>
               </div>
@@ -616,8 +613,7 @@ function VariaveisAeronaves() {
                   placeholder="Per rev inop (m)"
                   type="number"
                   value={Reversor}
-                  onChange={receberReversor}
-                  //onInput={handleChangeValues}
+                  onChange={(e) => setReversor(e.target.value)}
                 />
                 <small></small>
               </div>
@@ -633,8 +629,7 @@ function VariaveisAeronaves() {
                   placeholder="For each"
                   type="number"
                   value={VariacaoPes}
-                  onChange={receberVariacaoPes}
-                  //onInput={handleChangeValues}
+                  onChange={(e) => setVariacaoPes(e.target.value)}
                 />
                 <small></small>
                 <br></br>
@@ -646,8 +641,7 @@ function VariaveisAeronaves() {
                   placeholder="Above standard"
                   type="number"
                   value={PesoAcm}
-                  onChange={receberPesoAcm}
-                  //onInput={handleChangeValues}
+                  onChange={(e) => setPesoAcm(e.target.value)}
                 ></input>
                 <small></small>
                 <br></br>
@@ -658,8 +652,7 @@ function VariaveisAeronaves() {
                   placeholder="Below standard"
                   type="number"
                   value={PesoAbx}
-                  onChange={receberPesoAbx}
-                  //onInput={handleChangeValues}
+                  onChange={(e) => setPesoAbx(e.target.value)}
                 ></input>
                 <small></small>
                 <br></br>
@@ -671,8 +664,7 @@ function VariaveisAeronaves() {
                   placeholder="Overweight"
                   type="number"
                   value={Sobrepeso}
-                  onChange={receberSobrepeso}
-                  //onInput={handleChangeValues}
+                  onChange={(e) => setSobrepeso(e.target.value)}
                 ></input>
                 <small></small>
               </div>

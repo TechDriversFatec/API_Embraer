@@ -1,7 +1,8 @@
 import axios from 'axios';
-import React, { useEffect, useState } from 'react';
-import {Route, Link, Routes, useParams, useNavigate} from 'react-router-dom';
+import { useEffect, useState } from 'react';
+import {useNavigate} from 'react-router-dom';
 import Swal from "sweetalert2";
+import ModalFlap from "./components/ModalFlap";
 
 export default function UpdateAeronaves() {
 
@@ -17,6 +18,7 @@ export default function UpdateAeronaves() {
   const [Sobrepeso, setSobrepeso] = useState("");
   const [PesoMaximo, setPesoMaximo] = useState("");
 
+  debugger
   useEffect(() => {
     setId(localStorage.getItem('Id'));
     setFabricante(localStorage.getItem('Fabricante'))
@@ -277,6 +279,7 @@ export default function UpdateAeronaves() {
                 <small></small>
               </div>
             </div>
+            <ModalFlap />
           </div>
           <div className="card-footer w-100 float-right">
             <a
