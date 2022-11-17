@@ -1,7 +1,7 @@
+import * as React from 'react';
 import "../css/criar-aeronaves.css";
 import "bootstrap/dist/css/bootstrap.min.css";
 import { useState } from "react";
-import { FormControlLabel, Switch } from "@mui/material";
 import Axios from "axios";
 import Swal from "sweetalert2";
 import { useNavigate } from "react-router-dom";
@@ -524,16 +524,6 @@ function VariaveisAeronaves() {
 
   return (
     <div className="CriarAeronaves">
-      {/* <div>
-        <i>
-          <img
-            className="logoAviaoCriar"
-            src="loguinho.png"
-            id="logoAviaozinho"
-            alt="some text"
-          />
-        </i>
-      </div> */}
       <form id="form_criar_aeronave" onSubmit={manipularEnvio}>
         <div className="card card-custom gutter-b">
           <div className="card-header">
@@ -542,47 +532,33 @@ function VariaveisAeronaves() {
             </h3>
             <div className="card-toolbar"></div>
           </div>
-          <div className="card-body col-md-13">
-            <fieldset className="row flap">
-              <legend>Flap configurations</legend>
-              <div className="form-group col-lg-4-md col-md-2 col-sm-12">
-                <label>Flap:</label>
-                <input
-                  id="tipo_flap"
-                  className="form-control"
-                  name="tipo_flap"
-                  placeholder="Insert the aircraft flap:"
-                  value={Flap}
-                  onChange={(e) => setFlap(e.target.value)}
-                />
-                <FormControlLabel
-                  control={<Switch onChange={receberGelo} />}
-                  label="Ice Accretion"
-                />
-              </div>
-              <div className="form-group col-lg-4-md col-md-2 col-sm-12">
-                <label>Brake config:</label>
-                <select
-                  title="configuracao_freio"
-                  id="configuracao_freio"
-                  className="form-control"
-                  name="configuracao_freio"
-                  value={Break}
-                  onChange={(e) => setBreak(e.target.value)}
-                >
-                  <option value="" selected disabled>
-                    Select
-                  </option>
-                  <option value="1">Max. Manual</option>
-                  <option value="2">High</option>
-                  <option value="3">Medium</option>
-                  <option value="4">Low</option>
-                </select>
-              </div>
-              <div className="form-group col-lg-4-md col-md-4 col-sm-12">
-                <label>Runway Condition:</label>
-                    <select className="form-control select" id="condicao_pista" title="condicaoPista" value={Condicao} onChange={receberCondicao}>
-                      <option value="" disabled selected>Select a runway condition</option>
+          <div className="card-body col-md-12">
+            <ul className="list-group list-group-flush">
+              <li className="list-group-item">
+                <div className="row">
+                  <h4 id="h3FlapConfig">Select a Flap</h4>
+                  <div className="form-group col-lg-3 col-md-6 col-sm-12 sucess">
+                    <label>Flap:</label>
+                    <select className="form-control select" id="flap" title="flap">
+                      <option value="" disabled selected>Select a Flap</option>
+                    </select>
+                  </div>
+
+                  <div className="form-group col-lg-3 col-md-6 col-sm-12 sucess">
+                    <label>Brake Configuration:</label>
+                    <select className="form-control select" id="frenagem" title="frenagem">
+                      <option value="" disabled selected>Select a brake configuration</option>
+                      <option value="1">Max. Manual</option>
+                      <option value="2">High</option>
+                      <option value="3">Medium</option>
+                      <option value="4">Low</option>
+                    </select>
+                  </div>
+
+                  <div className="form-group col-lg-3 col-md-6 col-sm-12 sucess">
+                    <label>Runway Condition:</label>
+                    <select className="form-control select" id="condicaoPista" title="condicaoPista">
+                      <option value="" disabled selected>Select an Airplane</option>
                       <option value="1">1 - Ice</option>
                       <option value="2">2 - Standing, Water, Slush</option>
                       <option value="3">3 - Loose Snow</option>
@@ -590,363 +566,153 @@ function VariaveisAeronaves() {
                       <option value="5">5 - Wet</option>
                       <option value="6">6 - Dry</option>
                     </select>
-              </div>
-              <div className="form-group col-lg-4-md col-md-2 col-sm-12">
-                <label>Referencial distance:</label>
-                <input
-                  id="distancia_referencial"
-                  className="form-control"
-                  name="distancia_referencial"
-                  placeholder="Referential distance (m)"
-                  type="number"
-                  value={Distancia}
-                  onChange={(e) => setDistancia(e.target.value)}
-                />
-                <small></small>
-              </div>
-              <div className="form-group col-lg-4-md col-md-2 col-sm-12">
-                <label>Reverser variation:</label>
-                <input
-                  id="correcao_reversor_inoperante"
-                  className="form-control"
-                  name="correcao_reversor_inoperante"
-                  placeholder="Per rev inop (m)"
-                  type="number"
-                  value={Reversor}
-                  onChange={(e) => setReversor(e.target.value)}
-                />
-                <small></small>
-              </div>
-            </fieldset>
-            <fieldset className="row col-lg-2 variavel">
-              <legend>Weight</legend>
-              <div className="form-group col-lg-4-md col-md-12 col-sm-12">
-                <label>Increment/decrement step (Kg):</label>
-                <input
-                  id="padrao_variacao_peso"
-                  className="form-control"
-                  name="padrao_variacao_peso"
-                  placeholder="For each"
-                  type="number"
-                  value={VariacaoPes}
-                  onChange={(e) => setVariacaoPes(e.target.value)}
-                />
-                <small></small>
-                <br></br>
-                <label>Insert the Variation index (m):</label>
-                <input
-                  id="correcao_peso_acima"
-                  className="form-control"
-                  name="correcao_peso_acima"
-                  placeholder="Above standard"
-                  type="number"
-                  value={PesoAcm}
-                  onChange={(e) => setPesoAcm(e.target.value)}
-                ></input>
-                <small></small>
-                <br></br>
-                <input
-                  id="correcao_peso_abaixo"
-                  className="form-control"
-                  name="correcao_peso_abaixo"
-                  placeholder="Below standard"
-                  type="number"
-                  value={PesoAbx}
-                  onChange={(e) => setPesoAbx(e.target.value)}
-                ></input>
-                <small></small>
-                <br></br>
-                <label>Overweight (Kg):</label>
-                <input
-                  id="correcao_sobrepeso"
-                  className="form-control"
-                  name="correcao_sobrepeso"
-                  placeholder="Overweight"
-                  type="number"
-                  value={Sobrepeso}
-                  onChange={(e) => setSobrepeso(e.target.value)}
-                ></input>
-                <small></small>
-              </div>
-            </fieldset>
-            <fieldset className="row col-lg-2 variavel">
-              <legend>Altitude (Ft):</legend>
-              <div className="form-group col-lg-4-md col-md-12 col-sm-12">
-                <label>Reference value:</label>
-                <input
-                  id="altitude_padrao"
-                  className="form-control"
-                  name="altitude_padrao"
-                  placeholder="Default value"
-                  type="number"
-                  value={AltitudePd}
-                  onChange={receberAltitudePd}
-                  //onInput={handleChangeValues}
-                ></input>
-                <small></small>
-                <br></br>
-                <label>Increment/decrement step (Ft):</label>
-                <input
-                  id="padrao_variacao_altitude"
-                  className="form-control"
-                  name="padrao_variacao_altitude"
-                  placeholder="For each"
-                  type="number"
-                  value={VariacaoAlt}
-                  onChange={receberVariacaoAlt}
-                  //onInput={handleChangeValues}
-                />
-                <small></small>
-                <br></br>
-                <label>Variation index (m):</label>
-                <input
-                  id="correcao_altitude_acima"
-                  className="form-control"
-                  name="correcao_altitude_acima"
-                  placeholder="Above standard"
-                  type="number"
-                  value={AltitudeAcm}
-                  onChange={receberAltitudeAcm}
-                  //onInput={handleChangeValues}
-                ></input>
-                <small></small>
-                <br></br>
-                <input
-                  id="correcao_altitude_abaixo"
-                  className="form-control"
-                  name="correcao_altitude_abaixo"
-                  placeholder="Below standard"
-                  type="number"
-                  value={AltitudeAbx}
-                  onChange={receberAltitudeAbx}
-                  //onInput={handleChangeValues}
-                ></input>
-                <small></small>
-              </div>
-            </fieldset>
-            <fieldset className="row col-lg-2 variavel">
-              <legend>Temperature (ISA):</legend>
-              <div className="form-group col-lg-4-md col-md-12 col-sm-12">
-                <label>Reference value:</label>
-                <input
-                  id="temperatura_padrao"
-                  className="form-control"
-                  name="temperatura_padrao"
-                  placeholder="Default value in °C"
-                  type="number"
-                  value={TemperaturaPd}
-                  onChange={receberTemperaturaPd}
-                  //onInput={handleChangeValues}
-                ></input>
-                <small></small>
-                <br></br>
-                <label>Increment/decrement step (°C):</label>
-                <input
-                  id="padrao_variacao_temperatura"
-                  className="form-control"
-                  name="padrao_variacao_temperatura"
-                  placeholder="For each"
-                  type="number"
-                  value={VariacaoTmp}
-                  onChange={receberVariacaoTmp}
-                  //onInput={handleChangeValues}
-                />
-                <small></small>
-                <br></br>
-                <label>Variation index (m):</label>
-                <input
-                  id="correcao_temperatura_acima"
-                  className="form-control"
-                  name="correcao_temperatura_acima"
-                  placeholder="Above standard"
-                  type="number"
-                  value={TemperaturaAcm}
-                  onChange={receberTemperaturaAcm}
-                  //onInput={handleChangeValues}
-                ></input>
-                <small></small>
-                <br></br>
-                <input
-                  id="correcao_temperatura_abaixo"
-                  className="form-control"
-                  name="correcao_temperatura_abaixo"
-                  placeholder="Below standard"
-                  type="number"
-                  value={TemperaturaAbx}
-                  onChange={receberTemperaturaAbx}
-                  //onInput={handleChangeValues}
-                ></input>
-                <small></small>
-              </div>
-            </fieldset>
-            <fieldset className="row col-lg-2 variavel">
-              <legend>Wind (KTAS):</legend>
-              <div className="form-group col-lg-4-md col-md-12 col-sm-12">
-                <label>Reference value:</label>
-                <input
-                  id="padrao_vento"
-                  className="form-control"
-                  name="padrao_vento"
-                  placeholder="Default value"
-                  type="number"
-                  value={VentoPd}
-                  onChange={receberVentoPd}
-                  //onInput={handleChangeValues}
-                ></input>
-                <small></small>
-                <br></br>
-                <label>Increment/decrement step (KTAS):</label>
-                <input
-                  id="padrao_variacao_vento"
-                  className="form-control"
-                  name="padrao_variacao_vento"
-                  placeholder="For each"
-                  type="number"
-                  value={VariacaoVento}
-                  onChange={receberVariacaoVento}
-                  //onInput={handleChangeValues}
-                />
-                <small></small>
-                <br></br>
-                <label>Variation index (m):</label>
-                <input
-                  id="correcao_vento_cauda"
-                  className="form-control"
-                  name="correcao_vento_cauda"
-                  placeholder="Above standard (Tail wind)"
-                  type="number"
-                  value={VentoAcm}
-                  onChange={receberVentoAcm}
-                  //onInput={handleChangeValues}
-                ></input>
-                <small></small>
-                <br></br>
-                <input
-                  id="correcao_vento_proa"
-                  className="form-control"
-                  name="correcao_vento_proa"
-                  placeholder="Below standard (Head wind)"
-                  type="number"
-                  value={VentoAbx}
-                  onChange={receberVentoAbx}
-                  //onInput={handleChangeValues}
-                ></input>
-                <small></small>
-              </div>
-            </fieldset>
-            <fieldset className="row col-lg-2 variavel">
-              <legend>Slope (%):</legend>
-              <div className="form-group col-lg-4-md col-md-12 col-sm-12">
-                <label>Reference value:</label>
-                <input
-                  id="slope_padrao"
-                  className="form-control"
-                  name="slope_padrao"
-                  placeholder="Default value"
-                  type="number"
-                  value={SlopePd}
-                  onChange={receberSlopePd}
-                  //onInput={handleChangeValues}
-                ></input>
-                <small></small>
-                <br></br>
-                <label>Increment/decrement step (%):</label>
-                <input
-                  id="padrao_variacao_inclinacao"
-                  className="form-control"
-                  name="padrao_variacao_inclinacao"
-                  placeholder="For each"
-                  type="number"
-                  value={VariacaoSlope}
-                  onChange={receberVariacaoSlope}
-                  //onInput={handleChangeValues}
-                />
-                <small></small>
-                <br></br>
-                <label>Variation index (m):</label>
-                <input
-                  id="correcao_aclive"
-                  className="form-control"
-                  name="correcao_aclive"
-                  placeholder="Above standard"
-                  type="number"
-                  value={SlopeAcm}
-                  onChange={receberSlopeAcm}
-                  //onInput={handleChangeValues}
-                ></input>
-                <small></small>
-                <br></br>
-                <input
-                  id="correcao_declive"
-                  className="form-control"
-                  name="correcao_declive"
-                  placeholder="Below standard"
-                  type="number"
-                  value={SlopeAbx}
-                  onChange={receberSlopeAbx}
-                  //onInput={handleChangeValues}
-                ></input>
-                <small></small>
-              </div>
-            </fieldset>
-            <fieldset className="row col-lg-2 variavel">
-              <legend>VAP (speed):</legend>
-              <div className="form-group col-lg-4-md col-md-12 col-sm-12">
-                <label>Reference value:</label>
-                <input
-                  id="vap_padrao"
-                  className="form-control"
-                  name="vap_padrao"
-                  placeholder="Default value"
-                  type="number"
-                  value={VapPd}
-                  onChange={receberVapPd}
-                  //onInput={handleChangeValues}
-                ></input>
-                <small></small>
-                <br></br>
-                <label>Increment/decrement step:</label>
-                <input
-                  id="padrao_variacao_velocidade"
-                  className="form-control"
-                  name="padrao_variacao_velocidade"
-                  placeholder="For each"
-                  type="number"
-                  value={VariacaoVAP}
-                  onChange={receberVariacaoVAP}
-                  //onInput={handleChangeValues}
-                />
-                <small></small>
-                <br></br>
-                <label>Variation index (m):</label>
-                <input
-                  id="correcao_velocidade_acima"
-                  className="form-control"
-                  name="correcao_velocidade_acima"
-                  placeholder="Above standard"
-                  type="number"
-                  value={VapAcm}
-                  onChange={receberVapAcm}
-                  //onInput={handleChangeValues}
-                ></input>
-                <small></small>
-                <br></br>
-                <input
-                  id="correcao_velocidade_abaixo"
-                  className="form-control"
-                  name="correcao_velocidade_abaixo"
-                  placeholder="Below standard"
-                  type="number"
-                  value={VapAbx}
-                  onChange={receberVapAbx}
-                  //onInput={handleChangeValues}
-                ></input>
-                <small></small>
-              </div>
-            </fieldset>
+                  </div>
 
-            <div className="clear"></div>
+                  <div className="form-group col-lg-3 col-md-6 col-sm-12 sucess">
+                    <label>Reverser variation:</label>
+                    <input
+                      id="correcao_reversor_inoperante"
+                      className="form-control"
+                      name="correcao_reversor_inoperante"
+                      placeholder="Per rev inop (m)"
+                      value={Reversor}
+                      onChange={receberReversor}
+                    //onInput={handleChangeValues}
+                    />
+                    <small></small>
+                  </div>
+
+                </div>
+              </li>
+
+              <li className="list-group-item">
+                <div className="row">
+                  <h4 id="h3AirplaneConfig">Variable settings</h4>
+                  <h6><i>Weight variables</i></h6>
+                  <div className="form-group col-lg-3 col-md-6 col-sm-12 sucess">
+                    <label>Increment/decrement step (Kg):</label>
+                    <input
+                      id="padrao_variacao_peso"
+                      className="form-control"
+                      name="padrao_variacao_peso"
+                      placeholder="For each"
+                      value={VariacaoPes}
+                      onChange={receberVariacaoPes}
+                    />
+                    <small></small>
+                  </div>
+
+                  <div className="form-group col-lg-3 col-md-6 col-sm-12 sucess">
+                    <label>Insert the Variation index (m):</label>
+                    <input
+                      id="correcao_peso_acima"
+                      className="form-control"
+                      name="correcao_peso_acima"
+                      placeholder="Above standard"
+                      value={PesoAcm}
+                      onChange={receberPesoAcm}
+                    ></input>
+                    <small></small>
+                  </div>
+
+                  <div className="form-group col-lg-3 col-md-6 col-sm-12 sucess">
+                    <label>Insert the Variation index (m):</label>
+                    <input
+                      id="correcao_peso_abaixo"
+                      className="form-control"
+                      name="correcao_peso_abaixo"
+                      placeholder="Below standard"
+                      value={PesoAbx}
+                      onChange={receberPesoAbx}
+                    ></input>
+                    <small></small>
+                  </div>
+
+                  <div className="form-group col-lg-2 col-md-6 col-sm-12 sucess">
+                    <label>Overweight (Kg):</label>
+                    <input
+                      id="correcao_sobrepeso"
+                      className="form-control"
+                      name="correcao_sobrepeso"
+                      placeholder="Overweight"
+                      value={Sobrepeso}
+                      onChange={receberSobrepeso}
+                    ></input>
+                    <small></small>
+                  </div>
+
+                  <div className="form-group col-lg-1 col-md-6 col-sm-12 addi">
+                    <p></p>
+                    <IconButton>
+                      <AddIcon fontSize='large' />
+                    </IconButton>
+                  </div>
+
+                </div>
+
+                <div className="row">
+                  <h6><i>Altitude variables</i></h6>
+                  <div className="form-group col-lg-3 col-md-6 col-sm-12 sucess">
+                    <label>Reference value:</label>
+                    <input
+                      id="altitude_padrao"
+                      className="form-control"
+                      name="altitude_padrao"
+                      placeholder="Default value"
+                      value={AltitudePd}
+                      onChange={receberAltitudePd}
+                    ></input>
+                    <small></small>
+                  </div>
+                  <div className="form-group col-lg-3 col-md-6 col-sm-12 sucess">
+                    <label>Increment/decrement step (Ft):</label>
+                    <input
+                      id="padrao_variacao_altitude"
+                      className="form-control"
+                      name="padrao_variacao_altitude"
+                      placeholder="For each"
+                      value={VariacaoAlt}
+                      onChange={receberVariacaoAlt}
+                    />
+                    <small></small>
+                  </div>
+                  <div className="form-group col-lg-3 col-md-6 col-sm-12 sucess">
+                    <label>Variation index (m):</label>
+                    <input
+                      id="correcao_altitude_acima"
+                      className="form-control"
+                      name="correcao_altitude_acima"
+                      placeholder="Above standard"
+                      value={AltitudeAcm}
+                      onChange={receberAltitudeAcm}
+                    ></input>
+                    <small></small>
+                  </div>
+                  <div className="form-group col-lg-2 col-md-6 col-sm-12 sucess">
+                    <label>Variation index (m):</label>
+                    <input
+                      id="correcao_altitude_abaixo"
+                      className="form-control"
+                      name="correcao_altitude_abaixo"
+                      placeholder="Below standard"
+                      value={AltitudeAbx}
+                      onChange={receberAltitudeAbx}
+                    ></input>
+                  </div>
+                  <div className="form-group col-lg-1 col-md-6 col-sm-12 addi">
+                    <p></p>
+                    <IconButton>
+                      <AddIcon fontSize='large' />
+                    </IconButton>
+                  </div>
+                </div>
+              </li>
+
+            </ul>
           </div>
+
+          <div className="clear"></div>
+
           <div className="card-footer w-100 float-right">
             <a
               className="rounded btn btn-primary ml-2 float-start"
@@ -959,7 +725,7 @@ function VariaveisAeronaves() {
               type="submit"
               id="btn_registrar"
               name="submitButton"
-              //onClick={() => handleClickButton(values)}
+            //onClick={() => handleClickButton(values)}
             >
               <b>Register</b>
             </button>
