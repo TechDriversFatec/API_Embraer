@@ -29,8 +29,6 @@ export default function ControlledAccordions() {
   }
 
   const [Flap, setFlap] = useState("");
-  const [Distancia, setDistancia] = useState("");
-  const [Reversor, setReversor] = useState("");
 
   return (
     <div>
@@ -52,11 +50,11 @@ export default function ControlledAccordions() {
           <Typography>
             <div className="col-md-12">
               <div className="row">
-                <div className="form-group col-md-3 flap">
-                  <label>Flap</label>
+                <div className="form-group col-lg-4-md col-md-4 col-sm-12">
                   <input
                     id="tipo_flap"
                     name="tipo_flap"
+                    className="form-control"
                     placeholder="Insert the aircraft flap"
                     value={Flap}
                     onChange={(e) => setFlap(e.target.value)}
@@ -66,30 +64,6 @@ export default function ControlledAccordions() {
                     control={<Switch />}
                     label="Ice Accretion"
                   />
-                </div>
-                <div className="form-group col-md-3 flap">
-                  <label>Referential distance</label>
-                  <input
-                    id="distancia_referencial"
-                    name="distancia_referencial"
-                    placeholder="Referential distance (m)"
-                    type="number"
-                    value={Distancia}
-                    onChange={(e) => setDistancia(e.target.value)}
-                  />
-                  <small></small>
-                </div>
-                <div className="form-group col-md-3 flap">
-                  <label>Reverser variation:</label>
-                  <input
-                    id="correcao_reversor_inoperante"
-                    name="correcao_reversor_inoperante"
-                    placeholder="Per rev inop (m)"
-                    type="number"
-                    value={Reversor}
-                    onChange={(e) => setReversor(e.target.value)}
-                  />
-                  <small></small>
                 </div>
               </div>
             </div>
