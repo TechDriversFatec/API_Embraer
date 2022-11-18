@@ -10,7 +10,6 @@ import Swal from "sweetalert2";
 
 export default function ControlledAccordions() {
   const [expanded, setExpanded] = React.useState<string | false>(false);
-  const [numberAccordion, setNumberAccordion] = useState("");
 
   const handleChange =
     (panel: string) => (event: React.SyntheticEvent, isExpanded: boolean) => {
@@ -51,7 +50,7 @@ export default function ControlledAccordions() {
         </AccordionSummary>
         <AccordionDetails>
           <Typography>
-            <form>
+            <div className="col-md-12">
               <div className="row">
                 <div className="form-group col-md-3 flap">
                   <label>Flap</label>
@@ -93,18 +92,18 @@ export default function ControlledAccordions() {
                   <small></small>
                 </div>
               </div>
-              <div className="card-footer w-100 float-right">
-                <button
-                  className="rounded btn btn-primary ml-2 float-end"
-                  type="submit"
-                  id="btn_registrar"
-                  name="submitButton"
-                  onClick={manipularEnvio}
-                >
-                  <b>Register</b>
-                </button>
-              </div>
-            </form>
+            </div>
+            <div className="card-footer w-100 float-right">
+              <button
+                className="rounded btn btn-primary ml-2 float-end"
+                type="submit"
+                id="btn_registrar"
+                name="submitButton"
+                onClick={manipularEnvio}
+              >
+                <b>Register</b>
+              </button>
+            </div>
           </Typography>
         </AccordionDetails>
       </Accordion>

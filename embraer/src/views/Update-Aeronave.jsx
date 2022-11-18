@@ -3,6 +3,7 @@ import { useEffect, useState } from 'react';
 import {useNavigate} from 'react-router-dom';
 import Swal from "sweetalert2";
 import ModalFlap from "./components/ModalFlap";
+import TabelaFlap from "./components/TabelaFlap"
 
 export default function UpdateAeronaves() {
 
@@ -280,6 +281,9 @@ export default function UpdateAeronaves() {
               </div>
             </div>
             <ModalFlap />
+          </div>
+          <div>
+            <TabelaFlap />
           </div>
           <div className="card-footer w-100 float-right">
             <a

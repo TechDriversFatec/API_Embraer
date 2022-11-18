@@ -15,30 +15,6 @@ function CriarAeronaves() {
       setlistAeronaves(response.data);
     });
   }, []);
-  const setData = (data: any) => {
-    let {
-      id,
-      fabricante,
-      modelo,
-      certificacao,
-      motor,
-      qtde_reversor,
-      peso_referencial,
-      peso_minimo,
-      sobrepeso,
-      peso_maximo,
-    } = data;
-    localStorage.setItem("Id", id);
-    localStorage.setItem("Fabricante", fabricante);
-    localStorage.setItem("Modelo", modelo);
-    localStorage.setItem("Certificacao", certificacao);
-    localStorage.setItem("Motor", motor);
-    localStorage.setItem("Qtde Reversor", qtde_reversor);
-    localStorage.setItem("Peso Referencial", peso_referencial);
-    localStorage.setItem("Peso Minimo", peso_minimo);
-    localStorage.setItem("Sobrepeso", sobrepeso);
-    localStorage.setItem("Peso Maximo", peso_maximo);
-  };
 
   const showError = (input: HTMLElement, message: string) => {
     const formField = input.parentElement;
@@ -64,6 +40,7 @@ function CriarAeronaves() {
 
   function manipularEnvio(evento: any) {
     evento.preventDefault();
+    
     let pesoValido = validaPeso(),
       pesoMinValido = validaPesoMin(),
       sobrepesoValido = validaSobrepeso(),
@@ -97,7 +74,6 @@ function CriarAeronaves() {
         sobrepeso: Sobrepeso,
         peso_maximo: PesoMaximo,
       });
-
       Swal.fire({
         title: "Sucessful registered aircraft",
         text: "You must register the flap",
@@ -109,24 +85,21 @@ function CriarAeronaves() {
       }).then((result) => {
         if (result.isConfirmed) {
           let id: any;
-          listAeronaves.forEach((data: any) => {
-            id = parseInt(data.id) + 1;
-            return id.toString();
-          });
-          let data = [
-            id,
-            Fabricante,
-            Modelo,
-            Certificacao,
-            Motor,
-            Revesor,
-            Peso,
-            PesoMinimo,
-            Sobrepeso,
-            PesoMaximo,
-          ];
-          setData(data);
-          navigate(`/AtualizA/${id}`);
+          const aer: any = listAeronaves[listAeronaves.length-1]
+
+          id = parseInt(aer.id) + 1
+          let idString = id.toString()
+          localStorage.setItem("Id", id);
+          localStorage.setItem("Fabricante", Fabricante);
+          localStorage.setItem("Modelo", Modelo);
+          localStorage.setItem("Certificacao", Certificacao);
+          localStorage.setItem("Motor", Motor);
+          localStorage.setItem("Qtde Reversor", Revesor);
+          localStorage.setItem("Peso Referencial", Peso);
+          localStorage.setItem("Peso Minimo", PesoMinimo);
+          localStorage.setItem("Sobrepeso", Sobrepeso);
+          localStorage.setItem("Peso Maximo", PesoMaximo);
+          navigate(`/AtualizA/${idString}`);
         } else {
           navigate("/Index");
         }

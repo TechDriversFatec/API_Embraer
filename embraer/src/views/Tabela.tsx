@@ -1,11 +1,8 @@
 import { useEffect, useState } from "react";
 import * as React from "react";
 import { Table, Input, TableFooter } from "semantic-ui-react";
-import { Link, useParams } from "react-router-dom";
+import { Link } from "react-router-dom";
 import axios from "axios";
-import UpdateAeronaves from "./Update-Aeronave";
-import VariaveisAeronaves from "./criar-aeronave";
-import { ModelTrainingOutlined } from "@mui/icons-material";
 import { IconButton, TablePagination } from "@mui/material";
 import AddIcon from "@mui/icons-material/Add";
 import AirplanemodeActiveIcon from "@mui/icons-material/AirplanemodeActive";
@@ -110,7 +107,6 @@ export default function Read() {
     });
   };
 
-  console.log(listAeronaves);
   return (
     <div>
       <div>

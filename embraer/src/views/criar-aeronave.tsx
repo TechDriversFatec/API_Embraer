@@ -1,60 +1,76 @@
-import * as React from 'react';
+import * as React from "react";
 import "../css/criar-aeronaves.css";
 import "bootstrap/dist/css/bootstrap.min.css";
 import { useState } from "react";
 import Axios from "axios";
 import Swal from "sweetalert2";
 import { useNavigate } from "react-router-dom";
-import { Navigation } from "@mui/icons-material";
+import { IconButton } from "@mui/material";
+import AddIcon from "@mui/icons-material/Add";
 
 function VariaveisAeronaves() {
   const navigate = useNavigate();
 
   const url_atual = window.location.href;
   console.log(url_atual);
-  const id = window.location.href.split('/')[4];
+  const id = window.location.href.split("/")[4];
   console.log(id);
 
   function manipularEnvio(evento: any) {
     evento.preventDefault();
-    // let distanciaValida = validaDistancia(),
-    //   reversorValido = validaReversor(),
-    //   variacaoPesoValida = validaVariacaoPes(),
-    //   pesoAcmValido = validaPesoAcm(),
-    //   sobrepesoValido = validaSobrepeso(),
-    //   variacaoAltValida = validaVariacaoAlt(),
-    //   altitudeAcmValida = validaAltitudeAcm(),
-    //   variacaoTmpValida = validaVariacaoTmp(),
-    //   temperaturaAcmValida = validaTemperaturaAcm(),
-    //   ventoPdValido = validaVentoPd(),
-    //   variacaoVentoValida = validaVariacaoVento(),
-    //   ventoAcmValido = validaVentoAcm(),
-    //   slopePdValido = validaSlopePd(),
-    //   variacaoSlopeValido = validaVariacaoSlope(),
-    //   slopeAbxValido = validaSlopeAbx(),
-    //   vapPdValido = validaVapPd(),
-    //   variacaoVapValido = validaVariacaoVap(),
-    //   vapAcmValido = validaVapAcm()
+    debugger;
+    let reversorValido = validaReversor(),
+      variacaoPesoValida = validaVariacaoPes(),
+      pesoAcmValido = validaPesoAcm(),
+      pesoAbxValido = validaPesoAbx(),
+      sobrepesoValido = validaSobrepeso(),
+      altitudePdValida = validaAltitudePd(),
+      variacaoAltValida = validaVariacaoAlt(),
+      altitudeAcmValida = validaAltitudeAcm(),
+      altitudeAbxValida = validaAltitudeAbx(),
+      temperaturaPdValida = validaTemperaturaPd(),
+      variacaoTmpValida = validaVariacaoTmp(),
+      temperaturaAcmValida = validaTemperaturaAcm(),
+      temperaturaAbxValida = validaTemperaturaAbx(),
+      ventoPdValido = validaVentoPd(),
+      variacaoVentoValida = validaVariacaoVento(),
+      ventoAcmValido = validaVentoAcm(),
+      ventoAbxValido = validaVentoAbx(),
+      slopePdValido = validaSlopePd(),
+      variacaoSlopeValido = validaVariacaoSlope(),
+      slopeAcmValido = validaSlopeAcm(),
+      slopeAbxValido = validaSlopeAbx(),
+      vapPdValido = validaVapPd(),
+      variacaoVapValido = validaVariacaoVap(),
+      vapAcmValido = validaVapAcm(),
+      vapAbxValido = validaVapAbx();
 
-    let formularioValido = true
-      // distanciaValida &&
-      // reversorValido &&
-      // variacaoPesoValida &&
-      // pesoAcmValido &&
-      // sobrepesoValido &&
-      // variacaoAltValida &&
-      // altitudeAcmValida &&
-      // variacaoTmpValida &&
-      // temperaturaAcmValida &&
-      // ventoPdValido &&
-      // variacaoVentoValida &&
-      // ventoAcmValido &&
-      // slopePdValido &&
-      // variacaoSlopeValido &&
-      // slopeAbxValido &&
-      // vapPdValido &&
-      // variacaoVapValido &&
-      // vapAcmValido;
+    let formularioValido =
+      reversorValido &&
+      variacaoPesoValida &&
+      pesoAcmValido &&
+      pesoAbxValido &&
+      sobrepesoValido &&
+      altitudePdValida &&
+      variacaoAltValida &&
+      altitudeAcmValida &&
+      altitudeAbxValida &&
+      temperaturaPdValida &&
+      variacaoTmpValida &&
+      temperaturaAcmValida &&
+      temperaturaAbxValida &&
+      ventoPdValido &&
+      variacaoVentoValida &&
+      ventoAcmValido &&
+      ventoAbxValido &&
+      slopePdValido &&
+      variacaoSlopeValido &&
+      slopeAcmValido &&
+      slopeAbxValido &&
+      vapPdValido &&
+      variacaoVapValido &&
+      vapAcmValido &&
+      vapAbxValido;
 
     if (formularioValido) {
       Axios.post("http://localhost:3002/parameter", {
@@ -87,7 +103,7 @@ function VariaveisAeronaves() {
         padrao_variacao_velocidade: VariacaoVAP,
         correcao_velocidade_acima: VapAcm,
         correcao_velocidade_abaixo: VapAbx,
-        aeronave_id: id
+        aeronave_id: id,
       });
       Swal.fire({
         title: "Sucessful registered variables",
@@ -96,13 +112,13 @@ function VariaveisAeronaves() {
         confirmButtonColor: "#3085d6",
         cancelButtonColor: "#d33",
         confirmButtonText: "Yes",
-        cancelButtonText: "No, return to home page"
+        cancelButtonText: "No, return to home page",
       }).then((result) => {
         if (result.isConfirmed) {
           // eslint-disable-next-line no-restricted-globals
           location.reload();
         } else {
-          navigate(`/Index`)
+          navigate(`/Index`);
         }
       });
     }
@@ -130,29 +146,20 @@ function VariaveisAeronaves() {
     error!.textContent = "";
   };
 
-  const entre = (valor: number, min: number, max: number) => valor < min || valor > max ? false : true
-
-  function validaDistancia() {
-    const id = document.getElementById("distancia_referencial");
-    let valido = false;
-    const min: number = 0, max: number = 900000;
-
-    if (!entre(parseInt(Distancia), min, max)) {
-      showError(id!, `Value must be greater than ${min}`);
-    } else {
-      showSuccess(id!);
-      valido = true;
-    }
-    return valido;
-  }
+  const entre = (valor: number, min: number, max: number) =>
+    valor < min || valor > max ? false : true;
+  const vazio = (valor: string) => (valor === "" ? false : true);
 
   function validaReversor() {
     const id = document.getElementById("correcao_reversor_inoperante");
     let valido = false;
-    const min = 0, max = 900000
+    const min = 0,
+      max = 900000;
 
     if (!entre(parseInt(Reversor), min, max)) {
       showError(id!, `Value must be greater than ${min}`);
+    } else if(!vazio(Reversor)){
+      showError(id!, `field must not be empty`);
     } else {
       showSuccess(id!);
       valido = true;
@@ -163,10 +170,13 @@ function VariaveisAeronaves() {
   function validaVariacaoPes() {
     const id = document.getElementById("padrao_variacao_peso");
     let valido = false;
-    const min = 0, max = 900000
+    const min = 0,
+      max = 900000;
 
     if (!entre(parseInt(VariacaoPes), min, max)) {
       showError(id!, `Value must be greater than ${min}`);
+    } else if(!vazio(VariacaoPes)){
+      showError(id!, `field must not be empty`);
     } else {
       showSuccess(id!);
       valido = true;
@@ -176,10 +186,25 @@ function VariaveisAeronaves() {
   function validaPesoAcm() {
     const id = document.getElementById("correcao_peso_acima");
     let valido = false;
-    const min = 0, max = 900000
+    const min = 0,
+      max = 900000;
 
     if (!entre(parseInt(PesoAcm), min, max)) {
       showError(id!, `Value must be greater than ${min}`);
+    } else if(!vazio(PesoAcm)){
+      showError(id!, `field must not be empty`);
+    } else {
+      showSuccess(id!);
+      valido = true;
+    }
+    return valido;
+  }
+  function validaPesoAbx() {
+    const id = document.getElementById("correcao_peso_abaixo");
+    let valido = false;
+
+    if(!vazio(PesoAbx)){
+      showError(id!, `field must not be empty`);
     } else {
       showSuccess(id!);
       valido = true;
@@ -189,10 +214,25 @@ function VariaveisAeronaves() {
   function validaSobrepeso() {
     const id = document.getElementById("correcao_sobrepeso");
     let valido = false;
-    const min = 0, max = 900000
+    const min = 0,
+      max = 900000;
 
     if (!entre(parseInt(Sobrepeso), min, max)) {
       showError(id!, `Value must be greater than ${min}`);
+    } else if(!vazio(Sobrepeso)){
+      showError(id!, `field must not be empty`);
+    } else {
+      showSuccess(id!);
+      valido = true;
+    }
+    return valido;
+  }
+  function validaAltitudePd() {
+    const id = document.getElementById("altitude_padrao");
+    let valido = false;
+
+    if(!vazio(AltitudePd)){
+      showError(id!, `field must not be empty`);
     } else {
       showSuccess(id!);
       valido = true;
@@ -202,10 +242,13 @@ function VariaveisAeronaves() {
   function validaVariacaoAlt() {
     const id = document.getElementById("padrao_variacao_altitude");
     let valido = false;
-    const min = 0, max = 900000
+    const min = 0,
+      max = 900000;
 
     if (!entre(parseInt(VariacaoAlt), min, max)) {
       showError(id!, `Value must be greater than ${min}`);
+    } else if(!vazio(VariacaoAlt)){
+      showError(id!, `field must not be empty`);
     } else {
       showSuccess(id!);
       valido = true;
@@ -215,10 +258,37 @@ function VariaveisAeronaves() {
   function validaAltitudeAcm() {
     const id = document.getElementById("correcao_altitude_acima");
     let valido = false;
-    const min = 0, max = 900000
+    const min = 0,
+      max = 900000;
 
     if (!entre(parseInt(AltitudeAcm), min, max)) {
       showError(id!, `Value must be greater than ${min}`);
+    } else if(!vazio(AltitudeAcm)){
+      showError(id!, `field must not be empty`);
+    } else {
+      showSuccess(id!);
+      valido = true;
+    }
+    return valido;
+  }
+  function validaAltitudeAbx() {
+    const id = document.getElementById("correcao_altitude_abaixo");
+    let valido = false;
+
+    if(!vazio(AltitudeAbx)){
+      showError(id!, `field must not be empty`);
+    } else {
+      showSuccess(id!);
+      valido = true;
+    }
+    return valido;
+  }
+  function validaTemperaturaPd() {
+    const id = document.getElementById("temperatura_padrao");
+    let valido = false;
+
+    if(!vazio(TemperaturaPd)){
+      showError(id!, `field must not be empty`);
     } else {
       showSuccess(id!);
       valido = true;
@@ -228,10 +298,13 @@ function VariaveisAeronaves() {
   function validaVariacaoTmp() {
     const id = document.getElementById("padrao_variacao_temperatura");
     let valido = false;
-    const min = 0, max = 900000
+    const min = 0,
+      max = 900000;
 
     if (!entre(parseInt(VariacaoTmp), min, max)) {
       showError(id!, `Value must be greater than ${min}`);
+    } else if(!vazio(VariacaoTmp)){
+      showError(id!, `field must not be empty`);
     } else {
       showSuccess(id!);
       valido = true;
@@ -241,10 +314,25 @@ function VariaveisAeronaves() {
   function validaTemperaturaAcm() {
     const id = document.getElementById("correcao_temperatura_acima");
     let valido = false;
-    const min = 0, max = 900000
+    const min = 0,
+      max = 900000;
 
     if (!entre(parseInt(TemperaturaAcm), min, max)) {
       showError(id!, `value must be a number`);
+    } else if(!vazio(TemperaturaAcm)){
+      showError(id!, `field must not be empty`);
+    } else {
+      showSuccess(id!);
+      valido = true;
+    }
+    return valido;
+  }
+  function validaTemperaturaAbx() {
+    const id = document.getElementById("correcao_temperatura_abaixo");
+    let valido = false;
+
+    if(!vazio(TemperaturaAbx)){
+      showError(id!, `field must not be empty`);
     } else {
       showSuccess(id!);
       valido = true;
@@ -254,10 +342,13 @@ function VariaveisAeronaves() {
   function validaVentoPd() {
     const id = document.getElementById("padrao_vento");
     let valido = false;
-    const min = 0, max = 900000
+    const min = 0,
+      max = 900000;
 
     if (!entre(parseInt(VentoPd), min, max)) {
       showError(id!, `Value must be greater than ${min}`);
+    } else if(!vazio(VentoPd)){
+      showError(id!, `field must not be empty`);
     } else {
       showSuccess(id!);
       valido = true;
@@ -267,10 +358,13 @@ function VariaveisAeronaves() {
   function validaVariacaoVento() {
     const id = document.getElementById("padrao_variacao_vento");
     let valido = false;
-    const min = 0, max = 900000
+    const min = 0,
+      max = 900000;
 
     if (!entre(parseInt(VariacaoVento), min, max)) {
       showError(id!, `Value must be greater than ${min}`);
+    } else if(!vazio(VariacaoVento)){
+      showError(id!, `field must not be empty`);
     } else {
       showSuccess(id!);
       valido = true;
@@ -280,10 +374,25 @@ function VariaveisAeronaves() {
   function validaVentoAcm() {
     const id = document.getElementById("correcao_vento_cauda");
     let valido = false;
-    const min = 0, max = 900000
+    const min = 0,
+      max = 900000;
 
     if (!entre(parseInt(VentoAcm), min, max)) {
       showError(id!, `Value must be greater than ${min}`);
+    } else if(!vazio(VentoAcm)){
+      showError(id!, `field must not be empty`);
+    } else {
+      showSuccess(id!);
+      valido = true;
+    }
+    return valido;
+  }
+  function validaVentoAbx() {
+    const id = document.getElementById("correcao_vento_proa");
+    let valido = false;
+
+    if(!vazio(TemperaturaAbx)){
+      showError(id!, `field must not be empty`);
     } else {
       showSuccess(id!);
       valido = true;
@@ -293,10 +402,13 @@ function VariaveisAeronaves() {
   function validaSlopePd() {
     const id = document.getElementById("slope_padrao");
     let valido = false;
-    const min = 0, max = 900000
+    const min = 0,
+      max = 900000;
 
     if (!entre(parseInt(SlopePd), min, max)) {
       showError(id!, `Value must be greater than ${min}`);
+    } else if(!vazio(SlopePd)){
+      showError(id!, `field must not be empty`);
     } else {
       showSuccess(id!);
       valido = true;
@@ -306,10 +418,25 @@ function VariaveisAeronaves() {
   function validaVariacaoSlope() {
     const id = document.getElementById("padrao_variacao_inclinacao");
     let valido = false;
-    const min = 0, max = 900000
+    const min = 0,
+      max = 900000;
 
     if (!entre(parseInt(VariacaoSlope), min, max)) {
       showError(id!, `Value must be greater than ${min}`);
+    } else if(!vazio(VariacaoSlope)){
+      showError(id!, `field must not be empty`);
+    } else {
+      showSuccess(id!);
+      valido = true;
+    }
+    return valido;
+  }
+  function validaSlopeAcm() {
+    const id = document.getElementById("correcao_aclive");
+    let valido = false;
+
+    if(!vazio(TemperaturaAbx)){
+      showError(id!, `field must not be empty`);
     } else {
       showSuccess(id!);
       valido = true;
@@ -319,10 +446,13 @@ function VariaveisAeronaves() {
   function validaSlopeAbx() {
     const id = document.getElementById("correcao_declive");
     let valido = false;
-    const min = 0, max = 900000
+    const min = 0,
+      max = 900000;
 
     if (!entre(parseInt(SlopeAbx), min, max)) {
       showError(id!, `Value must be greater than ${min}`);
+    } else if(!vazio(SlopeAbx)){
+      showError(id!, `field must not be empty`);
     } else {
       showSuccess(id!);
       valido = true;
@@ -332,10 +462,13 @@ function VariaveisAeronaves() {
   function validaVapPd() {
     const id = document.getElementById("vap_padrao");
     let valido = false;
-    const min = 0, max = 900000
+    const min = 0,
+      max = 900000;
 
     if (!entre(parseInt(VapPd), min, max)) {
       showError(id!, `Value must be greater than ${min}`);
+    } else if(!vazio(VapPd)){
+      showError(id!, `field must not be empty`);
     } else {
       showSuccess(id!);
       valido = true;
@@ -345,10 +478,13 @@ function VariaveisAeronaves() {
   function validaVariacaoVap() {
     const id = document.getElementById("padrao_variacao_velocidade");
     let valido = false;
-    const min = 0, max = 900000
+    const min = 0,
+      max = 900000;
 
     if (!entre(parseInt(VariacaoSlope), min, max)) {
       showError(id!, `Value must be greater than ${min}`);
+    } else if(!vazio(VariacaoSlope)){
+      showError(id!, `field must not be empty`);
     } else {
       showSuccess(id!);
       valido = true;
@@ -358,137 +494,30 @@ function VariaveisAeronaves() {
   function validaVapAcm() {
     const id = document.getElementById("correcao_velocidade_acima");
     let valido = false;
-    const min = 0, max = 900000
+    const min = 0,
+      max = 900000;
 
     if (!entre(parseInt(VapAcm), min, max)) {
       showError(id!, `Value must be greater than ${min}`);
+    } else if(!vazio(VapAcm)){
+      showError(id!, `field must not be empty`);
     } else {
       showSuccess(id!);
       valido = true;
     }
     return valido;
   }
+  function validaVapAbx() {
+    const id = document.getElementById("correcao_velocidade_abaixo");
+    let valido = false;
 
-  function receberFlap(evento: any) {
-    let entrada = evento.target.value;
-    setFlap(entrada);
-  }
-  function receberGelo(evento: any) {
-    let entrada = evento.target.value;
-    setGelo(entrada);
-    return "Gelo";
-  }
-  function receberBreak(evento: any) {
-    let entrada = evento.target.value;
-    setBreak(entrada);
-  }
-  function receberCondicao(evento: any) {
-    let entrada = evento.target.value;
-    setCondicao(entrada);
-  }
-  function receberDistancia(evento: any) {
-    let entrada = evento.target.value;
-    setDistancia(entrada);
-  }
-  function receberReversor(evento: any) {
-    let entrada = evento.target.value;
-    setReversor(entrada);
-  }
-  function receberVariacaoPes(evento: any) {
-    let entrada = evento.target.value;
-    setVariacaoPes(entrada);
-  }
-  function receberPesoAbx(evento: any) {
-    let entrada = evento.target.value;
-    setPesoAbx(entrada);
-  }
-  function receberPesoAcm(evento: any) {
-    let entrada = evento.target.value;
-    setPesoAcm(entrada);
-  }
-  function receberSobrepeso(evento: any) {
-    let entrada = evento.target.value;
-    setSobrepeso(entrada);
-  }
-  function receberVariacaoAlt(evento: any) {
-    let entrada = evento.target.value;
-    setVariacaoAlt(entrada);
-  }
-  function receberAltitudePd(evento: any) {
-    let entrada = evento.target.value;
-    setAltitudePd(entrada);
-  }
-  function receberAltitudeAbx(evento: any) {
-    let entrada = evento.target.value;
-    setAltitudeAbx(entrada);
-  }
-  function receberAltitudeAcm(evento: any) {
-    let entrada = evento.target.value;
-    setAltitudeAcm(entrada);
-  }
-  function receberTemperaturaPd(evento: any) {
-    let entrada = evento.target.value;
-    setTemperaturaPd(entrada);
-  }
-  function receberVariacaoTmp(evento: any) {
-    let entrada = evento.target.value;
-    setVariacaoTmp(entrada);
-  }
-  function receberTemperaturaAbx(evento: any) {
-    let entrada = evento.target.value;
-    setTemperaturaAbx(entrada);
-  }
-  function receberTemperaturaAcm(evento: any) {
-    let entrada = evento.target.value;
-    setTemperaturaAcm(entrada);
-  }
-  function receberVentoPd(evento: any) {
-    let entrada = evento.target.value;
-    setVentoPd(entrada);
-  }
-  function receberVariacaoVento(evento: any) {
-    let entrada = evento.target.value;
-    setVariacaoVento(entrada);
-  }
-  function receberVentoAbx(evento: any) {
-    let entrada = evento.target.value;
-    setVentoAbx(entrada);
-  }
-  function receberVentoAcm(evento: any) {
-    let entrada = evento.target.value;
-    setVentoAcm(entrada);
-  }
-  function receberSlopePd(evento: any) {
-    let entrada = evento.target.value;
-    setSlopePd(entrada);
-  }
-  function receberVariacaoSlope(evento: any) {
-    let entrada = evento.target.value;
-    setVariacaoSlope(entrada);
-  }
-  function receberSlopeAbx(evento: any) {
-    let entrada = evento.target.value;
-    setSlopeAbx(entrada);
-  }
-  function receberSlopeAcm(evento: any) {
-    let entrada = evento.target.value;
-    setSlopeAcm(entrada);
-  }
-  function receberVapPd(evento: any) {
-    let entrada = evento.target.value;
-    setVapPd(entrada);
-  }
-  function receberVariacaoVAP(evento: any) {
-    let entrada = evento.target.value;
-    setVariacaoVAP(entrada);
-  }
-  function receberVapAbx(evento: any) {
-    let entrada = evento.target.value;
-    setVapAbx(entrada);
-  }
-  function receberVapAcm(evento: any) {
-    let entrada = evento.target.value;
-    setVapAcm(entrada);
+    if(!vazio(TemperaturaAbx)){
+      showError(id!, `field must not be empty`);
+    } else {
+      showSuccess(id!);
+      valido = true;
+    }
+    return valido;
   }
 
   const [Flap, setFlap] = useState("");
@@ -539,15 +568,27 @@ function VariaveisAeronaves() {
                   <h4 id="h3FlapConfig">Select a Flap</h4>
                   <div className="form-group col-lg-3 col-md-6 col-sm-12 sucess">
                     <label>Flap:</label>
-                    <select className="form-control select" id="flap" title="flap">
-                      <option value="" disabled selected>Select a Flap</option>
+                    <select
+                      className="form-control select"
+                      id="flap"
+                      title="flap"
+                    >
+                      <option value="" disabled selected>
+                        Select a Flap
+                      </option>
                     </select>
                   </div>
 
                   <div className="form-group col-lg-3 col-md-6 col-sm-12 sucess">
                     <label>Brake Configuration:</label>
-                    <select className="form-control select" id="frenagem" title="frenagem">
-                      <option value="" disabled selected>Select a brake configuration</option>
+                    <select
+                      className="form-control select"
+                      id="frenagem"
+                      title="frenagem"
+                    >
+                      <option value="" disabled selected>
+                        Select a brake configuration
+                      </option>
                       <option value="1">Max. Manual</option>
                       <option value="2">High</option>
                       <option value="3">Medium</option>
@@ -557,8 +598,14 @@ function VariaveisAeronaves() {
 
                   <div className="form-group col-lg-3 col-md-6 col-sm-12 sucess">
                     <label>Runway Condition:</label>
-                    <select className="form-control select" id="condicaoPista" title="condicaoPista">
-                      <option value="" disabled selected>Select an Airplane</option>
+                    <select
+                      className="form-control select"
+                      id="condicaoPista"
+                      title="condicaoPista"
+                    >
+                      <option value="" disabled selected>
+                        Select an Airplane
+                      </option>
                       <option value="1">1 - Ice</option>
                       <option value="2">2 - Standing, Water, Slush</option>
                       <option value="3">3 - Loose Snow</option>
@@ -576,19 +623,19 @@ function VariaveisAeronaves() {
                       name="correcao_reversor_inoperante"
                       placeholder="Per rev inop (m)"
                       value={Reversor}
-                      onChange={receberReversor}
-                    //onInput={handleChangeValues}
+                      onChange={(e) => setReversor(e.target.value)}
                     />
                     <small></small>
                   </div>
-
                 </div>
               </li>
 
               <li className="list-group-item">
                 <div className="row">
                   <h4 id="h3AirplaneConfig">Variable settings</h4>
-                  <h6><i>Weight variables</i></h6>
+                  <h6>
+                    <i>Weight variables</i>
+                  </h6>
                   <div className="form-group col-lg-3 col-md-6 col-sm-12 sucess">
                     <label>Increment/decrement step (Kg):</label>
                     <input
@@ -597,7 +644,7 @@ function VariaveisAeronaves() {
                       name="padrao_variacao_peso"
                       placeholder="For each"
                       value={VariacaoPes}
-                      onChange={receberVariacaoPes}
+                      onChange={(e) => setVariacaoPes(e.target.value)}
                     />
                     <small></small>
                   </div>
@@ -610,7 +657,7 @@ function VariaveisAeronaves() {
                       name="correcao_peso_acima"
                       placeholder="Above standard"
                       value={PesoAcm}
-                      onChange={receberPesoAcm}
+                      onChange={(e) => setPesoAcm(e.target.value)}
                     ></input>
                     <small></small>
                   </div>
@@ -623,7 +670,7 @@ function VariaveisAeronaves() {
                       name="correcao_peso_abaixo"
                       placeholder="Below standard"
                       value={PesoAbx}
-                      onChange={receberPesoAbx}
+                      onChange={(e) => setPesoAbx(e.target.value)}
                     ></input>
                     <small></small>
                   </div>
@@ -636,7 +683,7 @@ function VariaveisAeronaves() {
                       name="correcao_sobrepeso"
                       placeholder="Overweight"
                       value={Sobrepeso}
-                      onChange={receberSobrepeso}
+                      onChange={(e) => setSobrepeso(e.target.value)}
                     ></input>
                     <small></small>
                   </div>
@@ -644,14 +691,15 @@ function VariaveisAeronaves() {
                   <div className="form-group col-lg-1 col-md-6 col-sm-12 addi">
                     <p></p>
                     <IconButton>
-                      <AddIcon fontSize='large' />
+                      <AddIcon fontSize="large" />
                     </IconButton>
                   </div>
-
                 </div>
 
                 <div className="row">
-                  <h6><i>Altitude variables</i></h6>
+                  <h6>
+                    <i>Altitude variables</i>
+                  </h6>
                   <div className="form-group col-lg-3 col-md-6 col-sm-12 sucess">
                     <label>Reference value:</label>
                     <input
@@ -660,7 +708,7 @@ function VariaveisAeronaves() {
                       name="altitude_padrao"
                       placeholder="Default value"
                       value={AltitudePd}
-                      onChange={receberAltitudePd}
+                      onChange={(e) => setAltitudePd(e.target.value)}
                     ></input>
                     <small></small>
                   </div>
@@ -672,7 +720,7 @@ function VariaveisAeronaves() {
                       name="padrao_variacao_altitude"
                       placeholder="For each"
                       value={VariacaoAlt}
-                      onChange={receberVariacaoAlt}
+                      onChange={(e) => setVariacaoAlt(e.target.value)}
                     />
                     <small></small>
                   </div>
@@ -684,7 +732,7 @@ function VariaveisAeronaves() {
                       name="correcao_altitude_acima"
                       placeholder="Above standard"
                       value={AltitudeAcm}
-                      onChange={receberAltitudeAcm}
+                      onChange={(e) => setAltitudeAcm(e.target.value)}
                     ></input>
                     <small></small>
                   </div>
@@ -696,18 +744,274 @@ function VariaveisAeronaves() {
                       name="correcao_altitude_abaixo"
                       placeholder="Below standard"
                       value={AltitudeAbx}
-                      onChange={receberAltitudeAbx}
+                      onChange={(e) => setAltitudeAbx(e.target.value)}
                     ></input>
+                    <small></small>
                   </div>
                   <div className="form-group col-lg-1 col-md-6 col-sm-12 addi">
                     <p></p>
                     <IconButton>
-                      <AddIcon fontSize='large' />
+                      <AddIcon fontSize="large" />
+                    </IconButton>
+                  </div>
+                </div>
+
+                <div className="row">
+                  <h6>
+                    <i>Temperature variables (ISA)</i>
+                  </h6>
+                  <div className="form-group col-lg-3 col-md-6 col-sm-12 sucess">
+                    <label>Reference value:</label>
+                    <input
+                      id="temperatura_padrao"
+                      className="form-control"
+                      name="temperatura_padrao"
+                      placeholder="Default value in °C"
+                      type="number"
+                      value={TemperaturaPd}
+                      onChange={(e) => setTemperaturaPd(e.target.value)}
+                    ></input>
+                    <small></small>
+                  </div>
+                  <div className="form-group col-lg-3 col-md-6 col-sm-12 sucess">
+                    <label>Increment/decrement step (°C):</label>
+                    <input
+                      id="padrao_variacao_temperatura"
+                      className="form-control"
+                      name="padrao_variacao_temperatura"
+                      placeholder="For each"
+                      type="number"
+                      value={VariacaoTmp}
+                      onChange={(e) => setVariacaoTmp(e.target.value)}
+                    />
+                    <small></small>
+                  </div>
+                  <div className="form-group col-lg-3 col-md-6 col-sm-12 sucess">
+                    <label>Variation index (m):</label>
+                    <input
+                      id="correcao_temperatura_acima"
+                      className="form-control"
+                      name="correcao_temperatura_acima"
+                      placeholder="Above standard"
+                      type="number"
+                      value={TemperaturaAcm}
+                      onChange={(e) => setTemperaturaAcm(e.target.value)}
+                    ></input>
+                    <small></small>
+                  </div>
+                  <div className="form-group col-lg-2 col-md-6 col-sm-12 sucess">
+                    <label>Variation index (m):</label>
+                    <input
+                      id="correcao_temperatura_abaixo"
+                      className="form-control"
+                      name="correcao_temperatura_abaixo"
+                      placeholder="Below standard"
+                      type="number"
+                      value={TemperaturaAbx}
+                      onChange={(e) => setTemperaturaAbx(e.target.value)}
+                    ></input>
+                    <small></small>
+                  </div>
+                  <div className="form-group col-lg-1 col-md-6 col-sm-12 addi">
+                    <p></p>
+                    <IconButton>
+                      <AddIcon fontSize="large" />
+                    </IconButton>
+                  </div>
+                </div>
+
+                <div className="row">
+                  <h6>
+                    <i>Wind variables (KT)</i>
+                  </h6>
+                  <div className="form-group col-lg-3 col-md-6 col-sm-12 sucess">
+                    <label>Reference value:</label>
+                    <input
+                      id="padrao_vento"
+                      className="form-control"
+                      name="padrao_vento"
+                      placeholder="Default value"
+                      type="number"
+                      value={VentoPd}
+                      onChange={(e) => setVentoPd(e.target.value)}
+                    ></input>
+                    <small></small>
+                  </div>
+                  <div className="form-group col-lg-3 col-md-6 col-sm-12 sucess">
+                    <label>Increment/decrement step (KT):</label>
+                    <input
+                      id="padrao_variacao_vento"
+                      className="form-control"
+                      name="padrao_variacao_vento"
+                      placeholder="For each"
+                      type="number"
+                      value={VariacaoVento}
+                      onChange={(e) => setVariacaoVento(e.target.value)}
+                    />
+                    <small></small>
+                  </div>
+                  <div className="form-group col-lg-3 col-md-6 col-sm-12 sucess">
+                    <label>Variation index (m):</label>
+                    <input
+                      id="correcao_vento_cauda"
+                      className="form-control"
+                      name="correcao_vento_cauda"
+                      placeholder="Above standard (Tail wind)"
+                      type="number"
+                      value={VentoAcm}
+                      onChange={(e) => setVentoAcm(e.target.value)}
+                    ></input>
+                    <small></small>
+                  </div>
+                  <div className="form-group col-lg-2 col-md-6 col-sm-12 sucess">
+                    <label>Variation index (m):</label>
+                    <input
+                      id="correcao_vento_proa"
+                      className="form-control"
+                      name="correcao_vento_proa"
+                      placeholder="Below standard (Head wind)"
+                      type="number"
+                      value={VentoAbx}
+                      onChange={(e) => setVentoAbx(e.target.value)}
+                    ></input>
+                    <small></small>
+                  </div>
+                  <div className="form-group col-lg-1 col-md-6 col-sm-12 addi">
+                    <p></p>
+                    <IconButton>
+                      <AddIcon fontSize="large" />
+                    </IconButton>
+                  </div>
+                </div>
+
+                <div className="row">
+                  <h6>
+                    <i>Slope variables (%)</i>
+                  </h6>
+                  <div className="form-group col-lg-3 col-md-6 col-sm-12 sucess">
+                    <label>Reference value:</label>
+                    <input
+                      id="slope_padrao"
+                      className="form-control"
+                      name="slope_padrao"
+                      placeholder="Default value"
+                      type="number"
+                      value={SlopePd}
+                      onChange={(e) => setSlopePd(e.target.value)}
+                    ></input>
+                    <small></small>
+                  </div>
+                  <div className="form-group col-lg-3 col-md-6 col-sm-12 sucess">
+                    <label>Increment/decrement step (%):</label>
+                    <input
+                      id="padrao_variacao_inclinacao"
+                      className="form-control"
+                      name="padrao_variacao_inclinacao"
+                      placeholder="For each"
+                      type="number"
+                      value={VariacaoSlope}
+                      onChange={(e) => setVariacaoSlope(e.target.value)}
+                    />
+                    <small></small>
+                  </div>
+                  <div className="form-group col-lg-3 col-md-6 col-sm-12 sucess">
+                    <label>Variation index (m):</label>
+                    <input
+                      id="correcao_aclive"
+                      className="form-control"
+                      name="correcao_aclive"
+                      placeholder="Above standard"
+                      type="number"
+                      value={SlopeAcm}
+                      onChange={(e) => setSlopeAcm(e.target.value)}
+                    ></input>
+                    <small></small>
+                  </div>
+                  <div className="form-group col-lg-2 col-md-6 col-sm-12 sucess">
+                    <label>Variation index (m):</label>
+                    <input
+                      id="correcao_declive"
+                      className="form-control"
+                      name="correcao_declive"
+                      placeholder="Below standard"
+                      type="number"
+                      value={SlopeAbx}
+                      onChange={(e) => setSlopeAbx(e.target.value)}
+                    ></input>
+                    <small></small>
+                  </div>
+                  <div className="form-group col-lg-1 col-md-6 col-sm-12 addi">
+                    <p></p>
+                    <IconButton>
+                      <AddIcon fontSize="large" />
+                    </IconButton>
+                  </div>
+                </div>
+
+                <div className="row">
+                  <h6>
+                    <i>VAP (speed):</i>
+                  </h6>
+                  <div className="form-group col-lg-3 col-md-6 col-sm-12 sucess">
+                    <label>Reference value:</label>
+                    <input
+                      id="vap_padrao"
+                      className="form-control"
+                      name="vap_padrao"
+                      placeholder="Default value"
+                      type="number"
+                      value={VapPd}
+                      onChange={(e) => setVapPd(e.target.value)}
+                    ></input>
+                    <small></small>
+                  </div>
+                  <div className="form-group col-lg-3 col-md-6 col-sm-12 sucess">
+                    <label>Increment/decrement step:</label>
+                    <input
+                      id="padrao_variacao_velocidade"
+                      className="form-control"
+                      name="padrao_variacao_velocidade"
+                      placeholder="For each"
+                      type="number"
+                      value={VariacaoVAP}
+                      onChange={(e) => setVariacaoVAP(e.target.value)}
+                    />
+                    <small></small>
+                  </div>
+                  <div className="form-group col-lg-3 col-md-6 col-sm-12 sucess">
+                    <label>Variation index (m):</label>
+                    <input
+                      id="correcao_velocidade_acima"
+                      className="form-control"
+                      name="correcao_velocidade_acima"
+                      placeholder="Above standard"
+                      type="number"
+                      value={VapAcm}
+                      onChange={(e) => setVapAcm(e.target.value)}
+                    />
+                    <small></small>
+                  </div>
+                  <div className="form-group col-lg-2 col-md-6 col-sm-12 sucess">
+                    <label>Variation index (m):</label>
+                    <input
+                      id="correcao_velocidade_abaixo"
+                      className="form-control"
+                      name="correcao_velocidade_abaixo"
+                      placeholder="Below standard"
+                      type="number"
+                      value={VapAbx}
+                      onChange={(e) => setVapAbx(e.target.value)}
+                    />
+                    <small></small>
+                  </div>
+                  <div className="form-group col-lg-1 col-md-6 col-sm-12 addi">
+                    <p></p>
+                    <IconButton>
+                      <AddIcon fontSize="large" />
                     </IconButton>
                   </div>
                 </div>
               </li>
-
             </ul>
           </div>
 
@@ -725,7 +1029,7 @@ function VariaveisAeronaves() {
               type="submit"
               id="btn_registrar"
               name="submitButton"
-            //onClick={() => handleClickButton(values)}
+              //onClick={() => handleClickButton(values)}
             >
               <b>Register</b>
             </button>
