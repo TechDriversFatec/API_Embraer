@@ -15,24 +15,24 @@ const root = ReactDOM.createRoot(
   document.getElementById('root') as HTMLElement
 );
 
-const checarLogado = () => {
-  if (window.location.pathname != '/') {
-    if (localStorage.getItem('idUsuario') == null) {
-      window.location.href = '/';
-    }
-  }
-}
+// const checarLogado = () => {
+//   if (window.location.pathname != '/') {
+//     if (localStorage.getItem('idUsuario') == null) {
+//       window.location.href = '/';
+//     }
+//   }
+// }
 
-const checarSePiloto = () => {
-  if (localStorage.getItem("nivelAcesso") === '2') {
-    if (window.location.pathname !== '/Calculo') {
-      window.location.href = '/Calculo';
-    }
-  }
-}
+// const checarSePiloto = () => {
+//   if (localStorage.getItem("nivelAcesso") === '2') {
+//     if (window.location.pathname !== '/Calculo') {
+//       window.location.href = '/Calculo';
+//     }
+//   }
+// }
 
-checarLogado()
-checarSePiloto()
+// checarLogado()
+// checarSePiloto()
 
 root.render(
   <React.StrictMode>

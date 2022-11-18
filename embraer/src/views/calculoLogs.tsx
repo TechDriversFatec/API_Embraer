@@ -76,7 +76,7 @@ export default function ControlledAccordions() {
               aria-controls="panel3bh-content"
               id="panel3bh-header"
             >
-              <Typography sx={{ width: '23%', flexShrink: 0 }}>
+              <Typography sx={{ width: '28%', flexShrink: 0 }}>
                 {log.usuario}
               </Typography>
               <Typography sx={{ width: '33%', color: 'text.secondary' }}>
@@ -85,14 +85,128 @@ export default function ControlledAccordions() {
               <Typography sx={{ width: '33%', color: 'text.secondary' }}>
                 {log.dataCalculo}
               </Typography>
-              <Typography sx={{ width: '33%', color: 'text.secondary' }}>
+              <Typography sx={{ width: '27%', color: 'text.secondary' }}>
                 {log.resultado_calculo}
               </Typography>
             </AccordionSummary>
             <AccordionDetails>
               <Typography>
-                Detalhes do log
+                Detalhes 
+            <form id="form_criar">
+              <div className="card-body col-md-12">
+                <div className="row">
+                  <div className="form-group col-lg-4 col-md-6 col-sm-12 sucess">
+                    <label>Landing Weight (Kg):</label>
+                    <input
+                      id="peso-aeronave"
+                      className="form-control"
+                      name="peso"
+                      type="number"
+                      placeholder="Enter Landing Weight:"
+                      // value={Peso}
+                      // onChange={receberValorPeso}
+                    />
+                    <small></small>
+                  </div>
+
+                  <div className="form-group col-lg-4 col-md-6 col-sm-12 sucess">
+                    <label>Aircraft Altitude (Ft):</label>
+                    <input
+                      id="altitude-aeronave"
+                      className="form-control"
+                      type="number"
+                      name="altitude"
+                      placeholder="Enter Aircraft Altitude:"
+                      // value={Altitude}
+                      // onChange={receberValorAltitude}
+                    />
+                    <small></small>
+                  </div>
+
+                  <div className="form-group col-lg-4 col-md-6 col-sm-12 sucess">
+                    <label>Temperature ISA (°C):</label>
+                    <input
+                      id="temperatura"
+                      className="form-control"
+                      name="temperatura"
+                      type="number"
+                      placeholder="Enter Temperature below or above ISA:"
+                      // value={Temperatura}
+                      // onChange={receberValorTemperatura}
+                    />
+                    <small></small>
+                  </div>
+
+                  <div className="form-group col-lg-4 col-md-6 col-sm-12 sucess">
+                    <label>Wind (Kt):</label>
+                    <input
+                      id="valorVento"
+                      className="form-control"
+                      type="number"
+                      name="valorVento"
+                      placeholder="Enter Tailwind or Headwind"
+                      // value={Vento}
+                      // onChange={receberValorVento}
+                    />
+                    <small></small>
+                  </div>
+
+                  <div className="form-group col-lg-4 col-md-6 col-sm-12 sucess">
+                    <label>Slope:</label>
+                    <input
+                      id="slope"
+                      className="form-control"
+                      name="slope"
+                      type="number"
+                      placeholder="Enter Uphill or Downhill Slope:"
+                      // value={Slope}
+                      // onChange={receberSlope}
+                    />
+                    <small></small>
+                  </div>
+
+                  <div className="form-group col-lg-4 col-md-6 col-sm-12 sucess">
+                    <label>Vap Overspeed (Kt):</label>
+                    <input
+                      id="vap-aeronave"
+                      className="form-control"
+                      type="number"
+                      placeholder="Enter Overspeed:"
+                      // value={vap}
+                      // onChange={(e) => setVap(e.target.value)}
+                    />
+                    <small></small>
+                  </div>
+
+                  <div className="form-group col-lg-4 col-md-6 col-sm-12 sucess">
+                    <label>Thrust Reverser:</label>
+                    <select className="form-control select" id="rev-inoperantes" title="rev-inoperantes"
+                    //  onChange={receberRev}
+                     >
+                      <option value="" disabled selected>Select a Reverser Option</option>
+                      <option value="1">One Inoperative</option>
+                      <option value="2">All Inoperative</option>
+                      <option value="0">All Operative</option>
+                    </select>
+                  </div>
+
+                  <div className="form-group col-lg-4 col-md-6 col-sm-12 sucess">
+                    <label>Unit Measurement:</label>
+                    <select title="unidade" className="form-control select" name="unidade" 
+                    // onChange={receberUnidade} id="unidade"
+                    >
+                      <option value="placeholder" disabled selected>Select an Unite Measurement</option>
+                      <option value="0">International</option>
+                      <option value="1">Imperial</option>
+                    </select>
+                    <small></small>
+                  </div>
+                </div>
+              </div>
+            </form>
               </Typography>
+
+
             </AccordionDetails>
           </Accordion>
         ))}
