@@ -23,7 +23,16 @@ const checarLogado = () => {
   }
 }
 
+const checarSePiloto = () => {
+  if (localStorage.getItem("nivelAcesso") === '2') {
+    if (window.location.pathname !== '/Calculo') {
+      window.location.href = '/Calculo';
+    }
+  }
+}
+
 checarLogado()
+checarSePiloto()
 
 root.render(
   <React.StrictMode>

@@ -13,7 +13,7 @@ import Typography from '@mui/material/Typography';
 import * as React from 'react';
 import { useNavigate } from 'react-router-dom';
 
-const pages = ['Calculation', 'Add Aircraft', 'Add User'];
+const pages = ['Calculation', 'Add User'];
 const settings = ['Profile', 'Logout'];
 
 function ResponsiveAppBar() {
@@ -129,7 +129,7 @@ function ResponsiveAppBar() {
                   ))}
                 </Menu>
               </Box>
-              <AdbIcon sx={{ display: { xs: 'flex', md: 'none' }, mr: 1 }} />
+              {/* <AdbIcon sx={{ display: { xs: 'flex', md: 'none' }, mr: 1 }} /> */}
               <Box sx={{ flexGrow: 1, display: { xs: 'none', md: 'flex' } }}>
                 <Button
                   key={'Calculo'}
@@ -137,13 +137,6 @@ function ResponsiveAppBar() {
                   sx={{ my: 2, color: 'white', display: 'block' }}
                 >
                   {'Calculation'}
-                </Button>
-                <Button
-                  key={'CadastarAeronave'}
-                  onClick={handleAddAircraft}
-                  sx={{ my: 2, color: 'white', display: 'block' }}
-                >
-                  {'Add Aircraft'}
                 </Button>
                 <Button
                   key={'Usuarios'}
@@ -257,7 +250,7 @@ function ResponsiveAppBar() {
                   </MenuItem>
                 </Menu>
               </Box>
-              <AdbIcon sx={{ display: { xs: 'flex', md: 'none' }, mr: 1 }} />
+              {/* <AdbIcon sx={{ display: { xs: 'flex', md: 'none' }, mr: 1 }} /> */}
               <Box sx={{ flexGrow: 1, display: { xs: 'none', md: 'flex' } }}>
                 <Button
                   key={'Calculo'}

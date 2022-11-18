@@ -101,8 +101,8 @@ export default function Read() {
           getData();
         });
         Swal.fire({
-          title: "DELETED",
-        });
+          title: 'Aircraft successfully deleted!'
+        })
       }
     });
   };

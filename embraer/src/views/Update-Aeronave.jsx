@@ -33,7 +33,7 @@ export default function UpdateAeronaves() {
     setPesoMaximo(localStorage.getItem('Peso Maximo'))
   }, [])
 
-  
+
 
   function manipularEnvio(evento) {
     evento.preventDefault()
@@ -41,36 +41,41 @@ export default function UpdateAeronaves() {
       pesoMinValido = validaPesoMin(),
       sobrepesoValido = validaSobrepeso(),
       pesoMaxValido = validaPesoMax()
-    
+
     let formularioValido = pesoValido &&
       pesoMinValido &&
       sobrepesoValido &&
       pesoMaxValido
 
-    if (formularioValido){
-        axios.put(`http://localhost:3002/update/${Id}`, {
-          fabricante: Fabricante,
-          modelo: Modelo,
-          certificacao: Certificacao,
-          motor: Motor,
-          qtde_reversor: Revesor,
-          peso_referencial: Peso,
-          peso_minimo: PesoMinimo,
-          sobrepeso: Sobrepeso,
-          peso_maximo: PesoMaximo
-        })
-      
+    if (formularioValido) {
+      axios.put(`http://localhost:3002/update/${Id}`, {
+        fabricante: Fabricante,
+        modelo: Modelo,
+        certificacao: Certificacao,
+        motor: Motor,
+        qtde_reversor: Revesor,
+        peso_referencial: Peso,
+        peso_minimo: PesoMinimo,
+        sobrepeso: Sobrepeso,
+        peso_maximo: PesoMaximo
+      })
+
       Swal.fire({
-        title: 'Sucessful updated aircraft',
-        text: "Return to the home page?",
+        title: 'Confirm the update?',
+        icon: 'warning',
         showCancelButton: true,
         confirmButtonColor: '#3085d6',
         cancelButtonColor: '#d33',
-        confirmButtonText: 'Yes, procced'
+        confirmButtonText: 'Yes, confirm!'
       }).then((result) => {
-        if (result.isConfirmed) {
-          navigate("/Index")
-        }
+        if (result.isConfirmed)
+          Swal.fire({
+            title: 'Aircraft successfully updated',
+          }).then((result) => {
+            if (result.isConfirmed) {
+              navigate("/Index")
+            }
+          })
       })
     }
   }
@@ -102,11 +107,11 @@ export default function UpdateAeronaves() {
     return expressao.test(valor)
   }
 
-  function validaPeso(){
+  function validaPeso() {
     const idPeso = document.getElementById("peso_referencial")
     let valido = false;
 
-    if(!ehNumero(Peso)){
+    if (!ehNumero(Peso)) {
       showError(idPeso, `Weight must be a number`)
     } else {
       showSuccess(idPeso);
@@ -115,11 +120,11 @@ export default function UpdateAeronaves() {
     return valido
   }
 
-  function validaPesoMin(){
+  function validaPesoMin() {
     const idPesoMin = document.getElementById("peso_minimo")
     let valido = false;
 
-    if(!ehNumero(PesoMinimo)){
+    if (!ehNumero(PesoMinimo)) {
       showError(idPesoMin, `Minimum weight must be a number`)
     } else {
       showSuccess(idPesoMin);
@@ -128,11 +133,11 @@ export default function UpdateAeronaves() {
     return valido
   }
 
-  function validaSobrepeso(){
+  function validaSobrepeso() {
     const id = document.getElementById("sobrepeso")
     let valido = false;
 
-    if(!ehNumero(Sobrepeso)){
+    if (!ehNumero(Sobrepeso)) {
       showError(id, `Overweight must be a number`)
     } else {
       showSuccess(id);
@@ -141,11 +146,11 @@ export default function UpdateAeronaves() {
     return valido;
   }
 
-  function validaPesoMax(){
+  function validaPesoMax() {
     const idPesoMax = document.getElementById("peso_maximo")
     let valido = false;
 
-    if(!ehNumero(PesoMaximo)){
+    if (!ehNumero(PesoMaximo)) {
       showError(idPesoMax, `Maximum weight must be a number`)
     } else {
       showSuccess(idPesoMax);
