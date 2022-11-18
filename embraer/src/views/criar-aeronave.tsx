@@ -59,6 +59,7 @@ function VariaveisAeronaves() {
     if (formularioValido) {
       Axios.post("http://localhost:3002/parameter", {
         tipo_flap: Flap,
+        gelo: Gelo,
         configuracao_freio: Break,
         condicao_pista: Condicao,
         distancia_referencial: Distancia,
@@ -375,8 +376,7 @@ function VariaveisAeronaves() {
   }
   function receberGelo(evento: any) {
     let entrada = evento.target.value;
-    setGelo(entrada);
-    return "Gelo";
+    setGelo('Gelo');
   }
   function receberBreak(evento: any) {
     let entrada = evento.target.value;
