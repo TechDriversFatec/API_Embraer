@@ -32,9 +32,20 @@ app.post("/register", (req, res) => {
     });
 });
 
-app.post("/parameter", (req, res) => {
+app.post("/flap", (req, res) => {
     const { tipo_flap } = req.body;
     const { gelo } = req.body;
+    const { aeronave_id } = req.body;
+
+    let SQL = "INSERT INTO flap ( tipo_flap, gelo, aeronave_id ) VALUES ( ?,?,? )";
+
+    db.query(SQL, [tipo_flap, gelo, aeronave_id], (err, result) => {
+        console.log(err);
+    });
+
+})
+
+app.post("/parameter", (req, res) => {
     const { configuracao_freio } = req.body;
     const { condicao_pista } = req.body;
     const { distancia_referencial } = req.body;
@@ -63,11 +74,12 @@ app.post("/parameter", (req, res) => {
     const { padrao_variacao_velocidade } = req.body;
     const { correcao_velocidade_acima } = req.body;
     const { correcao_velocidade_abaixo } = req.body;
-    const { aeronave_id } = req.body;
+    const { flap_id } = req.body;
+    
 
-    let SQL = "INSERT INTO flap ( tipo_flap, gelo, configuracao_freio, condicao_pista, distancia_referencial, correcao_reversor_inoperante, padrao_variacao_peso, correcao_peso_acima, correcao_peso_abaixo, correcao_sobrepeso, altitude_padrao, padrao_variacao_altitude, correcao_altitude_acima, correcao_altitude_abaixo, temperatura_padrao, padrao_variacao_temperatura, correcao_temperatura_acima, correcao_temperatura_abaixo, padrao_vento, padrao_variacao_vento, correcao_vento_cauda, correcao_vento_proa, slope_padrao, padrao_variacao_inclinacao, correcao_aclive, correcao_declive, vap_padrao, padrao_variacao_velocidade, correcao_velocidade_acima, correcao_velocidade_abaixo, aeronave_id ) VALUES ( ?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,? )";
+    let SQL = "INSERT INTO flap (configuracao_freio, condicao_pista, distancia_referencial, correcao_reversor_inoperante, padrao_variacao_peso, correcao_peso_acima, correcao_peso_abaixo, correcao_sobrepeso, altitude_padrao, padrao_variacao_altitude, correcao_altitude_acima, correcao_altitude_abaixo, temperatura_padrao, padrao_variacao_temperatura, correcao_temperatura_acima, correcao_temperatura_abaixo, padrao_vento, padrao_variacao_vento, correcao_vento_cauda, correcao_vento_proa, slope_padrao, padrao_variacao_inclinacao, correcao_aclive, correcao_declive, vap_padrao, padrao_variacao_velocidade, correcao_velocidade_acima, correcao_velocidade_abaixo, flap_id ) VALUES ( ?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,? )";
 
-    db.query(SQL, [tipo_flap, gelo, configuracao_freio, condicao_pista, distancia_referencial, correcao_reversor_inoperante, padrao_variacao_peso, correcao_peso_acima, correcao_peso_abaixo, correcao_sobrepeso, altitude_padrao, padrao_variacao_altitude, correcao_altitude_acima, correcao_altitude_abaixo, temperatura_padrao, padrao_variacao_temperatura, correcao_temperatura_acima, correcao_temperatura_abaixo, padrao_vento, padrao_variacao_vento, correcao_vento_cauda, correcao_vento_proa, slope_padrao, padrao_variacao_inclinacao, correcao_aclive, correcao_declive, vap_padrao, padrao_variacao_velocidade, correcao_velocidade_acima, correcao_velocidade_abaixo, aeronave_id], (err, result) => {
+    db.query(SQL, [configuracao_freio, condicao_pista, distancia_referencial, correcao_reversor_inoperante, padrao_variacao_peso, correcao_peso_acima, correcao_peso_abaixo, correcao_sobrepeso, altitude_padrao, padrao_variacao_altitude, correcao_altitude_acima, correcao_altitude_abaixo, temperatura_padrao, padrao_variacao_temperatura, correcao_temperatura_acima, correcao_temperatura_abaixo, padrao_vento, padrao_variacao_vento, correcao_vento_cauda, correcao_vento_proa, slope_padrao, padrao_variacao_inclinacao, correcao_aclive, correcao_declive, vap_padrao, padrao_variacao_velocidade, correcao_velocidade_acima, correcao_velocidade_abaixo, flap_id], (err, result) => {
         console.log(err);
     });
 });
@@ -116,6 +128,16 @@ app.get("/exibirAeronaves", (req, res) => {
         else res.send(result);
     });
 });
+
+app.get("/exibirFlap/:id", (req, res) => {
+    const id = parseInt(req.params.id).toString()
+    let SQL = "SELECT * FROM flap where aeronave_id =" + id;
+
+    db.query(SQL, (err, result) => {
+        if (err) console.log(err);
+        else res.send(result);
+    });
+})
 
 app.get("/getAeronaves", (req, res) => {
 
@@ -286,6 +308,16 @@ app.delete("/deleteAeronave/:id", (req, res) => {
         else res.send(result);
     });
 });
+
+app.delete("/deleteFlap/:id", (req, res) => {
+    const {id} = req.params;
+    let SQL = "DELETE FROM flap Where id =" + id;
+
+    db.query(SQL, [id], (err, result) => {
+        if (err) console.log(err);
+        else res.send(result);
+    });
+})
 
 app.delete("/deleteUser/:id", (req, res) => {
     const { id } = req.params;

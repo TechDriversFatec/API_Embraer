@@ -7,6 +7,7 @@ import ExpandMoreIcon from "@mui/icons-material/ExpandMore";
 import { FormControlLabel, Switch } from "@mui/material";
 import { useState } from "react";
 import Swal from "sweetalert2";
+import axios from "axios";
 
 export default function ControlledAccordions() {
   const [expanded, setExpanded] = React.useState<string | false>(false);
@@ -15,9 +16,25 @@ export default function ControlledAccordions() {
     (panel: string) => (event: React.SyntheticEvent, isExpanded: boolean) => {
       setExpanded(isExpanded ? panel : false);
     };
+    const id = window.location.href.split("/")[4];
+
+    function receberGelo(evento: any){
+      let entrada = evento.target.value;
+      if(entrada){
+        setGelo(1)
+      } else {
+        setGelo(0)
+      }
+    }
 
   function manipularEnvio(evento: any) {
     evento.preventDefault();
+
+    axios.post("http://localhost:3002/flap", {
+      tipo_flap: Flap,
+      gelo: Gelo,
+      aeronave_id: id
+    })
 
     Swal.fire({
       title: "Sucessful created Flap",
@@ -25,10 +42,16 @@ export default function ControlledAccordions() {
       confirmButtonColor: "#3085d6",
       cancelButtonColor: "#d33",
       confirmButtonText: "Ok",
-    });
+    }).then((result) => {
+      if(result.isConfirmed){
+        window.location.reload();
+      }
+    })
+      
   }
 
   const [Flap, setFlap] = useState("");
+  const [Gelo, setGelo] = useState(0)
 
   return (
     <div>
@@ -61,7 +84,7 @@ export default function ControlledAccordions() {
                   />
                   <small></small>
                   <FormControlLabel
-                    control={<Switch />}
+                    control={<Switch onChange={receberGelo}/>}
                     label="Ice Accretion"
                   />
                 </div>

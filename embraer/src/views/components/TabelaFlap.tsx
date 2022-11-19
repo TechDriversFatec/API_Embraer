@@ -6,8 +6,21 @@ import AddIcon from "@mui/icons-material/Add";
 import Swal from "sweetalert2";
 import axios from "axios";
 import DeleteOutlineIcon from "@mui/icons-material/DeleteOutline";
+import { useEffect, useState } from "react";
 
 export default function TabelaFlap() {
+  const id = window.location.href.split("/")[4];
+  useEffect(() => {
+    axios.get(`http://localhost:3002/exibirFlap/${id}`).then((response) => {
+      setlistFlaps(response.data);
+    });
+  }, []);
+
+  const getData = () => {
+    axios.get(`http://localhost:3002/exibirFlap/${id}`).then((getData) => {
+      setlistFlaps(getData.data);
+    });
+  };
   const onDelete = (id: number) => {
     Swal.fire({
       icon: "warning",
@@ -17,19 +30,18 @@ export default function TabelaFlap() {
       cancelButtonColor: "#d33",
       confirmButtonText: "Yes, delete",
     }).then((result) => {
-      //   if (result.isConfirmed) {
-      //     axios.delete(`http://localhost:3002/deleteAeronave/${id}`).then(() => {
-      //       getData();
-      //     });
-      //     Swal.fire({
-      //       title: "DELETED",
-      //     });
-      //   }
-      Swal.fire({
-        title: "DELETED",
-      });
+      if (result.isConfirmed) {
+        axios.delete(`http://localhost:3002/deleteFlap/${id}`).then(() => {
+          getData();
+        });
+        Swal.fire({
+          title: "Aircraft successfully deleted!",
+        });
+      }
     });
   };
+
+  const [listFlaps, setlistFlaps] = useState([]);
 
   return (
     <div>
@@ -37,27 +49,32 @@ export default function TabelaFlap() {
         <Table.Header>
           <Table.Row>
             <Table.HeaderCell>Nome</Table.HeaderCell>
+            <Table.HeaderCell>Gelo</Table.HeaderCell>
             <Table.HeaderCell>Actions</Table.HeaderCell>
           </Table.Row>
         </Table.Header>
 
         <Table.Body>
-          
+          {listFlaps.map((data: any) => {
+            return (
               <Table.Row>
-                <Table.Cell>NOME</Table.Cell>
+                <Table.Cell>{data.tipo_flap}</Table.Cell>
+                <Table.Cell>{data.gelo}</Table.Cell>
                 <Table.Cell>
-                    <Tooltip title="Create">
-                      <IconButton>
-                        <AddIcon />
-                      </IconButton>
-                    </Tooltip>
-                  <Tooltip title="Delete">
+                  <Tooltip title="Create">
                     <IconButton>
+                      <AddIcon />
+                    </IconButton>
+                  </Tooltip>
+                  <Tooltip title="Delete">
+                    <IconButton onClick={() => onDelete(data.id)}>
                       <DeleteOutlineIcon />
                     </IconButton>
                   </Tooltip>
                 </Table.Cell>
               </Table.Row>
+            );
+          })}
         </Table.Body>
       </Table>
     </div>
