@@ -9,6 +9,15 @@ import DeleteOutlineIcon from "@mui/icons-material/DeleteOutline";
 import { useEffect, useState } from "react";
 
 export default function TabelaFlap() {
+  const setData = (data: any) => {
+    let {
+      flap_id,
+      flap
+    } = data;
+    localStorage.setItem("FlapId", flap_id);
+    localStorage.setItem("Flap", flap)
+  };
+
   const id = window.location.href.split("/")[4];
   useEffect(() => {
     axios.get(`http://localhost:3002/exibirFlap/${id}`).then((response) => {
@@ -56,16 +65,19 @@ export default function TabelaFlap() {
 
         <Table.Body>
           {listFlaps.map((data: any) => {
+            let url = `/Variavel/` + data.id;
             return (
               <Table.Row>
                 <Table.Cell>{data.tipo_flap}</Table.Cell>
                 <Table.Cell>{data.gelo}</Table.Cell>
                 <Table.Cell>
-                  <Tooltip title="Create">
-                    <IconButton>
-                      <AddIcon />
-                    </IconButton>
-                  </Tooltip>
+                <Link to={url}>
+                        <Tooltip title="Create">
+                          <IconButton onClick={() => setData(data)}>
+                            <AddIcon />
+                          </IconButton>
+                        </Tooltip>
+                      </Link>
                   <Tooltip title="Delete">
                     <IconButton onClick={() => onDelete(data.id)}>
                       <DeleteOutlineIcon />
