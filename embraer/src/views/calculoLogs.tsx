@@ -149,13 +149,13 @@ export default function ControlledAccordions() {
                     </Typography>
                   </div>
 
-                  <div className="form-group col-lg-4 col-md-6 col-sm-12 sucess">
+                  {/* <div className="form-group col-lg-4 col-md-6 col-sm-12 sucess">
                     <label>Unit Measurement:</label>
                     <Typography sx={{ width: '28%', flexShrink: 0 }}>
                       {log.reversoresInoperantes}
                     </Typography>
                     <small></small>
-                  </div>
+                  </div> */}
                 </div>
               </div>
             </form>
