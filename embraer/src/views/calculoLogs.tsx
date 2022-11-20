@@ -79,10 +79,10 @@ export default function ControlledAccordions() {
               <Typography sx={{ width: '28%', flexShrink: 0 }}>
                 {log.usuario}
               </Typography>
-              <Typography sx={{ width: '33%', color: 'text.secondary' }}>
+              <Typography sx={{ width: '38%', color: 'text.secondary' }}>
                 {log.aeronave_id}
               </Typography>
-              <Typography sx={{ width: '33%', color: 'text.secondary' }}>
+              <Typography sx={{ width: '32%', color: 'text.secondary' }}>
                 {log.dataCalculo}
               </Typography>
               <Typography sx={{ width: '27%', color: 'text.secondary' }}>
@@ -91,114 +91,69 @@ export default function ControlledAccordions() {
             </AccordionSummary>
             <AccordionDetails>
               <Typography>
-                Detalhes 
             <form id="form_criar">
               <div className="card-body col-md-12">
                 <div className="row">
                   <div className="form-group col-lg-4 col-md-6 col-sm-12 sucess">
                     <label>Landing Weight (Kg):</label>
-                    <input
-                      id="peso-aeronave"
-                      className="form-control"
-                      name="peso"
-                      type="number"
-                      placeholder="Enter Landing Weight:"
-                      // value={Peso}
-                      // onChange={receberValorPeso}
-                    />
+                    <Typography sx={{ width: '28%', flexShrink: 0 }}>
+                      {log.pesoPouso}
+                    </Typography>
                     <small></small>
                   </div>
 
                   <div className="form-group col-lg-4 col-md-6 col-sm-12 sucess">
                     <label>Aircraft Altitude (Ft):</label>
-                    <input
-                      id="altitude-aeronave"
-                      className="form-control"
-                      type="number"
-                      name="altitude"
-                      placeholder="Enter Aircraft Altitude:"
-                      // value={Altitude}
-                      // onChange={receberValorAltitude}
-                    />
+                    <Typography sx={{ width: '28%', flexShrink: 0 }}>
+                      {log.altitude}
+                    </Typography>
                     <small></small>
                   </div>
 
                   <div className="form-group col-lg-4 col-md-6 col-sm-12 sucess">
                     <label>Temperature ISA (°C):</label>
-                    <input
-                      id="temperatura"
-                      className="form-control"
-                      name="temperatura"
-                      type="number"
-                      placeholder="Enter Temperature below or above ISA:"
-                      // value={Temperatura}
-                      // onChange={receberValorTemperatura}
-                    />
+                    <Typography sx={{ width: '28%', flexShrink: 0 }}>
+                      {log.temperatura}
+                    </Typography>
                     <small></small>
                   </div>
 
                   <div className="form-group col-lg-4 col-md-6 col-sm-12 sucess">
                     <label>Wind (Kt):</label>
-                    <input
-                      id="valorVento"
-                      className="form-control"
-                      type="number"
-                      name="valorVento"
-                      placeholder="Enter Tailwind or Headwind"
-                      // value={Vento}
-                      // onChange={receberValorVento}
-                    />
+                    <Typography sx={{ width: '28%', flexShrink: 0 }}>
+                      {log.vento}
+                    </Typography>
                     <small></small>
                   </div>
 
                   <div className="form-group col-lg-4 col-md-6 col-sm-12 sucess">
                     <label>Slope:</label>
-                    <input
-                      id="slope"
-                      className="form-control"
-                      name="slope"
-                      type="number"
-                      placeholder="Enter Uphill or Downhill Slope:"
-                      // value={Slope}
-                      // onChange={receberSlope}
-                    />
+                    <Typography sx={{ width: '28%', flexShrink: 0 }}>
+                      {log.inclinacao}
+                    </Typography>
                     <small></small>
                   </div>
 
                   <div className="form-group col-lg-4 col-md-6 col-sm-12 sucess">
                     <label>Vap Overspeed (Kt):</label>
-                    <input
-                      id="vap-aeronave"
-                      className="form-control"
-                      type="number"
-                      placeholder="Enter Overspeed:"
-                      // value={vap}
-                      // onChange={(e) => setVap(e.target.value)}
-                    />
+                    <Typography sx={{ width: '28%', flexShrink: 0 }}>
+                      {log.overspeed}
+                    </Typography>
                     <small></small>
                   </div>
 
                   <div className="form-group col-lg-4 col-md-6 col-sm-12 sucess">
                     <label>Thrust Reverser:</label>
-                    <select className="form-control select" id="rev-inoperantes" title="rev-inoperantes"
-                    //  onChange={receberRev}
-                     >
-                      <option value="" disabled selected>Select a Reverser Option</option>
-                      <option value="1">One Inoperative</option>
-                      <option value="2">All Inoperative</option>
-                      <option value="0">All Operative</option>
-                    </select>
+                    <Typography sx={{ width: '28%', flexShrink: 0 }}>
+                      {log.reversoresInoperantes}
+                    </Typography>
                   </div>
 
                   <div className="form-group col-lg-4 col-md-6 col-sm-12 sucess">
                     <label>Unit Measurement:</label>
-                    <select title="unidade" className="form-control select" name="unidade" 
-                    // onChange={receberUnidade} id="unidade"
-                    >
-                      <option value="placeholder" disabled selected>Select an Unite Measurement</option>
-                      <option value="0">International</option>
-                      <option value="1">Imperial</option>
-                    </select>
+                    <Typography sx={{ width: '28%', flexShrink: 0 }}>
+                      {log.reversoresInoperantes}
+                    </Typography>
                     <small></small>
                   </div>
                 </div>
