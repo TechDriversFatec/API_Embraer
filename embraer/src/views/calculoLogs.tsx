@@ -90,6 +90,7 @@ export default function ControlledAccordions() {
               </Typography>
             </AccordionSummary>
             <AccordionDetails sx={{ color: 'text.secondary' }}>
+              Details:
               <Typography>
             <form id="form_criar">
               <div className="card-body col-md-12">
@@ -97,49 +98,49 @@ export default function ControlledAccordions() {
                   <div className="form-group col-lg-3 col-md-6 col-sm-12 sucess">
                     <label>Landing Weight (Kg):</label>
                     <Typography sx={{ width: '28%', flexShrink: 0 }} display="inline">
-                      {log.pesoPouso}
+                      {" " + log.pesoPouso}
                     </Typography>
                   </div>
 
                   <div className="form-group col-lg-3 col-md-6 col-sm-12 sucess">
                     <label>Aircraft Altitude (Ft):</label>
                     <Typography sx={{ width: '28%', flexShrink: 0 }} display="inline">
-                      {log.altitude}
+                      {" " + log.altitude}
                     </Typography>
                   </div>
 
                   <div className="form-group col-lg-3 col-md-6 col-sm-12 sucess">
                     <label>Temperature ISA (°C):</label>
                     <Typography sx={{ width: '28%', flexShrink: 0 }} display="inline">
-                      {log.temperatura}
+                      {" " + log.temperatura}
                     </Typography>
                   </div>
 
                   <div className="form-group col-lg-3 col-md-6 col-sm-12 sucess">
                     <label>Wind (Kt):</label>
                     <Typography sx={{ width: '28%', flexShrink: 0 }} display="inline">
-                      {log.vento}
+                      {" " + log.vento}
                     </Typography>
                   </div>
 
                   <div className="form-group col-lg-3 col-md-6 col-sm-12 sucess">
                     <label>Slope:</label>
                     <Typography sx={{ width: '28%', flexShrink: 0 }} display="inline">
-                      {log.inclinacao}
+                      {" " + log.inclinacao}
                     </Typography>
                   </div>
 
                   <div className="form-group col-lg-3 col-md-6 col-sm-12 sucess">
                     <label>Vap Overspeed (Kt):</label>
                     <Typography sx={{ width: '28%', flexShrink: 0 }} display="inline">
-                      {log.overspeed}
+                      {" " + log.overspeed}
                     </Typography>
                   </div>
 
                   <div className="form-group col-lg-2 col-md-6 col-sm-12 sucess">
                     <label>Thrust Reverser:</label>
                     <Typography sx={{ width: '28%', flexShrink: 0 }} display="inline">
-                      {log.reversoresInoperantes}
+                      {" " + log.reversoresInoperantes}
                     </Typography>
                   </div>
 
