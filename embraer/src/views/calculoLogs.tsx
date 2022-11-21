@@ -76,7 +76,7 @@ export default function ControlledAccordions() {
               aria-controls="panel3bh-content"
               id="panel3bh-header"
             >
-              <Typography sx={{ width: '28%', flexShrink: 0 }}>
+              <Typography sx={{ width: '28%', flexShrink: 0, color: 'text.secondary' }}>
                 {log.usuario}
               </Typography>
               <Typography sx={{ width: '38%', color: 'text.secondary' }}>
@@ -89,7 +89,7 @@ export default function ControlledAccordions() {
                 {log.resultado_calculo}
               </Typography>
             </AccordionSummary>
-            <AccordionDetails>
+            <AccordionDetails sx={{ color: 'text.secondary' }}>
               <Typography>
             <form id="form_criar">
               <div className="card-body col-md-12">
