@@ -71,6 +71,18 @@ const Login = () => {
             });
     };
 
+    async function recuperarSenha() {
+        const { value: email } = await Swal.fire({
+            title: 'To recover the password, please input your e-mail address:',
+            input: 'email',
+            inputPlaceholder: 'Enter your registered e-mail address'
+          })
+          
+          if (email) {
+            Swal.fire(`Entered email: ${email}`)
+          };
+    };
+
     return (
         <div id="formL" className="corpoL" style={{
             backgroundImage: `url("https://images.unsplash.com/photo-1556388158-158ea5ccacbd?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1170&q=80")`,
@@ -92,6 +104,7 @@ const Login = () => {
                 <br />
                 <button title="btn_logar" className="rounded btn btn-primary " type="submit" id="btn_logar" name="submitButton"
                 >Login</button>
+                <button title="btn_rec_senha" className="rounded btn btn-primary senha" type="submit" id="btn_rec_senha" name="recButton" onClick={recuperarSenha}>Forgot the password?</button>
 
             </form>
         </div>
