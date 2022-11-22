@@ -12,10 +12,12 @@ export default function TabelaFlap() {
   const setData = (data: any) => {
     let {
       flap_id,
-      flap
+      tipo_flap,
+      gelo
     } = data;
     localStorage.setItem("FlapId", flap_id);
-    localStorage.setItem("Flap", flap)
+    localStorage.setItem("Flap", tipo_flap)
+    localStorage.setItem("Gelo", gelo)
   };
 
   const id = window.location.href.split("/")[4];
@@ -50,6 +52,15 @@ export default function TabelaFlap() {
     });
   };
 
+  function mudaGelo(data){
+    if(data === "1"){
+      data = "With"
+    } else {
+      data = "Without"
+    }
+    return data
+  }
+
   const [listFlaps, setlistFlaps] = useState([]);
 
   return (
@@ -65,11 +76,13 @@ export default function TabelaFlap() {
 
         <Table.Body>
           {listFlaps.map((data: any) => {
+            console.log(data)
             let url = `/Variavel/` + data.id;
+            
             return (
               <Table.Row>
                 <Table.Cell>{data.tipo_flap}</Table.Cell>
-                <Table.Cell>{data.gelo}</Table.Cell>
+                <Table.Cell>{mudaGelo(data.gelo)}</Table.Cell>
                 <Table.Cell>
                 <Link to={url}>
                         <Tooltip title="Create">

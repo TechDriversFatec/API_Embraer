@@ -4,13 +4,11 @@ import { Table, Input, TableFooter } from "semantic-ui-react";
 import { Link } from "react-router-dom";
 import axios from "axios";
 import { IconButton, TablePagination } from "@mui/material";
-import AddIcon from "@mui/icons-material/Add";
 import AirplanemodeActiveIcon from "@mui/icons-material/AirplanemodeActive";
 import DeleteOutlineIcon from "@mui/icons-material/DeleteOutline";
 import Tooltip from "@mui/material/Tooltip";
 import Swal from "sweetalert2";
 import "../css/tabela.css";
-//import { isConstructorDeclaration } from "typescript";
 
 export default function Read() {
   const [listAeronaves, setlistAeronaves] = useState([]);
@@ -131,7 +129,6 @@ export default function Read() {
           {searchInput.length > 1
             ? resultadoFiltrado.map((data: any) => {
                 let url = `/AtualizA/` + data.id;
-                let url2 = `/Variavel/` + data.id;
                 return (
                   <Table.Row>
                     <Table.Cell>{data.modelo}</Table.Cell>
@@ -139,13 +136,6 @@ export default function Read() {
                     <Table.Cell>{data.certificacao}</Table.Cell>
                     <Table.Cell>{data.motor}</Table.Cell>
                     <Table.Cell>
-                      <Link to={url2}>
-                        <Tooltip title="Create">
-                          <IconButton onClick={() => setData(data)}>
-                            <AddIcon />
-                          </IconButton>
-                        </Tooltip>
-                      </Link>
                       <Link to={url}>
                         <Tooltip title="Edit">
                           <IconButton onClick={() => setData(data)}>
@@ -153,11 +143,6 @@ export default function Read() {
                           </IconButton>
                         </Tooltip>
                       </Link>
-                      {/* <Link to="/Variavel">
-                    <Button>
-                      <FaCalculator />
-                    </Button>
-                  </Link> */}
                       <Tooltip title="Delete">
                         <IconButton onClick={() => onDelete(data.id)}>
                           <DeleteOutlineIcon />
@@ -169,7 +154,6 @@ export default function Read() {
               })
             : listAeronaves.slice(page * rowsPerPage, page * rowsPerPage + rowsPerPage).map((data: any) => {
                 let url = `/AtualizA/` + data.id;
-                let url2 = `/Variavel/` + data.id;
                 return (
                   <Table.Row>
                     <Table.Cell>{data.modelo}</Table.Cell>
@@ -177,13 +161,6 @@ export default function Read() {
                     <Table.Cell>{data.certificacao}</Table.Cell>
                     <Table.Cell>{data.motor}</Table.Cell>
                     <Table.Cell>
-                      <Link to={url2}>
-                        <Tooltip title="Create">
-                          <IconButton onClick={() => setData(data)}>
-                            <AddIcon />
-                          </IconButton>
-                        </Tooltip>
-                      </Link>
                       <Link to={url}>
                         <Tooltip title="Edit">
                           <IconButton onClick={() => setData(data)}>
@@ -191,11 +168,6 @@ export default function Read() {
                           </IconButton>
                         </Tooltip>
                       </Link>
-                      {/* <Link to="/Variavel">
-                    <Button>
-                      <FaCalculator />
-                    </Button>
-                  </Link> */}
                       <Tooltip title="Delete">
                         <IconButton onClick={() => onDelete(data.id)}>
                           <DeleteOutlineIcon />
