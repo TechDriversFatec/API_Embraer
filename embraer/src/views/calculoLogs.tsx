@@ -89,7 +89,7 @@ export default function ControlledAccordions() {
                 {log.resultado_calculo}
               </Typography>
             </AccordionSummary>
-            <AccordionDetails sx={{ color: 'text.secondary' }}>
+            <AccordionDetails>
               Details:
               <Typography>
             <form id="form_criar">
