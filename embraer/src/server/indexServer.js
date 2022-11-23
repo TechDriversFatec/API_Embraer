@@ -150,7 +150,7 @@ app.get("/getUser/:id", (req, res) => {
 
 app.get("/getLogs", (req, res) => {
 
-    let SQL = "SELECT * FROM log_calculo_distancia";
+    let SQL = "SELECT * FROM log_calculo_distancia order by dataCalculo desc";
 
     db.query(SQL, (err, result) => {
         if (err) console.log(err);

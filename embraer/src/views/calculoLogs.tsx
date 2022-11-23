@@ -6,6 +6,7 @@ import Typography from '@mui/material/Typography';
 import ExpandMoreIcon from '@mui/icons-material/ExpandMore';
 import { useEffect, useState } from 'react';
 import axios from 'axios';
+import { Input } from "semantic-ui-react";
 
 type Log = {
   id: number,
@@ -30,6 +31,9 @@ type Log = {
 export default function ControlledAccordions() {
   const [expanded, setExpanded] = React.useState<string | false>(false);
   const [logs, setLogs] = useState<Log[]>([]);
+  const [logFiltrado, setLogFiltrado] = useState<Log[]>([]);
+  const [searchInput, setsearchInput] = useState("");
+  const [resultadoFiltrado, setresultadoFiltrado] = useState<Log[]>([]);
 
   useEffect(() => {
     axios
@@ -42,10 +46,37 @@ export default function ControlledAccordions() {
       });
   }, []);
 
+  const listaLogs = () => {
+    const logs = axios
+      .get('http://localhost:3002/getLogs')
+      .then((response) => {
+        const data = response.data;
+        console.log("useEffect 1 Rodou");
+        setLogs(data);
+        console.log(data); // returns '[]'
+      });
+    return logs;
+  }
+
   const handleChange =
     (panel: string) => (event: React.SyntheticEvent, isExpanded: boolean) => {
       setExpanded(isExpanded ? panel : false);
     };
+
+  const searchItems = (searchValue) => {
+    setsearchInput(searchValue);
+    if (searchInput !== "") {
+      const logFiltrado = logs.filter((item) => {
+        return Object.values(item)
+          .join(" ")
+          .toLowerCase()
+          .includes(searchInput.toLowerCase());
+      });
+      setLogs(logFiltrado);
+    } else {
+      listaLogs();
+    }
+  };
 
   return (
     <div>
@@ -53,6 +84,13 @@ export default function ControlledAccordions() {
         <div className="card-header">
           <h3 id="h3Calcular" className="card-title">Landing logs</h3>
           <div className="card-body col-md-12">
+            <div>
+              <Input
+                icon="search"
+                placeholder="Search"
+                onChange={(e) => searchItems(e.target.value)}
+              />
+            </div>
             <div className="row">
               <div className="form-group col-lg-3 col-md-6 col-sm-12 sucess">
                 User
@@ -68,92 +106,86 @@ export default function ControlledAccordions() {
               </div>
             </div>
           </div>
+          <div>
+          </div>
         </div>
-        {logs.map((log) => (
-          <Accordion expanded={expanded === `${log.id}`} onChange={handleChange(`${log.id}`)}>
+        {logs.map((resultadoFiltrado) => (
+          <Accordion expanded={expanded === `${resultadoFiltrado.id}`} onChange={handleChange(`${resultadoFiltrado.id}`)}>
             <AccordionSummary
               expandIcon={<ExpandMoreIcon />}
               aria-controls="panel3bh-content"
               id="panel3bh-header"
             >
               <Typography sx={{ width: '28%', flexShrink: 0, color: 'text.secondary' }}>
-                {log.usuario}
+                {resultadoFiltrado.usuario}
               </Typography>
               <Typography sx={{ width: '38%', color: 'text.secondary' }}>
-                {log.aeronave_id}
+                {resultadoFiltrado.aeronave_id}
               </Typography>
               <Typography sx={{ width: '32%', color: 'text.secondary' }}>
-                {log.dataCalculo}
+                {resultadoFiltrado.dataCalculo}
               </Typography>
               <Typography sx={{ width: '27%', color: 'text.secondary' }}>
-                {log.resultado_calculo}
+                {resultadoFiltrado.resultado_calculo}
               </Typography>
             </AccordionSummary>
             <AccordionDetails>
               Details:
               <Typography>
-            <form id="form_criar">
-              <div className="card-body col-md-12">
-                <div className="row">
-                  <div className="form-group col-lg-3 col-md-6 col-sm-12 sucess">
-                    <label>Landing Weight (Kg):</label>
-                    <Typography sx={{ width: '28%', flexShrink: 0 }} display="inline">
-                      {" " + log.pesoPouso}
-                    </Typography>
-                  </div>
+                <form id="form_criar">
+                  <div className="card-body col-md-12">
+                    <div className="row">
+                      <div className="form-group col-lg-3 col-md-6 col-sm-12 sucess">
+                        <label>Landing Weight (Kg):</label>
+                        <Typography sx={{ width: '28%', flexShrink: 0 }} display="inline">
+                          {" " + resultadoFiltrado.pesoPouso}
+                        </Typography>
+                      </div>
 
-                  <div className="form-group col-lg-3 col-md-6 col-sm-12 sucess">
-                    <label>Aircraft Altitude (Ft):</label>
-                    <Typography sx={{ width: '28%', flexShrink: 0 }} display="inline">
-                      {" " + log.altitude}
-                    </Typography>
-                  </div>
+                      <div className="form-group col-lg-3 col-md-6 col-sm-12 sucess">
+                        <label>Aircraft Altitude (Ft):</label>
+                        <Typography sx={{ width: '28%', flexShrink: 0 }} display="inline">
+                          {" " + resultadoFiltrado.altitude}
+                        </Typography>
+                      </div>
 
-                  <div className="form-group col-lg-3 col-md-6 col-sm-12 sucess">
-                    <label>Temperature ISA (°C):</label>
-                    <Typography sx={{ width: '28%', flexShrink: 0 }} display="inline">
-                      {" " + log.temperatura}
-                    </Typography>
-                  </div>
+                      <div className="form-group col-lg-3 col-md-6 col-sm-12 sucess">
+                        <label>Temperature ISA (°C):</label>
+                        <Typography sx={{ width: '28%', flexShrink: 0 }} display="inline">
+                          {" " + resultadoFiltrado.temperatura}
+                        </Typography>
+                      </div>
 
-                  <div className="form-group col-lg-3 col-md-6 col-sm-12 sucess">
-                    <label>Wind (Kt):</label>
-                    <Typography sx={{ width: '28%', flexShrink: 0 }} display="inline">
-                      {" " + log.vento}
-                    </Typography>
-                  </div>
+                      <div className="form-group col-lg-3 col-md-6 col-sm-12 sucess">
+                        <label>Wind (Kt):</label>
+                        <Typography sx={{ width: '28%', flexShrink: 0 }} display="inline">
+                          {" " + resultadoFiltrado.vento}
+                        </Typography>
+                      </div>
 
-                  <div className="form-group col-lg-3 col-md-6 col-sm-12 sucess">
-                    <label>Slope:</label>
-                    <Typography sx={{ width: '28%', flexShrink: 0 }} display="inline">
-                      {" " + log.inclinacao}
-                    </Typography>
-                  </div>
+                      <div className="form-group col-lg-3 col-md-6 col-sm-12 sucess">
+                        <label>Slope:</label>
+                        <Typography sx={{ width: '28%', flexShrink: 0 }} display="inline">
+                          {" " + resultadoFiltrado.inclinacao}
+                        </Typography>
+                      </div>
 
-                  <div className="form-group col-lg-3 col-md-6 col-sm-12 sucess">
-                    <label>Vap Overspeed (Kt):</label>
-                    <Typography sx={{ width: '28%', flexShrink: 0 }} display="inline">
-                      {" " + log.overspeed}
-                    </Typography>
-                  </div>
+                      <div className="form-group col-lg-3 col-md-6 col-sm-12 sucess">
+                        <label>Vap Overspeed (Kt):</label>
+                        <Typography sx={{ width: '28%', flexShrink: 0 }} display="inline">
+                          {" " + resultadoFiltrado.overspeed}
+                        </Typography>
+                      </div>
 
-                  <div className="form-group col-lg-2 col-md-6 col-sm-12 sucess">
-                    <label>Thrust Reverser:</label>
-                    <Typography sx={{ width: '28%', flexShrink: 0 }} display="inline">
-                      {" " + log.reversoresInoperantes}
-                    </Typography>
+                      <div className="form-group col-lg-2 col-md-6 col-sm-12 sucess">
+                        <label>Thrust Reverser:</label>
+                        <Typography sx={{ width: '28%', flexShrink: 0 }} display="inline">
+                          {" " + resultadoFiltrado.reversoresInoperantes}
+                        </Typography>
+                      </div>
+                    </div>
                   </div>
-
-                  {/* <div className="form-group col-lg-4 col-md-6 col-sm-12 sucess">
-                    <label>Unit Measurement:</label>
-                    <Typography sx={{ width: '28%', flexShrink: 0 }}>
-                      {log.reversoresInoperantes}
-                    </Typography>
-                    <small></small>
-                  </div> */}
-                </div>
-              </div>
-            </form>
+                </form>
               </Typography>
 
 
