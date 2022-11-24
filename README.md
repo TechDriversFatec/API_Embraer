@@ -19,14 +19,14 @@
   
   <p align="justify">O projeto visa o desenvolvimento de uma aplicação (compatível com tablet) voltada para o cálculo de distância de pouso de aeronaves. Essa aplicação foi pensada para auxiliar o piloto da aeronave, proporcionando maior agilidade e eficiência no referido cálculo.</p>
   
-  <p>Para mais informações sobre cada Sprint do projeto, clique nos relatórios a seguir:</p>
+  <p>Para mais informações sobre cada sprint do projeto, clique nos relatórios a seguir:</p>
   
 | Sprint | Entrega	| Status | Histórico |
 | :-----: | :-----: | :-----: | :-----: |
 | 01 | 18/09/2022 | Concluída | [Ver Relatório](https://github.com/TechDriversFatec/API_Embraer/tree/main/Planejamento/Sprint-1) |
 | 02 | 09/10/2022 | Concluída | [Ver Relatório](https://github.com/TechDriversFatec/API_Embraer/tree/main/Planejamento/Sprint-2) |
-| 03 | 06/11/2022 | Concluída | [Ver relatório](https://github.com/TechDriversFatec/API_Embraer/tree/main/Planejamento/Sprint-3) |
-| 04 | 27/11/2022 | Em breve | [Em breve] |
+| 03 | 06/11/2022 | Concluída | [Ver Relatório](https://github.com/TechDriversFatec/API_Embraer/tree/main/Planejamento/Sprint-3) |
+| 04 | 27/11/2022 | Em andamento | [Ver Relatório](https://github.com/TechDriversFatec/API_Embraer/tree/main/Planejamento/Sprint-4) |
   
   → [Voltar ao topo](#topo)
   
@@ -115,8 +115,6 @@ Para melhor visualização do protótipo, acesse o [link](https://www.figma.com/
 | :----------: | :----------------------------- | :----------------------------------------------:| :--------------------------------------------------------------:|
 | Product Owner| Yasmin Aparecida Vieira         |  [![GitHub Badge](https://img.shields.io/badge/GitHub-111217?style=flat-square&logo=github&logoColor=white)](https://github.com/YasminVieira)      | [![Linkedin Badge](https://img.shields.io/badge/Linkedin-blue?style=flat-square&logo=Linkedin&logoColor=white)](https://www.linkedin.com/in/yasmin-vieira-b68641213/)|
 | Scrum Master | Larissa Aparecida Diniz Silva   |  [![GitHub Badge](https://img.shields.io/badge/GitHub-111217?style=flat-square&logo=github&logoColor=white)](https://github.com/laaridiniz)        | [![Linkedin Badge](https://img.shields.io/badge/Linkedin-blue?style=flat-square&logo=Linkedin&logoColor=white)](https://www.linkedin.com/in/larissa-diniz-dev/)      |
-|   Dev Team   | Guilherme Konflanz Mezzomo      |  [![GitHub Badge](https://img.shields.io/badge/GitHub-111217?style=flat-square&logo=github&logoColor=white)](https://github.com/GuilhermeKMezzomo) | [![Linkedin Badge](https://img.shields.io/badge/Linkedin-blue?style=flat-square&logo=Linkedin&logoColor=white)](https://www.linkedin.com/in/guilherme-konflanz-mezzomo-0a9065216/) |
-|   Dev Team   | Gustavo Konflanz Mezzomo        |  [![GitHub Badge](https://img.shields.io/badge/GitHub-111217?style=flat-square&logo=github&logoColor=white)](https://github.com/gustavomezzomo)    | [![Linkedin Badge](https://img.shields.io/badge/Linkedin-blue?style=flat-square&logo=Linkedin&logoColor=white)](https://www.linkedin.com/in/gustavo-konflanz-mezzomo-08135320b/) |
 |   Dev Team   | Icaro Dell Osso Vaz de Carvalho |  [![GitHub Badge](https://img.shields.io/badge/GitHub-111217?style=flat-square&logo=github&logoColor=white)](https://github.com/Mikkenz)           | [![Linkedin Badge](https://img.shields.io/badge/Linkedin-blue?style=flat-square&logo=Linkedin&logoColor=white)](https://www.linkedin.com/in/icaro-dell-osso/)        |
 |   Dev Team   | Juliana Gomes da Silva          |  [![GitHub Badge](https://img.shields.io/badge/GitHub-111217?style=flat-square&logo=github&logoColor=white)](https://github.com/JulianaGO)         | [![Linkedin Badge](https://img.shields.io/badge/Linkedin-blue?style=flat-square&logo=Linkedin&logoColor=white)](https://www.linkedin.com/in/juliana-gomes-silva/)    |
 |   Dev Team   | Lucas Nunes Duarte do Nascimento|  [![GitHub Badge](https://img.shields.io/badge/GitHub-111217?style=flat-square&logo=github&logoColor=white)](https://github.com/Lkduarte)          | [![Linkedin Badge](https://img.shields.io/badge/Linkedin-blue?style=flat-square&logo=Linkedin&logoColor=white)](https://www.linkedin.com/in/lucas-nunes-nascimento/) |
