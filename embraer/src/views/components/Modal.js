@@ -58,7 +58,6 @@ function Modal({ closeModal }) {
 
   return (
     <div className="modalBackground">
-      {console.log(FlapId)}
       <div className="modalContainer">
         <div className="titleCloseBtn">
           <button onClick={() => closeModal(false)}> X </button>
@@ -78,8 +77,6 @@ function Modal({ closeModal }) {
 
             <Table.Body>
               {ListVariaveis.map((data) => {
-                console.log(data);
-
                 return (
                   <Table.Row>
                     <Table.Cell>{data.configuracao_freio}</Table.Cell>

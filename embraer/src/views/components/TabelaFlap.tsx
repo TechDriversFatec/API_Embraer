@@ -28,13 +28,14 @@ export default function TabelaFlap() {
   };
 
   function modalEData(data: any){
+    console.log(data)
     setData(data)
     setOpenModal(true);
   };
 
   const setData = (data: any) => {
-    let { flap_id, tipo_flap, gelo } = data;
-    localStorage.setItem("FlapId", flap_id);
+    let { id, tipo_flap, gelo } = data;
+    localStorage.setItem("FlapId", id);
     localStorage.setItem("Flap", tipo_flap);
     localStorage.setItem("Gelo", gelo);
   };
@@ -82,7 +83,6 @@ export default function TabelaFlap() {
 
         <Table.Body>
           {listFlaps.map((data: any) => {
-            console.log(typeof data.flap_id);
             let url = `/Variavel/` + data.id;
 
             return (

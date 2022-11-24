@@ -10,9 +10,7 @@ function VariaveisAeronaves() {
   const navigate = useNavigate();
 
   const url_atual = window.location.href;
-  console.log(url_atual);
   const id = window.location.href.split("/")[4];
-  console.log(id);
 
   function manipularEnvio(evento) {
     evento.preventDefault();

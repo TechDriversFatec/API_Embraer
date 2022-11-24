@@ -207,7 +207,6 @@ function CriarUsuario() {
   };
 
   const handleClickButton = (values: any) => {
-    console.log(values);
     Axios.post("http://localhost:3002/criarusuario", {
       nivel_acesso: values.nivel_acesso,
       senha_acesso: values.senha_acesso,
