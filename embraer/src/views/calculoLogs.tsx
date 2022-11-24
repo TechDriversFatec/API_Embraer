@@ -31,20 +31,20 @@ type Log = {
 export default function ControlledAccordions() {
   const [expanded, setExpanded] = React.useState<string | false>(false);
   const [logs, setLogs] = useState<Log[]>([]);
-  const [logFiltrado, setLogFiltrado] = useState<Log[]>([]);
+  const [logFiltrado, setLogFiltrado] = useState([]);
   const [searchInput, setsearchInput] = useState("");
   const [resultadoFiltrado, setresultadoFiltrado] = useState<Log[]>([]);
 
-  useEffect(() => {
-    axios
-      .get('http://localhost:3002/getLogs')
-      .then((response) => {
-        const data = response.data;
-        console.log("useEffect 1 Rodou");
-        setLogs(data);
-        console.log(data); // returns '[]'
-      });
-  }, []);
+    useEffect(() => {
+      axios
+        .get('http://localhost:3002/getLogs')
+        .then((response) => {
+          const data = response.data;
+          console.log("useEffect 1 Rodou");
+          setLogs(data);
+          console.log(data); // returns '[]'
+        });
+    }, []);
 
   const listaLogs = () => {
     const logs = axios
@@ -64,18 +64,25 @@ export default function ControlledAccordions() {
     };
 
   const searchItems = (searchValue) => {
-    setsearchInput(searchValue);
-    if (searchInput !== "") {
+    searchValue = searchValue.value
+    console.log(searchValue);
+    
+    if (searchValue.trim() !== "" ) {
+      console.log(searchInput)
       const logFiltrado = logs.filter((item) => {
         return Object.values(item)
           .join(" ")
           .toLowerCase()
           .includes(searchInput.toLowerCase());
       });
+      console.log("logs: " + logFiltrado);
+      
       setLogs(logFiltrado);
     } else {
       listaLogs();
     }
+
+    //setsearchInput(searchValue);
   };
 
   return (
@@ -88,7 +95,7 @@ export default function ControlledAccordions() {
               <Input
                 icon="search"
                 placeholder="Search"
-                onChange={(e) => searchItems(e.target.value)}
+                onChange={(e) => searchItems(e.target)}
               />
             </div>
             <div className="row">
@@ -110,7 +117,7 @@ export default function ControlledAccordions() {
           </div>
         </div>
         {logs.map((resultadoFiltrado) => (
-          <Accordion expanded={expanded === `${resultadoFiltrado.id}`} onChange={handleChange(`${resultadoFiltrado.id}`)}>
+          <Accordion key={resultadoFiltrado.id} expanded={expanded === `${resultadoFiltrado.id}`} onChange={handleChange(`${resultadoFiltrado.id}`)}>
             <AccordionSummary
               expandIcon={<ExpandMoreIcon />}
               aria-controls="panel3bh-content"
