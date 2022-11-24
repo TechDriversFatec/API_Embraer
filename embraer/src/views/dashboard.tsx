@@ -1,18 +1,22 @@
-import "bootstrap/dist/css/bootstrap.min.css"
+import React from "react";
+import { Chart } from "react-google-charts";
+import "bootstrap/dist/css/bootstrap.min.css";
 
-function Dashboard() {
+export const data = [
+  ["Task", "Hours per Day"],
+  ["Work", 11],
+  ["Eat", 2],
+  ["Commute", 2],
+  ["Watch TV", 2],
+  ["Sleep", 7],
+];
 
+const Dashboard = () => {
     return (
-        <>
-            <div className="col-md-6">
-                <div className="box">
-                  <div id="line"></div>
-                </div>
-            </div>
-        </>
-    )
+        <div className="col-md-5">
+            <Chart chartType="PieChart" data={data} width={"100%"} height={"400px"} />
+        </div>
+    );
+};
 
-
-}
-
-export default Dashboard
+export default Dashboard;

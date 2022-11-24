@@ -15,6 +15,7 @@ import UpdateAeronaves from "./views/Update-Aeronave";
 import UserProfile from "./views/user-profile"
 import Users from "./views/Users";
 import UpdateUsuario from "./views/update-usuario";
+import Dashboard from "./views/dashboard";
 
 function App() {
   return (
@@ -33,6 +34,7 @@ function App() {
         <Route path="/AtualizA/:id" element={<UpdateAeronaves />} />
         <Route path="/AtualizarUsuario/:id" element={<UpdateUsuario />} />
         <Route path="/Profile" element={<UserProfile />} />
+        <Route path="/Dashboard" element={<Dashboard />} />
       </Routes>
       <Footer />
     </BrowserRouter>
