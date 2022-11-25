@@ -329,6 +329,16 @@ app.delete("/deleteFlap/:id", (req, res) => {
     });
 })
 
+app.delete("/deleteVariavel/:id", (req, res) => {
+    const {id} = req.params;
+    let SQL = "DELETE FROM variavel where id =" + id;
+
+    db.query(SQL, [id], (err, result) => {
+        if(err) console.log(err);
+        else res.send(result);
+    })
+})
+
 app.delete("/deleteUser/:id", (req, res) => {
     const { id } = req.params;
     let SQL = "DELETE FROM usuario WHERE id =" + id;

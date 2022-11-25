@@ -96,8 +96,6 @@ export default function UserTable() {
     })
   };
 
-
-  console.log(users);
   return (
     <div>
       <div>
