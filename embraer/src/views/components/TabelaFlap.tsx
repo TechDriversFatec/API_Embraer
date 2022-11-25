@@ -6,17 +6,13 @@ import AddIcon from "@mui/icons-material/Add";
 import Swal from "sweetalert2";
 import axios from "axios";
 import DeleteOutlineIcon from "@mui/icons-material/DeleteOutline";
+import NoteAltOutlinedIcon from "@mui/icons-material/NoteAltOutlined";
 import { useEffect, useState } from "react";
+import Modal from "./Modal";
 
 export default function TabelaFlap() {
-  const setData = (data: any) => {
-    let {
-      flap_id,
-      flap
-    } = data;
-    localStorage.setItem("FlapId", flap_id);
-    localStorage.setItem("Flap", flap)
-  };
+  const [openModal, setOpenModal] = useState(false);
+  const [listFlaps, setlistFlaps] = useState([]);
 
   const id = window.location.href.split("/")[4];
   useEffect(() => {
@@ -30,6 +26,20 @@ export default function TabelaFlap() {
       setlistFlaps(getData.data);
     });
   };
+
+  function modalEData(data: any){
+    console.log(data)
+    setData(data)
+    setOpenModal(true);
+  };
+
+  const setData = (data: any) => {
+    let { id, tipo_flap, gelo } = data;
+    localStorage.setItem("FlapId", id);
+    localStorage.setItem("Flap", tipo_flap);
+    localStorage.setItem("Gelo", gelo);
+  };
+  
   const onDelete = (id: number) => {
     Swal.fire({
       icon: "warning",
@@ -50,10 +60,18 @@ export default function TabelaFlap() {
     });
   };
 
-  const [listFlaps, setlistFlaps] = useState([]);
+  function mudaGelo(data) {
+    if (data === "1") {
+      data = "With";
+    } else {
+      data = "Without";
+    }
+    return data;
+  }
 
   return (
     <div>
+      <div>{openModal && <Modal closeModal={setOpenModal} />}</div>
       <Table singleLine>
         <Table.Header>
           <Table.Row>
@@ -66,18 +84,24 @@ export default function TabelaFlap() {
         <Table.Body>
           {listFlaps.map((data: any) => {
             let url = `/Variavel/` + data.id;
+
             return (
               <Table.Row>
                 <Table.Cell>{data.tipo_flap}</Table.Cell>
-                <Table.Cell>{data.gelo}</Table.Cell>
+                <Table.Cell>{mudaGelo(data.gelo)}</Table.Cell>
                 <Table.Cell>
-                <Link to={url}>
-                        <Tooltip title="Create">
-                          <IconButton onClick={() => setData(data)}>
-                            <AddIcon />
-                          </IconButton>
-                        </Tooltip>
-                      </Link>
+                  <Link to={url}>
+                    <Tooltip title="Create">
+                      <IconButton onClick={() => setData(data)}>
+                        <AddIcon />
+                      </IconButton>
+                    </Tooltip>
+                  </Link>
+                  <Tooltip title="Variaveis">
+                    <IconButton onClick={() => modalEData(data)}>
+                      <NoteAltOutlinedIcon />
+                    </IconButton>
+                  </Tooltip>
                   <Tooltip title="Delete">
                     <IconButton onClick={() => onDelete(data.id)}>
                       <DeleteOutlineIcon />

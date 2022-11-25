@@ -5,16 +5,12 @@ import { useEffect, useState } from "react";
 import Axios from "axios";
 import Swal from "sweetalert2";
 import { useNavigate } from "react-router-dom";
-import { IconButton } from "@mui/material";
-import AddIcon from "@mui/icons-material/Add";
 
 function VariaveisAeronaves() {
   const navigate = useNavigate();
 
   const url_atual = window.location.href;
-  console.log(url_atual);
   const id = window.location.href.split("/")[4];
-  console.log(id);
 
   function manipularEnvio(evento) {
     evento.preventDefault();
@@ -114,8 +110,7 @@ function VariaveisAeronaves() {
         cancelButtonText: "No, return to home page",
       }).then((result) => {
         if (result.isConfirmed) {
-          // eslint-disable-next-line no-restricted-globals
-          location.reload();
+          window.location.reload()
         } else {
           navigate(`/Index`);
         }
@@ -521,6 +516,7 @@ function VariaveisAeronaves() {
 
   const [FlapId, setFlapId] = useState(null);
   const [Flap, setFlap] = useState("");
+  const [Gelo, setGelo] = useState("");
   const [Break, setBreak] = useState("");
   const [Condicao, setCondicao] = useState("");
   const [Distancia, setDistancia] = useState("");
@@ -550,10 +546,13 @@ function VariaveisAeronaves() {
   const [VapAbx, setVapAbx] = useState("");
   const [VapAcm, setVapAcm] = useState("");
 
-  // useEffect(() => {
-  //   setFlapId(localStorage.getItem("FlapId"));
-  //   setFlap(localStorage.getItem("Flap"));
-  // }, []);
+  useEffect(() => {
+    setFlapId(localStorage.getItem("FlapId"));
+    setFlap(localStorage.getItem("Flap"));
+    setGelo(localStorage.getItem("Gelo"))
+  }, []);
+
+  let urlEdita = `http://localhost:3000/AtualizA/${FlapId}`
 
   return (
     <div className="CriarAeronaves">
@@ -999,7 +998,7 @@ function VariaveisAeronaves() {
           <div className="card-footer w-100 float-right">
             <a
               className="rounded btn btn-primary ml-2 float-start"
-              href="http://localhost:3000/Index"
+              href={urlEdita}
             >
               <b>Return</b>
             </a>

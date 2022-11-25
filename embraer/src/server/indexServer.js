@@ -146,6 +146,16 @@ app.get("/exibirFlap/:id", (req, res) => {
     });
 })
 
+app.get("/exibirVariavel/:id", (req, res) => {
+    const id = parseInt(req.params.id).toString()
+    let SQL = "SELECT * FROM variavel where flap_id =" + id;
+
+    db.query(SQL, (err, result) => {
+        if(err) console.log(err);
+        else res.send(result)
+    })
+})
+
 app.get("/getAeronaves", (req, res) => {
 
     let SQL = "SELECT * FROM aeronave";

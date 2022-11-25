@@ -2,14 +2,7 @@ import React from 'react';
 import ReactDOM from 'react-dom/client';
 import App from './App';
 import './index.css';
-//import App from './App';
-//import CriarAeronaves from './views/Criar-Aeronaves2';
 import reportWebVitals from './reportWebVitals';
-import PaginaInicial from './views/pagina-inicial';
-import Calculo from './views/formulario-calculo';
-import CriarUsuario from './views/Cadastro-usuario';
-import VariaveisAeronaves from './views/criar-aeronave';
-import Login from './views/login';
 
 const root = ReactDOM.createRoot(
   document.getElementById('root') as HTMLElement
