@@ -120,6 +120,13 @@ app.post("/salvarLog", (req, res) => {
     });
 });
 
+app.get("/listarPista", (req, res) => {
+    const { count, rows } = db.findAndCountAll({
+        group: "condicao_pista"
+    })
+    res.json({count: count, rows: rows})
+})
+
 app.get("/exibirAeronaves", (req, res) => {
     let SQL = "SELECT * FROM aeronave";
 
