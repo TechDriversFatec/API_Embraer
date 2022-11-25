@@ -9,7 +9,7 @@ import PaginaInicial from "./views/pagina-inicial";
 import Navbar from "./views/navbar";
 import VariaveisAeronaves from "./views/criar-aeronave";
 import Login from "./views/login";
-import LogsCalculo from "./views/calculoLogs";
+import LogsCalculo from "./views/Logs";
 import Footer from "./views/footer";
 import UpdateAeronaves from "./views/Update-Aeronave";
 import UserProfile from "./views/user-profile"
