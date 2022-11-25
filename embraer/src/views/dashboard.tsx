@@ -1,5 +1,5 @@
 import React from "react";
-import { Chart } from "react-google-charts";
+
 import "bootstrap/dist/css/bootstrap.min.css";
 
 export const data = [
@@ -49,23 +49,11 @@ const Dashboard = () => {
             <div className="card-body col-md-12">
                 <div className="row">
                     <div className="group col-lg-4 col-md-6 col-sm-12">
-                        <Chart
-                            chartType="PieChart"
-                            data={data}
-                            options={options}
-                            width={"100%"}
-                            height={"100%"}
-                        />
+                        
                     </div>
 
                     <div className="group col-lg-8 col-md-6 col-sm-12">
-                        <Chart
-                            chartType="ComboChart"
-                            width="100%"
-                            height="100%"
-                            data={info}
-                            options={opcao}
-                        />
+                       
                     </div>
                 </div>
             </div>
