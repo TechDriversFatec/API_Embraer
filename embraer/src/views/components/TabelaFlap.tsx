@@ -28,7 +28,6 @@ export default function TabelaFlap() {
   };
 
   function modalEData(data: any){
-    console.log(data)
     setData(data)
     setOpenModal(true);
   };
@@ -75,8 +74,8 @@ export default function TabelaFlap() {
       <Table singleLine>
         <Table.Header>
           <Table.Row>
-            <Table.HeaderCell>Nome</Table.HeaderCell>
-            <Table.HeaderCell>Gelo</Table.HeaderCell>
+            <Table.HeaderCell>Flap</Table.HeaderCell>
+            <Table.HeaderCell>Ice</Table.HeaderCell>
             <Table.HeaderCell>Actions</Table.HeaderCell>
           </Table.Row>
         </Table.Header>

@@ -1,7 +1,6 @@
-import React from "react";
+import React, { useEffect, useState } from "react";
 import { Table } from "semantic-ui-react";
 import DeleteOutlineIcon from "@mui/icons-material/DeleteOutline";
-import { useEffect, useState } from "react";
 import Tooltip from "@mui/material/Tooltip";
 import { IconButton } from "@mui/material";
 import "./Modal.css";
@@ -39,22 +38,52 @@ function Modal({ closeModal }) {
   const onDelete = (id) => {
     Swal.fire({
       icon: "warning",
-      title: "Are you sure you want to delete the aircraft?",
+      title: "Are you sure you want to delete this set of variables?",
       showCancelButton: true,
       confirmButtonColor: "#3085d6",
       cancelButtonColor: "#d33",
       confirmButtonText: "Yes, delete",
     }).then((result) => {
       if (result.isConfirmed) {
-        axios.delete(`http://localhost:3002/deleteFlap/${id}`).then(() => {
+        axios.delete(`http://localhost:3002/deleteVariavel/${id}`).then(() => {
           getData();
         });
         Swal.fire({
-          title: "Aircraft successfully deleted!",
+          title: "Variables successfully deleted!",
         });
       }
     });
   };
+
+  function trocaFreio(data) {
+    if (data === 1) {
+      data = "Max. Manual";
+    } else if (data === 2) {
+      data = "High";
+    } else if (data === 3) {
+      data = "Medium";
+    } else if (data === 4) {
+      data = "Low";
+    }
+    return data;
+  }
+
+  function trocaPista(data) {
+    if (data === 1) {
+      data = "Ice";
+    } else if (data === 2) {
+      data = "Standing, Water, Slush";
+    } else if (data === 3) {
+      data = "Loose Snow";
+    } else if (data === 4) {
+      data = "Compact snow";
+    } else if (data === 5) {
+      data = "Wet";
+    } else if (data === 6) {
+      data = "Dry";
+    }
+    return data;
+  }
 
   return (
     <div className="modalBackground">
@@ -77,10 +106,13 @@ function Modal({ closeModal }) {
 
             <Table.Body>
               {ListVariaveis.map((data) => {
+                console.log(data.id)
                 return (
                   <Table.Row>
-                    <Table.Cell>{data.configuracao_freio}</Table.Cell>
-                    <Table.Cell>{data.condicao_pista}</Table.Cell>
+                    <Table.Cell>
+                      {trocaFreio(data.configuracao_freio)}
+                    </Table.Cell>
+                    <Table.Cell>{trocaPista(data.condicao_pista)}</Table.Cell>
                     <Table.Cell>
                       <Tooltip title="Delete">
                         <IconButton onClick={() => onDelete(data.id)}>
@@ -96,7 +128,6 @@ function Modal({ closeModal }) {
         </div>
         <div className="footer">
           <button onClick={() => closeModal(false)}>Cancel</button>
-          <button>Continue</button>
         </div>
       </div>
     </div>
