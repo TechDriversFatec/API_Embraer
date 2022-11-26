@@ -79,13 +79,13 @@ function ModalLogs({ closeModal }) {
             <Table.Body>
               {console.log(Usuario)}
                   <Table.Row>
-                    <Table.Cell>teste</Table.Cell>
-                    <Table.Cell>teste</Table.Cell>
-                    <Table.Cell>teste</Table.Cell>
-                    <Table.Cell>teste</Table.Cell>
-                    <Table.Cell>teste</Table.Cell>
-                    <Table.Cell>teste</Table.Cell>
-                    <Table.Cell>teste</Table.Cell>
+                    <Table.Cell>{data.pesoPouso}</Table.Cell>
+                    <Table.Cell>{data.altitude}</Table.Cell>
+                    <Table.Cell>{data.temperatura}</Table.Cell>
+                    <Table.Cell>{data.vento}</Table.Cell>
+                    <Table.Cell>{data.inclinacao}</Table.Cell>
+                    <Table.Cell>{data.overspeed}</Table.Cell>
+                    <Table.Cell>{data.reversoresInoperantes}</Table.Cell>
                   </Table.Row>
             </Table.Body>
           </Table>
