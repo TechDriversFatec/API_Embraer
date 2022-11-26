@@ -97,7 +97,6 @@ export default function Logs() {
   return (
 
     <div>
-      <div>{openModal && <Modal closeModal={setOpenModal}/>}</div>
       <div className="card card-custom gutter-b">
         <div className="card-header">
           <h3 id="h3Pagina" className="card-title">Calculating Logs</h3>
@@ -114,6 +113,8 @@ export default function Logs() {
                 onChange={(e) => searchItems(e.target.value)}
               />
             </div>
+            <div>{openModal && <Modal closeModal={setOpenModal}/>}</div>
+
             <Table singleLine>
               <Table.Header>
                 <Table.Row>
@@ -150,7 +151,9 @@ export default function Logs() {
                     let url = `/AtualizA/` + data.id;
                     let url2 = `/Variavel/` + data.id;
                     return (
+                      
                       <Table.Row>
+
                         <Table.Cell>{data.usuario}</Table.Cell>
                         <Table.Cell>{data.aeronave}</Table.Cell>
                         <Table.Cell>{data.dataCalculo}</Table.Cell>
