@@ -8,7 +8,7 @@
         "strictNullChecks": true,
         "experimentalDecorators": true,
         "forceConsistentCasingInFileNames": true,
-        "strict": true,
+        "strict": false,
         "moduleResolution": "node",
         
     },

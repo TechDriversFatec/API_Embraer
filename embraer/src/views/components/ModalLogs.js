@@ -1,14 +1,9 @@
 import React from "react";
 import { Table } from "semantic-ui-react";
-import DeleteOutlineIcon from "@mui/icons-material/DeleteOutline";
 import { useEffect, useState } from "react";
-import Tooltip from "@mui/material/Tooltip";
-import { IconButton } from "@mui/material";
 import "./Modal.css";
 import axios from "axios";
 import Logs from "../Logs";
-import { Details } from "@mui/icons-material";
-import LogsCalculo from "../pagina-logs";
 
 {/*Log = {
     id: number,
@@ -30,11 +25,16 @@ import LogsCalculo from "../pagina-logs";
     usuario: string
   }*/}
 
-function Modal({ closeModal }) {
+function ModalLogs({ closeModal }) {
     const [logs, setLogs] = useState([]);
+    const [Usuario, setUsuario] = useState("")
 
   useEffect(() => {
     setLogs(localStorage.getItem("Logs"));
+    setUsuario(localStorage.getItem("Usuario"));
+    // localStorage.setItem("Modelo", aeronave);
+    // localStorage.setItem("Data Calculo", dataCalculo);
+    // localStorage.setItem("Resultado Calculo", resultado_calculo);
   }, []);
 
   useEffect(() => {
@@ -60,7 +60,7 @@ function Modal({ closeModal }) {
           <button onClick={() => closeModal(false)}> X </button>
         </div>
         <div className="title">
-          <h1>{Details}</h1>
+          <h1>Details</h1>
         </div>
         <div className="body">
           <Table singleLine>
@@ -77,25 +77,25 @@ function Modal({ closeModal }) {
             </Table.Header>
 
             <Table.Body>
-              {logs.map((data) => {
-                return (
+              {console.log(Usuario)}
                   <Table.Row>
-                    <Table.Cell>{data.pesoPouso}</Table.Cell>
-                    <Table.Cell>{data.altitude}</Table.Cell>
-                    <Table.Cell>{data.temperatura}</Table.Cell>
-                    <Table.Cell>{data.vento}</Table.Cell>
-                    <Table.Cell>{data.inclinacao}</Table.Cell>
-                    <Table.Cell>{data.overspeed}</Table.Cell>
-                    <Table.Cell>{data.reversoresInoperantes}</Table.Cell>
+                    <Table.Cell>teste</Table.Cell>
+                    <Table.Cell>teste</Table.Cell>
+                    <Table.Cell>teste</Table.Cell>
+                    <Table.Cell>teste</Table.Cell>
+                    <Table.Cell>teste</Table.Cell>
+                    <Table.Cell>teste</Table.Cell>
+                    <Table.Cell>teste</Table.Cell>
                   </Table.Row>
-                );
-              })}
             </Table.Body>
           </Table>
+        </div>
+        <div className="footer">
+              <button onClick={() => closeModal(false)}>Close</button>
         </div>
       </div>
     </div>
   );
 }
 
-export default Modal;
+export default ModalLogs;

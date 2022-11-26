@@ -6,7 +6,7 @@ import { IconButton, TablePagination } from "@mui/material";
 import InfoOutlinedIcon from '@mui/icons-material/InfoOutlined';
 import Tooltip from "@mui/material/Tooltip";
 import "../css/tabela.css";
-import Modal from "./components/ModalLogs";
+import ModalLogs from "./components/ModalLogs";
 
 type Log = {
   id: number,
@@ -69,6 +69,11 @@ export default function Logs() {
     }
   };
 
+  function dataEModal(data: any){
+    setData(data)
+    setOpenModal(true)
+  }
+
   const setData = (data: any) => {
     let {
       usuario,
@@ -97,7 +102,7 @@ export default function Logs() {
   return (
 
     <div>
-      <div>{openModal && <Modal closeModal={setOpenModal}/>}</div>
+      
       <div className="card card-custom gutter-b">
         <div className="card-header">
           <h3 id="h3Pagina" className="card-title">Calculating Logs</h3>
@@ -114,6 +119,7 @@ export default function Logs() {
                 onChange={(e) => searchItems(e.target.value)}
               />
             </div>
+            <div>{openModal && <ModalLogs closeModal={setOpenModal}/>}</div>
             <Table singleLine>
               <Table.Header>
                 <Table.Row>
@@ -131,6 +137,7 @@ export default function Logs() {
                     let url = `/AtualizA/` + data.id;
                     let url2 = `/Variavel/` + data.id;
                     return (
+                      
                       <Table.Row>
                         <Table.Cell>{data.usuario}</Table.Cell>
                         <Table.Cell>{data.aeronave}</Table.Cell>
@@ -138,7 +145,7 @@ export default function Logs() {
                         <Table.Cell>{data.resultado_calculo}</Table.Cell>
                         <Table.Cell>
                           <Tooltip title="Details">
-                            <IconButton onClick={() => setOpenModal(true)}>
+                            <IconButton onClick={() => dataEModal(data)}>
                               <InfoOutlinedIcon />
                             </IconButton>
                           </Tooltip>
@@ -146,18 +153,21 @@ export default function Logs() {
                       </Table.Row>
                     );
                   })
+                  
                   : logs.slice(page * rowsPerPage, page * rowsPerPage + rowsPerPage).map((data: any) => {
                     let url = `/AtualizA/` + data.id;
                     let url2 = `/Variavel/` + data.id;
                     return (
+                      
                       <Table.Row>
+                        
                         <Table.Cell>{data.usuario}</Table.Cell>
                         <Table.Cell>{data.aeronave}</Table.Cell>
                         <Table.Cell>{data.dataCalculo}</Table.Cell>
                         <Table.Cell>{data.resultado_calculo}</Table.Cell>
                         <Table.Cell>
                           <Tooltip title="Details">
-                            <IconButton onClick={() => setOpenModal(true)}>
+                            <IconButton onClick={() => dataEModal(data)}>
                               <InfoOutlinedIcon />
                             </IconButton>
                           </Tooltip>
@@ -171,6 +181,7 @@ export default function Logs() {
                   </Table.Row>
                 )}
               </Table.Body>
+              
               <TableFooter>
                 <TablePagination
                   rowsPerPageOptions={[5, 10, 20]}
@@ -183,7 +194,6 @@ export default function Logs() {
                 />
               </TableFooter>
             </Table>
-            {/* <button onClick={botao}/> */}
           </div>
         </div>
       </div>
