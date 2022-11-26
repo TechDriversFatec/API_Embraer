@@ -40,7 +40,7 @@ function Calculo() {
 
   function manipularEnvio(evento: any) {
     evento.preventDefault()
-    console.log(typeof(Peso))
+    console.log(typeof (Peso))
     let pesoValido = validaValorPeso(),
       altitudeValida = validaValorAltitude(),
       temperaturaValida = validaValorTemperatura(),
@@ -56,6 +56,26 @@ function Calculo() {
       vapValido
 
     if (formularioValido) {
+      debugger
+
+      const selectFlapId = (document.getElementById('flap') as HTMLSelectElement).options[(document.getElementById('flap') as HTMLSelectElement).selectedIndex].value
+      const selectFrenagemId = (document.getElementById('frenagem') as HTMLInputElement).value ? (document.getElementById('frenagem') as HTMLInputElement).value : ""
+      const selectcondicaoId = (document.getElementById('condicaoPista') as HTMLInputElement).value ? (document.getElementById('condicaoPista') as HTMLInputElement).value : ""
+
+      var success = calcular.calcularPouso(
+        parseInt(Peso),
+        parseInt(Altitude),
+        parseInt(Temperatura),
+        parseInt(Vento),
+        parseInt(Slope),
+        parseInt(vap),
+        parseInt(Rev),
+        parseInt(unidade),
+        parseInt(selectFrenagemId),
+        parseInt(selectcondicaoId),
+        parseInt(selectFlapId))
+
+      var resultCorreto = success.split(" ")
 
       setResultadoCalculo(calcular.calcularPouso(
         parseInt(Peso),
@@ -65,27 +85,33 @@ function Calculo() {
         parseInt(Slope),
         parseInt(vap),
         parseInt(Rev),
-        parseInt(unidade)))
+        parseInt(unidade),
+        parseInt(selectFrenagemId),
+        parseInt(selectcondicaoId),
+        parseInt(selectFlapId)))
 
-        setShow(true)
+      setShow(true)
 
-      Axios.post("http://localhost:3002/salvarLog", {
-        aeronave_id: (document.getElementById('aeronave') as HTMLInputElement).value,
-        motor: (document.getElementById('motor') as HTMLInputElement).value,
-        certificacao: (document.getElementById('certificacao') as HTMLInputElement).value,
-        flap: (document.getElementById('flap') as HTMLSelectElement).options[(document.getElementById('flap') as HTMLSelectElement).selectedIndex].text,
-        condicaoPista: (document.getElementById('condicaoPista') as HTMLInputElement).value,
-        tipoFrenagem: (document.getElementById('frenagem') as HTMLInputElement).value,
-        pesoPouso: Peso,
-        altitude: Altitude,
-        temperatura: Temperatura,
-        vento: Vento,
-        inclinacao: Slope,
-        overspeed: vap,
-        reversoresInoperantes: Rev,
-        dataCalculo: new Date().toLocaleString(),
-        resultado_calculo: resultadoCalculo
-      });
+      if (success) {
+        Axios.post("http://localhost:3002/salvarLog", {
+          aeronave_id: (document.getElementById('aeronave') as HTMLInputElement).value,
+          motor: (document.getElementById('motor') as HTMLInputElement).value,
+          certificacao: (document.getElementById('certificacao') as HTMLInputElement).value,
+          flap: (document.getElementById('flap') as HTMLSelectElement).options[(document.getElementById('flap') as HTMLSelectElement).selectedIndex].text,
+          condicaoPista: (document.getElementById('condicaoPista') as HTMLInputElement).value,
+          tipoFrenagem: (document.getElementById('frenagem') as HTMLInputElement).value,
+          pesoPouso: Peso,
+          altitude: Altitude,
+          temperatura: Temperatura,
+          vento: Vento,
+          inclinacao: Slope,
+          overspeed: vap,
+          reversoresInoperantes: Rev,
+          dataCalculo: new Date().toLocaleString(),
+          resultado_calculo: resultCorreto[0],
+          usuario: localStorage.getItem('nomeUsuario')
+        });
+      }
     }
   }
 
@@ -100,7 +126,7 @@ function Calculo() {
 
     if (!entre(parseInt(Peso), min, max)) {
       showError(idPeso!, `Weight must be between ${min} and ${max}`)
-    } else if(!vazio(Peso)){
+    } else if (!vazio(Peso)) {
       showError(idPeso!, `field must not be empty`)
     } else {
       showSuccess(idPeso!);
@@ -116,7 +142,7 @@ function Calculo() {
 
     if (!entre(parseInt(Altitude), min, max)) {
       showError(idAltitude!, `Height must be between ${min} and ${max}`)
-    } else if(!vazio(Altitude)){
+    } else if (!vazio(Altitude)) {
       showError(idAltitude!, `field must not be empty`)
     } else {
       showSuccess(idAltitude!);
@@ -132,7 +158,7 @@ function Calculo() {
 
     if (!entre(parseInt(Temperatura), min, max)) {
       showError(idTemperatura!, `Temperature must be between ${min} and ${max}`)
-    } else if(!vazio(Temperatura)){
+    } else if (!vazio(Temperatura)) {
       showError(idTemperatura!, `field must not be empty`)
     } else {
       showSuccess(idTemperatura!);
@@ -148,7 +174,7 @@ function Calculo() {
 
     if (!entre(parseInt(Vento), min, max)) {
       showError(idVento!, `Wind must be between ${min} and ${max}`)
-    } else if(!vazio(Vento)){
+    } else if (!vazio(Vento)) {
       showError(idVento!, `field must not be empty`)
     } else {
       showSuccess(idVento!);
@@ -164,7 +190,7 @@ function Calculo() {
 
     if (!entre(parseInt(Slope), min, max)) {
       showError(idSlope!, `Slope must be between ${min} and ${max}`)
-    } else if(!vazio(Slope)){
+    } else if (!vazio(Slope)) {
       showError(idSlope!, `field must not be empty`)
     } else {
       showSuccess(idSlope!);
@@ -173,12 +199,12 @@ function Calculo() {
     return valido
   }
 
-  function validaVap(){
+  function validaVap() {
     const id = document.getElementById("vap-aeronave")
     let valido = false;
     const min = 0, max = 100;
 
-    if(!entre(parseInt(vap), min, max)) {
+    if (!entre(parseInt(vap), min, max)) {
       showError(id!, `Vap must be between ${min} and ${max}`)
     } else if (!vazio(vap)) {
       showError(id!, `field must not be empty`)
@@ -312,7 +338,6 @@ function Calculo() {
         .then((response) => {
           const data = response.data;
           console.log("useEffect flap Rodou");
-          debugger
           console.log(data); // returns correctly filled array
           if (data.length > 0) {
             setFlaps(data);
@@ -368,23 +393,23 @@ function Calculo() {
   function AlertDismissible(resultado: string, showStatus: boolean) {
 
     return (
-        <>
-            <Alert show={showStatus} variant="white" className="square border border-3" style={{ width: "100%" }}>
-                <p id='alertP'>
-                    Necessary to perform the landing:
-                </p>
-                <p id='resultP'>
-                    {resultado}
-                </p>
-                <div className="d-flex justify-content-end botaoFecharAlert">
-                    <Button onClick={() => setShow(false)} variant="rounded btn btn-primary ml-2 float-end">
-                        <b>Close</b>
-                    </Button>
-                </div>
-            </Alert>
-        </>
+      <>
+        <Alert show={showStatus} variant="white" className="square border border-3" style={{ width: "100%" }}>
+          <p id='alertP'>
+            Necessary to perform the landing:
+          </p>
+          <p id='resultP'>
+            {resultado}
+          </p>
+          <div className="d-flex justify-content-end botaoFecharAlert">
+            <Button onClick={() => setShow(false)} variant="rounded btn btn-primary ml-2 float-end">
+              <b>Close</b>
+            </Button>
+          </div>
+        </Alert>
+      </>
     );
-}
+  }
 
   return (
     <div className="formCalculo">
@@ -589,7 +614,7 @@ function Calculo() {
               </li>
             </ul>
             <div id='resultadoDiv'>
-                  {AlertDismissible(resultadoCalculo, show)}
+              {AlertDismissible(resultadoCalculo, show)}
             </div>
 
             <div className="card-footer w-100 float-right">
