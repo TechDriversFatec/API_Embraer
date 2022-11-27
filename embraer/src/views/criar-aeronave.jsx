@@ -107,12 +107,12 @@ function VariaveisAeronaves() {
         confirmButtonColor: "#3085d6",
         cancelButtonColor: "#d33",
         confirmButtonText: "Yes",
-        cancelButtonText: "No, return to home page",
+        cancelButtonText: "No, return to the aircraft page",
       }).then((result) => {
         if (result.isConfirmed) {
           window.location.reload()
         } else {
-          navigate(`/Index`);
+          navigate(`/Aircraft`);
         }
       });
     }
