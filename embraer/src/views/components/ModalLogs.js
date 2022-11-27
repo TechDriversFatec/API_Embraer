@@ -45,14 +45,6 @@ function ModalLogs({ closeModal }) {
       });
   });
 
-  const getData = () => {
-    axios
-      .get(`http://localhost:3002/getLogs/${Logs}`)
-      .then((getData) => {
-        setLogs(getData.data);
-      });
-  };
-
   return (
     <div className="modalBackground">
       <div className="modalContainer">
@@ -77,15 +69,14 @@ function ModalLogs({ closeModal }) {
             </Table.Header>
 
             <Table.Body>
-              {console.log(Usuario)}
                   <Table.Row>
-                    <Table.Cell>{data.pesoPouso}</Table.Cell>
-                    <Table.Cell>{data.altitude}</Table.Cell>
-                    <Table.Cell>{data.temperatura}</Table.Cell>
-                    <Table.Cell>{data.vento}</Table.Cell>
-                    <Table.Cell>{data.inclinacao}</Table.Cell>
-                    <Table.Cell>{data.overspeed}</Table.Cell>
-                    <Table.Cell>{data.reversoresInoperantes}</Table.Cell>
+                    <Table.Cell>Teste</Table.Cell>
+                    <Table.Cell>Teste</Table.Cell>
+                    <Table.Cell>Teste</Table.Cell>
+                    <Table.Cell>Teste</Table.Cell>
+                    <Table.Cell>Teste</Table.Cell>
+                    <Table.Cell>Teste</Table.Cell>
+                    <Table.Cell>Teste</Table.Cell>
                   </Table.Row>
             </Table.Body>
           </Table>

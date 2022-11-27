@@ -119,6 +119,7 @@ export default function Logs() {
                 onChange={(e) => searchItems(e.target.value)}
               />
             </div>
+            <div>{openModal && <ModalLogs closeModal={setOpenModal} />}</div>
             <Table singleLine>
               <Table.Header>
                 <Table.Row>
