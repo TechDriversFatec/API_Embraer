@@ -1,3 +1,5 @@
+import axios from "axios";
+import { useState } from "react";
 import Swal from "sweetalert2";
 
 class Calcular {
@@ -11,12 +13,23 @@ class Calcular {
         vap: number,
         revInoperantes: number,
         unidade: number,
+        configuracao_freio: number,
+        condicao_pista: number,
+        flap_id: number
     ) {
         let distanciaReferencia = 1026;
         let chao = 0;
         let padraoIsa = 0;
         let ref = 43000;
 
+        let variaveis: any = []
+
+        axios.get(`http://localhost:3002/getVariaveis/${flap_id}/${configuracao_freio}/${condicao_pista}`)
+            .then((response) => {
+                const data = response.data;
+                variaveis = data[0]
+            });
+            
         console.log("calculando");
         console.log("peso: " + pesoAtual);
         console.log("altitude: " + alturaAtual);
@@ -129,6 +142,7 @@ class Calcular {
             distanciaReferencia += (24 * revInoperantes)
         }
 
+
         let medida = "Meters"
 
         console.log("calculado");
@@ -143,6 +157,7 @@ class Calcular {
         else {
             return `${distanciaReferencia.toFixed(2).replace(".", ",")} ${medida}`
         }
+
 
     }
 }

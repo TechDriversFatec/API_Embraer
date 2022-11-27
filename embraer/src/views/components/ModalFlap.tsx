@@ -37,7 +37,7 @@ export default function ControlledAccordions() {
     })
 
     Swal.fire({
-      title: "Sucessful created Flap",
+      title: "Successful created Flap",
       showCancelButton: false,
       confirmButtonColor: "#3085d6",
       cancelButtonColor: "#d33",
@@ -66,7 +66,7 @@ export default function ControlledAccordions() {
         >
           <Typography sx={{ width: "33%", flexShrink: 0 }}>Flap</Typography>
           <Typography sx={{ color: "text.secondary" }}>
-            Cadastro de flap
+            Flap registration
           </Typography>
         </AccordionSummary>
         <AccordionDetails>

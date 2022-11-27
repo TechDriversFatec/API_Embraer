@@ -5,6 +5,9 @@ fieldset{
     border-color: rgba(211, 206, 206, 0.745) !important;
     background: #f8f8f8;
 }
+.cardg{
+  background-color: #f8f8ff;
+}
 .variavel{
   border-radius: 3%;
   float: left;

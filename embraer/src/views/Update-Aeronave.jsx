@@ -18,8 +18,8 @@ export default function UpdateAeronaves() {
   const [PesoMinimo, setPesoMinimo] = useState("");
   const [Sobrepeso, setSobrepeso] = useState("");
   const [PesoMaximo, setPesoMaximo] = useState("");
+  const idUpdate = window.location.href.split("/")[4];
 
-  debugger
   useEffect(() => {
     setId(localStorage.getItem('Id'));
     setFabricante(localStorage.getItem('Fabricante'))
@@ -73,7 +73,7 @@ export default function UpdateAeronaves() {
             title: 'Aircraft successfully updated',
           }).then((result) => {
             if (result.isConfirmed) {
-              navigate("/Index")
+              navigate("/Aircraft")
             }
           })
       })
@@ -293,7 +293,7 @@ export default function UpdateAeronaves() {
           <div className="card-footer w-100 float-right">
             <a
               className="rounded btn btn-primary ml-2 float-start"
-              href="http://localhost:3000/Index"
+              href="http://localhost:3000/Aircraft"
             >
               <b>Return</b>
             </a>

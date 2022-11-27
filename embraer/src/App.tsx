@@ -15,6 +15,7 @@ import UpdateAeronaves from "./views/Update-Aeronave";
 import UserProfile from "./views/user-profile"
 import Users from "./views/Users";
 import UpdateUsuario from "./views/update-usuario";
+import PaginaDashboard from "./views/pagina-dashboard";
 
 function App() {
   return (
@@ -23,7 +24,7 @@ function App() {
       <Routes>
         <Route index element={<Login />} />
         <Route path="*" element={<Navigate to="/" />} />
-        <Route path="/Index" element={<PaginaInicial />} />
+        <Route path="/Index" element={<PaginaDashboard />} />
         <Route path="/Calculo" element={<Calculo />} />
         <Route path="/Criar/" element={<CriarAeronaves />} />
         <Route path="/Cadastrar" element={<CriarUsuario />} />
@@ -33,6 +34,7 @@ function App() {
         <Route path="/AtualizA/:id" element={<UpdateAeronaves />} />
         <Route path="/AtualizarUsuario/:id" element={<UpdateUsuario />} />
         <Route path="/Profile" element={<UserProfile />} />
+        <Route path="/Aircraft" element={<PaginaInicial />} />
       </Routes>
       <Footer />
     </BrowserRouter>

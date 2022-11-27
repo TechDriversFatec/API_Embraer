@@ -13,7 +13,7 @@ import Typography from '@mui/material/Typography';
 import * as React from 'react';
 import { useNavigate } from 'react-router-dom';
 
-const pages = ['Calculation', 'Add User'];
+const pages = ['Calculation', 'Aircraft', 'Add User'];
 const settings = ['Profile', 'Logout'];
 
 function ResponsiveAppBar() {
@@ -37,9 +37,9 @@ function ResponsiveAppBar() {
     setAnchorElNav(null);
     navigate('/Calculo')
   };
-  const handleAddAircraft = () => {
+  const handleAircraft = () => {
     setAnchorElNav(null);
-    navigate('/Criar')
+    navigate('/Aircraft')
   };
   const handleUser = () => {
     setAnchorElNav(null);
@@ -137,6 +137,13 @@ function ResponsiveAppBar() {
                   sx={{ my: 2, color: 'white', display: 'block' }}
                 >
                   {'Calculation'}
+                </Button>
+                <Button
+                  key={'Aircraft'}
+                  onClick={handleAircraft}
+                  sx={{ my: 2, color: 'white', display: 'block' }}
+                >
+                  {'Aircraft'}
                 </Button>
                 <Button
                   key={'Usuarios'}

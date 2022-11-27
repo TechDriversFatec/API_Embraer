@@ -97,7 +97,7 @@ app.post("/criarusuario", (req, res) => {
 });
 
 app.post("/salvarLog", (req, res) => {
-    const { aeronave } = req.body;
+    const { aeronave_id } = req.body;
     const { motor } = req.body;
     const { certificacao } = req.body;
     const { flap } = req.body;
@@ -112,13 +112,21 @@ app.post("/salvarLog", (req, res) => {
     const { reversoresInoperantes } = req.body;
     const { dataCalculo } = req.body;
     const { resultado_calculo } = req.body;
+    const { usuario } = req.body;
 
-    let SQL = "INSERT INTO log_calculo_distancia ( aeronave_id, motor, certificacao, flap, condicaoPista, tipoFrenagem, pesoPouso, altitude, temperatura, vento, inclinacao, overspeed, reversoresInoperantes, dataCalculo, resultado_calculo ) VALUES ( ?,?,?,?,?,?,?,?,?,?,?,?,?,?,? )";
+    let SQL = "INSERT INTO log_calculo_distancia ( aeronave_id, motor, certificacao, flap, condicaoPista, tipoFrenagem, pesoPouso, altitude, temperatura, vento, inclinacao, overspeed, reversoresInoperantes, dataCalculo, resultado_calculo, usuario ) VALUES ( ?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,? )";
 
-    db.query(SQL, [aeronave, motor, certificacao, flap, condicaoPista, tipoFrenagem, pesoPouso, altitude, temperatura, vento, inclinacao, overspeed, reversoresInoperantes, dataCalculo, resultado_calculo], (err, result) => {
+    db.query(SQL, [aeronave_id, motor, certificacao, flap, condicaoPista, tipoFrenagem, pesoPouso, altitude, temperatura, vento, inclinacao, overspeed, reversoresInoperantes, dataCalculo, resultado_calculo, usuario], (err, result) => {
         console.log(err);
     });
 });
+
+app.get("/listarPista", (req, res) => {
+    const { count, rows } = db.findAndCountAll({
+        group: "condicao_pista"
+    })
+    res.json({count: count, rows: rows})
+})
 
 app.get("/exibirAeronaves", (req, res) => {
     let SQL = "SELECT * FROM aeronave";
@@ -137,6 +145,28 @@ app.get("/exibirFlap/:id", (req, res) => {
         if (err) console.log(err);
         else res.send(result);
     });
+})
+
+app.get("/exibirVariavel/:id", (req, res) => {
+    const id = parseInt(req.params.id).toString()
+    let SQL = "SELECT * FROM variavel where flap_id =" + id;
+
+    db.query(SQL, (err, result) => {
+        if(err) console.log(err);
+        else res.send(result)
+    })
+})
+
+app.get("/getVariaveis/:flapId/:frenagemId/:condicaoId", (req, res) => {
+    const flapId = parseInt(req.params.flapId).toString()
+    const frenagemId = parseInt(req.params.frenagemId).toString()
+    const condicaoId = parseInt(req.params.condicaoId).toString()
+    let SQL = "SELECT * FROM variavel where flap_id =" + flapId + " and configuracao_freio =" + frenagemId + " and condicao_pista =" + condicaoId;
+
+    db.query(SQL, (err, result) => {
+        if(err) console.log(err);
+        else res.send(result)
+    })
 })
 
 app.get("/getAeronaves", (req, res) => {
@@ -218,7 +248,7 @@ app.get("/getFlap/:id/:frenagemId/:condicaoId", (req, res) => {
     const frenagemId = parseInt(req.params.frenagemId).toString()
     const condicaoId = parseInt(req.params.condicaoId).toString()
     console.log("params: " + id);
-    let SQL = "SELECT * FROM flap where aeronave_id =" + id + " and configuracao_freio =" + frenagemId + " and condicao_pista =" + condicaoId;
+    let SQL = "SELECT flap.id, flap.tipo_flap, flap.gelo, flap.aeronave_id FROM flap INNER JOIN variavel on flap.id = variavel.flap_id WHERE variavel.configuracao_freio =" + frenagemId + " and variavel.condicao_pista =" + condicaoId
 
     db.query(SQL, (err, result) => {
         if (err) console.log(err);
@@ -328,6 +358,16 @@ app.delete("/deleteFlap/:id", (req, res) => {
         if (err) console.log(err);
         else res.send(result);
     });
+})
+
+app.delete("/deleteVariavel/:id", (req, res) => {
+    const {id} = req.params;
+    let SQL = "DELETE FROM variavel where id =" + id;
+
+    db.query(SQL, [id], (err, result) => {
+        if(err) console.log(err);
+        else res.send(result);
+    })
 })
 
 app.delete("/deleteUser/:id", (req, res) => {
