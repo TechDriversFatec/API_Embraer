@@ -10,7 +10,7 @@ const options = {
     type: "pie",
   },
   title: {
-    text: "Browser market shares in March, 2022",
+    text: "Most used Runway Condition, 2022",
   },
   tooltip: {
     pointFormat: "{series.name}: <b>{point.percentage:.1f}%</b>",
@@ -32,34 +32,40 @@ const options = {
   },
   series: [
     {
-      name: "Brands",
+      name: "Total",
       colorByPoint: true,
       data: [
         {
-          name: "Chrome",
-          y: 74.77,
+          name: "Ice",
+          color: '#ea6248',
+          y: 3.12,
+        },
+        {
+          name: "Standing, Water, Slush",
+          color: '#f49d6c',
+          y: 7.46,
+        },
+        {
+          name: "Loose Snow",
+          color: '#d17877',
+          y: 13.98,
+        },
+        {
+          name: "Compact Snow",
+          color: '#ad799f',
+          y: 17.00,
+        },
+        {
+          name: "Wet",
+          color: '#584770',
+          y: 38.31,
           sliced: true,
           selected: true,
         },
         {
-          name: "Edge",
-          y: 12.82,
-        },
-        {
-          name: "Firefox",
-          y: 4.63,
-        },
-        {
-          name: "Safari",
-          y: 2.44,
-        },
-        {
-          name: "Internet Explorer",
-          y: 2.02,
-        },
-        {
-          name: "Other",
-          y: 3.28,
+          name: "Dry",
+          color: '#342f57',
+          y: 20.13,
         },
       ],
     },
