@@ -54,5 +54,10 @@ Para a conclusão do projeto, os integrantes da equipe analisaram e optaram por 
 </p>
 </p>
 
+  # 🖥 Aplicação
+  
+<p align="justify">A partir do feedback recebido nas três sprints anteriores, validamos como entrega da quarta sprint a realização do dashboard( com as informações referentes a cálculos e aeronaves), CRUD de usuários, implementação do processo de recuperar senha, implementação dos logs, finalização do update de variaveis das aeronaves, revisão dos cálculos e validadors e a realização da documentação  da aplicação.Assim, a equipe deu contuidade ao desenvolvimento da aplicação integrando o front-end e o back-end por meio da biblioteca React. Paralelamente a isso, o CRUD foi realizado com o My SQL, e esse banco de dados já está integrado à aplicação. 
+<br>
+</p>
 
 → [Voltar ao topo](#topo)
