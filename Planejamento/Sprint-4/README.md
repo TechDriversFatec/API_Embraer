@@ -9,6 +9,7 @@
 * <a href="#requisitos">Levantamento de requisitos</a>
 * <a href="#bd">Banco de dados</a>
 * <a href="#type">Aplicação</a>
+* <a href="#doc">Documentação</a>
 * <a href="#burndown">Burndown</a>
 
 <span id="objetivo">
@@ -39,7 +40,7 @@ Para a última sprint, os objetivos da equipe foram divididos da seguinte forma:
 # 📝Levantamento de Requisitos 
   
 <p align="justify">
-Para a conclusão do projeto, os integrantes da equipe analisaram e optaram por implementar as sugestões dadas no feedback da terceira sprint. Com essas sugestões, foi traçado um planejamento devidamente validado com o cliente para a entrega da aplicação.</p>
+Para a conclusão do projeto, os integrantes da equipe analisaram e optaram por implementar as sugestões dadas no feedback da terceira sprint. Com essas sugestões, foi traçado um planejamento devidamente validado com o cliente para a entrega final da aplicação.</p>
   
 → [Voltar ao topo](#topo)
   
@@ -65,6 +66,18 @@ Para a conclusão do projeto, os integrantes da equipe analisaram e optaram por 
 </p>
 
 → [Voltar ao topo](#topo)
+  
+  
+<span id="type">
+  
+# 📃 Documentação
+  
+  <p align="justify">Com a entrega final do projeto, a equipe elaborou uma documentação didática que, além de contextualizar a aplicação, também detalha o passo a passo necessário para a utilização de cada um dos recursos por ela oferecidos.<br>
+  <br>
+  Para acessá-la, basta clicar neste link.</p>
+  
+→ [Voltar ao topo](#topo)
+  
 
 <span id="burndown">
   
