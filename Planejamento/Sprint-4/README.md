@@ -54,6 +54,10 @@ Para a conclusão do projeto, os integrantes da equipe analisaram e optaram por 
 </p>
 </p>
 
+→ [Voltar ao topo](#topo)
+
+<span id="type">
+
   # 🖥 Aplicação
   
 <p align="justify">A partir do feedback recebido nas três sprints anteriores, validamos como entrega da quarta sprint a realização do dashboard( com as informações referentes a cálculos e aeronaves), CRUD de usuários, implementação do processo de recuperar senha, implementação dos logs, finalização do update de variaveis das aeronaves, revisão dos cálculos e validadors e a realização da documentação  da aplicação.Assim, a equipe deu contuidade ao desenvolvimento da aplicação integrando o front-end e o back-end por meio da biblioteca React. Paralelamente a isso, o CRUD foi realizado com o My SQL, e esse banco de dados já está integrado à aplicação. 
@@ -61,3 +65,26 @@ Para a conclusão do projeto, os integrantes da equipe analisaram e optaram por 
 </p>
 
 → [Voltar ao topo](#topo)
+
+<span id="burndown">
+  
+# 📉 Burndown
+  
+<p align="justify">O gráfico de Burndown é um método usado para acompanhar o andamento da sprint muito comum nas metodologias ágeis. Ele possui a vantagem de permitir a rápida visualização do progresso das atividades por todo o time de desenvolvimento, agregando maior eficiência à execução das tarefas.<br>
+<br>
+Neste gráfico de Burndown foi retratado o tempo empregado no desenvolvimento das atividades propostas e validadas junto ao cliente, bem como o tempo dedicado às pesquisas e estudos necessários para a realização das tarefas.<br>
+</p>
+
+<br>
+<p align="center">
+<img src="Imagens/burndown-4.jpg" alt="Gráfico de Burndown representando as atividades desenvolvidas na quarta sprint" width="100%" height="100%">
+<br>
+<br>
+<img src="Imagens/atividades-quarta-sprint.jpg" alt="Descrição das atividades desenvolvidas na quarta sprint" width="100%" height="100%">
+</p>
+
+→ [Voltar ao topo](#topo)
+
+> Equipe Tech Drivers, 2022 <br>
+> 🖱️ [Github](https://github.com/TechDriversFatec)<br>
+> 📧 [E-mail](mailto:techdrivers.fatec@gmail.com)
