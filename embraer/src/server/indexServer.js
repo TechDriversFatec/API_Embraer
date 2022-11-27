@@ -160,6 +160,17 @@ app.get("/getUsuarios/:email", (req, res) => {
     });
 });
 
+app.get("/getSenha/:email", (req,res) => {
+    const email = req.params.email.toString();
+    
+    let SQL = "SELECT senha_acesso FROM usuario WHERE email ='" + email + "'";
+
+    db.query(SQL, (err,result) => {
+        if (err) console.log(err);
+        else res.send(result);
+    });
+});
+
 app.get("/getUser/:id", (req, res) => {
     const id = req.params.id
     console.log("params: " + id);
