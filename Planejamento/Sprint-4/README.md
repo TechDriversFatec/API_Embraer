@@ -72,9 +72,9 @@ Para a conclusão do projeto, os integrantes da equipe analisaram e optaram por 
   
 # 📃 Documentação
   
-  <p align="justify">Com a entrega final do projeto, a equipe elaborou uma documentação didática que, além de contextualizar a aplicação, também detalha o passo a passo necessário para a utilização de cada um dos recursos por ela oferecidos.<br>
-  <br>
-  Para acessá-la, basta clicar neste link.</p>
+  <p align="justify">Com a entrega final do projeto, a equipe elaborou uma documentação didática que, além de contextualizar a aplicação, também detalha o passo a passo necessário para a utilização de cada um dos recursos por ela oferecidos.<br></p>
+  
+Para acessá-la, basta clicar [aqui](https://github.com/TechDriversFatec/API_Embraer/tree/main/Planejamento/Sprint-4/Documenta%C3%A7%C3%A3o).
   
 → [Voltar ao topo](#topo)
   
