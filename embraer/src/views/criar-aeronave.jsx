@@ -545,11 +545,13 @@ function VariaveisAeronaves() {
   const [VariacaoVAP, setVariacaoVAP] = useState("");
   const [VapAbx, setVapAbx] = useState("");
   const [VapAcm, setVapAcm] = useState("");
+  const [Volta, setVolta] = useState("")
 
   useEffect(() => {
     setFlapId(localStorage.getItem("FlapId"));
     setFlap(localStorage.getItem("Flap"));
     setGelo(localStorage.getItem("Gelo"))
+    setVolta(localStorage.getItem("Volta"))
   }, []);
 
   let urlEdita = `http://localhost:3000/AtualizA/${FlapId}`
@@ -998,7 +1000,7 @@ function VariaveisAeronaves() {
           <div className="card-footer w-100 float-right">
             <a
               className="rounded btn btn-primary ml-2 float-start"
-              href={urlEdita}
+              href={Volta}
             >
               <b>Return</b>
             </a>

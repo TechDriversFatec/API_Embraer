@@ -15,6 +15,8 @@ export default function TabelaFlap() {
   const [listFlaps, setlistFlaps] = useState([]);
 
   const id = window.location.href.split("/")[4];
+  const idUpdate = window.location.href;
+
   useEffect(() => {
     axios.get(`http://localhost:3002/exibirFlap/${id}`).then((response) => {
       setlistFlaps(response.data);
@@ -33,10 +35,11 @@ export default function TabelaFlap() {
   };
 
   const setData = (data: any) => {
-    let { id, tipo_flap, gelo } = data;
+    let { id, tipo_flap, gelo, } = data;
     localStorage.setItem("FlapId", id);
     localStorage.setItem("Flap", tipo_flap);
     localStorage.setItem("Gelo", gelo);
+    localStorage.setItem("Volta", idUpdate)
   };
   
   const onDelete = (id: number) => {

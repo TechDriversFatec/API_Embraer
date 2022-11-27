@@ -18,8 +18,8 @@ export default function UpdateAeronaves() {
   const [PesoMinimo, setPesoMinimo] = useState("");
   const [Sobrepeso, setSobrepeso] = useState("");
   const [PesoMaximo, setPesoMaximo] = useState("");
+  const idUpdate = window.location.href.split("/")[4];
 
-  debugger
   useEffect(() => {
     setId(localStorage.getItem('Id'));
     setFabricante(localStorage.getItem('Fabricante'))

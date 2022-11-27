@@ -37,7 +37,7 @@ export default function ControlledAccordions() {
     })
 
     Swal.fire({
-      title: "Sucessful created Flap",
+      title: "Successful created Flap",
       showCancelButton: false,
       confirmButtonColor: "#3085d6",
       cancelButtonColor: "#d33",
