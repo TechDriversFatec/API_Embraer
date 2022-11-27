@@ -68,7 +68,7 @@ Para a conclusão do projeto, os integrantes da equipe analisaram e optaram por 
 → [Voltar ao topo](#topo)
   
   
-<span id="type">
+<span id="doc">
   
 # 📃 Documentação
   
