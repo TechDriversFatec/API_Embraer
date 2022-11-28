@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import Axios from "axios";
 import axios from "axios";
 import logo from "./logo.svg";
@@ -34,10 +34,66 @@ function UserProfile() {
         setSenha(entrada)
     }
 
+
+
+    type Usuario = {
+        nivel_acesso: number,
+        senha_acesso: string,
+        nome: string,
+        email: string
+    }
+
+    useEffect(() => {
+        debugger
+        axios
+            .get(`http://localhost:3002/getUser/${localStorage.getItem('idUsuario')}`)
+            .then((response) => {
+                const data = response.data;
+                setNome(data[0].nome)
+                setEmail(data[0].email)
+                console.log();
+                // console.log("useEffect 1 Rodou");
+                // console.log(data); // returns correctly filled array
+                // setAvioes(data);
+                // console.log(data); // returns '[]'
+            });
+    }, []);
+
     const [Nome, setNome] = useState("");
     const [Email, setEmail] = useState("");
     const [Senha, setSenha] = useState("");
     const [NivelUsuario, setNivelUsuario] = useState("");
+    const [DadosUsuario, setDadosUsuario] = useState<Usuario[]>([]);
+
+    function updateUser() {
+
+
+        Swal.fire({
+            title: 'Confirm the update?',
+            icon: 'warning',
+            showCancelButton: true,
+            confirmButtonColor: '#3085d6',
+            cancelButtonColor: '#d33',
+            confirmButtonText: 'Yes, Update it!'
+        }).then((result) => {
+            if (result.isConfirmed) {
+                Axios.put(`http://localhost:3002/updateUserProfile/${localStorage.getItem('idUsuario')}`, {
+                    nome: Nome,
+                    email: Email,
+                });
+                localStorage.setItem('nomeUsuario', Nome)
+
+                Swal.fire({
+                    title: 'User successfully updated!'
+                }).then((result) => {
+                    if (result.isConfirmed) {
+                        // eslint-disable-next-line no-restricted-globals
+                        location.reload()
+                    }
+                })
+            }
+        })
+    }
 
     return (
         <div className="UserProfile">
@@ -50,28 +106,28 @@ function UserProfile() {
                     </div>
                     <div className="card-body col-md-12">
                         <ul className="list-group list-group-flush">
-                            <img className="displayed" title="avatarIcon" id="avatarIcon" src={avatarIcon}/>
+                            <img className="displayed" title="avatarIcon" id="avatarIcon" src={avatarIcon} />
                             <div className="row">
-                            <div className="col-md-4 offset-md-4">
+                                <div className="col-md-4 offset-md-4">
                                     <label>Name:</label>
-                                    <input id="nome" className="form-control" name="nome" value={Nome} onChange={receberNome} />
-                                    <small></small>
-                                </div>
-                            </div>
-                            <div className="row">
-                            <div className="col-md-4 offset-md-4">
-                                    <label>Email:</label>
-                                    <input id="email" className="form-control" name="email" value={Email} onChange={receberEmail} />
+                                    <input id="nome" title="nome" className="form-control" name="nome" value={Nome} onChange={receberNome} />
                                     <small></small>
                                 </div>
                             </div>
                             <div className="row">
                                 <div className="col-md-4 offset-md-4">
+                                    <label>Email:</label>
+                                    <input id="email" title="email" className="form-control" name="email" value={Email} onChange={receberEmail} />
+                                    <small></small>
+                                </div>
+                            </div>
+                            {/* <div className="row">
+                                <div className="col-md-4 offset-md-4">
                                     <label>Password:</label>
                                     <input id="senha_acesso" type="password" className="form-control" name="senha_acesso" value={Senha} placeholder="password max length = 15" onChange={receberSenha} />
                                     <small></small>
                                 </div>
-                            </div>
+                            </div> */}
 
                         </ul>
                     </div>
@@ -80,6 +136,15 @@ function UserProfile() {
                         <a className="rounded btn btn-primary ml-2 float-start" href="http://localhost:3000/index">
                             <b>Return</b>
                         </a>
+                        <button
+                            title="btn_atualizarDados"
+                            className="rounded btn btn-primary ml-2 float-end"
+                            type="button"
+                            id="btn_atualizarDados"
+                            name="btn_atualizarDados"
+                            onClick={updateUser}
+                        ><b>Update</b>
+                        </button>
                     </div>
                 </div>
             </form>
