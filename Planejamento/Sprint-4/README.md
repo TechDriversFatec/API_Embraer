@@ -65,6 +65,30 @@ Para a conclusão do projeto, os integrantes da equipe analisaram e optaram por 
 <br>
 </p>
 
+
+
+
+https://user-images.githubusercontent.com/86115352/204178468-670df896-4009-41de-a2fe-a0d3a3cb383d.mp4
+
+
+
+https://user-images.githubusercontent.com/86115352/204177913-5033556b-7b08-47f0-acac-18038db1372f.mp4
+
+
+
+https://user-images.githubusercontent.com/86115352/204177931-23b07690-32ee-4099-aea5-5fc7fa1c2f3c.mp4
+
+
+
+
+https://user-images.githubusercontent.com/86115352/204177951-a1793c40-2065-441c-82cd-e3fe6ace666a.mp4
+
+
+
+https://user-images.githubusercontent.com/86115352/204177964-65c7e425-47ff-4570-b5df-8438089cb769.mp4
+
+
+
 → [Voltar ao topo](#topo)
   
   
