@@ -45,6 +45,10 @@ function ResponsiveAppBar() {
     setAnchorElNav(null);
     navigate('/Users')
   };
+  const handleLogs = () => {
+    setAnchorElNav(null);
+    navigate('/Logs')
+  };
 
   const handleLogout = () => {
     localStorage.clear();
@@ -151,6 +155,13 @@ function ResponsiveAppBar() {
                   sx={{ my: 2, color: 'white', display: 'block' }}
                 >
                   {'Users'}
+                </Button>
+                <Button
+                  key={'Logs'}
+                  onClick={handleLogs}
+                  sx={{ my: 2, color: 'white', display: 'block' }}
+                >
+                  {'Logs'}
                 </Button>
               </Box>
               <Box>Welcome, {nomeUsuario(localStorage.getItem('nomeUsuario') ?? "User")}</Box>

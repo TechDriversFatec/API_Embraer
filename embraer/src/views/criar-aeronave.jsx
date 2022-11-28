@@ -693,7 +693,7 @@ function VariaveisAeronaves() {
                   </div>
 
                   <div className="form-group col-lg-3 col-md-6 col-sm-12 sucess">
-                    <label>Overweight (Kg):</label>
+                    <label>Overweight (m):</label>
                     <input
                       id="correcao_sobrepeso"
                       className="form-control"

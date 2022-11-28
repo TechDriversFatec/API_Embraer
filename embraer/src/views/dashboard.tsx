@@ -1,5 +1,6 @@
 import GraficoBarra from "./components/Charts/barra";
 import GraficoPizza from "./components/Charts/pizza";
+import Logs from "./Logs";
 
 const Dashboard = () => {
   return (
@@ -11,6 +12,9 @@ const Dashboard = () => {
           </div>
           <div className="col-lg-8 col-md-6 col-sm-12 cardg">
             <GraficoBarra />
+          </div>
+          <div className="row">
+            <Logs />
           </div>
         </div>
       </div>
