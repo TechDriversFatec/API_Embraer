@@ -28,10 +28,12 @@ import Logs from "../Logs";
 function ModalLogs({ closeModal }) {
     const [logs, setLogs] = useState([]);
     const [Usuario, setUsuario] = useState("")
+    const [IdDetalhes, setIdDetalhes] = useState(null)
 
   useEffect(() => {
     setLogs(localStorage.getItem("Logs"));
     setUsuario(localStorage.getItem("Usuario"));
+    setIdDetalhes(localStorage.getItem("IdDetalhes"))
     // localStorage.setItem("Modelo", aeronave);
     // localStorage.setItem("Data Calculo", dataCalculo);
     // localStorage.setItem("Resultado Calculo", resultado_calculo);
@@ -39,7 +41,7 @@ function ModalLogs({ closeModal }) {
 
   useEffect(() => {
     axios
-      .get(`http://localhost:3002/getLogs/${Logs}`)
+      .get(`http://localhost:3002/details/${IdDetalhes}`)
       .then((response) => {
         setLogs(response.data);
       });
@@ -68,17 +70,22 @@ function ModalLogs({ closeModal }) {
               </Table.Row>
             </Table.Header>
 
-            <Table.Body>
+              {logs.map((data) => {
+                return(
+                  <Table.Body>
                   <Table.Row>
-                    <Table.Cell>Teste</Table.Cell>
-                    <Table.Cell>Teste</Table.Cell>
-                    <Table.Cell>Teste</Table.Cell>
-                    <Table.Cell>Teste</Table.Cell>
-                    <Table.Cell>Teste</Table.Cell>
-                    <Table.Cell>Teste</Table.Cell>
-                    <Table.Cell>Teste</Table.Cell>
+                    <Table.Cell>{data.pesoPouso}</Table.Cell>
+                    <Table.Cell>{data.altitude}</Table.Cell>
+                    <Table.Cell>{data.temperatura}</Table.Cell>
+                    <Table.Cell>{data.vento}</Table.Cell>
+                    <Table.Cell>{data.inclinacao}</Table.Cell>
+                    <Table.Cell>{data.overspeed}</Table.Cell>
+                    <Table.Cell>{data.reversoresInoperantes}</Table.Cell>
                   </Table.Row>
             </Table.Body>
+                )
+              })}
+            
           </Table>
         </div>
         <div className="footer">

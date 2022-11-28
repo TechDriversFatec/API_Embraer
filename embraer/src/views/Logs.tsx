@@ -76,11 +76,13 @@ export default function Logs() {
 
   const setData = (data: any) => {
     let {
+      id,
       usuario,
       aeronave,
       dataCalculo,
       resultado_calculo,
     } = data;
+    localStorage.setItem("IdDetalhes", id)
     localStorage.setItem("Usuario", usuario);
     localStorage.setItem("Modelo", aeronave);
     localStorage.setItem("Data Calculo", dataCalculo);

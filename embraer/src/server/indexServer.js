@@ -158,6 +158,17 @@ app.get("/getLogs", (req, res) => {
     });
 });
 
+app.get("/details/:id", (req, res) => {
+    const id = req.params.id
+    console.log("params: " + id);
+    let SQL = "SELECT * FROM log_calculo_distancia where id =" + id;
+
+    db.query(SQL, (err, result) => {
+        if(err) console.log(err);
+        else res.send(result)
+    })
+})
+
 app.get("/getUsers/:id", (req, res) => {
     const id = req.params.id
     let SQL = "SELECT * FROM usuario where id !=" + id;
