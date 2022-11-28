@@ -73,7 +73,8 @@ function Calculo() {
         parseInt(unidade),
         parseInt(selectFrenagemId),
         parseInt(selectcondicaoId),
-        parseInt(selectFlapId))
+        parseInt(selectFlapId),
+        aviao[0].peso_referencial)
 
       var resultCorreto = success.split(" ")
 
@@ -88,7 +89,8 @@ function Calculo() {
         parseInt(unidade),
         parseInt(selectFrenagemId),
         parseInt(selectcondicaoId),
-        parseInt(selectFlapId)))
+        parseInt(selectFlapId),
+        aviao[0].peso_referencial))
 
       setShow(true)
 

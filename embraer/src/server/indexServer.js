@@ -202,7 +202,7 @@ app.get("/getSenha/:email", (req,res) => {
 });
 
 app.get("/getUser/:id", (req, res) => {
-    const id = req.params.id
+    const id = parseInt(req.params.id)
     console.log("params: " + id);
     let SQL = "SELECT * FROM usuario where id =" + id;
 
@@ -286,7 +286,7 @@ app.put("/update/:id", (req, res) => {
         else res.send(result);
     });
 });
-debugger
+
 app.put("/updateUser/:id", (req, res) => {
     const { id } = req.params;
     const { nivel_acesso } = req.body;
@@ -297,6 +297,19 @@ app.put("/updateUser/:id", (req, res) => {
     let SQL = "UPDATE usuario SET nivel_acesso = ?,  senha_acesso = ?, nome = ?, email = ? WHERE id =" + id;
 
     db.query(SQL, [nivel_acesso, senha_acesso, nome, email], (err, result) => {
+        if (err) console.log(err);
+        else res.send(result);
+    });
+});
+
+app.put("/updateUserProfile/:id", (req, res) => {
+    const { id } = req.params;
+    const { nome } = req.body;
+    const { email } = req.body;
+
+    let SQL = "UPDATE usuario SET nome = ?, email = ? WHERE id =" + id;
+
+    db.query(SQL, [nome, email], (err, result) => {
         if (err) console.log(err);
         else res.send(result);
     });
