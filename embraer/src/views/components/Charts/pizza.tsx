@@ -59,8 +59,8 @@ const options = {
           name: "Wet",
           color: '#584770',
           y: 38.31,
-          sliced: true,
-          selected: true,
+          sliced: false,
+          selected: false,
         },
         {
           name: "Dry",
