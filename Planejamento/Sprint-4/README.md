@@ -48,7 +48,7 @@ Para a conclusão do projeto, os integrantes da equipe analisaram e optaram por 
 
 # 🗃 Banco de dados
   
-<p align="justify">Colocar a descrição do banco de dados<br>
+<p align="justify">Após uma revisão global dos feedbacks e do funcionamento da aplicação, a equipe alterou as estruturas do banco de dados previstas nas sprints anteriores. A seguir, é apresentado o Diagrama Entidade-Relacionamento com as informações relativas às aeronaves, aos flaps e às condições de pista e clima determinantes para o resultado do cálculo.<br>
 <br></p>
 <p align="center">
 <img src="Imagens/DER-atualizado.png" alt="Diagrama que representa a relação entre as entidades do banco de dados da aplicação" width="80%" height="80%">
