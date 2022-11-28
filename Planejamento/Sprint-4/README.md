@@ -68,6 +68,10 @@ Para a conclusão do projeto, os integrantes da equipe analisaram e optaram por 
 
 
 
+https://user-images.githubusercontent.com/86115352/204178468-670df896-4009-41de-a2fe-a0d3a3cb383d.mp4
+
+
+
 https://user-images.githubusercontent.com/86115352/204177913-5033556b-7b08-47f0-acac-18038db1372f.mp4
 
 
