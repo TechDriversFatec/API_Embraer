@@ -132,10 +132,7 @@ const Login = () => {
         style={{ top: "35%", position: "relative" }}
         onSubmit={handleLogin}
       >
-        <h1 className="text-center">
-          <b>AirPlus: Landing Distance Calculator</b>
-        </h1>
-        <br />
+        <br/>
         <input
           id="email"
           placeholder="Email"
