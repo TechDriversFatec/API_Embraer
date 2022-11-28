@@ -15,7 +15,7 @@
 <span id="sobre">
 
 ## 🚀 Sobre o Projeto
-  > **Status do projeto: Em construção**
+  > **Status do projeto: Concluído**
   
   <p align="justify">O projeto visa o desenvolvimento de uma aplicação (compatível com tablet) voltada para o cálculo de distância de pouso de aeronaves. Essa aplicação foi pensada para auxiliar o piloto da aeronave, proporcionando maior agilidade e eficiência no referido cálculo.</p>
   
@@ -26,7 +26,7 @@
 | 01 | 18/09/2022 | Concluída | [Ver Relatório](https://github.com/TechDriversFatec/API_Embraer/tree/main/Planejamento/Sprint-1) |
 | 02 | 09/10/2022 | Concluída | [Ver Relatório](https://github.com/TechDriversFatec/API_Embraer/tree/main/Planejamento/Sprint-2) |
 | 03 | 06/11/2022 | Concluída | [Ver Relatório](https://github.com/TechDriversFatec/API_Embraer/tree/main/Planejamento/Sprint-3) |
-| 04 | 27/11/2022 | Em andamento | [Ver Relatório](https://github.com/TechDriversFatec/API_Embraer/tree/main/Planejamento/Sprint-4) |
+| 04 | 27/11/2022 | Concluída | [Ver Relatório](https://github.com/TechDriversFatec/API_Embraer/tree/main/Planejamento/Sprint-4) |
   
   → [Voltar ao topo](#topo)
   
