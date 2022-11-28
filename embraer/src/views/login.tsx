@@ -1,12 +1,9 @@
-import React, { useState } from "react";
+import Axios from "axios";
+import "bootstrap/dist/css/bootstrap.min.css";
+import emailjs from "emailjs-com";
+import { useState } from "react";
 import { useNavigate } from "react-router-dom";
 import "../css/CriarAeronaves2.css";
-import "bootstrap/dist/css/bootstrap.min.css";
-import Axios from "axios";
-import emailjs from "emailjs-com";
-import { each } from "jquery";
-import { json } from "body-parser";
-import { Info } from "@mui/icons-material";
 const Swal = require("sweetalert2");
 
 const Login = () => {
