@@ -10,6 +10,8 @@ import Swal from "sweetalert2";
 import { Navigate } from "react-router-dom";
 import { NumberDecrementStepper } from "@chakra-ui/react";
 import avatarIcon from './avatarIcon.png'
+import { Button, IconButton, InputAdornment, Input } from "@mui/material";
+import { Visibility, VisibilityOff } from "@mui/icons-material"
 
 
 
@@ -51,19 +53,14 @@ function UserProfile() {
                 const data = response.data;
                 setNome(data[0].nome)
                 setEmail(data[0].email)
-                console.log();
-                // console.log("useEffect 1 Rodou");
-                // console.log(data); // returns correctly filled array
-                // setAvioes(data);
-                // console.log(data); // returns '[]'
+                setSenha(data[0].senha_acesso)
             });
     }, []);
 
     const [Nome, setNome] = useState("");
     const [Email, setEmail] = useState("");
     const [Senha, setSenha] = useState("");
-    const [NivelUsuario, setNivelUsuario] = useState("");
-    const [DadosUsuario, setDadosUsuario] = useState<Usuario[]>([]);
+    const [passwordShown, setPasswordShown] = useState(false);
 
     function updateUser() {
 
@@ -80,6 +77,7 @@ function UserProfile() {
                 Axios.put(`http://localhost:3002/updateUserProfile/${localStorage.getItem('idUsuario')}`, {
                     nome: Nome,
                     email: Email,
+                    senha_acesso: Senha
                 });
                 localStorage.setItem('nomeUsuario', Nome)
 
@@ -95,10 +93,18 @@ function UserProfile() {
         })
     }
 
+    const togglePassword = () => {
+        setPasswordShown(!passwordShown);
+    };
+
+    const handleMouseDownPassword = (event) => {
+        event.preventDefault();
+    };
+
     return (
         <div className="UserProfile">
             <form id="form_profile" onSubmit={manipularEnvio}>
-                <div className="card card-custom gutter-b col-md-10 offset-sm-1">
+                <div className="card card-custom gutter-b col-md-10 offset-sm-1 cardProfile">
                     <div className="card-header">
                         <h3 id="h3profile" className="card-title text-center">User Profile</h3>
                         <div className="card-toolbar">
@@ -110,25 +116,35 @@ function UserProfile() {
                             <div className="row">
                                 <div className="col-md-4 offset-md-4">
                                     <label>Name:</label>
-                                    <input id="nome" title="nome" className="form-control" name="nome" value={Nome} onChange={receberNome} />
+                                    <Input id="nome" title="nome" className="form-control" name="nome" value={Nome} onChange={receberNome} />
                                     <small></small>
                                 </div>
                             </div>
                             <div className="row">
                                 <div className="col-md-4 offset-md-4">
                                     <label>Email:</label>
-                                    <input id="email" title="email" className="form-control" name="email" value={Email} onChange={receberEmail} />
+                                    <Input id="email" title="email" className="form-control" name="email" value={Email} onChange={receberEmail} />
                                     <small></small>
                                 </div>
                             </div>
-                            {/* <div className="row">
+                            <div className="row">
                                 <div className="col-md-4 offset-md-4">
                                     <label>Password:</label>
-                                    <input id="senha_acesso" type="password" className="form-control" name="senha_acesso" value={Senha} placeholder="password max length = 15" onChange={receberSenha} />
-                                    <small></small>
+                                    <Input id="senha_acesso"
+                                        type={passwordShown ? "text" : "password"}
+                                        className="form-control" name="senha_acesso"
+                                        value={Senha} placeholder="password max length = 15"
+                                        onChange={receberSenha}
+                                        endAdornment={<InputAdornment position="end">
+                                            <IconButton
+                                                onClick={togglePassword}
+                                                onMouseDown={handleMouseDownPassword}
+                                            >
+                                                {passwordShown ? <Visibility /> : <VisibilityOff />}
+                                            </IconButton>
+                                        </InputAdornment>} />
                                 </div>
-                            </div> */}
-
+                            </div>
                         </ul>
                     </div>
 

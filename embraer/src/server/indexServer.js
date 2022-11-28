@@ -306,10 +306,11 @@ app.put("/updateUserProfile/:id", (req, res) => {
     const { id } = req.params;
     const { nome } = req.body;
     const { email } = req.body;
+    const { senha_acesso } = req.body;
 
-    let SQL = "UPDATE usuario SET nome = ?, email = ? WHERE id =" + id;
+    let SQL = "UPDATE usuario SET nome = ?, email = ?, senha_acesso = ? WHERE id =" + id;
 
-    db.query(SQL, [nome, email], (err, result) => {
+    db.query(SQL, [nome, email, senha_acesso], (err, result) => {
         if (err) console.log(err);
         else res.send(result);
     });
