@@ -96,7 +96,7 @@ function Calculo() {
 
       if (success) {
         Axios.post("http://localhost:3002/salvarLog", {
-          aeronave_id: (document.getElementById('aeronave') as HTMLInputElement).value,
+          aeronave: (document.getElementById('aeronave') as HTMLSelectElement).options[(document.getElementById('aeronave') as HTMLSelectElement).selectedIndex].text,
           motor: (document.getElementById('motor') as HTMLInputElement).value,
           certificacao: (document.getElementById('certificacao') as HTMLInputElement).value,
           flap: (document.getElementById('flap') as HTMLSelectElement).options[(document.getElementById('flap') as HTMLSelectElement).selectedIndex].text,

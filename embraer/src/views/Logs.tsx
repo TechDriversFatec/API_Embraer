@@ -7,6 +7,7 @@ import InfoOutlinedIcon from '@mui/icons-material/InfoOutlined';
 import Tooltip from "@mui/material/Tooltip";
 import "../css/tabela.css";
 import ModalLogs from "./components/ModalLogs";
+import "../css/logs.css";
 
 type Log = {
   id: number,
@@ -104,7 +105,7 @@ export default function Logs() {
   console.log(logs);
   return (
 
-    <div>
+    <div className="divLogs">
       
       <div className="card card-custom gutter-b">
         <div className="card-header">

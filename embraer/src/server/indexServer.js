@@ -97,7 +97,7 @@ app.post("/criarusuario", (req, res) => {
 });
 
 app.post("/salvarLog", (req, res) => {
-    const { aeronave_id } = req.body;
+    const { aeronave } = req.body;
     const { motor } = req.body;
     const { certificacao } = req.body;
     const { flap } = req.body;
@@ -114,9 +114,9 @@ app.post("/salvarLog", (req, res) => {
     const { resultado_calculo } = req.body;
     const { usuario } = req.body;
 
-    let SQL = "INSERT INTO log_calculo_distancia ( aeronave_id, motor, certificacao, flap, condicaoPista, tipoFrenagem, pesoPouso, altitude, temperatura, vento, inclinacao, overspeed, reversoresInoperantes, dataCalculo, resultado_calculo, usuario ) VALUES ( ?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,? )";
+    let SQL = "INSERT INTO log_calculo_distancia ( aeronave, motor, certificacao, flap, condicaoPista, tipoFrenagem, pesoPouso, altitude, temperatura, vento, inclinacao, overspeed, reversoresInoperantes, dataCalculo, resultado_calculo, usuario ) VALUES ( ?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,? )";
 
-    db.query(SQL, [aeronave_id, motor, certificacao, flap, condicaoPista, tipoFrenagem, pesoPouso, altitude, temperatura, vento, inclinacao, overspeed, reversoresInoperantes, dataCalculo, resultado_calculo, usuario], (err, result) => {
+    db.query(SQL, [aeronave, motor, certificacao, flap, condicaoPista, tipoFrenagem, pesoPouso, altitude, temperatura, vento, inclinacao, overspeed, reversoresInoperantes, dataCalculo, resultado_calculo, usuario], (err, result) => {
         console.log(err);
     });
 });
