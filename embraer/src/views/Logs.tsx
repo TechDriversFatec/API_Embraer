@@ -82,6 +82,7 @@ export default function Logs() {
       dataCalculo,
       resultado_calculo,
     } = data;
+    console.log(id)
     localStorage.setItem("IdDetalhes", id)
     localStorage.setItem("Usuario", usuario);
     localStorage.setItem("Modelo", aeronave);

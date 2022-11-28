@@ -31,12 +31,8 @@ function ModalLogs({ closeModal }) {
     const [IdDetalhes, setIdDetalhes] = useState(null)
 
   useEffect(() => {
-    setLogs(localStorage.getItem("Logs"));
     setUsuario(localStorage.getItem("Usuario"));
     setIdDetalhes(localStorage.getItem("IdDetalhes"))
-    // localStorage.setItem("Modelo", aeronave);
-    // localStorage.setItem("Data Calculo", dataCalculo);
-    // localStorage.setItem("Resultado Calculo", resultado_calculo);
   }, []);
 
   useEffect(() => {
