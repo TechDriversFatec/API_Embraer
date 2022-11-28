@@ -43,11 +43,11 @@ const ModalComp = ({ data, setData, dataEdit, isOpen, onClose }) => {
                 <ModalContent>
                     <ModalHeader>Cadastro de Aeronaves</ModalHeader>
                     <ModalCloseButton />
-                    <ModalBody>
+                    <ModalBody className="center">
                         <FormControl display="flex" flexDir="column" gap={4}>
                             <Box>
                                 <FormLabel>ID</FormLabel>
-                                <Input type="id" value={id} onChange={(e) => setId(e.target.value)}/>
+                                <Input type="id" value={id} onChange={(e) => setId(e.target.value)} />
                             </Box>
                             <Box>
                                 <FormLabel>Fabricante</FormLabel>
