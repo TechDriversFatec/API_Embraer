@@ -83,7 +83,6 @@ export default function Logs() {
       dataCalculo,
       resultado_calculo,
     } = data;
-    console.log(id)
     localStorage.setItem("IdDetalhes", id)
     localStorage.setItem("Usuario", usuario);
     localStorage.setItem("Modelo", aeronave);
@@ -96,13 +95,10 @@ export default function Logs() {
       .get('http://localhost:3002/getLogs')
       .then((response) => {
         const data = response.data;
-        console.log("useEffect 1 Rodou");
         setLogs(data);
-        console.log(data);
       });
   }, []);
 
-  console.log(logs);
   return (
 
     <div className="divLogs">

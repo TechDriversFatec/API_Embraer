@@ -2,7 +2,10 @@ import GraficoBarra from "./components/Charts/barra";
 import GraficoPizza from "./components/Charts/pizza";
 import Logs from "./Logs";
 
+
+
 const Dashboard = () => {
+
   return (
     <>
       <div className="card-body col-md-12">
