@@ -46,7 +46,6 @@ function UserProfile() {
     }
 
     useEffect(() => {
-        debugger
         axios
             .get(`http://localhost:3002/getUser/${localStorage.getItem('idUsuario')}`)
             .then((response) => {

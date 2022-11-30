@@ -64,7 +64,6 @@ class Calcular {
         console.log("slope: " + slope);
         console.log("vap: " + vap);
         console.log("revs: " + revInoperantes);
-        debugger
         let distanciaReferencia = parseInt(localStorage.getItem('distancia_referencial')!);
         let chao = 0;
         let padraoIsa = parseInt(localStorage.getItem('temperatura_padrao')!);

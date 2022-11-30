@@ -1,6 +1,6 @@
 export default class Calculos {
     calcularPouso(pesoAtual = parseInt(this.pesoAtual.value), alturaAtual = parseInt(this.alturaAtual.value), temperaturaAtual = parseInt(this.temperaturaAtual.value), ventoCabeca = parseInt(this.ventoCabeca.value), ventoCauda = parseInt(this.ventoCauda.value), slope = parseInt(this.slope.value), vref = parseInt(this.vref.value), flap = parseInt(this.flap.value), frenagem = parseInt(this.frenagem.value), revInoperantes = parseInt(this.revInoperantes.value)) {
-        debugger;
+        
         let distanciaReferencia = 1026;
         let chao = 0;
         let padraoIsa = 0;

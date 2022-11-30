@@ -45,7 +45,6 @@ export default class Calculos {
         frenagem: number = parseInt(this.frenagem.value),
         revInoperantes: number = parseInt(this.revInoperantes.value),
         ) {
-debugger
         let distanciaReferencia: number = 1026;
         let chao: number = 0;
         let padraoIsa: number = 0;

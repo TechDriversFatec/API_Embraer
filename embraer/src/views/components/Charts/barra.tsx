@@ -3,25 +3,27 @@ import Highcharts from "highcharts";
 import HighchartsReact from "highcharts-react-official";
 import axios from "axios";
 
-
 export default function GraficoBarra() {
+  let usuario: any = [];
 
   const getLog = () => {
-    axios.get('http://localhost:3002/get-log-aeronave').then(response => {
-      let usuario: any = []
-      console.log(response.data[0].usuario)
-      for(let i = 0; i < response.data.length; i++){
-        usuario.push(response.data[i].usuario)
+    debugger
+    usuario = []
+    axios.get("http://localhost:3002/get-log-aeronave").then((response) => {
+      for (const element of response.data) {
+        console.log(element)
+        usuario.push(element.usuario);
       }
-      console.log(usuario)
     });
-  }
+  };
 
-  useEffect(() => {
+  console.log(usuario)
 
-    getLog();
-  }, [])
+  getLog()
 
+  // useEffect(() => {
+  //   getLog();
+  // }, []);
 
   const options = {
     chart: {
@@ -33,9 +35,8 @@ export default function GraficoBarra() {
     xAxis: {
       categories:
         // arrayDeNomes
-        [
-          
-        ],
+          usuario
+        ,
       crosshair: true,
     },
     yAxis: {
@@ -57,44 +58,17 @@ export default function GraficoBarra() {
         borderWidth: 0,
       },
     },
-    series:
-      [
-        {
-          name: "ERJ 145",
-          color: '#983dff',
-          data: [
-            7, 2, 8, 5, 1, 3,
-          ],
-        },
-        {
-          name: "Legacy 600",
-          color: '#9688ff',
-          data: [
-            10, 2, 11, 3, 5, 7,
-          ],
-        },
-        {
-          name: "E190",
-          color: '#4cadff',
-          data: [
-            3, 9, 9, 4, 2, 10,
-          ],
-        },
-        {
-          name: "Phenom 300",
-          color: '#50e4ff',
-          data: [
-            6, 4, 10, 8, 5, 7,
-          ],
-        },
-      ],
+    series: [
+      {
+        name: "ERJ 145",
+        color: "#983dff",
+        data: [7, 2, 8, 5, 1, 3],
+      },
+    ],
   };
-
- 
 
   return (
     <>
-      {getLog()}
       <HighchartsReact highcharts={Highcharts} options={options} />
     </>
   );

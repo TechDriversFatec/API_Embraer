@@ -406,8 +406,7 @@ app.delete("/deleteUser/:id", (req, res) => {
 
 app.get('/get-log-aeronave', (req, res) => {
     let SQL = `SELECT aeronave, usuario, COUNT(usuario) FROM log_calculo_distancia GROUP BY aeronave,usuario;`
-
-    console.log('utilizado')
+    
     db.query(SQL, (err, result) => {
         if (err) console.log(err);
         else res.send(result);

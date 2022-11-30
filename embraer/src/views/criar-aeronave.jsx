@@ -14,7 +14,6 @@ function VariaveisAeronaves() {
 
   function manipularEnvio(evento) {
     evento.preventDefault();
-    debugger;
     let reversorValido = validaReversor(),
       variacaoPesoValida = validaVariacaoPes(),
       pesoAcmValido = validaPesoAcm(),

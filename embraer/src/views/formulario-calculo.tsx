@@ -56,7 +56,6 @@ function Calculo() {
       vapValido
 
     if (formularioValido) {
-      debugger
 
       const selectFlapId = (document.getElementById('flap') as HTMLSelectElement).options[(document.getElementById('flap') as HTMLSelectElement).selectedIndex].value
       const selectFrenagemId = (document.getElementById('frenagem') as HTMLInputElement).value ? (document.getElementById('frenagem') as HTMLInputElement).value : ""

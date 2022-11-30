@@ -40,7 +40,6 @@ const Login = () => {
     }).then((response) => {
       const data = response.data;
       console.log(data);
-      debugger;
       if (data.length === 0) {
         Swal.fire({
           title: `Error`,

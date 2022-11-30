@@ -36,7 +36,6 @@ export default function Logs() {
   const [resultadoFiltrado, setresultadoFiltrado] = useState<Log[]>([]);
   const [page, setPage] = React.useState(0);
   const [rowsPerPage, setRowsPerPage] = React.useState(5);
-  debugger
   const [openModal, setOpenModal] = useState(false);
 
   const handleChangePage = (
