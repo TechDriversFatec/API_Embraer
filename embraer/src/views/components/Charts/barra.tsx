@@ -3,27 +3,39 @@ import Highcharts from "highcharts";
 import HighchartsReact from "highcharts-react-official";
 import axios from "axios";
 
-export default function GraficoBarra() {
+export default function GraficoBarra(data: any) {
   let usuario: any = [];
+  let aviao: any = [];
+  let contagem: any = [];
+  let datas: any = data.data;
+  let cores: any = ["#983dff", '#9688ff', '#50e4ff', '#4cadff']
 
-  const getLog = () => {
-    debugger
-    usuario = []
-    axios.get("http://localhost:3002/get-log-aeronave").then((response) => {
-      for (const element of response.data) {
-        console.log(element)
-        usuario.push(element.usuario);
-      }
+  var dados: any = [];
+
+  for (let n = 0; n < datas.length; n = 0) {
+    var aeronave = datas.filter((item) => item.aeronave == datas[n].aeronave);
+
+    var contaem: any = [];
+
+    aeronave.forEach((x) => {
+      contaem.push(x["COUNT(usuario)"]);
     });
-  };
 
-  console.log(usuario)
+    dados.push({
+      name: datas[n].aeronave,
+      data: contaem,
+    });
 
-  getLog()
+    console.log(aeronave);
+    datas = datas.filter((item) => item.aeronave != datas[n].aeronave);
+    n = 0;
+  }
 
-  // useEffect(() => {
-  //   getLog();
-  // }, []);
+  data.data.forEach((element) => {
+    usuario.push(element.usuario);
+    aviao.push(element.aeronave);
+    contagem.push(element["COUNT(usuario)"]);
+  });
 
   const options = {
     chart: {
@@ -33,10 +45,7 @@ export default function GraficoBarra() {
       text: "Pilot x Aircraft model",
     },
     xAxis: {
-      categories:
-        // arrayDeNomes
-          usuario
-        ,
+      categories: usuario,
       crosshair: true,
     },
     yAxis: {
@@ -58,13 +67,7 @@ export default function GraficoBarra() {
         borderWidth: 0,
       },
     },
-    series: [
-      {
-        name: "ERJ 145",
-        color: "#983dff",
-        data: [7, 2, 8, 5, 1, 3],
-      },
-    ],
+    series: dados,
   };
 
   return (
