@@ -26,7 +26,6 @@ export default function GraficoBarra(data: any) {
       data: contaem,
     });
 
-    console.log(aeronave);
     datas = datas.filter((item) => item.aeronave != datas[n].aeronave);
     n = 0;
   }

@@ -416,3 +416,12 @@ app.get('/get-log-aeronave', (req, res) => {
 app.listen(3002, () => {
     console.log("rodando servidor");
 });
+
+app.get('/getPista', (req, res) => {
+    let SQL = `SELECT condicaoPista, COUNT(condicaoPista) FROM log_calculo_distancia GROUP BY condicaoPista;`
+
+    db.query(SQL, (err, result) => {
+        if(err) console.log(err);
+        else res.send(result);
+    })
+})
