@@ -111,7 +111,7 @@ function VariaveisAeronaves() {
         if (result.isConfirmed) {
           window.location.reload()
         } else {
-          navigate(`/Aircraft`);
+          navigate(`/AtualizA/${Update}`);
         }
       });
     }
@@ -545,12 +545,14 @@ function VariaveisAeronaves() {
   const [VapAbx, setVapAbx] = useState("");
   const [VapAcm, setVapAcm] = useState("");
   const [Volta, setVolta] = useState("")
+  const [Update, setUpdate] = useState("")
 
   useEffect(() => {
     setFlapId(localStorage.getItem("FlapId"));
     setFlap(localStorage.getItem("Flap"));
     setGelo(localStorage.getItem("Gelo"))
     setVolta(localStorage.getItem("Volta"))
+    setUpdate(localStorage.getItem("IdUpdate"))
   }, []);
 
   let urlEdita = `http://localhost:3000/AtualizA/${FlapId}`
@@ -1008,7 +1010,6 @@ function VariaveisAeronaves() {
               type="submit"
               id="btn_registrar"
               name="submitButton"
-              //onClick={() => handleClickButton(values)}
             >
               <b>Register</b>
             </button>

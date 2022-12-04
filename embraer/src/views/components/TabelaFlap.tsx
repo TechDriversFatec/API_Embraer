@@ -45,7 +45,7 @@ export default function TabelaFlap() {
   const onDelete = (id: number) => {
     Swal.fire({
       icon: "warning",
-      title: "Are you sure you want to delete the aircraft?",
+      title: "Are you sure you want to delete the flap?",
       showCancelButton: true,
       confirmButtonColor: "#3085d6",
       cancelButtonColor: "#d33",

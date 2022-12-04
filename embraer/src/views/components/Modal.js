@@ -106,7 +106,6 @@ function Modal({ closeModal }) {
 
             <Table.Body>
               {ListVariaveis.map((data) => {
-                console.log(data.id)
                 return (
                   <Table.Row>
                     <Table.Cell>
