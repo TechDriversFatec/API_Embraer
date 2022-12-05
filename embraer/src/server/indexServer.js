@@ -259,7 +259,7 @@ app.get("/getFlap/:id/:frenagemId/:condicaoId", (req, res) => {
     const frenagemId = parseInt(req.params.frenagemId).toString()
     const condicaoId = parseInt(req.params.condicaoId).toString()
     console.log("params: " + id);
-    let SQL = "SELECT flap.id, flap.tipo_flap, flap.gelo, flap.aeronave_id FROM flap INNER JOIN variavel on flap.id = variavel.flap_id WHERE variavel.configuracao_freio =" + frenagemId + " and variavel.condicao_pista =" + condicaoId
+    let SQL = "SELECT flap.id, flap.tipo_flap, flap.gelo, flap.aeronave_id FROM flap INNER JOIN aeronave ON aeronave.id = aeronave_id AND aeronave_id = " + id + " INNER JOIN variavel ON flap.id = variavel.flap_id WHERE variavel.configuracao_freio =" + frenagemId + " and variavel.condicao_pista =" + condicaoId;
 
     db.query(SQL, (err, result) => {
         if (err) console.log(err);
