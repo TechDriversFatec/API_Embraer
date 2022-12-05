@@ -913,7 +913,7 @@ function VariaveisAeronaves() {
                       id="correcao_aclive"
                       className="form-control"
                       name="correcao_aclive"
-                      placeholder="Above standard"
+                      placeholder="Uphill"
                       type="number"
                       value={SlopeAcm}
                       onChange={(e) => setSlopeAcm(e.target.value)}
@@ -926,7 +926,7 @@ function VariaveisAeronaves() {
                       id="correcao_declive"
                       className="form-control"
                       name="correcao_declive"
-                      placeholder="Below standard"
+                      placeholder="Downhill"
                       type="number"
                       value={SlopeAbx}
                       onChange={(e) => setSlopeAbx(e.target.value)}
