@@ -20,7 +20,7 @@ class Calcular {
     ) {
 
         let variaveis: any = []
-
+debugger
         axios.get(`http://localhost:3002/getVariaveis/${flap_id}/${configuracao_freio}/${condicao_pista}`)
             .then((response) => {
                 const data = response.data;
@@ -44,7 +44,7 @@ class Calcular {
                 localStorage.setItem('correcao_vento_cauda', variaveis.correcao_vento_cauda)
                 localStorage.setItem('correcao_vento_proa', variaveis.correcao_vento_proa)
                 localStorage.setItem('distancia_referencial', variaveis.distancia_referencial)
-                localStorage.setItem('padrao_variacao_altitude', variaveis.padrao_variacao_altitude)
+                localStorage.setItem('padrao_variacao_altitude', variaveis.altitude_padrao)
                 localStorage.setItem('padrao_variacao_inclinacao', variaveis.padrao_variacao_inclinacao)
                 localStorage.setItem('padrao_variacao_peso', variaveis.padrao_variacao_peso)
                 localStorage.setItem('padrao_variacao_temperatura', variaveis.padrao_variacao_temperatura)
