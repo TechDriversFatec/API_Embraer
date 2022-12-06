@@ -20,12 +20,12 @@ class Calcular {
     ) {
 
         let variaveis: any = []
-debugger
+
         axios.get(`http://localhost:3002/getVariaveis/${flap_id}/${configuracao_freio}/${condicao_pista}`)
             .then((response) => {
                 const data = response.data;
                 variaveis = data[0]
-                console.log(variaveis);
+                
                 localStorage.setItem('altitude_padrao', variaveis.altitude_padrao)
                 localStorage.setItem('condicao_pista', variaveis.condicao_pista)
                 localStorage.setItem('configuracao_freio', variaveis.configuracao_freio)
@@ -44,8 +44,8 @@ debugger
                 localStorage.setItem('correcao_vento_cauda', variaveis.correcao_vento_cauda)
                 localStorage.setItem('correcao_vento_proa', variaveis.correcao_vento_proa)
                 localStorage.setItem('distancia_referencial', variaveis.distancia_referencial)
-                localStorage.setItem('padrao_variacao_altitude', variaveis.altitude_padrao)
-                localStorage.setItem('padrao_variacao_inclinacao', variaveis.padrao_variacao_inclinacao)
+                localStorage.setItem('padrao_variacao_altitude', variaveis.padrao_variacao_altitude)
+                //localStorage.setItem('padrao_variacao_inclinacao', variaveis.padrao_variacao_inclinacao)
                 localStorage.setItem('padrao_variacao_peso', variaveis.padrao_variacao_peso)
                 localStorage.setItem('padrao_variacao_temperatura', variaveis.padrao_variacao_temperatura)
                 localStorage.setItem('padrao_variacao_velocidade', variaveis.padrao_variacao_velocidade)
@@ -91,10 +91,12 @@ debugger
                 while (alturaAtual > chao) {
                     if (alturaAtual >= parseInt(localStorage.getItem('padrao_variacao_altitude')!)) {
                         distanciaReferencia += parseInt(localStorage.getItem('correcao_altitude_acima')!);
-                        alturaAtual -= parseInt(localStorage.getItem('padrao_variacao_altitude')!);
+                        alturaAtual -= 1000
+                        // alturaAtual -= parseInt(localStorage.getItem('padrao_variacao_altitude')!);
                     } else {
                         distanciaReferencia += (parseInt(localStorage.getItem('correcao_altitude_acima')!) / 10);
-                        alturaAtual -= (parseInt(localStorage.getItem('padrao_variacao_altitude')!) / 10);
+                        alturaAtual -= 100
+                        // alturaAtual -= (parseInt(localStorage.getItem('padrao_variacao_altitude')!) / 10);
                     }
                 }
             }
