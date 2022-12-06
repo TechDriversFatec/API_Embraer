@@ -3,19 +3,18 @@ import Highcharts from "highcharts";
 import HighchartsReact from "highcharts-react-official";
 
 export default function GraficoPizza(data: any) {
-
   function trocaPista(data) {
-    if (data === '1') {
+    if (data === "1") {
       data = "Ice";
-    } else if (data === '2') {
+    } else if (data === "2") {
       data = "Standing, Water, Slush";
-    } else if (data === '3') {
+    } else if (data === "3") {
       data = "Loose Snow";
-    } else if (data === '4') {
+    } else if (data === "4") {
       data = "Compact snow";
-    } else if (data === '5') {
+    } else if (data === "5") {
       data = "Wet";
-    } else if (data === 6) {
+    } else if (data === "6") {
       data = "Dry";
     }
     return data;
